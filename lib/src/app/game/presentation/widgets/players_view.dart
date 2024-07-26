@@ -1,5 +1,4 @@
 import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/observers/build_watch.dart';
 import 'package:draw_and_guess/src/core/resource/app_icons.dart';
 import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
@@ -24,9 +23,9 @@ class PlayersView extends ConsumerWidget {
               radius: Config.w(15),
               backgroundColor: context.colorScheme.tertiaryContainer,
               child: (game?.canDraw(player.uid) ?? false)
-                  ? Icon(AppIcons.pencilSimple, size: Config.dg(16))
+                  ? Icon(AppIcons.pencilSimple, size: Config.dg(14))
                   : (game?.correctGuess ?? []).contains(player.uid)
-                      ? Icon(AppIcons.check, size: Config.dg(16))
+                      ? Icon(AppIcons.check, size: Config.dg(14))
                       : null,
             ),
             Config.hBox4,

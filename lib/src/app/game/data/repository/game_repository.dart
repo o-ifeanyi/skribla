@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:draw_and_guess/src/app/game/data/models/exhibit_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/message_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/player_model.dart';
+import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
 import 'package:draw_and_guess/src/core/service/logger.dart';
 import 'package:draw_and_guess/src/core/util/result.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -138,6 +138,11 @@ final class GameRepository {
           createdAt: DateTime.now(),
         );
         unawaited(doc.set(exhibit.toJson()));
+        unawaited(
+          firebaseFirestore.collection('games').doc(game.id).update(
+            {'num_of_arts': FieldValue.increment(1)},
+          ),
+        );
         unawaited(
           sendMessage(
             game: game,

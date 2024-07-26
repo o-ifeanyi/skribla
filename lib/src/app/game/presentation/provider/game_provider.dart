@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/line_model.dart';
+import 'package:draw_and_guess/src/app/game/data/models/message_model.dart';
 import 'package:draw_and_guess/src/app/game/data/repository/game_repository.dart';
 import 'package:draw_and_guess/src/app/game/presentation/provider/game_state.dart';
 import 'package:draw_and_guess/src/app/game/presentation/provider/timer_provider.dart';
@@ -192,4 +193,7 @@ class GameProvider extends StateNotifier<GameState> {
       error: (error) => false,
     );
   }
+
+  Stream<List<MessageModel>> getMessages(String id) =>
+      gameRepository.getMessages(id);
 }

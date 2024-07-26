@@ -1,6 +1,5 @@
 import 'package:draw_and_guess/src/app/game/data/models/message_model.dart';
 import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/observers/build_watch.dart';
 import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class MessagesView extends StatefulWidget {
 class _MessagesViewState extends State<MessagesView> {
   final getMessages = StreamProvider.family<List<MessageModel>, String>(
     (ref, id) async* {
-      final messages = ref.read(gameRepoProvider).getMessages(id);
+      final messages = ref.read(gameProvider.notifier).getMessages(id);
       await for (final message in messages) {
         yield message;
       }

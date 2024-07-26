@@ -1,8 +1,8 @@
 import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:draw_and_guess/src/app/game/presentation/widgets/art_painter.dart';
 import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/observers/build_watch.dart';
 import 'package:draw_and_guess/src/core/resource/app_icons.dart';
+import 'package:draw_and_guess/src/core/router/routes.dart';
 import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/constants.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
@@ -31,7 +31,7 @@ class DrawBoard extends ConsumerWidget {
           height: Config.height * 0.45,
           decoration: BoxDecoration(
             borderRadius: Config.radius16,
-            color: context.colorScheme.surfaceContainer,
+            color: context.theme.inputDecorationTheme.fillColor,
             boxShadow: [
               BoxShadow(
                 spreadRadius: 5,

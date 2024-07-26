@@ -23,6 +23,7 @@ class GameModel with _$GameModel {
     @Default([]) List<String> online,
     @Default([]) List<LineModel> currentArt,
     @Default(4) int numOfPlayers,
+    @Default(0) int numOfArts,
   }) = _GameModel;
 
   const GameModel._();

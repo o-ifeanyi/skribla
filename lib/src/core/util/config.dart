@@ -55,6 +55,8 @@ abstract class Config {
   static BorderRadius get radius24 => BorderRadius.circular(24);
   static BorderRadius get radius32 => BorderRadius.circular(32);
 
+  static Duration get duration150 => const Duration(milliseconds: 150);
   static Duration get duration300 => const Duration(milliseconds: 300);
   static Duration get duration600 => const Duration(milliseconds: 600);
+  static Duration get duration1000 => const Duration(milliseconds: 1000);
 }

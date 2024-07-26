@@ -1,11 +1,12 @@
 import 'package:draw_and_guess/src/app/start/presentation/provider/start_state.dart';
 import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/observers/build_watch.dart';
+import 'package:draw_and_guess/src/core/resource/app_icons.dart';
 import 'package:draw_and_guess/src/core/router/routes.dart';
 import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:draw_and_guess/src/core/widgets/app_button.dart';
 import 'package:draw_and_guess/src/core/widgets/default_app_bar.dart';
+import 'package:draw_and_guess/src/core/widgets/gradient_text.dart';
 import 'package:draw_and_guess/src/core/widgets/input_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -44,8 +45,17 @@ class _StartScreenState extends ConsumerState<StartScreen> {
     final user = ref.watch(authProvider.select((it) => it.user));
     final status = ref.watch(startProvider.select((it) => it.status));
     return Scaffold(
-      appBar: const DefaultAppBar(
+      appBar: DefaultAppBar(
         automaticallyImplyLeading: false,
+        actions: [
+          GestureDetector(
+            onTap: () => context.goNamed(Routes.history),
+            child: CircleAvatar(
+              backgroundColor: context.theme.inputDecorationTheme.fillColor,
+              child: Icon(AppIcons.clockCounterClockwise, size: 18),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: Config.symmetric(h: 15),
@@ -55,10 +65,16 @@ class _StartScreenState extends ConsumerState<StartScreen> {
             SizedBox(
               height: Config.height * 0.25,
             ),
-            Text(
+            GradientText(
               'Draw & Guess',
               style: context.textTheme.titleLarge,
-              textAlign: TextAlign.center,
+              gradient: LinearGradient(
+                colors: [
+                  context.colorScheme.secondary,
+                  context.colorScheme.primary,
+                  context.colorScheme.secondary,
+                ],
+              ),
             ),
             Config.vBox24,
             InputField(

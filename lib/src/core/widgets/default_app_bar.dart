@@ -26,23 +26,29 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         constraints:
             BoxConstraints.tight(const Size.fromHeight(kToolbarHeight)),
-        padding: Config.symmetric(h: 20),
+        padding: Config.symmetric(h: 15),
         child: Row(
           children: [
-            if (automaticallyImplyLeading)
+            if (automaticallyImplyLeading) ...[
               GestureDetector(
                 onTap: context.pop,
                 child: CircleAvatar(
                   backgroundColor: context.theme.inputDecorationTheme.fillColor,
                   child: Icon(AppIcons.x, size: 18),
                 ),
-              )
-            else if (leading != null)
+              ),
+            ] else if (leading != null) ...[
               Padding(
-                padding: Config.symmetric(h: 20),
+                padding: Config.symmetric(h: 15),
                 child: leading,
               ),
-            if (title != null) title!,
+            ],
+            if (title != null) ...[
+              Padding(
+                padding: Config.symmetric(h: 25),
+                child: title,
+              ),
+            ],
             if (actions.isNotEmpty) ...[
               const Spacer(),
               ...actions,

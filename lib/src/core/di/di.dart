@@ -7,11 +7,14 @@ import 'package:draw_and_guess/src/app/game/presentation/provider/game_provider.
 import 'package:draw_and_guess/src/app/game/presentation/provider/game_state.dart';
 import 'package:draw_and_guess/src/app/game/presentation/provider/timer_provider.dart';
 import 'package:draw_and_guess/src/app/game/presentation/provider/timer_state.dart';
+import 'package:draw_and_guess/src/app/history/data/repository/history_repository.dart';
+import 'package:draw_and_guess/src/app/history/presentation/provider/history_provider.dart';
+import 'package:draw_and_guess/src/app/history/presentation/provider/history_state.dart';
 import 'package:draw_and_guess/src/app/start/data/repository/start_repository.dart';
 import 'package:draw_and_guess/src/app/start/presentation/provider/start_provider.dart';
 import 'package:draw_and_guess/src/app/start/presentation/provider/start_state.dart';
-import 'package:draw_and_guess/src/core/provider/theme_provider.dart';
 import 'package:draw_and_guess/src/core/theme/app_theme.dart';
+import 'package:draw_and_guess/src/core/theme/theme_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,6 +50,12 @@ final themeProvider = StateNotifierProvider<ThemeProvider, ThemeOptions>(
   ),
 );
 
+final historyProvider = StateNotifierProvider<HistoryProvider, HistoryState>(
+  (ref) => HistoryProvider(
+    galleryRepository: ref.read(galleryRepoProvider),
+  ),
+);
+
 // Repositories
 final authRepoProvider = Provider<AuthRepository>(
   (ref) => AuthRepository(
@@ -64,6 +73,13 @@ final startRepoProvider = Provider<StartRepository>(
 
 final gameRepoProvider = Provider<GameRepository>(
   (ref) => GameRepository(
+    firebaseAuth: ref.read(firebaseAuthProvider),
+    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+  ),
+);
+
+final galleryRepoProvider = Provider<HistoryRepository>(
+  (ref) => HistoryRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
     firebaseFirestore: ref.read(firebaseFireStoreProvider),
   ),

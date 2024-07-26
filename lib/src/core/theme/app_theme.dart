@@ -1,8 +1,8 @@
 import 'package:draw_and_guess/src/core/theme/colors.dart';
 import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/foundation.dart' show PlatformDispatcher;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 enum ThemeOptions {
@@ -13,8 +13,7 @@ enum ThemeOptions {
 
 abstract class AppTheme {
   static Color get green => const Color(0xFF5AC71C);
-  static Brightness brightness =
-      SchedulerBinding.instance.platformDispatcher.platformBrightness;
+  static Brightness brightness = PlatformDispatcher.instance.platformBrightness;
 
   static ThemeData get lightTheme => FlexThemeData.light(
         colorScheme: flexSchemeLight,

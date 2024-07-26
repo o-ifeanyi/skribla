@@ -19,9 +19,3 @@ class BuildWatch extends StatelessWidget {
     return child;
   }
 }
-
-extension BuildWatchExt on Widget {
-  Widget watchBuild(String name) {
-    return BuildWatch(name: name, child: this);
-  }
-}

@@ -36,6 +36,7 @@ _$GameModelImpl _$$GameModelImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       numOfPlayers: (json['num_of_players'] as num?)?.toInt() ?? 4,
+      numOfArts: (json['num_of_arts'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$GameModelImplToJson(_$GameModelImpl instance) =>
@@ -51,6 +52,7 @@ Map<String, dynamic> _$$GameModelImplToJson(_$GameModelImpl instance) =>
       'online': instance.online,
       'current_art': instance.currentArt.map((e) => e.toJson()).toList(),
       'num_of_players': instance.numOfPlayers,
+      'num_of_arts': instance.numOfArts,
     };
 
 const _$StatusEnumMap = {

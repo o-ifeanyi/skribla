@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:draw_and_guess/src/app/game/presentation/screens/game_screen.dart';
+import 'package:draw_and_guess/src/app/history/presentation/screens/history_screen.dart';
 import 'package:draw_and_guess/src/app/start/presentation/screens/start_screen.dart';
 import 'package:draw_and_guess/src/core/router/routes.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
@@ -54,9 +55,46 @@ final routerProvider = Provider<GoRouter>(
                 return GameScreen(id: id);
               },
             ),
+            route(
+              path: Routes.history,
+              screen: const HistoryScreen(),
+            ),
           ],
         ),
       ],
     );
   },
 );
+
+class TransparentRoute<T> extends PageRoute<T> {
+  TransparentRoute({required this.builder}) : super(fullscreenDialog: false);
+
+  final WidgetBuilder builder;
+
+  @override
+  bool get opaque => false;
+
+  @override
+  Color get barrierColor => Colors.transparent;
+
+  @override
+  String get barrierLabel => '';
+
+  @override
+  bool get maintainState => true;
+
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 350);
+
+  @override
+  Widget buildPage(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+  ) {
+    return FadeTransition(
+      opacity: Tween<double>(begin: 0, end: 1).animate(animation),
+      child: builder(context),
+    );
+  }
+}

@@ -7,8 +7,7 @@ final class ThemeProvider extends StateNotifier<ThemeOptions> {
   ThemeProvider({required this.sharedPreferences})
       : super(
           ThemeOptions.values.firstWhere(
-            (theme) =>
-                theme.name == sharedPreferences?.getString('currentTheme'),
+            (e) => e.name == sharedPreferences?.getString('currentTheme'),
             orElse: () => ThemeOptions.system,
           ),
         );

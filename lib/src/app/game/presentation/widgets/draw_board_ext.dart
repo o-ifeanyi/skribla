@@ -125,7 +125,10 @@ class _BoardOverlay extends ConsumerWidget {
           Config.vBox12,
           AppButton(
             text: 'View Gallery',
-            onPressed: context.pop,
+            onPressed: () {
+              ref.read(gameProvider.notifier).leaveGame();
+              context.goNamed(Routes.history);
+            },
           ),
         ] else if (showCoolTimer) ...[
           Text.rich(

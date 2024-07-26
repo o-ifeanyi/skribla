@@ -1,4 +1,6 @@
 abstract class Routes {
   static const String start = '/';
   static const String game = 'game/:id';
+  static const String history = 'history';
+  static const String exhibits = 'exhibits/:id';
 }

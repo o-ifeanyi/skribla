@@ -1,9 +1,11 @@
+import 'package:draw_and_guess/src/core/observers/build_watch.dart';
 import 'package:draw_and_guess/src/core/resource/app_icons.dart';
 import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 extension StringExt on String {
   String get routeName {
@@ -12,6 +14,21 @@ extension StringExt on String {
 
     return this;
   }
+}
+
+extension WidgetExt on Widget {
+  Widget watchBuild(String name) {
+    return BuildWatch(name: name, child: this);
+  }
+
+  Widget rotate(int quarterTurns) {
+    return RotatedBox(quarterTurns: quarterTurns, child: this);
+  }
+}
+
+extension DateTimeExt on DateTime {
+  String get formatEDMY => DateFormat('EEE d MMM HH:mm').format(this);
+  bool get isNotExpired => DateTime.now().isBefore(this);
 }
 
 extension ListExt on List<Object> {

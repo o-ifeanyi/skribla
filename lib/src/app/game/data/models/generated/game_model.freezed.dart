@@ -31,6 +31,7 @@ mixin _$GameModel {
   List<String> get online => throw _privateConstructorUsedError;
   List<LineModel> get currentArt => throw _privateConstructorUsedError;
   int get numOfPlayers => throw _privateConstructorUsedError;
+  int get numOfArts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +55,8 @@ abstract class $GameModelCopyWith<$Res> {
       List<PlayerModel> players,
       List<String> online,
       List<LineModel> currentArt,
-      int numOfPlayers});
+      int numOfPlayers,
+      int numOfArts});
 
   $PlayerModelCopyWith<$Res> get currentPlayer;
   $WordModelCopyWith<$Res> get currentWord;
@@ -84,6 +86,7 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
     Object? online = null,
     Object? currentArt = null,
     Object? numOfPlayers = null,
+    Object? numOfArts = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -130,6 +133,10 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
           ? _value.numOfPlayers
           : numOfPlayers // ignore: cast_nullable_to_non_nullable
               as int,
+      numOfArts: null == numOfArts
+          ? _value.numOfArts
+          : numOfArts // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -169,7 +176,8 @@ abstract class _$$GameModelImplCopyWith<$Res>
       List<PlayerModel> players,
       List<String> online,
       List<LineModel> currentArt,
-      int numOfPlayers});
+      int numOfPlayers,
+      int numOfArts});
 
   @override
   $PlayerModelCopyWith<$Res> get currentPlayer;
@@ -199,6 +207,7 @@ class __$$GameModelImplCopyWithImpl<$Res>
     Object? online = null,
     Object? currentArt = null,
     Object? numOfPlayers = null,
+    Object? numOfArts = null,
   }) {
     return _then(_$GameModelImpl(
       id: null == id
@@ -245,6 +254,10 @@ class __$$GameModelImplCopyWithImpl<$Res>
           ? _value.numOfPlayers
           : numOfPlayers // ignore: cast_nullable_to_non_nullable
               as int,
+      numOfArts: null == numOfArts
+          ? _value.numOfArts
+          : numOfArts // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -263,7 +276,8 @@ class _$GameModelImpl extends _GameModel {
       final List<PlayerModel> players = const [],
       final List<String> online = const [],
       final List<LineModel> currentArt = const [],
-      this.numOfPlayers = 4})
+      this.numOfPlayers = 4,
+      this.numOfArts = 0})
       : _uids = uids,
         _correctGuess = correctGuess,
         _players = players,
@@ -333,10 +347,13 @@ class _$GameModelImpl extends _GameModel {
   @override
   @JsonKey()
   final int numOfPlayers;
+  @override
+  @JsonKey()
+  final int numOfArts;
 
   @override
   String toString() {
-    return 'GameModel(id: $id, createdAt: $createdAt, currentPlayer: $currentPlayer, currentWord: $currentWord, status: $status, uids: $uids, correctGuess: $correctGuess, players: $players, online: $online, currentArt: $currentArt, numOfPlayers: $numOfPlayers)';
+    return 'GameModel(id: $id, createdAt: $createdAt, currentPlayer: $currentPlayer, currentWord: $currentWord, status: $status, uids: $uids, correctGuess: $correctGuess, players: $players, online: $online, currentArt: $currentArt, numOfPlayers: $numOfPlayers, numOfArts: $numOfArts)';
   }
 
   @override
@@ -360,7 +377,9 @@ class _$GameModelImpl extends _GameModel {
             const DeepCollectionEquality()
                 .equals(other._currentArt, _currentArt) &&
             (identical(other.numOfPlayers, numOfPlayers) ||
-                other.numOfPlayers == numOfPlayers));
+                other.numOfPlayers == numOfPlayers) &&
+            (identical(other.numOfArts, numOfArts) ||
+                other.numOfArts == numOfArts));
   }
 
   @JsonKey(ignore: true)
@@ -377,7 +396,8 @@ class _$GameModelImpl extends _GameModel {
       const DeepCollectionEquality().hash(_players),
       const DeepCollectionEquality().hash(_online),
       const DeepCollectionEquality().hash(_currentArt),
-      numOfPlayers);
+      numOfPlayers,
+      numOfArts);
 
   @JsonKey(ignore: true)
   @override
@@ -405,7 +425,8 @@ abstract class _GameModel extends GameModel {
       final List<PlayerModel> players,
       final List<String> online,
       final List<LineModel> currentArt,
-      final int numOfPlayers}) = _$GameModelImpl;
+      final int numOfPlayers,
+      final int numOfArts}) = _$GameModelImpl;
   const _GameModel._() : super._();
 
   factory _GameModel.fromJson(Map<String, dynamic> json) =
@@ -433,6 +454,8 @@ abstract class _GameModel extends GameModel {
   List<LineModel> get currentArt;
   @override
   int get numOfPlayers;
+  @override
+  int get numOfArts;
   @override
   @JsonKey(ignore: true)
   _$$GameModelImplCopyWith<_$GameModelImpl> get copyWith =>

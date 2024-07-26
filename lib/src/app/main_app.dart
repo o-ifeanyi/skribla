@@ -2,13 +2,38 @@ import 'package:draw_and_guess/src/core/di/di.dart';
 import 'package:draw_and_guess/src/core/router/router.dart';
 import 'package:draw_and_guess/src/core/theme/app_theme.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
+import 'package:flutter/foundation.dart' show PlatformDispatcher;
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    AppTheme.brightness = PlatformDispatcher.instance.platformBrightness;
+    setState(() {});
+    super.didChangePlatformBrightness();
+  }
 
   @override
   Widget build(BuildContext context) {
