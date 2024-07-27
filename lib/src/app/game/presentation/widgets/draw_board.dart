@@ -32,13 +32,6 @@ class DrawBoard extends ConsumerWidget {
           decoration: BoxDecoration(
             borderRadius: Config.radius16,
             color: context.theme.inputDecorationTheme.fillColor,
-            boxShadow: [
-              BoxShadow(
-                spreadRadius: 5,
-                blurRadius: 5,
-                color: context.colorScheme.surface,
-              ),
-            ],
           ),
           child: LayoutBuilder(
             builder: (context, constraint) {
@@ -51,7 +44,10 @@ class DrawBoard extends ConsumerWidget {
                       art: game?.currentArt ?? [],
                     ),
                   ),
-                  const _BoardOverlay(),
+                  Padding(
+                    padding: Config.all(10),
+                    child: const _BoardOverlay(),
+                  ),
                   if ((game?.canDraw(user?.uid) ?? false) && !showCoolTimer)
                     GestureDetector(
                       onPanStart: (details) {

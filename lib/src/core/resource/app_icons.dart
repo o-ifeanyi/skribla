@@ -7,7 +7,7 @@ abstract class AppIcons {
   static IconData get minusCircle => PhosphorIcons.minusCircle();
   static IconData get plusCircle => PhosphorIcons.plusCircle();
   static IconData get eraser => PhosphorIcons.eraser();
-  static IconData get pencilSimple => PhosphorIcons.pencilSimple();
+  static IconData get highlighter => PhosphorIcons.highlighter();
   static IconData get clockCounterClockwise =>
       PhosphorIcons.clockCounterClockwise();
   static IconData get check => PhosphorIcons.check(PhosphorIconsStyle.bold);

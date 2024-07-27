@@ -24,8 +24,9 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        constraints:
-            BoxConstraints.tight(const Size.fromHeight(kToolbarHeight)),
+        constraints: BoxConstraints.tight(
+          const Size.fromHeight(kToolbarHeight),
+        ),
         padding: Config.symmetric(h: 15),
         child: Row(
           children: [
@@ -44,10 +45,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ],
             if (title != null) ...[
-              Padding(
-                padding: Config.symmetric(h: 25),
-                child: title,
-              ),
+              title!,
             ],
             if (actions.isNotEmpty) ...[
               const Spacer(),

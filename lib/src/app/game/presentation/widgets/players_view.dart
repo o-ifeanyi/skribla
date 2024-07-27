@@ -11,42 +11,48 @@ class PlayersView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final game = ref.watch(gameProvider.select((it) => it.game));
-    return ListView.separated(
-      padding: EdgeInsets.zero,
-      itemCount: (game?.onlinePlayers ?? []).length,
-      separatorBuilder: (_, __) => Config.vBox8,
-      itemBuilder: (context, index) {
-        final player = (game?.onlinePlayers ?? [])[index];
-        return Row(
-          children: [
-            CircleAvatar(
-              radius: Config.w(15),
-              backgroundColor: context.colorScheme.tertiaryContainer,
-              child: (game?.canDraw(player.uid) ?? false)
-                  ? Icon(AppIcons.pencilSimple, size: Config.dg(14))
-                  : (game?.correctGuess ?? []).contains(player.uid)
-                      ? Icon(AppIcons.check, size: Config.dg(14))
-                      : null,
-            ),
-            Config.hBox4,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    player.name,
-                    style: context.textTheme.labelSmall,
-                  ),
-                  Text(
-                    '${10 * (index + 1)} pts',
-                    style: context.textTheme.labelLarge,
-                  ),
-                ],
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: Config.radius8,
+        color: context.theme.inputDecorationTheme.fillColor,
+      ),
+      child: ListView.separated(
+        padding: Config.all(8),
+        itemCount: (game?.onlinePlayers ?? []).length,
+        separatorBuilder: (_, __) => Config.vBox8,
+        itemBuilder: (context, index) {
+          final player = (game?.onlinePlayers ?? [])[index];
+          return Row(
+            children: [
+              CircleAvatar(
+                radius: Config.w(15),
+                backgroundColor: context.colorScheme.tertiaryContainer,
+                child: (game?.canDraw(player.uid) ?? false)
+                    ? Icon(AppIcons.highlighter, size: Config.dg(14))
+                    : (game?.correctGuess ?? []).contains(player.uid)
+                        ? Icon(AppIcons.check, size: Config.dg(14))
+                        : null,
               ),
-            ),
-          ],
-        );
-      },
-    ).watchBuild('PlayersView');
+              Config.hBox4,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      player.name,
+                      style: context.textTheme.labelSmall,
+                    ),
+                    Text(
+                      '${10 * (index + 1)} pts',
+                      style: context.textTheme.labelLarge,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+      ).watchBuild('PlayersView'),
+    );
   }
 }

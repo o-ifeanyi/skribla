@@ -158,14 +158,15 @@ class __$$TimerStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TimerStateImpl implements _TimerState {
+class _$TimerStateImpl extends _TimerState {
   const _$TimerStateImpl(
       {this.showCoolTimer = false,
       this.coolTimer = Duration.zero,
       this.showSkipTimer = false,
       this.skipTimer = Duration.zero,
       this.showTurnTimer = false,
-      this.turnTimer = Duration.zero});
+      this.turnTimer = Duration.zero})
+      : super._();
 
   @override
   @JsonKey()
@@ -221,7 +222,7 @@ class _$TimerStateImpl implements _TimerState {
       __$$TimerStateImplCopyWithImpl<_$TimerStateImpl>(this, _$identity);
 }
 
-abstract class _TimerState implements TimerState {
+abstract class _TimerState extends TimerState {
   const factory _TimerState(
       {final bool showCoolTimer,
       final Duration coolTimer,
@@ -229,6 +230,7 @@ abstract class _TimerState implements TimerState {
       final Duration skipTimer,
       final bool showTurnTimer,
       final Duration turnTimer}) = _$TimerStateImpl;
+  const _TimerState._() : super._();
 
   @override
   bool get showCoolTimer;

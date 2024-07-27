@@ -36,9 +36,12 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar(
-        title: Text(
-          'Play History',
-          style: context.textTheme.bodyLarge,
+        title: Padding(
+          padding: Config.symmetric(h: 25),
+          child: Text(
+            'Play History',
+            style: context.textTheme.bodyLarge,
+          ),
         ),
       ),
       body: RefreshIndicator(

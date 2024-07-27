@@ -12,4 +12,8 @@ class TimerState with _$TimerState {
     @Default(false) bool showTurnTimer,
     @Default(Duration.zero) Duration turnTimer,
   }) = _TimerState;
+
+  const TimerState._();
+
+  bool get showTimer => showCoolTimer || showSkipTimer || showTurnTimer;
 }

@@ -1,5 +1,7 @@
 import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
 import 'package:draw_and_guess/src/app/history/presentation/widgets/art_scroll.dart';
+import 'package:draw_and_guess/src/app/history/presentation/widgets/exhibit_footer.dart';
+import 'package:draw_and_guess/src/app/history/presentation/widgets/light_painter.dart';
 import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,8 @@ class _ExhibitsScreenState extends ConsumerState<ExhibitsScreen>
   late final AnimationController _animationController;
   late final Animation<double> _animation;
   late final FixedExtentScrollController _scrollController;
+
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -68,20 +72,33 @@ class _ExhibitsScreenState extends ConsumerState<ExhibitsScreen>
         backgroundColor: Colors.black45,
         body: Stack(
           children: [
-            Center(
-              child: Hero(
-                tag: widget.id,
-                child: ArtScroll(
-                  scrollController: _scrollController,
-                  exhibits: widget.exhibits,
-                  height: 200,
-                  onSelectedItemChanged: (_) {
-                    _animationController
-                      ..reset()
-                      ..forward();
-                  },
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Hero(
+                  tag: widget.id,
+                  child: ArtScroll(
+                    scrollController: _scrollController,
+                    exhibits: widget.exhibits,
+                    height: 200,
+                    onTap: (val) {
+                      _scrollController.animateToItem(
+                        val,
+                        duration: Config.duration1000,
+                        curve: Curves.bounceOut,
+                      );
+                    },
+                    onSelectedItemChanged: (val) {
+                      setState(() {
+                        _currentIndex = val;
+                      });
+                      _animationController
+                        ..reset()
+                        ..forward();
+                    },
+                  ),
                 ),
-              ),
+              ],
             ),
             IgnorePointer(
               child: AnimatedBuilder(
@@ -99,37 +116,8 @@ class _ExhibitsScreenState extends ConsumerState<ExhibitsScreen>
             ),
           ],
         ),
+        bottomSheet: ExhibitFooter(exhibit: widget.exhibits[_currentIndex]),
       ).watchBuild('ExhibitsScreen'),
     );
   }
-}
-
-class LightPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..shader = const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        stops: [0.1, 0.6, 1.0],
-        colors: [Colors.white38, Colors.white12, Colors.transparent],
-      ).createShader(
-        Rect.fromPoints(
-          Offset(size.width / 2, 0),
-          Offset(size.width / 2, size.height),
-        ),
-      );
-
-    final path = Path()
-      ..moveTo(size.width / 2 - Config.w(10), 20)
-      ..lineTo(Config.w(20), size.height)
-      ..lineTo(size.width - Config.w(20), size.height)
-      ..lineTo(size.width / 2 + Config.w(10), 20)
-      ..close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

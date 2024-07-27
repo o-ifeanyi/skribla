@@ -7,8 +7,8 @@ class OffsetConverter implements JsonConverter<Offset, Map<String, dynamic>> {
 
   @override
   Offset fromJson(Map<String, dynamic> json) => Offset(
-        json['dx'] as double? ?? 0,
-        json['dy'] as double? ?? 0,
+        double.tryParse('${json['dx']}') ?? 0,
+        double.tryParse('${json['dy']}') ?? 0,
       );
 
   @override
@@ -23,8 +23,8 @@ class SizeConverter implements JsonConverter<Size, Map<String, dynamic>> {
 
   @override
   Size fromJson(Map<String, dynamic> json) => Size(
-        json['width'] as double? ?? 0,
-        json['height'] as double? ?? 0,
+        double.tryParse('${json['width']}') ?? 0,
+        double.tryParse('${json['height']}') ?? 0,
       );
 
   @override
