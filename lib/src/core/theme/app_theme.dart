@@ -49,16 +49,13 @@ abstract class AppTheme {
       );
 
   static ThemeMode themeMode(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.dark
-          ? ThemeMode.dark
-          : ThemeMode.light;
+      Theme.of(context).brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
 
   static ThemeData themeOptions(ThemeOptions option) {
     return switch (option) {
       ThemeOptions.light => lightTheme,
       ThemeOptions.dark => darkTheme,
-      ThemeOptions.system =>
-        brightness == Brightness.light ? lightTheme : darkTheme,
+      ThemeOptions.system => brightness == Brightness.light ? lightTheme : darkTheme,
     };
   }
 }

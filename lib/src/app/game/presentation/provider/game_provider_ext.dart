@@ -35,8 +35,7 @@ extension GameProviderExt on GameProvider {
       return;
     }
 
-    if (prev.online.length > current.online.length &&
-        current.online.length < 2) {
+    if (prev.online.length > current.online.length && current.online.length < 2) {
       // a player just left and only one(this) player left
       // the invite players screen should be showing at this point
       timerProvider.reset();

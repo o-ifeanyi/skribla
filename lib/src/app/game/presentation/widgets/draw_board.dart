@@ -51,14 +51,10 @@ class DrawBoard extends ConsumerWidget {
                   if ((game?.canDraw(user?.uid) ?? false) && !showCoolTimer)
                     GestureDetector(
                       onPanStart: (details) {
-                        ref
-                            .read(gameProvider.notifier)
-                            .onPanStart(context, details, constraint);
+                        ref.read(gameProvider.notifier).onPanStart(context, details, constraint);
                       },
                       onPanUpdate: (details) {
-                        ref
-                            .read(gameProvider.notifier)
-                            .onPanUpdate(context, details, constraint);
+                        ref.read(gameProvider.notifier).onPanUpdate(context, details, constraint);
                       },
                       onPanEnd: (details) {
                         ref.read(gameProvider.notifier).onPanEnd();
@@ -71,9 +67,8 @@ class DrawBoard extends ConsumerWidget {
         ),
         AnimatedSwitcher(
           duration: Config.duration300,
-          child: (game?.canDraw(user?.uid) ?? false)
-              ? const _BoardConfig()
-              : const SizedBox.shrink(),
+          child:
+              (game?.canDraw(user?.uid) ?? false) ? const _BoardConfig() : const SizedBox.shrink(),
         ),
         Config.vBox8,
       ],

@@ -24,14 +24,12 @@ mixin _$TimerState {
   Duration get turnTimer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TimerStateCopyWith<TimerState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TimerStateCopyWith<TimerState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TimerStateCopyWith<$Res> {
-  factory $TimerStateCopyWith(
-          TimerState value, $Res Function(TimerState) then) =
+  factory $TimerStateCopyWith(TimerState value, $Res Function(TimerState) then) =
       _$TimerStateCopyWithImpl<$Res, TimerState>;
   @useResult
   $Res call(
@@ -44,8 +42,7 @@ abstract class $TimerStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState>
-    implements $TimerStateCopyWith<$Res> {
+class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState> implements $TimerStateCopyWith<$Res> {
   _$TimerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -93,10 +90,8 @@ class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState>
 }
 
 /// @nodoc
-abstract class _$$TimerStateImplCopyWith<$Res>
-    implements $TimerStateCopyWith<$Res> {
-  factory _$$TimerStateImplCopyWith(
-          _$TimerStateImpl value, $Res Function(_$TimerStateImpl) then) =
+abstract class _$$TimerStateImplCopyWith<$Res> implements $TimerStateCopyWith<$Res> {
+  factory _$$TimerStateImplCopyWith(_$TimerStateImpl value, $Res Function(_$TimerStateImpl) then) =
       __$$TimerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -110,11 +105,9 @@ abstract class _$$TimerStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TimerStateImplCopyWithImpl<$Res>
-    extends _$TimerStateCopyWithImpl<$Res, _$TimerStateImpl>
+class __$$TimerStateImplCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res, _$TimerStateImpl>
     implements _$$TimerStateImplCopyWith<$Res> {
-  __$$TimerStateImplCopyWithImpl(
-      _$TimerStateImpl _value, $Res Function(_$TimerStateImpl) _then)
+  __$$TimerStateImplCopyWithImpl(_$TimerStateImpl _value, $Res Function(_$TimerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -199,21 +192,18 @@ class _$TimerStateImpl extends _TimerState {
             other is _$TimerStateImpl &&
             (identical(other.showCoolTimer, showCoolTimer) ||
                 other.showCoolTimer == showCoolTimer) &&
-            (identical(other.coolTimer, coolTimer) ||
-                other.coolTimer == coolTimer) &&
+            (identical(other.coolTimer, coolTimer) || other.coolTimer == coolTimer) &&
             (identical(other.showSkipTimer, showSkipTimer) ||
                 other.showSkipTimer == showSkipTimer) &&
-            (identical(other.skipTimer, skipTimer) ||
-                other.skipTimer == skipTimer) &&
+            (identical(other.skipTimer, skipTimer) || other.skipTimer == skipTimer) &&
             (identical(other.showTurnTimer, showTurnTimer) ||
                 other.showTurnTimer == showTurnTimer) &&
-            (identical(other.turnTimer, turnTimer) ||
-                other.turnTimer == turnTimer));
+            (identical(other.turnTimer, turnTimer) || other.turnTimer == turnTimer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, showCoolTimer, coolTimer,
-      showSkipTimer, skipTimer, showTurnTimer, turnTimer);
+  int get hashCode => Object.hash(
+      runtimeType, showCoolTimer, coolTimer, showSkipTimer, skipTimer, showTurnTimer, turnTimer);
 
   @JsonKey(ignore: true)
   @override
@@ -246,6 +236,5 @@ abstract class _TimerState extends TimerState {
   Duration get turnTimer;
   @override
   @JsonKey(ignore: true)
-  _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

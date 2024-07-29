@@ -19,14 +19,12 @@ mixin _$HistoryState {
   HistoryStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HistoryStateCopyWith<HistoryState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $HistoryStateCopyWith<HistoryState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HistoryStateCopyWith<$Res> {
-  factory $HistoryStateCopyWith(
-          HistoryState value, $Res Function(HistoryState) then) =
+  factory $HistoryStateCopyWith(HistoryState value, $Res Function(HistoryState) then) =
       _$HistoryStateCopyWithImpl<$Res, HistoryState>;
   @useResult
   $Res call({HistoryStatus status});
@@ -57,8 +55,7 @@ class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState>
 }
 
 /// @nodoc
-abstract class _$$HistoryStateImplCopyWith<$Res>
-    implements $HistoryStateCopyWith<$Res> {
+abstract class _$$HistoryStateImplCopyWith<$Res> implements $HistoryStateCopyWith<$Res> {
   factory _$$HistoryStateImplCopyWith(
           _$HistoryStateImpl value, $Res Function(_$HistoryStateImpl) then) =
       __$$HistoryStateImplCopyWithImpl<$Res>;
@@ -122,8 +119,7 @@ class _$HistoryStateImpl implements _HistoryState {
 }
 
 abstract class _HistoryState implements HistoryState {
-  const factory _HistoryState({final HistoryStatus status}) =
-      _$HistoryStateImpl;
+  const factory _HistoryState({final HistoryStatus status}) = _$HistoryStateImpl;
 
   @override
   HistoryStatus get status;

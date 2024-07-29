@@ -39,6 +39,5 @@ class HistoryProvider extends StateNotifier<HistoryState> {
     );
   }
 
-  Future<List<ExhibitModel>> getExhibits(String id) async =>
-      galleryRepository.getExhibits(id);
+  Future<List<ExhibitModel>> getExhibits(String id) async => galleryRepository.getExhibits(id);
 }

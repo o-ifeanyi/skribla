@@ -37,8 +37,7 @@ final class HistoryRepository {
       }
       final history = await query
           .withConverter(
-            fromFirestore: (snapshot, _) =>
-                GameModel.fromJson(snapshot.data()!),
+            fromFirestore: (snapshot, _) => GameModel.fromJson(snapshot.data()!),
             toFirestore: (model, __) => model.toJson(),
           )
           .get()
@@ -53,8 +52,7 @@ final class HistoryRepository {
   Future<List<ExhibitModel>> getExhibits(String id) async {
     try {
       _logger.request('Getting exhibits - $id');
-      if (_exhibitsCache[id] != null &&
-          _exhibitsCache[id]!.expiry.isNotExpired) {
+      if (_exhibitsCache[id] != null && _exhibitsCache[id]!.expiry.isNotExpired) {
         _logger.request('Exhibits available in cache');
         return Future.value(_exhibitsCache[id]!.data);
       }
@@ -63,8 +61,7 @@ final class HistoryRepository {
           .collection('games/$id/exhibits')
           .orderBy('created_at', descending: true)
           .withConverter(
-            fromFirestore: (snapshot, _) =>
-                ExhibitModel.fromJson(snapshot.data()!),
+            fromFirestore: (snapshot, _) => ExhibitModel.fromJson(snapshot.data()!),
             toFirestore: (model, __) => model.toJson(),
           )
           .get()

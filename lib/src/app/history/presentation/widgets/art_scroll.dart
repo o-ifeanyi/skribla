@@ -23,8 +23,7 @@ class ArtScroll extends StatefulWidget {
   State<ArtScroll> createState() => _ArtScrollState();
 }
 
-class _ArtScrollState extends State<ArtScroll>
-    with SingleTickerProviderStateMixin {
+class _ArtScrollState extends State<ArtScroll> with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _animation;
 
@@ -85,8 +84,7 @@ class _ArtScrollState extends State<ArtScroll>
                           size: Size.square(Config.dg(widget.height)),
                           painter: AnimatedArtPainter(
                             art: exhibit.art,
-                            progress: (_animationController.isAnimating &&
-                                    _selectedIndex == index)
+                            progress: (_animationController.isAnimating && _selectedIndex == index)
                                 ? _animation.value
                                 : 1,
                           ),

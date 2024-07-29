@@ -15,8 +15,7 @@ MessageModel _$MessageModelFromJson(Map<String, dynamic> json) => MessageModel(
       correctGuess: json['correct_guess'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$MessageModelToJson(MessageModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MessageModelToJson(MessageModel instance) => <String, dynamic>{
       'id': instance.id,
       'uid': instance.uid,
       'text': instance.text,

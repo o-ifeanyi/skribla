@@ -7,18 +7,13 @@ abstract class Config {
   static double get width => 1.sw;
 
   static TextTheme get textTheme => TextTheme(
-        titleLarge:
-            GoogleFonts.sora(fontSize: 32.sp, fontWeight: FontWeight.w600),
-        titleMedium:
-            GoogleFonts.sora(fontSize: 28.sp, fontWeight: FontWeight.w600),
-        titleSmall:
-            GoogleFonts.sora(fontSize: 18.sp, fontWeight: FontWeight.w600),
-        bodyLarge:
-            GoogleFonts.sora(fontSize: 16.sp, fontWeight: FontWeight.w600),
+        titleLarge: GoogleFonts.sora(fontSize: 32.sp, fontWeight: FontWeight.w600),
+        titleMedium: GoogleFonts.sora(fontSize: 28.sp, fontWeight: FontWeight.w600),
+        titleSmall: GoogleFonts.sora(fontSize: 18.sp, fontWeight: FontWeight.w600),
+        bodyLarge: GoogleFonts.sora(fontSize: 16.sp, fontWeight: FontWeight.w600),
         bodyMedium: GoogleFonts.sora(fontSize: 14.sp),
         bodySmall: GoogleFonts.sora(fontSize: 12.sp),
-        labelLarge:
-            GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w600),
+        labelLarge: GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w600),
         labelMedium: GoogleFonts.sora(fontSize: 12.sp),
         labelSmall: GoogleFonts.sora(fontSize: 10.sp),
       );

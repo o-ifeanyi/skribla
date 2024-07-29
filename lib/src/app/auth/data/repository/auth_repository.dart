@@ -65,8 +65,7 @@ final class AuthRepository {
             idToken: googleAuth.idToken,
           );
       }
-      final userCredential =
-          await firebaseAuth.currentUser!.linkWithCredential(credential);
+      final userCredential = await firebaseAuth.currentUser!.linkWithCredential(credential);
 
       if (userCredential.additionalUserInfo?.isNewUser ?? false) {
         return await saveUser(userCredential);
@@ -84,10 +83,7 @@ final class AuthRepository {
       _logger.request('Saving user - ${userCredential.user}');
 
       final user = UserModel.fromCredential(userCredential);
-      await firebaseFirestore
-          .collection('users')
-          .doc(user.uid)
-          .set(user.toJson());
+      await firebaseFirestore.collection('users').doc(user.uid).set(user.toJson());
 
       return Result.success(user);
     } catch (e, s) {

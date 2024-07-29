@@ -26,8 +26,7 @@ mixin _$WordModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WordModelCopyWith<WordModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $WordModelCopyWith<WordModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -39,8 +38,7 @@ abstract class $WordModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WordModelCopyWithImpl<$Res, $Val extends WordModel>
-    implements $WordModelCopyWith<$Res> {
+class _$WordModelCopyWithImpl<$Res, $Val extends WordModel> implements $WordModelCopyWith<$Res> {
   _$WordModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -73,10 +71,8 @@ class _$WordModelCopyWithImpl<$Res, $Val extends WordModel>
 }
 
 /// @nodoc
-abstract class _$$WordModelImplCopyWith<$Res>
-    implements $WordModelCopyWith<$Res> {
-  factory _$$WordModelImplCopyWith(
-          _$WordModelImpl value, $Res Function(_$WordModelImpl) then) =
+abstract class _$$WordModelImplCopyWith<$Res> implements $WordModelCopyWith<$Res> {
+  factory _$$WordModelImplCopyWith(_$WordModelImpl value, $Res Function(_$WordModelImpl) then) =
       __$$WordModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -84,11 +80,9 @@ abstract class _$$WordModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$WordModelImplCopyWithImpl<$Res>
-    extends _$WordModelCopyWithImpl<$Res, _$WordModelImpl>
+class __$$WordModelImplCopyWithImpl<$Res> extends _$WordModelCopyWithImpl<$Res, _$WordModelImpl>
     implements _$$WordModelImplCopyWith<$Res> {
-  __$$WordModelImplCopyWithImpl(
-      _$WordModelImpl _value, $Res Function(_$WordModelImpl) _then)
+  __$$WordModelImplCopyWithImpl(_$WordModelImpl _value, $Res Function(_$WordModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,11 +112,9 @@ class __$$WordModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WordModelImpl implements _WordModel {
-  const _$WordModelImpl(
-      {required this.id, this.text = '', this.available = true});
+  const _$WordModelImpl({required this.id, this.text = '', this.available = true});
 
-  factory _$WordModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WordModelImplFromJson(json);
+  factory _$WordModelImpl.fromJson(Map<String, dynamic> json) => _$$WordModelImplFromJson(json);
 
   @override
   final String id;
@@ -145,8 +137,7 @@ class _$WordModelImpl implements _WordModel {
             other is _$WordModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
-            (identical(other.available, available) ||
-                other.available == available));
+            (identical(other.available, available) || other.available == available));
   }
 
   @JsonKey(ignore: true)
@@ -168,13 +159,10 @@ class _$WordModelImpl implements _WordModel {
 }
 
 abstract class _WordModel implements WordModel {
-  const factory _WordModel(
-      {required final String id,
-      final String text,
-      final bool available}) = _$WordModelImpl;
+  const factory _WordModel({required final String id, final String text, final bool available}) =
+      _$WordModelImpl;
 
-  factory _WordModel.fromJson(Map<String, dynamic> json) =
-      _$WordModelImpl.fromJson;
+  factory _WordModel.fromJson(Map<String, dynamic> json) = _$WordModelImpl.fromJson;
 
   @override
   String get id;
@@ -184,6 +172,5 @@ abstract class _WordModel implements WordModel {
   bool get available;
   @override
   @JsonKey(ignore: true)
-  _$$WordModelImplCopyWith<_$WordModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$WordModelImplCopyWith<_$WordModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

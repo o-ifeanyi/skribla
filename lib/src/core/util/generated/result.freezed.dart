@@ -63,8 +63,7 @@ abstract class $ResultCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class _$ResultCopyWithImpl<T, $Res, $Val extends Result<T>>
-    implements $ResultCopyWith<T, $Res> {
+class _$ResultCopyWithImpl<T, $Res, $Val extends Result<T>> implements $ResultCopyWith<T, $Res> {
   _$ResultCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -75,8 +74,8 @@ class _$ResultCopyWithImpl<T, $Res, $Val extends Result<T>>
 
 /// @nodoc
 abstract class _$$SuccessResultImplCopyWith<T, $Res> {
-  factory _$$SuccessResultImplCopyWith(_$SuccessResultImpl<T> value,
-          $Res Function(_$SuccessResultImpl<T>) then) =
+  factory _$$SuccessResultImplCopyWith(
+          _$SuccessResultImpl<T> value, $Res Function(_$SuccessResultImpl<T>) then) =
       __$$SuccessResultImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T value});
@@ -86,8 +85,8 @@ abstract class _$$SuccessResultImplCopyWith<T, $Res> {
 class __$$SuccessResultImplCopyWithImpl<T, $Res>
     extends _$ResultCopyWithImpl<T, $Res, _$SuccessResultImpl<T>>
     implements _$$SuccessResultImplCopyWith<T, $Res> {
-  __$$SuccessResultImplCopyWithImpl(_$SuccessResultImpl<T> _value,
-      $Res Function(_$SuccessResultImpl<T>) _then)
+  __$$SuccessResultImplCopyWithImpl(
+      _$SuccessResultImpl<T> _value, $Res Function(_$SuccessResultImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -126,15 +125,13 @@ class _$SuccessResultImpl<T> implements _SuccessResult<T> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessResultImplCopyWith<T, _$SuccessResultImpl<T>> get copyWith =>
-      __$$SuccessResultImplCopyWithImpl<T, _$SuccessResultImpl<T>>(
-          this, _$identity);
+      __$$SuccessResultImplCopyWithImpl<T, _$SuccessResultImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -210,8 +207,8 @@ abstract class _SuccessResult<T> implements Result<T> {
 
 /// @nodoc
 abstract class _$$ErrorResultImplCopyWith<T, $Res> {
-  factory _$$ErrorResultImplCopyWith(_$ErrorResultImpl<T> value,
-          $Res Function(_$ErrorResultImpl<T>) then) =
+  factory _$$ErrorResultImplCopyWith(
+          _$ErrorResultImpl<T> value, $Res Function(_$ErrorResultImpl<T>) then) =
       __$$ErrorResultImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({CustomError error});
@@ -267,8 +264,7 @@ class _$ErrorResultImpl<T> implements _ErrorResult<T> {
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorResultImplCopyWith<T, _$ErrorResultImpl<T>> get copyWith =>
-      __$$ErrorResultImplCopyWithImpl<T, _$ErrorResultImpl<T>>(
-          this, _$identity);
+      __$$ErrorResultImplCopyWithImpl<T, _$ErrorResultImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs

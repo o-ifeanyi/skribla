@@ -22,8 +22,8 @@ class ShimmerWidget extends StatelessWidget {
       borderRadius: borderRadius ?? Config.radius8,
       child: Shimmer.fromColors(
         highlightColor: context.colorScheme.surface,
-        baseColor: context.theme.inputDecorationTheme.fillColor ??
-            context.colorScheme.surfaceContainer,
+        baseColor:
+            context.theme.inputDecorationTheme.fillColor ?? context.colorScheme.surfaceContainer,
         child: Stack(
           children: [
             Container(

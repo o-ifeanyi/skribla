@@ -6,31 +6,20 @@ part of '../game_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GameModelImpl _$$GameModelImplFromJson(Map<String, dynamic> json) =>
-    _$GameModelImpl(
+_$GameModelImpl _$$GameModelImplFromJson(Map<String, dynamic> json) => _$GameModelImpl(
       id: json['id'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
-      currentPlayer:
-          PlayerModel.fromJson(json['current_player'] as Map<String, dynamic>),
-      currentWord:
-          WordModel.fromJson(json['current_word'] as Map<String, dynamic>),
-      status:
-          $enumDecodeNullable(_$StatusEnumMap, json['status']) ?? Status.open,
-      uids:
-          (json['uids'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const [],
-      correctGuess: (json['correct_guess'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      currentPlayer: PlayerModel.fromJson(json['current_player'] as Map<String, dynamic>),
+      currentWord: WordModel.fromJson(json['current_word'] as Map<String, dynamic>),
+      status: $enumDecodeNullable(_$StatusEnumMap, json['status']) ?? Status.open,
+      uids: (json['uids'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
+      correctGuess:
+          (json['correct_guess'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
       players: (json['players'] as List<dynamic>?)
               ?.map((e) => PlayerModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      online: (json['online'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      online: (json['online'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
       currentArt: (json['current_art'] as List<dynamic>?)
               ?.map((e) => LineModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -39,8 +28,7 @@ _$GameModelImpl _$$GameModelImplFromJson(Map<String, dynamic> json) =>
       numOfArts: (json['num_of_arts'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$$GameModelImplToJson(_$GameModelImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$GameModelImplToJson(_$GameModelImpl instance) => <String, dynamic>{
       'id': instance.id,
       'created_at': instance.createdAt.toIso8601String(),
       'current_player': instance.currentPlayer.toJson(),

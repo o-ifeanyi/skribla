@@ -51,13 +51,11 @@ final class GameRepository {
   Stream<GameModel?> getGameStream(String id) {
     try {
       _logger.request('Getting game stream game - $id');
-      return firebaseFirestore
-          .collection('games')
-          .where('id', isEqualTo: id)
-          .snapshots()
-          .map(
+      return firebaseFirestore.collection('games').where('id', isEqualTo: id).snapshots().map(
             (event) => event.docs
-                .map((e) => GameModel.fromJson(e.data()))
+                .map(
+                  (e) => GameModel.fromJson(e.data()),
+                )
                 .toList()
                 .firstOrNull,
           );
@@ -128,8 +126,7 @@ final class GameRepository {
 
       if (game.currentArt.isNotEmpty) {
         // add previous play to exhibits
-        final doc =
-            firebaseFirestore.collection('games/${game.id}/exhibits').doc();
+        final doc = firebaseFirestore.collection('games/${game.id}/exhibits').doc();
         final exhibit = ExhibitModel(
           id: doc.id,
           player: game.currentPlayer,
@@ -170,8 +167,7 @@ final class GameRepository {
 
       final doc = firebaseFirestore.collection(path).doc();
       final uid = firebaseAuth.currentUser!.uid;
-      final correctGuess =
-          game.currentWord.text.toLowerCase() == text.toLowerCase();
+      final correctGuess = game.currentWord.text.toLowerCase() == text.toLowerCase();
       final message = MessageModel(
         id: doc.id,
         uid: (correctGuess || name == null) ? 'game_bot' : uid,
@@ -184,9 +180,40 @@ final class GameRepository {
       await doc.set(message.toJson());
 
       if (correctGuess) {
+        // update guesser points by 10
+        final players = List<PlayerModel>.from(game.players);
+        final guesserIndex = game.players.indexWhere(
+          (player) => player.uid == uid,
+        );
+        players[guesserIndex] = players[guesserIndex].copyWith(
+          points: players[guesserIndex].points + 10,
+        );
+        // update current player points by 10
+        final currentPlayerIndex = game.players.indexWhere(
+          (player) => player.uid == game.currentPlayer.uid,
+        );
+        players[currentPlayerIndex] = game.currentPlayer.copyWith(
+          points: game.currentPlayer.points + 10,
+        );
+
         unawaited(
           firebaseFirestore.collection('games').doc(game.id).update({
+            'players': players.map((e) => e.toJson()).toList(),
             'correct_guess': FieldValue.arrayUnion([uid]),
+          }),
+        );
+
+        // update guesser user points by 10
+        unawaited(
+          firebaseFirestore.collection('users').doc(uid).update({
+            'points': FieldValue.increment(10),
+          }),
+        );
+
+        // update current player user points by 10
+        unawaited(
+          firebaseFirestore.collection('users').doc(game.currentPlayer.uid).update({
+            'points': FieldValue.increment(10),
           }),
         );
       }

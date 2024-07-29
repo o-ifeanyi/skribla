@@ -35,8 +35,7 @@ mixin _$GameModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GameModelCopyWith<GameModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $GameModelCopyWith<GameModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -63,8 +62,7 @@ abstract class $GameModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
-    implements $GameModelCopyWith<$Res> {
+class _$GameModelCopyWithImpl<$Res, $Val extends GameModel> implements $GameModelCopyWith<$Res> {
   _$GameModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -158,10 +156,8 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
 }
 
 /// @nodoc
-abstract class _$$GameModelImplCopyWith<$Res>
-    implements $GameModelCopyWith<$Res> {
-  factory _$$GameModelImplCopyWith(
-          _$GameModelImpl value, $Res Function(_$GameModelImpl) then) =
+abstract class _$$GameModelImplCopyWith<$Res> implements $GameModelCopyWith<$Res> {
+  factory _$$GameModelImplCopyWith(_$GameModelImpl value, $Res Function(_$GameModelImpl) then) =
       __$$GameModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -186,11 +182,9 @@ abstract class _$$GameModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$GameModelImplCopyWithImpl<$Res>
-    extends _$GameModelCopyWithImpl<$Res, _$GameModelImpl>
+class __$$GameModelImplCopyWithImpl<$Res> extends _$GameModelCopyWithImpl<$Res, _$GameModelImpl>
     implements _$$GameModelImplCopyWith<$Res> {
-  __$$GameModelImplCopyWithImpl(
-      _$GameModelImpl _value, $Res Function(_$GameModelImpl) _then)
+  __$$GameModelImplCopyWithImpl(_$GameModelImpl _value, $Res Function(_$GameModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -285,8 +279,7 @@ class _$GameModelImpl extends _GameModel {
         _currentArt = currentArt,
         super._();
 
-  factory _$GameModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GameModelImplFromJson(json);
+  factory _$GameModelImpl.fromJson(Map<String, dynamic> json) => _$$GameModelImplFromJson(json);
 
   @override
   final String id;
@@ -362,24 +355,18 @@ class _$GameModelImpl extends _GameModel {
         (other.runtimeType == runtimeType &&
             other is _$GameModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.currentPlayer, currentPlayer) ||
                 other.currentPlayer == currentPlayer) &&
-            (identical(other.currentWord, currentWord) ||
-                other.currentWord == currentWord) &&
+            (identical(other.currentWord, currentWord) || other.currentWord == currentWord) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._uids, _uids) &&
-            const DeepCollectionEquality()
-                .equals(other._correctGuess, _correctGuess) &&
+            const DeepCollectionEquality().equals(other._correctGuess, _correctGuess) &&
             const DeepCollectionEquality().equals(other._players, _players) &&
             const DeepCollectionEquality().equals(other._online, _online) &&
-            const DeepCollectionEquality()
-                .equals(other._currentArt, _currentArt) &&
-            (identical(other.numOfPlayers, numOfPlayers) ||
-                other.numOfPlayers == numOfPlayers) &&
-            (identical(other.numOfArts, numOfArts) ||
-                other.numOfArts == numOfArts));
+            const DeepCollectionEquality().equals(other._currentArt, _currentArt) &&
+            (identical(other.numOfPlayers, numOfPlayers) || other.numOfPlayers == numOfPlayers) &&
+            (identical(other.numOfArts, numOfArts) || other.numOfArts == numOfArts));
   }
 
   @JsonKey(ignore: true)
@@ -429,8 +416,7 @@ abstract class _GameModel extends GameModel {
       final int numOfArts}) = _$GameModelImpl;
   const _GameModel._() : super._();
 
-  factory _GameModel.fromJson(Map<String, dynamic> json) =
-      _$GameModelImpl.fromJson;
+  factory _GameModel.fromJson(Map<String, dynamic> json) = _$GameModelImpl.fromJson;
 
   @override
   String get id;
@@ -458,6 +444,5 @@ abstract class _GameModel extends GameModel {
   int get numOfArts;
   @override
   @JsonKey(ignore: true)
-  _$$GameModelImplCopyWith<_$GameModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GameModelImplCopyWith<_$GameModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

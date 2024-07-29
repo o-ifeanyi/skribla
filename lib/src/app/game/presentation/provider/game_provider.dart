@@ -194,6 +194,5 @@ class GameProvider extends StateNotifier<GameState> {
     );
   }
 
-  Stream<List<MessageModel>> getMessages(String id) =>
-      gameRepository.getMessages(id);
+  Stream<List<MessageModel>> getMessages(String id) => gameRepository.getMessages(id);
 }

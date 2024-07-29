@@ -19,14 +19,12 @@ mixin _$GalleryState {
   GalleryStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GalleryStateCopyWith<GalleryState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $GalleryStateCopyWith<GalleryState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GalleryStateCopyWith<$Res> {
-  factory $GalleryStateCopyWith(
-          GalleryState value, $Res Function(GalleryState) then) =
+  factory $GalleryStateCopyWith(GalleryState value, $Res Function(GalleryState) then) =
       _$GalleryStateCopyWithImpl<$Res, GalleryState>;
   @useResult
   $Res call({GalleryStatus status});
@@ -57,8 +55,7 @@ class _$GalleryStateCopyWithImpl<$Res, $Val extends GalleryState>
 }
 
 /// @nodoc
-abstract class _$$GalleryStateImplCopyWith<$Res>
-    implements $GalleryStateCopyWith<$Res> {
+abstract class _$$GalleryStateImplCopyWith<$Res> implements $GalleryStateCopyWith<$Res> {
   factory _$$GalleryStateImplCopyWith(
           _$GalleryStateImpl value, $Res Function(_$GalleryStateImpl) then) =
       __$$GalleryStateImplCopyWithImpl<$Res>;
@@ -122,8 +119,7 @@ class _$GalleryStateImpl implements _GalleryState {
 }
 
 abstract class _GalleryState implements GalleryState {
-  const factory _GalleryState({final GalleryStatus status}) =
-      _$GalleryStateImpl;
+  const factory _GalleryState({final GalleryStatus status}) = _$GalleryStateImpl;
 
   @override
   GalleryStatus get status;

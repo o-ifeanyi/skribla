@@ -21,7 +21,7 @@ run:
 	--target lib/main_$(flavor).dart
 
 format:
-	dart format --line-length 80 --set-exit-if-changed lib
+	dart format --line-length 100 --set-exit-if-changed lib
 
 functions:
 	firebase deploy --only functions --project=draw-and-guess-$(flavor)

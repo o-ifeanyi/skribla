@@ -89,31 +89,27 @@ class _StartScreenState extends ConsumerState<StartScreen> {
               builder: (context, value, child) {
                 return AppButton(
                   text: 'Play',
-                  onPressed: value.text.trim().isEmpty ||
-                          user == null ||
-                          status == StartStatus.findingGame
-                      ? null
-                      : () async {
-                          if (user.name != value.text.trim()) {
-                            await ref
-                                .read(authProvider.notifier)
-                                .updateUserName(_nameCtrl.text.trim());
-                          }
+                  onPressed:
+                      value.text.trim().isEmpty || user == null || status == StartStatus.findingGame
+                          ? null
+                          : () async {
+                              if (user.name != value.text.trim()) {
+                                await ref
+                                    .read(authProvider.notifier)
+                                    .updateUserName(_nameCtrl.text.trim());
+                              }
 
-                          if (!context.mounted) return;
+                              if (!context.mounted) return;
 
-                          await ref
-                              .read(startProvider.notifier)
-                              .findGame(user)
-                              .then((id) {
-                            if (id != null) {
-                              context.goNamed(
-                                Routes.game,
-                                pathParameters: {'id': id},
-                              );
-                            }
-                          });
-                        },
+                              await ref.read(startProvider.notifier).findGame(user).then((id) {
+                                if (id != null) {
+                                  context.goNamed(
+                                    Routes.game,
+                                    pathParameters: {'id': id},
+                                  );
+                                }
+                              });
+                            },
                 );
               },
             ),

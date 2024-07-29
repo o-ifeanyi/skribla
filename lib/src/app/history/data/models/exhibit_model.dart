@@ -17,8 +17,7 @@ class ExhibitModel {
     required this.createdAt,
   });
 
-  factory ExhibitModel.fromJson(Map<String, dynamic> json) =>
-      _$ExhibitModelFromJson(json);
+  factory ExhibitModel.fromJson(Map<String, dynamic> json) => _$ExhibitModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ExhibitModelToJson(this);
 

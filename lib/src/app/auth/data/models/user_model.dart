@@ -14,13 +14,14 @@ class UserModel with _$UserModel {
     required DateTime createdAt,
     @Default('') String name,
     @Default('') String email,
+    @Default(0) int points,
+    @Default(0) int level,
     @Default(AuthStatus.anonymous) AuthStatus status,
   }) = _UserModel;
 
   const UserModel._();
 
-  factory UserModel.fromJson(Map<String, Object?> json) =>
-      _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, Object?> json) => _$UserModelFromJson(json);
 
   factory UserModel.fromCredential(UserCredential credential) {
     final user = credential.user!;
@@ -28,9 +29,7 @@ class UserModel with _$UserModel {
       uid: user.uid,
       email: user.email ?? '',
       name: user.displayName ?? '',
-      status: (user.email ?? '').isEmpty
-          ? AuthStatus.anonymous
-          : AuthStatus.verified,
+      status: (user.email ?? '').isEmpty ? AuthStatus.anonymous : AuthStatus.verified,
       createdAt: DateTime.now(),
     );
   }

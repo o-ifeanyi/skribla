@@ -11,6 +11,5 @@ class WordModel with _$WordModel {
     @Default(true) bool available,
   }) = _WordModel;
 
-  factory WordModel.fromJson(Map<String, Object?> json) =>
-      _$WordModelFromJson(json);
+  factory WordModel.fromJson(Map<String, Object?> json) => _$WordModelFromJson(json);
 }

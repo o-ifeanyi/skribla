@@ -43,7 +43,7 @@ class PlayersView extends ConsumerWidget {
                       style: context.textTheme.labelSmall,
                     ),
                     Text(
-                      '${10 * (index + 1)} pts',
+                      '${player.points} pts',
                       style: context.textTheme.labelLarge,
                     ),
                   ],

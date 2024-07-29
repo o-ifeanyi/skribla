@@ -10,12 +10,12 @@ class PlayerModel with _$PlayerModel {
     required String uid,
     required String name,
     required DateTime createdAt,
+    @Default(0) int points,
     @Default([]) List<WordModel> words,
   }) = _PlayerModel;
 
   const PlayerModel._();
-  factory PlayerModel.fromJson(Map<String, Object?> json) =>
-      _$PlayerModelFromJson(json);
+  factory PlayerModel.fromJson(Map<String, Object?> json) => _$PlayerModelFromJson(json);
 
   WordModel? get nextWord => words.where((word) => word.available).firstOrNull;
 }

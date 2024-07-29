@@ -32,8 +32,7 @@ class AppButton extends StatelessWidget {
       child: child ??
           Text(
             text!,
-            style: Config.textTheme.bodyMedium
-                ?.copyWith(fontWeight: FontWeight.bold),
+            style: Config.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
     );
 

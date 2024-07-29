@@ -8,8 +8,7 @@ part of '../line_model.dart';
 
 LineModel _$LineModelFromJson(Map<String, dynamic> json) => LineModel(
       (json['path'] as List<dynamic>)
-          .map((e) =>
-              const OffsetConverter().fromJson(e as Map<String, dynamic>))
+          .map((e) => const OffsetConverter().fromJson(e as Map<String, dynamic>))
           .toList(),
       const SizeConverter().fromJson(json['size'] as Map<String, dynamic>),
       const ColorConverter().fromJson(json['color'] as String),

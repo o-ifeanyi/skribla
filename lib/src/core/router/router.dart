@@ -33,8 +33,7 @@ final routerProvider = Provider<GoRouter>(
         path: path,
         name: path.routeName,
         builder: builder,
-        pageBuilder:
-            screen != null ? (_, __) => pushScreen(screen) : pageBuilder,
+        pageBuilder: screen != null ? (_, __) => pushScreen(screen) : pageBuilder,
         routes: routes,
       );
     }

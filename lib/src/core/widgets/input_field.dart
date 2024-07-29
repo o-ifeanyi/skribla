@@ -62,14 +62,12 @@ class InputField extends StatelessWidget {
           maxLength: maxLength,
           textAlign: textAlign,
           maxLengthEnforcement: maxLengthEnforcement,
-          style: context.textTheme.bodyMedium
-              ?.copyWith(fontWeight: FontWeight.normal),
+          style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.normal),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 15),
             prefix: preficIcon,
             hintText: hint,
-            hintStyle: context.textTheme.bodyMedium
-                ?.copyWith(fontWeight: FontWeight.normal),
+            hintStyle: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.normal),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: Config.radius16,

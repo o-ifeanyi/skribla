@@ -16,8 +16,7 @@ ExhibitModel _$ExhibitModelFromJson(Map<String, dynamic> json) => ExhibitModel(
       createdAt: DateTime.parse(json['created_at'] as String),
     );
 
-Map<String, dynamic> _$ExhibitModelToJson(ExhibitModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ExhibitModelToJson(ExhibitModel instance) => <String, dynamic>{
       'id': instance.id,
       'player': instance.player.toJson(),
       'word': instance.word.toJson(),

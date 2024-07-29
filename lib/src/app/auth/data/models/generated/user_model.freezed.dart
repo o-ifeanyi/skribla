@@ -24,12 +24,13 @@ mixin _$UserModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  int get points => throw _privateConstructorUsedError;
+  int get level => throw _privateConstructorUsedError;
   AuthStatus get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserModelCopyWith<UserModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $UserModelCopyWith<UserModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -42,12 +43,13 @@ abstract class $UserModelCopyWith<$Res> {
       DateTime createdAt,
       String name,
       String email,
+      int points,
+      int level,
       AuthStatus status});
 }
 
 /// @nodoc
-class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
-    implements $UserModelCopyWith<$Res> {
+class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserModelCopyWith<$Res> {
   _$UserModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -62,6 +64,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
+    Object? points = null,
+    Object? level = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +85,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as int,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -90,10 +102,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
 }
 
 /// @nodoc
-abstract class _$$UserModelImplCopyWith<$Res>
-    implements $UserModelCopyWith<$Res> {
-  factory _$$UserModelImplCopyWith(
-          _$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
+abstract class _$$UserModelImplCopyWith<$Res> implements $UserModelCopyWith<$Res> {
+  factory _$$UserModelImplCopyWith(_$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -102,15 +112,15 @@ abstract class _$$UserModelImplCopyWith<$Res>
       DateTime createdAt,
       String name,
       String email,
+      int points,
+      int level,
       AuthStatus status});
 }
 
 /// @nodoc
-class __$$UserModelImplCopyWithImpl<$Res>
-    extends _$UserModelCopyWithImpl<$Res, _$UserModelImpl>
+class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, _$UserModelImpl>
     implements _$$UserModelImplCopyWith<$Res> {
-  __$$UserModelImplCopyWithImpl(
-      _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
+  __$$UserModelImplCopyWithImpl(_$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,6 +130,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
+    Object? points = null,
+    Object? level = null,
     Object? status = null,
   }) {
     return _then(_$UserModelImpl(
@@ -139,6 +151,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as int,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -155,11 +175,12 @@ class _$UserModelImpl extends _UserModel {
       required this.createdAt,
       this.name = '',
       this.email = '',
+      this.points = 0,
+      this.level = 0,
       this.status = AuthStatus.anonymous})
       : super._();
 
-  factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserModelImplFromJson(json);
+  factory _$UserModelImpl.fromJson(Map<String, dynamic> json) => _$$UserModelImplFromJson(json);
 
   @override
   final String uid;
@@ -173,11 +194,17 @@ class _$UserModelImpl extends _UserModel {
   final String email;
   @override
   @JsonKey()
+  final int points;
+  @override
+  @JsonKey()
+  final int level;
+  @override
+  @JsonKey()
   final AuthStatus status;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, status: $status)';
+    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, points: $points, level: $level, status: $status)';
   }
 
   @override
@@ -186,17 +213,17 @@ class _$UserModelImpl extends _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.points, points) || other.points == points) &&
+            (identical(other.level, level) || other.level == level) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uid, createdAt, name, email, status);
+  int get hashCode => Object.hash(runtimeType, uid, createdAt, name, email, points, level, status);
 
   @JsonKey(ignore: true)
   @override
@@ -218,11 +245,12 @@ abstract class _UserModel extends UserModel {
       required final DateTime createdAt,
       final String name,
       final String email,
+      final int points,
+      final int level,
       final AuthStatus status}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
-  factory _UserModel.fromJson(Map<String, dynamic> json) =
-      _$UserModelImpl.fromJson;
+  factory _UserModel.fromJson(Map<String, dynamic> json) = _$UserModelImpl.fromJson;
 
   @override
   String get uid;
@@ -233,9 +261,12 @@ abstract class _UserModel extends UserModel {
   @override
   String get email;
   @override
+  int get points;
+  @override
+  int get level;
+  @override
   AuthStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

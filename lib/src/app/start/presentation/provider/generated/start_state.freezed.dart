@@ -19,22 +19,19 @@ mixin _$StartState {
   StartStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $StartStateCopyWith<StartState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StartStateCopyWith<StartState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StartStateCopyWith<$Res> {
-  factory $StartStateCopyWith(
-          StartState value, $Res Function(StartState) then) =
+  factory $StartStateCopyWith(StartState value, $Res Function(StartState) then) =
       _$StartStateCopyWithImpl<$Res, StartState>;
   @useResult
   $Res call({StartStatus status});
 }
 
 /// @nodoc
-class _$StartStateCopyWithImpl<$Res, $Val extends StartState>
-    implements $StartStateCopyWith<$Res> {
+class _$StartStateCopyWithImpl<$Res, $Val extends StartState> implements $StartStateCopyWith<$Res> {
   _$StartStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -57,10 +54,8 @@ class _$StartStateCopyWithImpl<$Res, $Val extends StartState>
 }
 
 /// @nodoc
-abstract class _$$StartStateImplCopyWith<$Res>
-    implements $StartStateCopyWith<$Res> {
-  factory _$$StartStateImplCopyWith(
-          _$StartStateImpl value, $Res Function(_$StartStateImpl) then) =
+abstract class _$$StartStateImplCopyWith<$Res> implements $StartStateCopyWith<$Res> {
+  factory _$$StartStateImplCopyWith(_$StartStateImpl value, $Res Function(_$StartStateImpl) then) =
       __$$StartStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -68,11 +63,9 @@ abstract class _$$StartStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StartStateImplCopyWithImpl<$Res>
-    extends _$StartStateCopyWithImpl<$Res, _$StartStateImpl>
+class __$$StartStateImplCopyWithImpl<$Res> extends _$StartStateCopyWithImpl<$Res, _$StartStateImpl>
     implements _$$StartStateImplCopyWith<$Res> {
-  __$$StartStateImplCopyWithImpl(
-      _$StartStateImpl _value, $Res Function(_$StartStateImpl) _then)
+  __$$StartStateImplCopyWithImpl(_$StartStateImpl _value, $Res Function(_$StartStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,6 +121,5 @@ abstract class _StartState implements StartState {
   StartStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$StartStateImplCopyWith<_$StartStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StartStateImplCopyWith<_$StartStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

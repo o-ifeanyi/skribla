@@ -28,11 +28,9 @@ class GameModel with _$GameModel {
 
   const GameModel._();
 
-  factory GameModel.fromJson(Map<String, Object?> json) =>
-      _$GameModelFromJson(json);
+  factory GameModel.fromJson(Map<String, Object?> json) => _$GameModelFromJson(json);
 
-  bool canDraw(String? uid) =>
-      currentPlayer.uid == uid && status != Status.complete;
+  bool canDraw(String? uid) => currentPlayer.uid == uid && status != Status.complete;
 
   List<WordModel> get availableWords => onlinePlayers
       .map((player) => player.words.where((word) => word.available))

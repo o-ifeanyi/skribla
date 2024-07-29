@@ -23,22 +23,20 @@ mixin _$PlayerModel {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
+  int get points => throw _privateConstructorUsedError;
   List<WordModel> get words => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PlayerModelCopyWith<PlayerModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PlayerModelCopyWith<PlayerModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PlayerModelCopyWith<$Res> {
-  factory $PlayerModelCopyWith(
-          PlayerModel value, $Res Function(PlayerModel) then) =
+  factory $PlayerModelCopyWith(PlayerModel value, $Res Function(PlayerModel) then) =
       _$PlayerModelCopyWithImpl<$Res, PlayerModel>;
   @useResult
-  $Res call(
-      {String uid, String name, DateTime createdAt, List<WordModel> words});
+  $Res call({String uid, String name, DateTime createdAt, int points, List<WordModel> words});
 }
 
 /// @nodoc
@@ -57,6 +55,7 @@ class _$PlayerModelCopyWithImpl<$Res, $Val extends PlayerModel>
     Object? uid = null,
     Object? name = null,
     Object? createdAt = null,
+    Object? points = null,
     Object? words = null,
   }) {
     return _then(_value.copyWith(
@@ -72,6 +71,10 @@ class _$PlayerModelCopyWithImpl<$Res, $Val extends PlayerModel>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
       words: null == words
           ? _value.words
           : words // ignore: cast_nullable_to_non_nullable
@@ -81,23 +84,20 @@ class _$PlayerModelCopyWithImpl<$Res, $Val extends PlayerModel>
 }
 
 /// @nodoc
-abstract class _$$PlayerModelImplCopyWith<$Res>
-    implements $PlayerModelCopyWith<$Res> {
+abstract class _$$PlayerModelImplCopyWith<$Res> implements $PlayerModelCopyWith<$Res> {
   factory _$$PlayerModelImplCopyWith(
           _$PlayerModelImpl value, $Res Function(_$PlayerModelImpl) then) =
       __$$PlayerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String uid, String name, DateTime createdAt, List<WordModel> words});
+  $Res call({String uid, String name, DateTime createdAt, int points, List<WordModel> words});
 }
 
 /// @nodoc
 class __$$PlayerModelImplCopyWithImpl<$Res>
     extends _$PlayerModelCopyWithImpl<$Res, _$PlayerModelImpl>
     implements _$$PlayerModelImplCopyWith<$Res> {
-  __$$PlayerModelImplCopyWithImpl(
-      _$PlayerModelImpl _value, $Res Function(_$PlayerModelImpl) _then)
+  __$$PlayerModelImplCopyWithImpl(_$PlayerModelImpl _value, $Res Function(_$PlayerModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,6 +106,7 @@ class __$$PlayerModelImplCopyWithImpl<$Res>
     Object? uid = null,
     Object? name = null,
     Object? createdAt = null,
+    Object? points = null,
     Object? words = null,
   }) {
     return _then(_$PlayerModelImpl(
@@ -121,6 +122,10 @@ class __$$PlayerModelImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
       words: null == words
           ? _value._words
           : words // ignore: cast_nullable_to_non_nullable
@@ -136,12 +141,12 @@ class _$PlayerModelImpl extends _PlayerModel {
       {required this.uid,
       required this.name,
       required this.createdAt,
+      this.points = 0,
       final List<WordModel> words = const []})
       : _words = words,
         super._();
 
-  factory _$PlayerModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PlayerModelImplFromJson(json);
+  factory _$PlayerModelImpl.fromJson(Map<String, dynamic> json) => _$$PlayerModelImplFromJson(json);
 
   @override
   final String uid;
@@ -149,6 +154,9 @@ class _$PlayerModelImpl extends _PlayerModel {
   final String name;
   @override
   final DateTime createdAt;
+  @override
+  @JsonKey()
+  final int points;
   final List<WordModel> _words;
   @override
   @JsonKey()
@@ -160,7 +168,7 @@ class _$PlayerModelImpl extends _PlayerModel {
 
   @override
   String toString() {
-    return 'PlayerModel(uid: $uid, name: $name, createdAt: $createdAt, words: $words)';
+    return 'PlayerModel(uid: $uid, name: $name, createdAt: $createdAt, points: $points, words: $words)';
   }
 
   @override
@@ -170,15 +178,15 @@ class _$PlayerModelImpl extends _PlayerModel {
             other is _$PlayerModelImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
+            (identical(other.points, points) || other.points == points) &&
             const DeepCollectionEquality().equals(other._words, _words));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, name, createdAt,
-      const DeepCollectionEquality().hash(_words));
+  int get hashCode => Object.hash(
+      runtimeType, uid, name, createdAt, points, const DeepCollectionEquality().hash(_words));
 
   @JsonKey(ignore: true)
   @override
@@ -199,11 +207,11 @@ abstract class _PlayerModel extends PlayerModel {
       {required final String uid,
       required final String name,
       required final DateTime createdAt,
+      final int points,
       final List<WordModel> words}) = _$PlayerModelImpl;
   const _PlayerModel._() : super._();
 
-  factory _PlayerModel.fromJson(Map<String, dynamic> json) =
-      _$PlayerModelImpl.fromJson;
+  factory _PlayerModel.fromJson(Map<String, dynamic> json) = _$PlayerModelImpl.fromJson;
 
   @override
   String get uid;
@@ -212,9 +220,10 @@ abstract class _PlayerModel extends PlayerModel {
   @override
   DateTime get createdAt;
   @override
+  int get points;
+  @override
   List<WordModel> get words;
   @override
   @JsonKey(ignore: true)
-  _$$PlayerModelImplCopyWith<_$PlayerModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PlayerModelImplCopyWith<_$PlayerModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

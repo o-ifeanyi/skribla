@@ -45,8 +45,7 @@ extension BuildContextExt on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
   EdgeInsets get edgeInset => MediaQuery.viewPaddingOf(this);
   AppLocalizations get loc => AppLocalizations.of(this);
-  ThemeMode get themeMode =>
-      theme.brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
+  ThemeMode get themeMode => theme.brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
 
   ButtonStyle get iconButtonStyle => IconButton.styleFrom(
         backgroundColor: colorScheme.primaryContainer,

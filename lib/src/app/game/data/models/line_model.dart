@@ -15,8 +15,7 @@ class LineModel {
     this.stroke,
   );
 
-  factory LineModel.fromJson(Map<String, dynamic> json) =>
-      _$LineModelFromJson(json);
+  factory LineModel.fromJson(Map<String, dynamic> json) => _$LineModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$LineModelToJson(this);
 

@@ -22,8 +22,7 @@ mixin _$GameState {
   GameModel? get game => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GameStateCopyWith<GameState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $GameStateCopyWith<GameState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -37,8 +36,7 @@ abstract class $GameStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
-    implements $GameStateCopyWith<$Res> {
+class _$GameStateCopyWithImpl<$Res, $Val extends GameState> implements $GameStateCopyWith<$Res> {
   _$GameStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,10 +86,8 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
 }
 
 /// @nodoc
-abstract class _$$GameStateImplCopyWith<$Res>
-    implements $GameStateCopyWith<$Res> {
-  factory _$$GameStateImplCopyWith(
-          _$GameStateImpl value, $Res Function(_$GameStateImpl) then) =
+abstract class _$$GameStateImplCopyWith<$Res> implements $GameStateCopyWith<$Res> {
+  factory _$$GameStateImplCopyWith(_$GameStateImpl value, $Res Function(_$GameStateImpl) then) =
       __$$GameStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -102,11 +98,9 @@ abstract class _$$GameStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$GameStateImplCopyWithImpl<$Res>
-    extends _$GameStateCopyWithImpl<$Res, _$GameStateImpl>
+class __$$GameStateImplCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res, _$GameStateImpl>
     implements _$$GameStateImplCopyWith<$Res> {
-  __$$GameStateImplCopyWithImpl(
-      _$GameStateImpl _value, $Res Function(_$GameStateImpl) _then)
+  __$$GameStateImplCopyWithImpl(_$GameStateImpl _value, $Res Function(_$GameStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -142,10 +136,7 @@ class __$$GameStateImplCopyWithImpl<$Res>
 
 class _$GameStateImpl implements _GameState {
   const _$GameStateImpl(
-      {this.status = GameStatus.idle,
-      this.color = Colors.red,
-      this.stroke = 2,
-      this.game = null});
+      {this.status = GameStatus.idle, this.color = Colors.red, this.stroke = 2, this.game = null});
 
   @override
   @JsonKey()
@@ -203,6 +194,5 @@ abstract class _GameState implements GameState {
   GameModel? get game;
   @override
   @JsonKey(ignore: true)
-  _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
