@@ -24,7 +24,6 @@ mixin _$UserModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  int get points => throw _privateConstructorUsedError;
   int get level => throw _privateConstructorUsedError;
   AuthStatus get status => throw _privateConstructorUsedError;
 
@@ -39,13 +38,7 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String uid,
-      DateTime createdAt,
-      String name,
-      String email,
-      int points,
-      int level,
-      AuthStatus status});
+      {String uid, DateTime createdAt, String name, String email, int level, AuthStatus status});
 }
 
 /// @nodoc
@@ -64,7 +57,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserMode
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
-    Object? points = null,
     Object? level = null,
     Object? status = null,
   }) {
@@ -85,10 +77,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserMode
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      points: null == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
-              as int,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -108,13 +96,7 @@ abstract class _$$UserModelImplCopyWith<$Res> implements $UserModelCopyWith<$Res
   @override
   @useResult
   $Res call(
-      {String uid,
-      DateTime createdAt,
-      String name,
-      String email,
-      int points,
-      int level,
-      AuthStatus status});
+      {String uid, DateTime createdAt, String name, String email, int level, AuthStatus status});
 }
 
 /// @nodoc
@@ -130,7 +112,6 @@ class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, 
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
-    Object? points = null,
     Object? level = null,
     Object? status = null,
   }) {
@@ -151,10 +132,6 @@ class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, 
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      points: null == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
-              as int,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -175,7 +152,6 @@ class _$UserModelImpl extends _UserModel {
       required this.createdAt,
       this.name = '',
       this.email = '',
-      this.points = 0,
       this.level = 0,
       this.status = AuthStatus.anonymous})
       : super._();
@@ -194,9 +170,6 @@ class _$UserModelImpl extends _UserModel {
   final String email;
   @override
   @JsonKey()
-  final int points;
-  @override
-  @JsonKey()
   final int level;
   @override
   @JsonKey()
@@ -204,7 +177,7 @@ class _$UserModelImpl extends _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, points: $points, level: $level, status: $status)';
+    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, level: $level, status: $status)';
   }
 
   @override
@@ -216,14 +189,13 @@ class _$UserModelImpl extends _UserModel {
             (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.points, points) || other.points == points) &&
             (identical(other.level, level) || other.level == level) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, createdAt, name, email, points, level, status);
+  int get hashCode => Object.hash(runtimeType, uid, createdAt, name, email, level, status);
 
   @JsonKey(ignore: true)
   @override
@@ -245,7 +217,6 @@ abstract class _UserModel extends UserModel {
       required final DateTime createdAt,
       final String name,
       final String email,
-      final int points,
       final int level,
       final AuthStatus status}) = _$UserModelImpl;
   const _UserModel._() : super._();
@@ -260,8 +231,6 @@ abstract class _UserModel extends UserModel {
   String get name;
   @override
   String get email;
-  @override
-  int get points;
   @override
   int get level;
   @override

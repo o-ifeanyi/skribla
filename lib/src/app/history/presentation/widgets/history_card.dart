@@ -61,7 +61,6 @@ class _HistoryCardState extends State<HistoryCard> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: Config.radius16,
-        // color: context.colorScheme.tertiaryContainer,
       ),
       child: Column(
         children: [

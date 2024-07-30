@@ -49,6 +49,14 @@ class _StartScreenState extends ConsumerState<StartScreen> {
         automaticallyImplyLeading: false,
         actions: [
           GestureDetector(
+            onTap: () => context.goNamed(Routes.leaderboard),
+            child: CircleAvatar(
+              backgroundColor: context.theme.inputDecorationTheme.fillColor,
+              child: Icon(AppIcons.trophy, size: 18),
+            ),
+          ),
+          Config.hBox12,
+          GestureDetector(
             onTap: () => context.goNamed(Routes.history),
             child: CircleAvatar(
               backgroundColor: context.theme.inputDecorationTheme.fillColor,

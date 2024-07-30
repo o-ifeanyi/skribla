@@ -10,6 +10,9 @@ import 'package:draw_and_guess/src/app/game/presentation/provider/timer_state.da
 import 'package:draw_and_guess/src/app/history/data/repository/history_repository.dart';
 import 'package:draw_and_guess/src/app/history/presentation/provider/history_provider.dart';
 import 'package:draw_and_guess/src/app/history/presentation/provider/history_state.dart';
+import 'package:draw_and_guess/src/app/leaderboard/data/repository/leaderboard_repository.dart';
+import 'package:draw_and_guess/src/app/leaderboard/presentation/provider/leaderboard_provider.dart';
+import 'package:draw_and_guess/src/app/leaderboard/presentation/provider/leaderboard_state.dart';
 import 'package:draw_and_guess/src/app/start/data/repository/start_repository.dart';
 import 'package:draw_and_guess/src/app/start/presentation/provider/start_provider.dart';
 import 'package:draw_and_guess/src/app/start/presentation/provider/start_state.dart';
@@ -56,6 +59,12 @@ final historyProvider = StateNotifierProvider<HistoryProvider, HistoryState>(
   ),
 );
 
+final leaderboardProvider = StateNotifierProvider<LeaderboardProvider, LeaderboardState>(
+  (ref) => LeaderboardProvider(
+    leaderboardRepository: ref.read(leaderboardRepoProvider),
+  ),
+);
+
 // Repositories
 final authRepoProvider = Provider<AuthRepository>(
   (ref) => AuthRepository(
@@ -75,11 +84,19 @@ final gameRepoProvider = Provider<GameRepository>(
   (ref) => GameRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
     firebaseFirestore: ref.read(firebaseFireStoreProvider),
+    leaderboardRepository: ref.read(leaderboardRepoProvider),
   ),
 );
 
 final galleryRepoProvider = Provider<HistoryRepository>(
   (ref) => HistoryRepository(
+    firebaseAuth: ref.read(firebaseAuthProvider),
+    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+  ),
+);
+
+final leaderboardRepoProvider = Provider<LeaderboardRepository>(
+  (ref) => LeaderboardRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
     firebaseFirestore: ref.read(firebaseFireStoreProvider),
   ),

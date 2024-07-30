@@ -5,7 +5,9 @@ import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/message_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/player_model.dart';
 import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
+import 'package:draw_and_guess/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 import 'package:draw_and_guess/src/core/service/logger.dart';
+import 'package:draw_and_guess/src/core/util/constants.dart';
 import 'package:draw_and_guess/src/core/util/result.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -13,10 +15,12 @@ final class GameRepository {
   const GameRepository({
     required this.firebaseAuth,
     required this.firebaseFirestore,
+    required this.leaderboardRepository,
   });
 
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
+  final LeaderboardRepository leaderboardRepository;
   static const _logger = Logger('GameRepository');
 
   Future<Result<bool>> leaveGame({
@@ -162,10 +166,9 @@ final class GameRepository {
     required String? name,
   }) async {
     try {
-      final path = 'games/${game.id}/messages';
-      _logger.request('Sending message - $path');
+      _logger.request('Sending message - games/${game.id}/messages');
 
-      final doc = firebaseFirestore.collection(path).doc();
+      final doc = firebaseFirestore.collection('games/${game.id}/messages').doc();
       final uid = firebaseAuth.currentUser!.uid;
       final correctGuess = game.currentWord.text.toLowerCase() == text.toLowerCase();
       final message = MessageModel(
@@ -180,20 +183,20 @@ final class GameRepository {
       await doc.set(message.toJson());
 
       if (correctGuess) {
-        // update guesser points by 10
+        // update guesser points by Constants.points
         final players = List<PlayerModel>.from(game.players);
         final guesserIndex = game.players.indexWhere(
           (player) => player.uid == uid,
         );
         players[guesserIndex] = players[guesserIndex].copyWith(
-          points: players[guesserIndex].points + 10,
+          points: players[guesserIndex].points + Constants.points,
         );
-        // update current player points by 10
+        // update current player points by Constants.points
         final currentPlayerIndex = game.players.indexWhere(
           (player) => player.uid == game.currentPlayer.uid,
         );
         players[currentPlayerIndex] = game.currentPlayer.copyWith(
-          points: game.currentPlayer.points + 10,
+          points: game.currentPlayer.points + Constants.points,
         );
 
         unawaited(
@@ -203,18 +206,9 @@ final class GameRepository {
           }),
         );
 
-        // update guesser user points by 10
+        // update guesser and player points in leadear board
         unawaited(
-          firebaseFirestore.collection('users').doc(uid).update({
-            'points': FieldValue.increment(10),
-          }),
-        );
-
-        // update current player user points by 10
-        unawaited(
-          firebaseFirestore.collection('users').doc(game.currentPlayer.uid).update({
-            'points': FieldValue.increment(10),
-          }),
+          leaderboardRepository.updateLeaderboard(uids: [game.currentPlayer.uid, uid]),
         );
       }
 

@@ -2,10 +2,8 @@ import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
 import 'package:draw_and_guess/src/app/history/data/repository/history_repository.dart';
 import 'package:draw_and_guess/src/app/history/presentation/provider/history_state.dart';
+import 'package:draw_and_guess/src/core/util/types.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
-typedef HistoryController = PagingController<GameModel?, GameModel>;
 
 class HistoryProvider extends StateNotifier<HistoryState> {
   HistoryProvider({
@@ -16,17 +14,17 @@ class HistoryProvider extends StateNotifier<HistoryState> {
 
   final _historySize = 10;
 
-  Future<void> getHistory(
+  Future<void> getHistory({
+    required HistoryController controller,
     GameModel? lastItem,
-    HistoryController controller,
-  ) async {
+  }) async {
     final res = await galleryRepository.getHistory(
       pageSize: _historySize,
       lastItem: lastItem,
     );
     res.when(
       success: (data) {
-        final isLastPage = data.length < 10;
+        final isLastPage = data.length < _historySize;
         if (isLastPage) {
           controller.appendLastPage(data);
         } else {

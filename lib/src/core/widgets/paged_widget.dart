@@ -19,6 +19,7 @@ class PagedWidget<T> extends StatelessWidget {
     this.newPageErrorIndicatorBuilder,
     this.noItemsFoundIndicatorBuilder,
     this.noMoreItemsIndicatorBuilder,
+    this.topSpacer,
   });
   final PageType pageType;
   final PagingController<dynamic, T> pagingController;
@@ -30,12 +31,13 @@ class PagedWidget<T> extends StatelessWidget {
   final Widget Function(BuildContext)? newPageErrorIndicatorBuilder;
   final Widget Function(BuildContext)? noItemsFoundIndicatorBuilder;
   final Widget Function(BuildContext)? noMoreItemsIndicatorBuilder;
+  final double? topSpacer;
 
   @override
   Widget build(BuildContext context) {
     final errorPage = Column(
       children: [
-        SizedBox(height: Config.height * 0.3),
+        SizedBox(height: topSpacer ?? Config.height * 0.3),
         Text(
           'Something went wrong',
           style: context.textTheme.titleSmall,

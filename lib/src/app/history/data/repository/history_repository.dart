@@ -4,9 +4,9 @@ import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
 import 'package:draw_and_guess/src/core/service/logger.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:draw_and_guess/src/core/util/result.dart';
+import 'package:draw_and_guess/src/core/util/types.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-typedef CachedData<T> = ({T data, DateTime expiry});
 final _exhibitsCache = <String, CachedData<List<ExhibitModel>>>{};
 
 final class HistoryRepository {
