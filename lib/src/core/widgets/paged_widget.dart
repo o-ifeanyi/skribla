@@ -19,6 +19,7 @@ class PagedWidget<T> extends StatelessWidget {
     this.newPageErrorIndicatorBuilder,
     this.noItemsFoundIndicatorBuilder,
     this.noMoreItemsIndicatorBuilder,
+    this.firstPageProgressIndicatorBuilder,
     this.topSpacer,
   });
   final PageType pageType;
@@ -31,6 +32,7 @@ class PagedWidget<T> extends StatelessWidget {
   final Widget Function(BuildContext)? newPageErrorIndicatorBuilder;
   final Widget Function(BuildContext)? noItemsFoundIndicatorBuilder;
   final Widget Function(BuildContext)? noMoreItemsIndicatorBuilder;
+  final Widget Function(BuildContext)? firstPageProgressIndicatorBuilder;
   final double? topSpacer;
 
   @override
@@ -64,9 +66,10 @@ class PagedWidget<T> extends StatelessWidget {
             animateTransitions: true,
             itemBuilder: itemBuilder,
             firstPageErrorIndicatorBuilder: (_) => errorPage,
-            firstPageProgressIndicatorBuilder: (_) => const Center(
-              child: CircularProgressIndicator.adaptive(),
-            ),
+            firstPageProgressIndicatorBuilder: firstPageProgressIndicatorBuilder ??
+                (_) => const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
             newPageErrorIndicatorBuilder: newPageErrorIndicatorBuilder,
             newPageProgressIndicatorBuilder: (_) => const Center(
               child: CircularProgressIndicator.adaptive(),
@@ -89,9 +92,10 @@ class PagedWidget<T> extends StatelessWidget {
             animateTransitions: true,
             itemBuilder: itemBuilder,
             firstPageErrorIndicatorBuilder: (_) => errorPage,
-            firstPageProgressIndicatorBuilder: (_) => const Center(
-              child: CircularProgressIndicator.adaptive(),
-            ),
+            firstPageProgressIndicatorBuilder: firstPageProgressIndicatorBuilder ??
+                (_) => const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
             newPageErrorIndicatorBuilder: newPageErrorIndicatorBuilder,
             newPageProgressIndicatorBuilder: (_) => const Center(
               child: CircularProgressIndicator.adaptive(),

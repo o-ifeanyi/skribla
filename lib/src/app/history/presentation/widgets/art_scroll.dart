@@ -48,7 +48,7 @@ class _ArtScrollState extends State<ArtScroll> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Config.dg(widget.height),
+      height: widget.height,
       child: Stack(
         children: [
           ListWheelScrollView(
@@ -56,7 +56,7 @@ class _ArtScrollState extends State<ArtScroll> with SingleTickerProviderStateMix
             offAxisFraction: 0.5,
             clipBehavior: Clip.none,
             squeeze: 0.9,
-            itemExtent: Config.dg(widget.height),
+            itemExtent: widget.height,
             onSelectedItemChanged: (value) {
               setState(() {
                 _selectedIndex = value;
@@ -81,7 +81,7 @@ class _ArtScrollState extends State<ArtScroll> with SingleTickerProviderStateMix
                           borderRadius: Config.radius8,
                         ),
                         child: CustomPaint(
-                          size: Size.square(Config.dg(widget.height)),
+                          size: Size.square(widget.height),
                           painter: AnimatedArtPainter(
                             art: exhibit.art,
                             progress: (_animationController.isAnimating && _selectedIndex == index)

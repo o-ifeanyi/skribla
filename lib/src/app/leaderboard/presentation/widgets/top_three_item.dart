@@ -3,6 +3,7 @@ import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:draw_and_guess/src/core/widgets/shimmer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class TopThreeItem extends StatelessWidget {
   const TopThreeItem({
@@ -29,18 +30,27 @@ class TopThreeItem extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          height: height,
-          width: width,
+        Stack(
           alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-          ),
-          child: Text(
-            position,
-            style: posiionStyle?.copyWith(color: flexSchemeDark.onSurface),
-          ),
+          children: [
+            Shimmer.fromColors(
+              baseColor: color,
+              highlightColor: Colors.white,
+              child: Container(
+                height: height,
+                width: width,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: color,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+            Text(
+              position,
+              style: posiionStyle?.copyWith(color: flexSchemeDark.onSurface),
+            ),
+          ],
         ),
         Config.vBox8,
         Text(

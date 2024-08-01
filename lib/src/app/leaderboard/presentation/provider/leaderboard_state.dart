@@ -1,3 +1,4 @@
+import 'package:draw_and_guess/src/app/leaderboard/data/models/leaderboard_model.dart';
 import 'package:draw_and_guess/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,5 +11,6 @@ class LeaderboardState with _$LeaderboardState {
   const factory LeaderboardState({
     @Default(LeaderboardStatus.idle) LeaderboardStatus status,
     @Default(LeaderboardType.monthly) LeaderboardType type,
+    @Default([]) List<LeaderboardModel> topThree,
   }) = _LeaderboardState;
 }

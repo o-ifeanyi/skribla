@@ -23,19 +23,27 @@ mixin _$LeaderboardModel {
   String get uid => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   int get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LeaderboardModelCopyWith<LeaderboardModel> get copyWith => throw _privateConstructorUsedError;
+  $LeaderboardModelCopyWith<LeaderboardModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LeaderboardModelCopyWith<$Res> {
-  factory $LeaderboardModelCopyWith(LeaderboardModel value, $Res Function(LeaderboardModel) then) =
+  factory $LeaderboardModelCopyWith(
+          LeaderboardModel value, $Res Function(LeaderboardModel) then) =
       _$LeaderboardModelCopyWithImpl<$Res, LeaderboardModel>;
   @useResult
-  $Res call({String uid, DateTime updatedAt, DateTime createdAt, int points});
+  $Res call(
+      {String uid,
+      DateTime updatedAt,
+      DateTime createdAt,
+      String name,
+      int points});
 }
 
 /// @nodoc
@@ -54,6 +62,7 @@ class _$LeaderboardModelCopyWithImpl<$Res, $Val extends LeaderboardModel>
     Object? uid = null,
     Object? updatedAt = null,
     Object? createdAt = null,
+    Object? name = null,
     Object? points = null,
   }) {
     return _then(_value.copyWith(
@@ -69,6 +78,10 @@ class _$LeaderboardModelCopyWithImpl<$Res, $Val extends LeaderboardModel>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -78,21 +91,27 @@ class _$LeaderboardModelCopyWithImpl<$Res, $Val extends LeaderboardModel>
 }
 
 /// @nodoc
-abstract class _$$LeaderboardModelImplCopyWith<$Res> implements $LeaderboardModelCopyWith<$Res> {
-  factory _$$LeaderboardModelImplCopyWith(
-          _$LeaderboardModelImpl value, $Res Function(_$LeaderboardModelImpl) then) =
+abstract class _$$LeaderboardModelImplCopyWith<$Res>
+    implements $LeaderboardModelCopyWith<$Res> {
+  factory _$$LeaderboardModelImplCopyWith(_$LeaderboardModelImpl value,
+          $Res Function(_$LeaderboardModelImpl) then) =
       __$$LeaderboardModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid, DateTime updatedAt, DateTime createdAt, int points});
+  $Res call(
+      {String uid,
+      DateTime updatedAt,
+      DateTime createdAt,
+      String name,
+      int points});
 }
 
 /// @nodoc
 class __$$LeaderboardModelImplCopyWithImpl<$Res>
     extends _$LeaderboardModelCopyWithImpl<$Res, _$LeaderboardModelImpl>
     implements _$$LeaderboardModelImplCopyWith<$Res> {
-  __$$LeaderboardModelImplCopyWithImpl(
-      _$LeaderboardModelImpl _value, $Res Function(_$LeaderboardModelImpl) _then)
+  __$$LeaderboardModelImplCopyWithImpl(_$LeaderboardModelImpl _value,
+      $Res Function(_$LeaderboardModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,6 +120,7 @@ class __$$LeaderboardModelImplCopyWithImpl<$Res>
     Object? uid = null,
     Object? updatedAt = null,
     Object? createdAt = null,
+    Object? name = null,
     Object? points = null,
   }) {
     return _then(_$LeaderboardModelImpl(
@@ -116,6 +136,10 @@ class __$$LeaderboardModelImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -128,7 +152,11 @@ class __$$LeaderboardModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LeaderboardModelImpl implements _LeaderboardModel {
   const _$LeaderboardModelImpl(
-      {required this.uid, required this.updatedAt, required this.createdAt, this.points = 0});
+      {required this.uid,
+      required this.updatedAt,
+      required this.createdAt,
+      this.name = '',
+      this.points = 0});
 
   factory _$LeaderboardModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LeaderboardModelImplFromJson(json);
@@ -141,11 +169,14 @@ class _$LeaderboardModelImpl implements _LeaderboardModel {
   final DateTime createdAt;
   @override
   @JsonKey()
+  final String name;
+  @override
+  @JsonKey()
   final int points;
 
   @override
   String toString() {
-    return 'LeaderboardModel(uid: $uid, updatedAt: $updatedAt, createdAt: $createdAt, points: $points)';
+    return 'LeaderboardModel(uid: $uid, updatedAt: $updatedAt, createdAt: $createdAt, name: $name, points: $points)';
   }
 
   @override
@@ -154,20 +185,25 @@ class _$LeaderboardModelImpl implements _LeaderboardModel {
         (other.runtimeType == runtimeType &&
             other is _$LeaderboardModelImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt) &&
-            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.points, points) || other.points == points));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, updatedAt, createdAt, points);
+  int get hashCode =>
+      Object.hash(runtimeType, uid, updatedAt, createdAt, name, points);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaderboardModelImplCopyWith<_$LeaderboardModelImpl> get copyWith =>
-      __$$LeaderboardModelImplCopyWithImpl<_$LeaderboardModelImpl>(this, _$identity);
+      __$$LeaderboardModelImplCopyWithImpl<_$LeaderboardModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -182,9 +218,11 @@ abstract class _LeaderboardModel implements LeaderboardModel {
       {required final String uid,
       required final DateTime updatedAt,
       required final DateTime createdAt,
+      final String name,
       final int points}) = _$LeaderboardModelImpl;
 
-  factory _LeaderboardModel.fromJson(Map<String, dynamic> json) = _$LeaderboardModelImpl.fromJson;
+  factory _LeaderboardModel.fromJson(Map<String, dynamic> json) =
+      _$LeaderboardModelImpl.fromJson;
 
   @override
   String get uid;
@@ -192,6 +230,8 @@ abstract class _LeaderboardModel implements LeaderboardModel {
   DateTime get updatedAt;
   @override
   DateTime get createdAt;
+  @override
+  String get name;
   @override
   int get points;
   @override

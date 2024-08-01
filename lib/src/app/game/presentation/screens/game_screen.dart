@@ -36,29 +36,27 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: DefaultAppBar(
-          title: Expanded(
-            child: Consumer(
-              builder: (context, timer, child) {
-                final state = timer.watch(timerProvider);
-                if (state.showCoolTimer) {
-                  return ProgressBar(
-                    key: const ValueKey('cool_timer'),
-                    duration: state.coolTimer,
-                  );
-                } else if (state.showSkipTimer) {
-                  return ProgressBar(
-                    key: const ValueKey('skip_timer'),
-                    duration: state.skipTimer,
-                  );
-                } else if (state.showTurnTimer) {
-                  return ProgressBar(
-                    key: const ValueKey('turn_timer'),
-                    duration: state.turnTimer,
-                  );
-                }
-                return const SizedBox.shrink();
-              },
-            ),
+          title: Consumer(
+            builder: (context, timer, child) {
+              final state = timer.watch(timerProvider);
+              if (state.showCoolTimer) {
+                return ProgressBar(
+                  key: const ValueKey('cool_timer'),
+                  duration: state.coolTimer,
+                );
+              } else if (state.showSkipTimer) {
+                return ProgressBar(
+                  key: const ValueKey('skip_timer'),
+                  duration: state.skipTimer,
+                );
+              } else if (state.showTurnTimer) {
+                return ProgressBar(
+                  key: const ValueKey('turn_timer'),
+                  duration: state.turnTimer,
+                );
+              }
+              return const SizedBox.shrink();
+            },
           ),
         ),
         body: Column(

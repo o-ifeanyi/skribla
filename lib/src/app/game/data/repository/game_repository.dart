@@ -105,7 +105,7 @@ final class GameRepository {
         (player) => player.uid == game.currentPlayer.uid,
       );
       final players = List<PlayerModel>.from(game.players);
-      players[currentPlayerIndex] = game.currentPlayer.copyWith(
+      players[currentPlayerIndex] = players[currentPlayerIndex].copyWith(
         words: game.currentPlayer.words.map((word) {
           if (word.id == game.currentWord.id) {
             return word.copyWith(available: false);
@@ -208,7 +208,9 @@ final class GameRepository {
 
         // update guesser and player points in leadear board
         unawaited(
-          leaderboardRepository.updateLeaderboard(uids: [game.currentPlayer.uid, uid]),
+          leaderboardRepository.updateLeaderboard(
+            players: [game.currentPlayer, players[guesserIndex]],
+          ),
         );
       }
 

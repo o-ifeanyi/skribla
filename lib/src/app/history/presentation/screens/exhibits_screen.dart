@@ -80,7 +80,7 @@ class _ExhibitsScreenState extends ConsumerState<ExhibitsScreen>
                   child: ArtScroll(
                     scrollController: _scrollController,
                     exhibits: widget.exhibits,
-                    height: 200,
+                    height: 220,
                     onTap: (val) {
                       _scrollController.animateToItem(
                         val,

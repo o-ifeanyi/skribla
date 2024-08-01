@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:draw_and_guess/src/app/game/data/models/player_model.dart';
 import 'package:draw_and_guess/src/app/leaderboard/data/models/leaderboard_model.dart';
 import 'package:draw_and_guess/src/core/service/logger.dart';
 import 'package:draw_and_guess/src/core/util/constants.dart';
@@ -22,22 +23,32 @@ final class LeaderboardRepository {
   final FirebaseFirestore firebaseFirestore;
 
   Future<Result<bool>> updateLeaderboard({
-    required List<String> uids,
+    required List<PlayerModel> players,
     int points = Constants.points,
   }) async {
     try {
-      _logger.request('Updating leaderboard - $points - $uids');
+      _logger.request('Updating leaderboard - $points');
       for (final type in LeaderboardType.values) {
-        for (final uid in uids) {
-          final doc = firebaseFirestore.collection('leaderboard/${type.name}/users').doc(uid);
+        for (final player in players) {
+          final doc =
+              firebaseFirestore.collection('leaderboard/${type.name}/users').doc(player.uid);
           final now = DateTime.now();
           final data = await doc.get();
           if (data.exists) {
-            await doc.update({'score': FieldValue.increment(points), 'updated_at': now});
-            await doc.update({'score': FieldValue.increment(points), 'updated_at': now});
+            await doc.update({
+              'points': FieldValue.increment(points),
+              'name': player.name,
+              'updated_at': now.toIso8601String(),
+            });
+            await doc.update({
+              'points': FieldValue.increment(points),
+              'name': player.name,
+              'updated_at': now.toIso8601String(),
+            });
           } else {
             final model = LeaderboardModel(
-              uid: uid,
+              uid: player.uid,
+              name: player.name,
               points: points,
               updatedAt: now,
               createdAt: now,
@@ -60,10 +71,9 @@ final class LeaderboardRepository {
     LeaderboardModel? lastItem,
   }) async {
     try {
-      final uid = firebaseAuth.currentUser!.uid;
-      _logger.request('Getting leaderboard - leaderboard/${type.name}/users/$uid');
+      _logger.request('Getting leaderboard - leaderboard/${type.name}/users');
       Query query = firebaseFirestore
-          .collection('leaderboard/${type.name}/users/$uid')
+          .collection('leaderboard/${type.name}/users')
           .orderBy('points', descending: true)
           .limit(pageSize);
 

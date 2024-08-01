@@ -65,18 +65,19 @@ class _HistoryCardState extends State<HistoryCard> {
       child: Column(
         children: [
           Padding(
-            padding: Config.all(15),
+            padding: Config.symmetric(h: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('${widget.game.players.length} players joined'),
                 Text(
-                  widget.game.createdAt.formatEDMY,
+                  widget.game.createdAt.formatEDMHM,
                   style: context.textTheme.bodySmall,
                 ),
               ],
             ),
           ),
+          const SizedBox(height: 15),
           Consumer(
             builder: (context, ref, child) {
               final exhibitsRef = ref.watch(getExhibits(widget.game.id));
@@ -87,7 +88,7 @@ class _HistoryCardState extends State<HistoryCard> {
                     child: ArtScroll(
                       scrollController: _scrollController,
                       exhibits: data,
-                      height: 120,
+                      height: 150,
                       onTap: (index) {
                         Navigator.of(context).push(
                           TransparentRoute<void>(
@@ -107,19 +108,19 @@ class _HistoryCardState extends State<HistoryCard> {
                 },
                 loading: () {
                   return SizedBox(
-                    height: Config.dg(120),
+                    height: 150,
                     child: ListWheelScrollView(
                       controller: FixedExtentScrollController(
                         initialItem: widget.game.numOfArts ~/ 2,
                       ),
                       offAxisFraction: 0.5,
                       squeeze: 0.9,
-                      itemExtent: Config.dg(120),
+                      itemExtent: 150,
                       children: List.generate(
                         widget.game.numOfArts,
-                        (_) => ShimmerWidget(
-                          height: Config.dg(120),
-                          width: Config.dg(120),
+                        (_) => const ShimmerWidget(
+                          height: 150,
+                          width: 150,
                         ),
                       ),
                     ).rotate(-1),

@@ -45,11 +45,11 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
         onRefresh: () async => _controller.refresh(),
         child: PagedWidget(
           pageType: PageType.grid,
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: Config.w(450),
-            childAspectRatio: 3 / 1.6,
-            mainAxisSpacing: Config.h(12),
-            crossAxisSpacing: Config.h(12),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 700,
+            mainAxisExtent: 220,
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
           ),
           padding: Config.all(15),
           pagingController: _controller,

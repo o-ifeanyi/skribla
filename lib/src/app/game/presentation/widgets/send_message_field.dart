@@ -6,61 +6,63 @@ import 'package:draw_and_guess/src/core/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SendMessageField extends StatefulWidget {
+class SendMessageField extends ConsumerStatefulWidget {
   const SendMessageField({
     super.key,
   });
 
   @override
-  State<SendMessageField> createState() => _SendMessageFieldState();
+  ConsumerState<SendMessageField> createState() => _SendMessageFieldState();
 }
 
-class _SendMessageFieldState extends State<SendMessageField> {
+class _SendMessageFieldState extends ConsumerState<SendMessageField> {
   final _msgCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, child) {
-        final status = ref.watch(
-          gameProvider.select((it) => it.status),
-        );
-        return Row(
-          children: [
-            Expanded(
-              child: InputField(
-                readOnly: status == GameStatus.sendingMessage,
-                controller: _msgCtrl,
-                hint: 'guess or chat...',
-                maxLines: null,
-              ),
+    final user = ref.watch(authProvider.select((it) => it.user));
+    final game = ref.watch(gameProvider.select((it) => it.game));
+    final status = ref.watch(gameProvider.select((it) => it.status));
+
+    return AnimatedSwitcher(
+      duration: Config.duration300,
+      child: (game?.canDraw(user?.uid) ?? false)
+          ? const SizedBox.shrink()
+          : Row(
+              children: [
+                Expanded(
+                  child: InputField(
+                    readOnly: status == GameStatus.sendingMessage,
+                    controller: _msgCtrl,
+                    hint: 'guess or chat...',
+                    maxLines: null,
+                  ),
+                ),
+                Config.hBox8,
+                ValueListenableBuilder(
+                  valueListenable: _msgCtrl,
+                  builder: (context, ctrl, child) {
+                    return GestureDetector(
+                      onTap: _msgCtrl.text.trim().isEmpty
+                          ? null
+                          : () {
+                              final user = ref.read(authProvider).user;
+                              if (user == null) return;
+                              ref
+                                  .read(gameProvider.notifier)
+                                  .sendMessage(
+                                    text: _msgCtrl.text,
+                                    name: user.name,
+                                  )
+                                  .then((success) {
+                                if (success) _msgCtrl.clear();
+                              });
+                            },
+                      child: Icon(AppIcons.paperPlaneRight),
+                    );
+                  },
+                ),
+              ],
             ),
-            Config.hBox8,
-            ValueListenableBuilder(
-              valueListenable: _msgCtrl,
-              builder: (context, ctrl, child) {
-                return GestureDetector(
-                  onTap: _msgCtrl.text.trim().isEmpty
-                      ? null
-                      : () {
-                          final user = ref.read(authProvider).user;
-                          if (user == null) return;
-                          ref
-                              .read(gameProvider.notifier)
-                              .sendMessage(
-                                text: _msgCtrl.text,
-                                name: user.name,
-                              )
-                              .then((success) {
-                            if (success) _msgCtrl.clear();
-                          });
-                        },
-                  child: Icon(AppIcons.paperPlaneRight),
-                );
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }

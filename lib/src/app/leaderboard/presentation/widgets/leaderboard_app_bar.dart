@@ -1,4 +1,3 @@
-import 'package:draw_and_guess/src/app/leaderboard/data/models/leaderboard_model.dart';
 import 'package:draw_and_guess/src/app/leaderboard/presentation/widgets/top_three_item.dart';
 import 'package:draw_and_guess/src/core/di/di.dart';
 import 'package:draw_and_guess/src/core/resource/app_icons.dart';
@@ -9,12 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class LeaderboardAppBar extends ConsumerStatefulWidget {
-  const LeaderboardAppBar({
-    required this.topThree,
-    super.key,
-  });
-
-  final List<LeaderboardModel> topThree;
+  const LeaderboardAppBar({super.key});
 
   @override
   ConsumerState<LeaderboardAppBar> createState() => _LeaderboardAppBarState();
@@ -23,6 +17,7 @@ class LeaderboardAppBar extends ConsumerStatefulWidget {
 class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
   @override
   Widget build(BuildContext context) {
+    final topThree = ref.watch(leaderboardProvider.select((it) => it.topThree));
     return SliverAppBar(
       pinned: true,
       floating: true,
@@ -48,7 +43,7 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
       flexibleSpace: FlexibleSpaceBar(
         background: LayoutBuilder(
           builder: (context, constraints) {
-            return widget.topThree.isEmpty
+            return topThree.isEmpty
                 ? TopThreeShimmer(constraints: constraints)
                 : Container(
                     width: double.infinity,
@@ -58,35 +53,41 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        TopThreeItem(
-                          height: constraints.maxHeight * 0.15,
-                          width: constraints.maxWidth * 0.2,
-                          color: Colors.grey,
-                          position: '2',
-                          posiionStyle: context.textTheme.titleMedium,
-                          title: 'Name',
-                          subtitle: '1200 pts',
-                        ),
-                        Config.hBox12,
-                        TopThreeItem(
-                          height: constraints.maxHeight * 0.25,
-                          width: constraints.maxWidth * 0.4,
-                          color: Colors.orange,
-                          position: '1',
-                          posiionStyle: context.textTheme.titleLarge,
-                          title: 'Name',
-                          subtitle: '1500 pts',
-                        ),
-                        Config.hBox12,
-                        TopThreeItem(
-                          height: constraints.maxHeight * 0.1,
-                          width: constraints.maxWidth * 0.2,
-                          color: Colors.brown,
-                          position: '3',
-                          posiionStyle: context.textTheme.titleSmall,
-                          title: 'Name',
-                          subtitle: '1000 pts',
-                        ),
+                        if (topThree.length > 1) ...[
+                          TopThreeItem(
+                            height: constraints.maxHeight * 0.15,
+                            width: constraints.maxWidth * 0.2,
+                            color: Colors.grey,
+                            position: '2',
+                            posiionStyle: context.textTheme.titleMedium,
+                            title: topThree[1].name,
+                            subtitle: '${topThree[1].points} pts',
+                          ),
+                        ],
+                        if (topThree.isNotEmpty) ...[
+                          Config.hBox12,
+                          TopThreeItem(
+                            height: constraints.maxHeight * 0.25,
+                            width: constraints.maxWidth * 0.4,
+                            color: Colors.orange,
+                            position: '1',
+                            posiionStyle: context.textTheme.titleLarge,
+                            title: topThree[0].name,
+                            subtitle: '${topThree[0].points} pts',
+                          ),
+                        ],
+                        if (topThree.length > 2) ...[
+                          Config.hBox12,
+                          TopThreeItem(
+                            height: constraints.maxHeight * 0.1,
+                            width: constraints.maxWidth * 0.2,
+                            color: Colors.brown,
+                            position: '3',
+                            posiionStyle: context.textTheme.titleSmall,
+                            title: topThree[2].name,
+                            subtitle: '${topThree[2].points} pts',
+                          ),
+                        ],
                       ],
                     ),
                   );
@@ -104,7 +105,7 @@ class _SliverBottomWidget extends StatefulWidget implements PreferredSizeWidget 
   State<_SliverBottomWidget> createState() => _SliverBottomWidgetState();
 
   @override
-  Size get preferredSize => Size(0, kToolbarHeight + Config.h(22));
+  Size get preferredSize => const Size(0, kToolbarHeight + 22);
 }
 
 class _SliverBottomWidgetState extends State<_SliverBottomWidget>
@@ -123,7 +124,7 @@ class _SliverBottomWidgetState extends State<_SliverBottomWidget>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: Config.all(15),
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       decoration: BoxDecoration(
         color: context.theme.inputDecorationTheme.fillColor,
         borderRadius: Config.radius24,

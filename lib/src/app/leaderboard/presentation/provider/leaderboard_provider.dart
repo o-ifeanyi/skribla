@@ -15,6 +15,7 @@ class LeaderboardProvider extends StateNotifier<LeaderboardState> {
     required LeaderboardController controller,
     LeaderboardModel? lastItem,
   }) async {
+    final isFirstPage = controller.firstPageKey == null;
     final res = await leaderboardRepository.getLeaderboard(
       type: state.type,
       pageSize: _leaderboardSize,
@@ -22,9 +23,12 @@ class LeaderboardProvider extends StateNotifier<LeaderboardState> {
     );
     res.when(
       success: (data) {
+        if (isFirstPage) {
+          state = state.copyWith(topThree: data.take(3).toList());
+        }
         final isLastPage = data.length < _leaderboardSize;
         if (isLastPage) {
-          controller.appendLastPage(data);
+          controller.appendLastPage(isFirstPage ? data.skip(3).toList() : data);
         } else {
           controller.appendPage(data, data.lastOrNull);
         }

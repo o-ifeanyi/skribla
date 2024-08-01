@@ -9,6 +9,7 @@ class LeaderboardModel with _$LeaderboardModel {
     required String uid,
     required DateTime updatedAt,
     required DateTime createdAt,
+    @Default('') String name,
     @Default(0) int points,
   }) = _LeaderboardModel;
 
