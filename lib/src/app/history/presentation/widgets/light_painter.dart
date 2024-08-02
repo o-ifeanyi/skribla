@@ -19,8 +19,8 @@ class LightPainter extends CustomPainter {
 
     final path = Path()
       ..moveTo(size.width / 2 - Config.w(10), 20)
-      ..lineTo(Config.w(20), size.height)
-      ..lineTo(size.width - Config.w(20), size.height)
+      ..lineTo(Config.w(15), size.height)
+      ..lineTo(size.width - Config.w(15), size.height)
       ..lineTo(size.width / 2 + Config.w(10), 20)
       ..close();
 

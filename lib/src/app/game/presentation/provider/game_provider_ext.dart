@@ -18,6 +18,8 @@ extension GameProviderExt on GameProvider {
     required GameModel current,
     required VoidCallback update,
   }) {
+    final user = ref.read(authProvider).user;
+    final timer = ref.read(timerProvider.notifier);
     // only first online player actually calls the [updateNextPlayer] method
     // others just begin timers & shit
 
@@ -29,7 +31,7 @@ extension GameProviderExt on GameProvider {
     if (current.status == Status.complete) {
       // game ended
       // stop all timers & cancel sunscription
-      timerProvider.reset();
+      timer.reset();
       _gameStreamSub?.cancel();
       update();
       return;
@@ -38,7 +40,7 @@ extension GameProviderExt on GameProvider {
     if (prev.online.length > current.online.length && current.online.length < 2) {
       // a player just left and only one(this) player left
       // the invite players screen should be showing at this point
-      timerProvider.reset();
+      timer.reset();
       update();
       return;
     }
@@ -46,7 +48,7 @@ extension GameProviderExt on GameProvider {
     if (current.currentArt.isNotEmpty) {
       // player started drawing
       // stop skip timer, start turn timer
-      timerProvider
+      timer
         ..stopSkipTimer()
         ..startTurnTimer(
           callback: () {
@@ -60,9 +62,9 @@ extension GameProviderExt on GameProvider {
     if (prev.currentPlayer.uid != current.currentPlayer.uid) {
       // current player changed
       // start cool down timer after which skip timer starts
-      timerProvider.startCoolTimer(
+      timer.startCoolTimer(
         callback: () {
-          timerProvider.startSkipTimer(
+          timer.startSkipTimer(
             callback: () {
               if (current.online.first == user?.uid) {
                 updateNextPlayer();

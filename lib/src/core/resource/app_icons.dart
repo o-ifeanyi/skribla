@@ -12,6 +12,7 @@ abstract class AppIcons {
   static IconData get paperPlaneRight => PhosphorIconsBold.paperPlaneRight;
   static IconData get x => PhosphorIconsBold.x;
   static IconData get trophy => PhosphorIconsBold.trophy;
+  static IconData get gear => PhosphorIconsBold.gear;
   static IconData get appleLogo => PhosphorIconsBold.appleLogo;
   static IconData get googleLogo => PhosphorIconsBold.googleLogo;
 }

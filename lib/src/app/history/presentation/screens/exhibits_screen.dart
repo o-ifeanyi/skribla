@@ -46,11 +46,15 @@ class _ExhibitsScreenState extends ConsumerState<ExhibitsScreen>
         WidgetsBinding.instance.addPostFrameCallback((_) {
           Future<void>.delayed(Config.duration300).then((_) {
             try {
-              _scrollController.animateToItem(
+              _scrollController
+                  .animateToItem(
                 widget.index,
                 duration: Config.duration1000,
                 curve: Curves.bounceOut,
-              );
+              )
+                  .whenComplete(() {
+                _animationController.forward();
+              });
             } catch (_) {}
           });
         });
@@ -92,9 +96,6 @@ class _ExhibitsScreenState extends ConsumerState<ExhibitsScreen>
                       setState(() {
                         _currentIndex = val;
                       });
-                      _animationController
-                        ..reset()
-                        ..forward();
                     },
                   ),
                 ),

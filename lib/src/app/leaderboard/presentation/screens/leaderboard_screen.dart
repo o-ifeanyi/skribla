@@ -41,9 +41,7 @@ class _LeaderboardScreenState extends ConsumerState<LeaderboardScreen> {
   Widget build(BuildContext context) {
     ref.listen(
       leaderboardProvider.select((it) => it.type),
-      (_, __) {
-        _controller.refresh();
-      },
+      (_, __) => _controller.refresh(),
     );
     return Scaffold(
       body: NestedScrollView(

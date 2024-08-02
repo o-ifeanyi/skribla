@@ -113,7 +113,7 @@ final class AuthRepository {
     }
   }
 
-  Future<Result<String>> updateUserName(String name) async {
+  Future<Result<bool>> updateUserName(String name) async {
     try {
       _logger.request('Updating user name - $name');
 
@@ -122,7 +122,7 @@ final class AuthRepository {
           .doc(firebaseAuth.currentUser!.uid)
           .update({'name': name});
 
-      return Result.success(name);
+      return const Result.success(true);
     } catch (e, s) {
       _logger.error('updateUserName - $e', stack: s);
       return Result.error(CustomError(message: e.toString()));

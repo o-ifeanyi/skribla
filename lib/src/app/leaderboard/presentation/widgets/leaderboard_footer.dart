@@ -23,9 +23,8 @@ class LeaderboardFooter extends ConsumerStatefulWidget {
 }
 
 class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
-  final getPosition = FutureProvider<LeaderboardPosition>(
+  final getPosition = FutureProvider<LeaderboardPosition?>(
     (ref) async {
-      // await Future.delayed(Duration(seconds: 3));
       return ref.read(leaderboardProvider.notifier).getLeaderboardPosition();
     },
   );
@@ -35,10 +34,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
     final user = ref.watch(authProvider.select((it) => it.user));
     ref.listen(
       leaderboardProvider.select((it) => it.type),
-      (_, __) {
-        if (user?.status != AuthStatus.verified) return;
-        return ref.refresh(getPosition);
-      },
+      (_, __) => ref.refresh(getPosition),
     );
     final positionRef = ref.watch(getPosition);
     return Padding(
@@ -73,6 +69,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
             positionRef.when(
               skipLoadingOnRefresh: false,
               data: (data) {
+                if (data == null) return const SizedBox.shrink();
                 return LeaderboardItem(
                   data: data,
                   name: user?.name,

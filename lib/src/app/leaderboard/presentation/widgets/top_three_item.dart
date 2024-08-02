@@ -87,12 +87,12 @@ class TopThreeShimmer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             _TopThreeItemShimmer(
-              height: constraints.maxHeight * 0.17,
+              height: constraints.maxHeight * 0.15,
               width: constraints.maxWidth * 0.2,
             ),
             Config.hBox12,
             _TopThreeItemShimmer(
-              height: constraints.maxHeight * 0.27,
+              height: constraints.maxHeight * 0.25,
               width: constraints.maxWidth * 0.4,
             ),
             Config.hBox12,

@@ -44,8 +44,8 @@ class AuthProvider extends StateNotifier<AuthState> {
     if (state.user == null) return false;
     final res = await authRepository.updateUserName(name);
     return res.when(
-      success: (val) {
-        state = state.copyWith(user: state.user!.copyWith(name: val));
+      success: (success) {
+        state = state.copyWith(user: state.user!.copyWith(name: name));
         return true;
       },
       error: (error) => false,

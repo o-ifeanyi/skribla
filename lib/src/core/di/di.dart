@@ -41,8 +41,7 @@ final timerProvider = StateNotifierProvider<TimerProvider, TimerState>(
 
 final gameProvider = StateNotifierProvider<GameProvider, GameState>(
   (ref) => GameProvider(
-    user: ref.read(authProvider).user,
-    timerProvider: ref.read(timerProvider.notifier),
+    ref: ref,
     gameRepository: ref.read(gameRepoProvider),
   ),
 );
@@ -61,6 +60,7 @@ final historyProvider = StateNotifierProvider<HistoryProvider, HistoryState>(
 
 final leaderboardProvider = StateNotifierProvider<LeaderboardProvider, LeaderboardState>(
   (ref) => LeaderboardProvider(
+    ref: ref,
     leaderboardRepository: ref.read(leaderboardRepoProvider),
   ),
 );

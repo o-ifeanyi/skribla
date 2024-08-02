@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/line_model.dart';
 import 'package:draw_and_guess/src/app/game/data/models/message_model.dart';
 import 'package:draw_and_guess/src/app/game/data/repository/game_repository.dart';
 import 'package:draw_and_guess/src/app/game/presentation/provider/game_state.dart';
-import 'package:draw_and_guess/src/app/game/presentation/provider/timer_provider.dart';
+import 'package:draw_and_guess/src/core/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,13 +13,11 @@ part 'game_provider_ext.dart';
 
 class GameProvider extends StateNotifier<GameState> {
   GameProvider({
-    required this.user,
-    required this.timerProvider,
+    required this.ref,
     required this.gameRepository,
   }) : super(const GameState());
 
-  final UserModel? user;
-  final TimerProvider timerProvider;
+  final Ref ref;
   final GameRepository gameRepository;
 
   StreamSubscription<GameModel?>? _gameStreamSub;
@@ -150,12 +147,12 @@ class GameProvider extends StateNotifier<GameState> {
     if (game == null) return true;
 
     final res = await gameRepository.leaveGame(
-      uid: user?.uid ?? '',
+      uid: ref.read(authProvider).user?.uid ?? '',
       game: game,
     );
     return res.when(
       success: (success) {
-        timerProvider.reset();
+        ref.read(timerProvider.notifier).reset();
         state = const GameState();
         return success;
       },

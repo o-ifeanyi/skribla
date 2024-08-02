@@ -79,7 +79,7 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
                         if (topThree.length > 2) ...[
                           Config.hBox12,
                           TopThreeItem(
-                            height: constraints.maxHeight * 0.1,
+                            height: constraints.maxHeight * 0.12,
                             width: constraints.maxWidth * 0.2,
                             color: Colors.brown,
                             position: '3',
