@@ -28,22 +28,15 @@ mixin _$LeaderboardModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LeaderboardModelCopyWith<LeaderboardModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $LeaderboardModelCopyWith<LeaderboardModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LeaderboardModelCopyWith<$Res> {
-  factory $LeaderboardModelCopyWith(
-          LeaderboardModel value, $Res Function(LeaderboardModel) then) =
+  factory $LeaderboardModelCopyWith(LeaderboardModel value, $Res Function(LeaderboardModel) then) =
       _$LeaderboardModelCopyWithImpl<$Res, LeaderboardModel>;
   @useResult
-  $Res call(
-      {String uid,
-      DateTime updatedAt,
-      DateTime createdAt,
-      String name,
-      int points});
+  $Res call({String uid, DateTime updatedAt, DateTime createdAt, String name, int points});
 }
 
 /// @nodoc
@@ -91,27 +84,21 @@ class _$LeaderboardModelCopyWithImpl<$Res, $Val extends LeaderboardModel>
 }
 
 /// @nodoc
-abstract class _$$LeaderboardModelImplCopyWith<$Res>
-    implements $LeaderboardModelCopyWith<$Res> {
-  factory _$$LeaderboardModelImplCopyWith(_$LeaderboardModelImpl value,
-          $Res Function(_$LeaderboardModelImpl) then) =
+abstract class _$$LeaderboardModelImplCopyWith<$Res> implements $LeaderboardModelCopyWith<$Res> {
+  factory _$$LeaderboardModelImplCopyWith(
+          _$LeaderboardModelImpl value, $Res Function(_$LeaderboardModelImpl) then) =
       __$$LeaderboardModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String uid,
-      DateTime updatedAt,
-      DateTime createdAt,
-      String name,
-      int points});
+  $Res call({String uid, DateTime updatedAt, DateTime createdAt, String name, int points});
 }
 
 /// @nodoc
 class __$$LeaderboardModelImplCopyWithImpl<$Res>
     extends _$LeaderboardModelCopyWithImpl<$Res, _$LeaderboardModelImpl>
     implements _$$LeaderboardModelImplCopyWith<$Res> {
-  __$$LeaderboardModelImplCopyWithImpl(_$LeaderboardModelImpl _value,
-      $Res Function(_$LeaderboardModelImpl) _then)
+  __$$LeaderboardModelImplCopyWithImpl(
+      _$LeaderboardModelImpl _value, $Res Function(_$LeaderboardModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -185,25 +172,21 @@ class _$LeaderboardModelImpl implements _LeaderboardModel {
         (other.runtimeType == runtimeType &&
             other is _$LeaderboardModelImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt) &&
+            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.points, points) || other.points == points));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uid, updatedAt, createdAt, name, points);
+  int get hashCode => Object.hash(runtimeType, uid, updatedAt, createdAt, name, points);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaderboardModelImplCopyWith<_$LeaderboardModelImpl> get copyWith =>
-      __$$LeaderboardModelImplCopyWithImpl<_$LeaderboardModelImpl>(
-          this, _$identity);
+      __$$LeaderboardModelImplCopyWithImpl<_$LeaderboardModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -221,8 +204,7 @@ abstract class _LeaderboardModel implements LeaderboardModel {
       final String name,
       final int points}) = _$LeaderboardModelImpl;
 
-  factory _LeaderboardModel.fromJson(Map<String, dynamic> json) =
-      _$LeaderboardModelImpl.fromJson;
+  factory _LeaderboardModel.fromJson(Map<String, dynamic> json) = _$LeaderboardModelImpl.fromJson;
 
   @override
   String get uid;

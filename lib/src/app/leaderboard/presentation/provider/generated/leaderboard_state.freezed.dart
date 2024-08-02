@@ -21,20 +21,15 @@ mixin _$LeaderboardState {
   List<LeaderboardModel> get topThree => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LeaderboardStateCopyWith<LeaderboardState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $LeaderboardStateCopyWith<LeaderboardState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LeaderboardStateCopyWith<$Res> {
-  factory $LeaderboardStateCopyWith(
-          LeaderboardState value, $Res Function(LeaderboardState) then) =
+  factory $LeaderboardStateCopyWith(LeaderboardState value, $Res Function(LeaderboardState) then) =
       _$LeaderboardStateCopyWithImpl<$Res, LeaderboardState>;
   @useResult
-  $Res call(
-      {LeaderboardStatus status,
-      LeaderboardType type,
-      List<LeaderboardModel> topThree});
+  $Res call({LeaderboardStatus status, LeaderboardType type, List<LeaderboardModel> topThree});
 }
 
 /// @nodoc
@@ -72,25 +67,21 @@ class _$LeaderboardStateCopyWithImpl<$Res, $Val extends LeaderboardState>
 }
 
 /// @nodoc
-abstract class _$$LeaderboardStateImplCopyWith<$Res>
-    implements $LeaderboardStateCopyWith<$Res> {
-  factory _$$LeaderboardStateImplCopyWith(_$LeaderboardStateImpl value,
-          $Res Function(_$LeaderboardStateImpl) then) =
+abstract class _$$LeaderboardStateImplCopyWith<$Res> implements $LeaderboardStateCopyWith<$Res> {
+  factory _$$LeaderboardStateImplCopyWith(
+          _$LeaderboardStateImpl value, $Res Function(_$LeaderboardStateImpl) then) =
       __$$LeaderboardStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {LeaderboardStatus status,
-      LeaderboardType type,
-      List<LeaderboardModel> topThree});
+  $Res call({LeaderboardStatus status, LeaderboardType type, List<LeaderboardModel> topThree});
 }
 
 /// @nodoc
 class __$$LeaderboardStateImplCopyWithImpl<$Res>
     extends _$LeaderboardStateCopyWithImpl<$Res, _$LeaderboardStateImpl>
     implements _$$LeaderboardStateImplCopyWith<$Res> {
-  __$$LeaderboardStateImplCopyWithImpl(_$LeaderboardStateImpl _value,
-      $Res Function(_$LeaderboardStateImpl) _then)
+  __$$LeaderboardStateImplCopyWithImpl(
+      _$LeaderboardStateImpl _value, $Res Function(_$LeaderboardStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,15 +148,14 @@ class _$LeaderboardStateImpl implements _LeaderboardState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, type,
-      const DeepCollectionEquality().hash(_topThree));
+  int get hashCode =>
+      Object.hash(runtimeType, status, type, const DeepCollectionEquality().hash(_topThree));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaderboardStateImplCopyWith<_$LeaderboardStateImpl> get copyWith =>
-      __$$LeaderboardStateImplCopyWithImpl<_$LeaderboardStateImpl>(
-          this, _$identity);
+      __$$LeaderboardStateImplCopyWithImpl<_$LeaderboardStateImpl>(this, _$identity);
 }
 
 abstract class _LeaderboardState implements LeaderboardState {

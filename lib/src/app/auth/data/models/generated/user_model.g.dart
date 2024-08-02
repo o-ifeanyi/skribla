@@ -11,7 +11,6 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) => _$UserMod
       createdAt: DateTime.parse(json['created_at'] as String),
       name: json['name'] as String? ?? '',
       email: json['email'] as String? ?? '',
-      level: (json['level'] as num?)?.toInt() ?? 0,
       status: $enumDecodeNullable(_$AuthStatusEnumMap, json['status']) ?? AuthStatus.anonymous,
     );
 
@@ -20,7 +19,6 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) => <String
       'created_at': instance.createdAt.toIso8601String(),
       'name': instance.name,
       'email': instance.email,
-      'level': instance.level,
       'status': _$AuthStatusEnumMap[instance.status]!,
     };
 

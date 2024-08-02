@@ -14,7 +14,6 @@ class UserModel with _$UserModel {
     required DateTime createdAt,
     @Default('') String name,
     @Default('') String email,
-    @Default(0) int level,
     @Default(AuthStatus.anonymous) AuthStatus status,
   }) = _UserModel;
 
