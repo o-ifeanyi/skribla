@@ -7,10 +7,12 @@ import 'package:flutter/material.dart';
 class ExhibitFooter extends StatelessWidget {
   const ExhibitFooter({
     required this.exhibit,
+    required this.onShare,
     super.key,
   });
 
   final ExhibitModel exhibit;
+  final VoidCallback onShare;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class ExhibitFooter extends StatelessWidget {
         AppButton(
           hPadding: 15,
           text: 'Share',
-          onPressed: () {},
+          onPressed: onShare,
         ),
         Config.vBox30,
       ],

@@ -75,6 +75,7 @@ final class LeaderboardRepository {
       Query query = firebaseFirestore
           .collection('leaderboard/${type.name}/users')
           .orderBy('points', descending: true)
+          .orderBy('updated_at', descending: false)
           .limit(pageSize);
 
       if (lastItem != null) {

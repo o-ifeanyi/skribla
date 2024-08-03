@@ -1,8 +1,16 @@
+import 'dart:ui';
+
 import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
 import 'package:draw_and_guess/src/app/history/data/repository/history_repository.dart';
 import 'package:draw_and_guess/src/app/history/presentation/provider/history_state.dart';
+import 'package:draw_and_guess/src/core/platform/mobile.dart'
+    if (dart.library.html) 'package:draw_and_guess/src/core/platform/web.dart' as platform;
+import 'package:draw_and_guess/src/core/service/logger.dart';
+import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:draw_and_guess/src/core/util/types.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HistoryProvider extends StateNotifier<HistoryState> {
@@ -38,4 +46,26 @@ class HistoryProvider extends StateNotifier<HistoryState> {
   }
 
   Future<List<ExhibitModel>> getExhibits(String id) async => galleryRepository.getExhibits(id);
+
+  Future<void> shareImage(GlobalKey screenshotKey) async {
+    try {
+      state = state.copyWith(sharing: true);
+      await Future<void>.delayed(Config.duration300);
+
+      final render = screenshotKey.currentContext?.findRenderObject();
+      final image = await (render as RenderRepaintBoundary?)?.toImage();
+
+      if (image == null) return;
+      final byteData = await image.toByteData(format: ImageByteFormat.png);
+      if (byteData == null) return;
+
+      final fileName = 'screenshot-${DateTime.now().microsecondsSinceEpoch}.png';
+
+      await platform.shareImage(byteData, fileName);
+    } catch (error) {
+      Logger.log(error);
+    } finally {
+      state = state.copyWith(sharing: false);
+    }
+  }
 }

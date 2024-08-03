@@ -8,5 +8,6 @@ enum HistoryStatus { idle, gettingHistory }
 class HistoryState with _$HistoryState {
   const factory HistoryState({
     @Default(HistoryStatus.idle) HistoryStatus status,
+    @Default(false) bool sharing,
   }) = _HistoryState;
 }

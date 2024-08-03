@@ -1,8 +1,9 @@
+import 'dart:ui' show PlatformDispatcher, PointerDeviceKind;
+
 import 'package:draw_and_guess/src/core/di/di.dart';
 import 'package:draw_and_guess/src/core/router/router.dart';
 import 'package:draw_and_guess/src/core/theme/app_theme.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:flutter/foundation.dart' show PlatformDispatcher;
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -48,6 +49,15 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           return MaterialApp.router(
             title: 'Draw & Guess',
             theme: AppTheme.themeOptions(themeOption),
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.touch,
+                PointerDeviceKind.stylus,
+                PointerDeviceKind.trackpad,
+                PointerDeviceKind.unknown,
+              },
+            ),
             darkTheme: AppTheme.darkTheme,
             themeMode: context.themeMode,
             routerConfig: routerConfig,

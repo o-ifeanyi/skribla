@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HistoryState {
   HistoryStatus get status => throw _privateConstructorUsedError;
+  bool get sharing => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HistoryStateCopyWith<HistoryState> get copyWith => throw _privateConstructorUsedError;
@@ -27,7 +28,7 @@ abstract class $HistoryStateCopyWith<$Res> {
   factory $HistoryStateCopyWith(HistoryState value, $Res Function(HistoryState) then) =
       _$HistoryStateCopyWithImpl<$Res, HistoryState>;
   @useResult
-  $Res call({HistoryStatus status});
+  $Res call({HistoryStatus status, bool sharing});
 }
 
 /// @nodoc
@@ -44,12 +45,17 @@ class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState>
   @override
   $Res call({
     Object? status = null,
+    Object? sharing = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as HistoryStatus,
+      sharing: null == sharing
+          ? _value.sharing
+          : sharing // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -61,7 +67,7 @@ abstract class _$$HistoryStateImplCopyWith<$Res> implements $HistoryStateCopyWit
       __$$HistoryStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({HistoryStatus status});
+  $Res call({HistoryStatus status, bool sharing});
 }
 
 /// @nodoc
@@ -76,12 +82,17 @@ class __$$HistoryStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? sharing = null,
   }) {
     return _then(_$HistoryStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as HistoryStatus,
+      sharing: null == sharing
+          ? _value.sharing
+          : sharing // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -89,15 +100,18 @@ class __$$HistoryStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HistoryStateImpl implements _HistoryState {
-  const _$HistoryStateImpl({this.status = HistoryStatus.idle});
+  const _$HistoryStateImpl({this.status = HistoryStatus.idle, this.sharing = false});
 
   @override
   @JsonKey()
   final HistoryStatus status;
+  @override
+  @JsonKey()
+  final bool sharing;
 
   @override
   String toString() {
-    return 'HistoryState(status: $status)';
+    return 'HistoryState(status: $status, sharing: $sharing)';
   }
 
   @override
@@ -105,11 +119,12 @@ class _$HistoryStateImpl implements _HistoryState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HistoryStateImpl &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.sharing, sharing) || other.sharing == sharing));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode => Object.hash(runtimeType, status, sharing);
 
   @JsonKey(ignore: true)
   @override
@@ -119,10 +134,13 @@ class _$HistoryStateImpl implements _HistoryState {
 }
 
 abstract class _HistoryState implements HistoryState {
-  const factory _HistoryState({final HistoryStatus status}) = _$HistoryStateImpl;
+  const factory _HistoryState({final HistoryStatus status, final bool sharing}) =
+      _$HistoryStateImpl;
 
   @override
   HistoryStatus get status;
+  @override
+  bool get sharing;
   @override
   @JsonKey(ignore: true)
   _$$HistoryStateImplCopyWith<_$HistoryStateImpl> get copyWith =>

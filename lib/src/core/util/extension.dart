@@ -28,7 +28,6 @@ extension WidgetExt on Widget {
 
 extension DateTimeExt on DateTime {
   String get formatEDMHM => DateFormat('EEE d MMM HH:mm').format(this);
-  String get formatDMY => DateFormat('d MMM, y').format(this);
   bool get isNotExpired => DateTime.now().isBefore(this);
 }
 
