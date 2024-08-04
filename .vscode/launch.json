@@ -14,7 +14,9 @@
                 "--flavor",
                 "prod",
                 "--target",
-                "lib/main_prod.dart"
+                "lib/main_prod.dart",
+                "--dart-define-from-file",
+                "/Users/ifeanyionuoha/draw_and_guess/prod_creds.json"
             ]
         },
         {
@@ -26,7 +28,9 @@
                 "--flavor",
                 "dev",
                 "--target",
-                "lib/main_dev.dart"
+                "lib/main_dev.dart",
+                "--dart-define-from-file",
+                "/Users/ifeanyionuoha/draw_and_guess/dev_creds.json"
             ]
         }
     ]
