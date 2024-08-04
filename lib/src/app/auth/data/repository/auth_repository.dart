@@ -166,6 +166,7 @@ final class AuthRepository {
 
   Future<Result<bool>> _reauthenticateAndDelete() async {
     try {
+      _logger.request('Reauthenticating user');
       final providerData = firebaseAuth.currentUser?.providerData.first;
 
       if (AppleAuthProvider().providerId == providerData!.providerId) {
