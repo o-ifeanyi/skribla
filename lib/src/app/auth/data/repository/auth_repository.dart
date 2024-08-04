@@ -65,10 +65,10 @@ final class AuthRepository {
             idToken: googleAuth.idToken,
           );
       }
-
+      UserCredential userCredential;
       try {
         _logger.request('Linking credential for anonymous user');
-        await firebaseAuth.currentUser!.linkWithCredential(credential);
+        userCredential = await firebaseAuth.currentUser!.linkWithCredential(credential);
       } on FirebaseAuthException catch (e, s) {
         _logger.error('linkWithCredential - $e', stack: s);
         switch (e.code) {
@@ -76,16 +76,16 @@ final class AuthRepository {
           case 'credential-already-in-use':
           case 'email-already-in-use':
             _logger.info('Signing in existing user - ${e.code}');
-            await firebaseAuth.signInWithCredential(credential);
+            userCredential = await firebaseAuth.signInWithCredential(credential);
           default:
             return Result.error(CustomError(message: e.toString()));
         }
       }
 
-      await firebaseFirestore
-          .collection('users')
-          .doc(firebaseAuth.currentUser!.uid)
-          .update({'status': AuthStatus.verified.name});
+      await firebaseFirestore.collection('users').doc(firebaseAuth.currentUser!.uid).update({
+        'status': AuthStatus.verified.name,
+        'email': userCredential.user?.email ?? '',
+      });
 
       return await getUser();
     } catch (e, s) {
@@ -148,6 +148,11 @@ final class AuthRepository {
   Future<Result<bool>> deleteAccount() async {
     try {
       _logger.request('Deleting user');
+      await firebaseFirestore
+          .collection('users')
+          .doc(firebaseAuth.currentUser!.uid)
+          .update({'name': 'Deleted', 'email': '', 'status': AuthStatus.anonymous.name});
+
       await firebaseAuth.currentUser!.delete();
       return const Result.success(true);
     } on FirebaseAuthException catch (e, s) {

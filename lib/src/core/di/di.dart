@@ -13,6 +13,7 @@ import 'package:draw_and_guess/src/app/history/presentation/provider/history_sta
 import 'package:draw_and_guess/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 import 'package:draw_and_guess/src/app/leaderboard/presentation/provider/leaderboard_provider.dart';
 import 'package:draw_and_guess/src/app/leaderboard/presentation/provider/leaderboard_state.dart';
+import 'package:draw_and_guess/src/app/settings/data/repository/settings_repository.dart';
 import 'package:draw_and_guess/src/app/settings/presentation/provider/settings_provider.dart';
 import 'package:draw_and_guess/src/app/settings/presentation/provider/settings_state.dart';
 import 'package:draw_and_guess/src/app/start/data/repository/start_repository.dart';
@@ -70,6 +71,7 @@ final leaderboardProvider = StateNotifierProvider<LeaderboardProvider, Leaderboa
 final settingsProvider = StateNotifierProvider<SettingsProvider, SettingsState>(
   (ref) => SettingsProvider(
     sharedPreferences: ref.read(sharedPreferencedProvider).value,
+    settingsRepository: ref.read(settingsRepoProvider),
   ),
 );
 
@@ -106,6 +108,12 @@ final galleryRepoProvider = Provider<HistoryRepository>(
 final leaderboardRepoProvider = Provider<LeaderboardRepository>(
   (ref) => LeaderboardRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
+    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+  ),
+);
+
+final settingsRepoProvider = Provider<SettingsRepository>(
+  (ref) => SettingsRepository(
     firebaseFirestore: ref.read(firebaseFireStoreProvider),
   ),
 );

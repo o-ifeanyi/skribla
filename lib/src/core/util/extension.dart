@@ -14,6 +14,11 @@ extension StringExt on String {
 
     return this;
   }
+
+  String get capitalize {
+    if (length < 2) return toUpperCase();
+    return substring(0, 1).toUpperCase() + substring(1).toLowerCase();
+  }
 }
 
 extension WidgetExt on Widget {

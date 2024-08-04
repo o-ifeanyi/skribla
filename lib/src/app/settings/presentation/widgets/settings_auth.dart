@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
 import 'package:draw_and_guess/src/app/auth/data/repository/auth_repository.dart';
 import 'package:draw_and_guess/src/core/di/di.dart';
 import 'package:draw_and_guess/src/core/resource/app_icons.dart';
@@ -19,11 +20,12 @@ class SettingsAuth extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(authProvider.select((it) => it.user));
+
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        final user = snapshot.data;
-        if (user == null || user.isAnonymous) {
+        if (snapshot.data == null || user?.status == AuthStatus.anonymous) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
@@ -108,9 +110,7 @@ class SettingsAuth extends ConsumerWidget {
                     },
                   ).then((proceed) {
                     if (proceed != true) return;
-                    ref.read(authProvider.notifier).deleteAccount().then((success) {
-                      if (success) context.pop();
-                    });
+                    ref.read(authProvider.notifier).deleteAccount();
                   });
                 },
               ),

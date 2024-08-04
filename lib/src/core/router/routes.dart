@@ -5,4 +5,5 @@ abstract class Routes {
   static const String exhibits = 'exhibits/:id';
   static const String leaderboard = 'leaderboard';
   static const String settings = 'settings';
+  static const String legal = 'legal/:name';
 }

@@ -1,7 +1,5 @@
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/widgets/app_button.dart';
-import 'package:flutter/material.dart';
+import 'package:draw_and_guess/src/core/widgets/error_widget.dart';
+import 'package:flutter/material.dart' hide ErrorWidget;
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 enum PageType { grid, list }
@@ -37,24 +35,9 @@ class PagedWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final errorPage = Column(
-      children: [
-        SizedBox(height: topSpacer ?? Config.height * 0.3),
-        Text(
-          'Something went wrong',
-          style: context.textTheme.titleSmall,
-        ),
-        Config.vBox12,
-        const Text(
-          'Try again or contact us at drawandguesseng@gmail.com',
-          textAlign: TextAlign.center,
-        ),
-        Config.vBox12,
-        AppButton(
-          text: 'Retry',
-          onPressed: pagingController.refresh,
-        ),
-      ],
+    final errorPage = ErrorWidget(
+      topSpacer: topSpacer,
+      retry: pagingController.refresh,
     );
 
     return switch (pageType) {
