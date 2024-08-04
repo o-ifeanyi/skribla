@@ -6,5 +6,9 @@
 	<array>
 		<string>Default</string>
 	</array>
+	<key>keychain-access-groups</key>
+    <array>
+        <string>$(APP_IDENTIFIER_PREFIX).com.google.GIDSignIn</string>
+    </array>
 </dict>
 </plist>
