@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:draw_and_guess/src/app/game/presentation/screens/game_screen.dart';
 import 'package:draw_and_guess/src/app/history/presentation/screens/history_screen.dart';
 import 'package:draw_and_guess/src/app/leaderboard/presentation/screens/leaderboard_screen.dart';
+import 'package:draw_and_guess/src/app/settings/presentation/screens/settings_screen.dart';
 import 'package:draw_and_guess/src/app/start/presentation/screens/start_screen.dart';
 import 'package:draw_and_guess/src/core/router/routes.dart';
 import 'package:draw_and_guess/src/core/util/extension.dart';
@@ -62,6 +63,10 @@ final routerProvider = Provider<GoRouter>(
             route(
               path: Routes.leaderboard,
               screen: const LeaderboardScreen(),
+            ),
+            route(
+              path: Routes.settings,
+              screen: const SettingsScreen(),
             ),
           ],
         ),

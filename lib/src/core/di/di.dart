@@ -13,6 +13,8 @@ import 'package:draw_and_guess/src/app/history/presentation/provider/history_sta
 import 'package:draw_and_guess/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 import 'package:draw_and_guess/src/app/leaderboard/presentation/provider/leaderboard_provider.dart';
 import 'package:draw_and_guess/src/app/leaderboard/presentation/provider/leaderboard_state.dart';
+import 'package:draw_and_guess/src/app/settings/presentation/provider/settings_provider.dart';
+import 'package:draw_and_guess/src/app/settings/presentation/provider/settings_state.dart';
 import 'package:draw_and_guess/src/app/start/data/repository/start_repository.dart';
 import 'package:draw_and_guess/src/app/start/presentation/provider/start_provider.dart';
 import 'package:draw_and_guess/src/app/start/presentation/provider/start_state.dart';
@@ -62,6 +64,12 @@ final leaderboardProvider = StateNotifierProvider<LeaderboardProvider, Leaderboa
   (ref) => LeaderboardProvider(
     ref: ref,
     leaderboardRepository: ref.read(leaderboardRepoProvider),
+  ),
+);
+
+final settingsProvider = StateNotifierProvider<SettingsProvider, SettingsState>(
+  (ref) => SettingsProvider(
+    sharedPreferences: ref.read(sharedPreferencedProvider).value,
   ),
 );
 

@@ -22,6 +22,13 @@ class StartScreen extends ConsumerStatefulWidget {
 
 class _StartScreenState extends ConsumerState<StartScreen> {
   final _nameCtrl = TextEditingController();
+
+  @override
+  void setState(VoidCallback fn) {
+    if (!mounted) return;
+    super.setState(fn);
+  }
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -42,6 +49,13 @@ class _StartScreenState extends ConsumerState<StartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(
+      authProvider.select((it) => it.user),
+      (_, user) => setState(() {
+        _nameCtrl.text = user?.name ?? '';
+      }),
+    );
+
     final user = ref.watch(authProvider.select((it) => it.user));
     final status = ref.watch(startProvider.select((it) => it.status));
 
@@ -106,7 +120,7 @@ class _StartScreenState extends ConsumerState<StartScreen> {
                 StartAction(
                   icon: AppIcons.gear,
                   text: 'Settings',
-                  onTap: () {},
+                  onTap: () => context.goNamed(Routes.settings),
                 ),
                 StartAction(
                   icon: AppIcons.trophy,

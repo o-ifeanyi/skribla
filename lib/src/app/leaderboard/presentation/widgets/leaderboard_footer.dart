@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
+import 'package:draw_and_guess/src/app/auth/data/repository/auth_repository.dart';
 import 'package:draw_and_guess/src/app/leaderboard/presentation/widgets/leaderboard_item.dart';
 import 'package:draw_and_guess/src/core/di/di.dart';
 import 'package:draw_and_guess/src/core/resource/app_icons.dart';
@@ -46,7 +47,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
           Config.vBox12,
           if (user?.status == AuthStatus.anonymous) ...[
             const Text(
-              'Sign up to join the leadearboard',
+              'Sign in to join the leadearboard',
               textAlign: TextAlign.center,
             ),
             Config.vBox12,
@@ -55,14 +56,32 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                 hPadding: 15,
                 icon: Icon(AppIcons.appleLogo),
                 text: 'Continue with Apple',
-                onPressed: () {},
+                onPressed: () {
+                  ref
+                      .read(authProvider.notifier)
+                      .signInWithProvider(AuthOptions.apple)
+                      .then((success) {
+                    if (success) {
+                      final _ = ref.refresh(getPosition);
+                    }
+                  });
+                },
               ),
             ] else ...[
               AppButton(
                 hPadding: 15,
                 icon: Icon(AppIcons.googleLogo),
                 text: 'Continue with Google',
-                onPressed: () {},
+                onPressed: () {
+                  ref
+                      .read(authProvider.notifier)
+                      .signInWithProvider(AuthOptions.google)
+                      .then((success) {
+                    if (success) {
+                      final _ = ref.refresh(getPosition);
+                    }
+                  });
+                },
               ),
             ],
           ] else if (user?.status == AuthStatus.verified) ...[
@@ -72,7 +91,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                 if (data == null) return const SizedBox.shrink();
                 return LeaderboardItem(
                   data: data,
-                  name: user?.name,
+                  name: '${user?.name} (you)',
                 );
               },
               error: (error, stackTrace) {

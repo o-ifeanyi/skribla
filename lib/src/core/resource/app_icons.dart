@@ -15,4 +15,12 @@ abstract class AppIcons {
   static IconData get gear => PhosphorIconsBold.gear;
   static IconData get appleLogo => PhosphorIconsBold.appleLogo;
   static IconData get googleLogo => PhosphorIconsBold.googleLogo;
+  static IconData get signOut => PhosphorIconsBold.signOut;
+  static IconData get trashSimple => PhosphorIconsBold.trashSimple;
+  static IconData get star => PhosphorIconsBold.star;
+  static IconData get envelopeSimple => PhosphorIconsBold.envelopeSimple;
+  static IconData get shield => PhosphorIconsBold.shield;
+  static IconData get listChecks => PhosphorIconsBold.listChecks;
+  static IconData get arrowUpRight => PhosphorIconsBold.arrowUpRight;
+  static IconData get vibrate => PhosphorIconsBold.vibrate;
 }

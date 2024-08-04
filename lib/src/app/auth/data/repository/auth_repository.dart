@@ -24,7 +24,7 @@ final class AuthRepository {
       final userCredential = await firebaseAuth.signInAnonymously();
 
       if (userCredential.additionalUserInfo?.isNewUser ?? false) {
-        return await saveUser(userCredential);
+        return await saveAnonymousUser(userCredential);
       } else {
         return await getUser();
       }
@@ -65,29 +65,45 @@ final class AuthRepository {
             idToken: googleAuth.idToken,
           );
       }
-      final userCredential = await firebaseAuth.currentUser!.linkWithCredential(credential);
 
-      if (userCredential.additionalUserInfo?.isNewUser ?? false) {
-        return await saveUser(userCredential);
-      } else {
-        return await getUser();
+      try {
+        _logger.request('Linking credential for anonymous user');
+        await firebaseAuth.currentUser!.linkWithCredential(credential);
+      } on FirebaseAuthException catch (e, s) {
+        _logger.error('linkWithCredential - $e', stack: s);
+        switch (e.code) {
+          case 'provider-already-linked':
+          case 'credential-already-in-use':
+          case 'email-already-in-use':
+            _logger.info('Signing in existing user - ${e.code}');
+            await firebaseAuth.signInWithCredential(credential);
+          default:
+            return Result.error(CustomError(message: e.toString()));
+        }
       }
+
+      await firebaseFirestore
+          .collection('users')
+          .doc(firebaseAuth.currentUser!.uid)
+          .update({'status': AuthStatus.verified.name});
+
+      return await getUser();
     } catch (e, s) {
       _logger.error('signInWithProvider - $e', stack: s);
       return Result.error(CustomError(message: e.toString()));
     }
   }
 
-  Future<Result<UserModel>> saveUser(UserCredential userCredential) async {
+  Future<Result<UserModel>> saveAnonymousUser(UserCredential userCredential) async {
     try {
-      _logger.request('Saving user - ${userCredential.user}');
+      _logger.request('Saving anonymous user - ${userCredential.user}');
 
       final user = UserModel.fromCredential(userCredential);
       await firebaseFirestore.collection('users').doc(user.uid).set(user.toJson());
 
       return Result.success(user);
     } catch (e, s) {
-      _logger.error('saveUser - $e', stack: s);
+      _logger.error('saveAnonumousUser - $e', stack: s);
       return Result.error(CustomError(message: e.toString()));
     }
   }
@@ -125,6 +141,17 @@ final class AuthRepository {
       return const Result.success(true);
     } catch (e, s) {
       _logger.error('updateUserName - $e', stack: s);
+      return Result.error(CustomError(message: e.toString()));
+    }
+  }
+
+  Future<Result<bool>> deleteAccount() async {
+    try {
+      _logger.request('Deleting user');
+      await firebaseAuth.currentUser!.delete();
+      return const Result.success(true);
+    } catch (e, s) {
+      _logger.error('deleteAccount - $e', stack: s);
       return Result.error(CustomError(message: e.toString()));
     }
   }

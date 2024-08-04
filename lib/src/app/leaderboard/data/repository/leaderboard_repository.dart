@@ -123,12 +123,13 @@ final class LeaderboardRepository {
         throw CustomError(message: msg);
       }
       final positions = await firebaseFirestore
-          .collection('leaderboard/${type.name}/$uid')
+          .collection('leaderboard/${type.name}/users')
           .where('points', isGreaterThanOrEqualTo: model.points)
+          .where('updated_at', isLessThanOrEqualTo: model.updatedAt.toIso8601String())
           .get();
 
       _positionCache[type] = (
-        data: (position: positions.size + 1, model: model),
+        data: (position: positions.size, model: model),
         expiry: DateTime.now().add(const Duration(minutes: 30)),
       );
 

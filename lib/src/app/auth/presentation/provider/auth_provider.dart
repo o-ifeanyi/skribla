@@ -51,4 +51,16 @@ class AuthProvider extends StateNotifier<AuthState> {
       error: (error) => false,
     );
   }
+
+  Future<bool> deleteAccount() async {
+    if (state.user == null) return false;
+    final res = await authRepository.deleteAccount();
+    return res.when(
+      success: (success) {
+        state = state.copyWith(user: null);
+        return true;
+      },
+      error: (error) => false,
+    );
+  }
 }

@@ -6,7 +6,7 @@ enum ButtonType { filled, outlined, elevated, text }
 class AppButton extends StatelessWidget {
   const AppButton({
     required this.text,
-    super.key,
+    this.textStyle,
     this.icon,
     this.onPressed,
     this.style,
@@ -14,10 +14,12 @@ class AppButton extends StatelessWidget {
     this.hPadding = 0,
     this.cPadding = 15,
     this.type = ButtonType.filled,
+    super.key,
   }) : assert(text != null || child != null, 'text or child is needed');
 
   final void Function()? onPressed;
   final String? text;
+  final TextStyle? textStyle;
   final double hPadding;
   final double cPadding;
   final Widget? icon;
@@ -32,7 +34,7 @@ class AppButton extends StatelessWidget {
       child: child ??
           Text(
             text!,
-            style: Config.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
+            style: textStyle ?? Config.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
           ),
     );
 
@@ -43,41 +45,45 @@ class AppButton extends StatelessWidget {
             onPressed: onPressed,
             label: content,
             icon: icon ?? const SizedBox.shrink(),
-            style: FilledButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: Config.radius8,
-              ),
-            ),
+            style: style ??
+                FilledButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: Config.radius8,
+                  ),
+                ),
           ),
         ButtonType.outlined => OutlinedButton.icon(
             onPressed: onPressed,
             label: content,
             icon: icon ?? const SizedBox.shrink(),
-            style: OutlinedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: Config.radius8,
-              ),
-            ),
+            style: style ??
+                OutlinedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: Config.radius8,
+                  ),
+                ),
           ),
         ButtonType.elevated => ElevatedButton.icon(
             onPressed: onPressed,
             label: content,
             icon: icon ?? const SizedBox.shrink(),
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: Config.radius8,
-              ),
-            ),
+            style: style ??
+                ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: Config.radius8,
+                  ),
+                ),
           ),
         ButtonType.text => TextButton.icon(
             onPressed: onPressed,
             label: content,
             icon: icon ?? const SizedBox.shrink(),
-            style: TextButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: Config.radius8,
-              ),
-            ),
+            style: style ??
+                TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: Config.radius8,
+                  ),
+                ),
           ),
       },
     );
