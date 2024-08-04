@@ -154,14 +154,30 @@ final class AuthRepository {
       _logger.error('deleteAccount - ${e.code}', stack: s);
       switch (e.code) {
         case 'requires-recent-login':
-          return Result.error(
-            CustomError(message: e.toString(), reason: ErrorReason.recentLoginRequired),
-          );
+          return _reauthenticateAndDelete();
         default:
           return Result.error(CustomError(message: e.toString()));
       }
     } catch (e, s) {
       _logger.error('deleteAccount - $e', stack: s);
+      return Result.error(CustomError(message: e.toString()));
+    }
+  }
+
+  Future<Result<bool>> _reauthenticateAndDelete() async {
+    try {
+      final providerData = firebaseAuth.currentUser?.providerData.first;
+
+      if (AppleAuthProvider().providerId == providerData!.providerId) {
+        await firebaseAuth.currentUser!.reauthenticateWithProvider(AppleAuthProvider());
+      } else if (GoogleAuthProvider().providerId == providerData.providerId) {
+        await firebaseAuth.currentUser!.reauthenticateWithProvider(GoogleAuthProvider());
+      }
+
+      await firebaseAuth.currentUser!.delete();
+      return const Result.success(true);
+    } catch (e, s) {
+      _logger.error('_reauthenticateAndDelete - $e', stack: s);
       return Result.error(CustomError(message: e.toString()));
     }
   }

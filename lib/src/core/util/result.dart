@@ -8,7 +8,7 @@ sealed class Result<T> with _$Result<T> {
   const factory Result.error(CustomError error) = _ErrorResult;
 }
 
-enum ErrorReason { unknown, recentLoginRequired }
+enum ErrorReason { unknown }
 
 class CustomError implements Exception {
   const CustomError({

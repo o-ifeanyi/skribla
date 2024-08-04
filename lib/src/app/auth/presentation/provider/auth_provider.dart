@@ -1,6 +1,5 @@
 import 'package:draw_and_guess/src/app/auth/data/repository/auth_repository.dart';
 import 'package:draw_and_guess/src/app/auth/presentation/provider/auth_state.dart';
-import 'package:draw_and_guess/src/core/util/result.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AuthProvider extends StateNotifier<AuthState> {
@@ -61,12 +60,7 @@ class AuthProvider extends StateNotifier<AuthState> {
         state = state.copyWith(user: null);
         return true;
       },
-      error: (error) {
-        if (error.reason == ErrorReason.recentLoginRequired) {
-          // show dialog, login user, return deleteAccount()
-        }
-        return false;
-      },
+      error: (error) => false,
     );
   }
 }
