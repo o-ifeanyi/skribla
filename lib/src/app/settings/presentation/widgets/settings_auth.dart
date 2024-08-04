@@ -34,11 +34,26 @@ class SettingsAuth extends ConsumerWidget {
               ),
               Config.vBox12,
               if (!kIsWeb && Platform.isIOS) ...[
-                AppButton(
-                  icon: Icon(AppIcons.appleLogo),
-                  text: 'Continue with Apple',
-                  onPressed: () =>
-                      ref.read(authProvider.notifier).signInWithProvider(AuthOptions.apple),
+                Row(
+                  children: [
+                    Expanded(
+                      child: AppButton(
+                        icon: Icon(AppIcons.appleLogo),
+                        text: 'Apple',
+                        onPressed: () =>
+                            ref.read(authProvider.notifier).signInWithProvider(AuthOptions.apple),
+                      ),
+                    ),
+                    Config.hBox12,
+                    Expanded(
+                      child: AppButton(
+                        icon: Icon(AppIcons.googleLogo),
+                        text: 'Google',
+                        onPressed: () =>
+                            ref.read(authProvider.notifier).signInWithProvider(AuthOptions.google),
+                      ),
+                    ),
+                  ],
                 ),
               ] else ...[
                 AppButton(

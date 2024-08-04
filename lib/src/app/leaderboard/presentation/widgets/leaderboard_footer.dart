@@ -52,24 +52,45 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
             ),
             Config.vBox12,
             if (!kIsWeb && Platform.isIOS) ...[
-              AppButton(
-                hPadding: 15,
-                icon: Icon(AppIcons.appleLogo),
-                text: 'Continue with Apple',
-                onPressed: () {
-                  ref
-                      .read(authProvider.notifier)
-                      .signInWithProvider(AuthOptions.apple)
-                      .then((success) {
-                    if (success) {
-                      final _ = ref.refresh(getPosition);
-                    }
-                  });
-                },
+              Row(
+                children: [
+                  Expanded(
+                    child: AppButton(
+                      icon: Icon(AppIcons.appleLogo),
+                      text: 'Apple',
+                      onPressed: () {
+                        ref
+                            .read(authProvider.notifier)
+                            .signInWithProvider(AuthOptions.apple)
+                            .then((success) {
+                          if (success) {
+                            final _ = ref.refresh(getPosition);
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                  Config.hBox12,
+                  Expanded(
+                    child: AppButton(
+                      icon: Icon(AppIcons.googleLogo),
+                      text: 'Google',
+                      onPressed: () {
+                        ref
+                            .read(authProvider.notifier)
+                            .signInWithProvider(AuthOptions.google)
+                            .then((success) {
+                          if (success) {
+                            final _ = ref.refresh(getPosition);
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                ],
               ),
             ] else ...[
               AppButton(
-                hPadding: 15,
                 icon: Icon(AppIcons.googleLogo),
                 text: 'Continue with Google',
                 onPressed: () {

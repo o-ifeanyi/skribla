@@ -52,7 +52,7 @@ class _LeaderboardScreenState extends ConsumerState<LeaderboardScreen> {
           onRefresh: () async => _controller.refresh(),
           child: PagedWidget(
             pageType: PageType.list,
-            padding: Config.symmetric(h: 15),
+            padding: Config.fromLTRB(15, 0, 15, Config.height * 0.3),
             pagingController: _controller,
             itemBuilder: (context, leaderboard, index) {
               return LeaderboardItem(

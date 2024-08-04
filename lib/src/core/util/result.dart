@@ -8,14 +8,16 @@ sealed class Result<T> with _$Result<T> {
   const factory Result.error(CustomError error) = _ErrorResult;
 }
 
+enum ErrorReason { unknown, recentLoginRequired }
+
 class CustomError implements Exception {
   const CustomError({
     required this.message,
-    this.error = '',
+    this.reason = ErrorReason.unknown,
   });
   final String message;
-  final String error;
+  final ErrorReason reason;
 
   @override
-  String toString() => 'Error: $error, Message: $message';
+  String toString() => 'Message: $message Reason: ${reason.name}, ';
 }
