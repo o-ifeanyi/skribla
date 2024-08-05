@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/app/game/data/models/line_model.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:skribla/src/app/game/data/models/line_model.dart';
+import 'package:skribla/src/core/util/extension.dart';
 
 class ArtPainter extends CustomPainter {
   ArtPainter({required this.art, this.repaint = true});

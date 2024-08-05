@@ -1,9 +1,9 @@
-import 'package:draw_and_guess/src/core/theme/colors.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart' show PlatformDispatcher;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skribla/src/core/theme/colors.dart';
+import 'package:skribla/src/core/util/config.dart';
 
 enum ThemeOptions {
   light,

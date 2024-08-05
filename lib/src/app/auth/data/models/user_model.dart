@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/app/game/data/models/player_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/app/game/data/models/player_model.dart';
 
 part 'generated/user_model.freezed.dart';
 part 'generated/user_model.g.dart';
@@ -26,7 +26,7 @@ class UserModel with _$UserModel {
     return UserModel(
       uid: user.uid,
       email: user.email ?? '',
-      name: user.displayName ?? '',
+      name: user.displayName ?? 'Anon',
       status: (user.email ?? '').isEmpty ? AuthStatus.anonymous : AuthStatus.verified,
       createdAt: DateTime.now(),
     );

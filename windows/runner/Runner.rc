@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "app.ifeanyi" "\0"
-            VALUE "FileDescription", "draw_and_guess" "\0"
+            VALUE "FileDescription", "skribla" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "draw_and_guess" "\0"
+            VALUE "InternalName", "skribla" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 app.ifeanyi. All rights reserved." "\0"
-            VALUE "OriginalFilename", "draw_and_guess.exe" "\0"
-            VALUE "ProductName", "draw_and_guess" "\0"
+            VALUE "OriginalFilename", "skribla.exe" "\0"
+            VALUE "ProductName", "skribla" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

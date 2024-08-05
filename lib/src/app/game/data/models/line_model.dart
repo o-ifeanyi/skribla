@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/core/util/converters.dart';
 import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/core/util/converters.dart';
 
 part 'generated/line_model.g.dart';
 

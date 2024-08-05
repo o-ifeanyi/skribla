@@ -1,5 +1,5 @@
-import 'package:draw_and_guess/src/core/service/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/core/service/logger.dart';
 
 const _logger = Logger('Provider Watch');
 

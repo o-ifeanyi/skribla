@@ -6,7 +6,7 @@
     "configurations": [
        
         {
-            "name": "Draw & Guess (prod)",
+            "name": "Skribla (prod)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_prod.dart",
@@ -16,11 +16,11 @@
                 "--target",
                 "lib/main_prod.dart",
                 "--dart-define-from-file",
-                "/Users/ifeanyionuoha/draw_and_guess/prod_creds.json"
+                "/Users/ifeanyionuoha/skribla/prod_creds.json"
             ]
         },
         {
-            "name": "Draw & Guess (dev)",
+            "name": "Skribla (dev)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_dev.dart",
@@ -30,7 +30,7 @@
                 "--target",
                 "lib/main_dev.dart",
                 "--dart-define-from-file",
-                "/Users/ifeanyionuoha/draw_and_guess/dev_creds.json"
+                "/Users/ifeanyionuoha/skribla/dev_creds.json"
             ]
         }
     ]

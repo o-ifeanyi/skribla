@@ -1,12 +1,13 @@
-import 'package:draw_and_guess/src/app/history/presentation/widgets/history_card.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/util/types.dart';
-import 'package:draw_and_guess/src/core/widgets/default_app_bar.dart';
-import 'package:draw_and_guess/src/core/widgets/paged_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/history/presentation/widgets/history_card.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/util/types.dart';
+import 'package:skribla/src/core/widgets/default_app_bar.dart';
+import 'package:skribla/src/core/widgets/paged_widget.dart';
+import 'package:skribla/src/core/widgets/shimmer_widget.dart';
 
 class HistoryScreen extends ConsumerStatefulWidget {
   const HistoryScreen({super.key});
@@ -55,6 +56,28 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
           pagingController: _controller,
           itemBuilder: (context, game, index) {
             return HistoryCard(game: game);
+          },
+          firstPageProgressIndicatorBuilder: (_) {
+            return SizedBox(
+              height: 220,
+              child: GridView.builder(
+                itemCount: 10,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 700,
+                  mainAxisExtent: 220,
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                ),
+                padding: Config.all(15),
+                itemBuilder: (context, index) {
+                  return ShimmerWidget(
+                    child: ColoredBox(
+                      color: context.colorScheme.surface,
+                    ),
+                  );
+                },
+              ),
+            );
           },
           noItemsFoundIndicatorBuilder: (_) {
             return Column(

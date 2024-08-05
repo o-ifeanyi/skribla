@@ -1,14 +1,14 @@
-import 'package:draw_and_guess/src/app/leaderboard/presentation/widgets/leaderboard_app_bar.dart';
-import 'package:draw_and_guess/src/app/leaderboard/presentation/widgets/leaderboard_footer.dart';
-import 'package:draw_and_guess/src/app/leaderboard/presentation/widgets/leaderboard_item.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/util/types.dart';
-import 'package:draw_and_guess/src/core/widgets/paged_widget.dart';
-import 'package:draw_and_guess/src/core/widgets/shimmer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/leaderboard/presentation/widgets/leaderboard_app_bar.dart';
+import 'package:skribla/src/app/leaderboard/presentation/widgets/leaderboard_footer.dart';
+import 'package:skribla/src/app/leaderboard/presentation/widgets/leaderboard_item.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/util/types.dart';
+import 'package:skribla/src/core/widgets/paged_widget.dart';
+import 'package:skribla/src/core/widgets/shimmer_widget.dart';
 
 class LeaderboardScreen extends ConsumerStatefulWidget {
   const LeaderboardScreen({super.key});

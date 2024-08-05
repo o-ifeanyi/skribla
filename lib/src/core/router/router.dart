@@ -1,18 +1,18 @@
 import 'dart:io';
 
-import 'package:draw_and_guess/src/app/game/presentation/screens/game_screen.dart';
-import 'package:draw_and_guess/src/app/history/presentation/screens/history_screen.dart';
-import 'package:draw_and_guess/src/app/leaderboard/presentation/screens/leaderboard_screen.dart';
-import 'package:draw_and_guess/src/app/settings/presentation/screens/legal_screen.dart';
-import 'package:draw_and_guess/src/app/settings/presentation/screens/settings_screen.dart';
-import 'package:draw_and_guess/src/app/start/presentation/screens/start_screen.dart';
-import 'package:draw_and_guess/src/core/router/routes.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skribla/src/app/game/presentation/screens/game_screen.dart';
+import 'package:skribla/src/app/history/presentation/screens/history_screen.dart';
+import 'package:skribla/src/app/leaderboard/presentation/screens/leaderboard_screen.dart';
+import 'package:skribla/src/app/settings/presentation/screens/legal_screen.dart';
+import 'package:skribla/src/app/settings/presentation/screens/settings_screen.dart';
+import 'package:skribla/src/app/start/presentation/screens/start_screen.dart';
+import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/util/extension.dart';
 
 final routerProvider = Provider<GoRouter>(
   (ref) {

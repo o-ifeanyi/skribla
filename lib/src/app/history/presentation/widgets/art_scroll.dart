@@ -1,8 +1,8 @@
-import 'package:draw_and_guess/src/app/game/presentation/widgets/art_painter.dart';
-import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:skribla/src/app/game/presentation/widgets/art_painter.dart';
+import 'package:skribla/src/app/history/data/models/exhibit_model.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
 
 class ArtScroll extends StatefulWidget {
   const ArtScroll({

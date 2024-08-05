@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
-import 'package:draw_and_guess/src/app/game/data/models/line_model.dart';
-import 'package:draw_and_guess/src/app/game/data/models/message_model.dart';
-import 'package:draw_and_guess/src/app/game/data/repository/game_repository.dart';
-import 'package:draw_and_guess/src/app/game/presentation/provider/game_state.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/game/data/models/game_model.dart';
+import 'package:skribla/src/app/game/data/models/line_model.dart';
+import 'package:skribla/src/app/game/data/models/message_model.dart';
+import 'package:skribla/src/app/game/data/repository/game_repository.dart';
+import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
+import 'package:skribla/src/core/di/di.dart';
 
 part 'game_provider_ext.dart';
 

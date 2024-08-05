@@ -1,17 +1,17 @@
 import 'dart:ui';
 
-import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
-import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
-import 'package:draw_and_guess/src/app/history/data/repository/history_repository.dart';
-import 'package:draw_and_guess/src/app/history/presentation/provider/history_state.dart';
-import 'package:draw_and_guess/src/core/platform/mobile.dart'
-    if (dart.library.html) 'package:draw_and_guess/src/core/platform/web.dart' as platform;
-import 'package:draw_and_guess/src/core/service/logger.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/types.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/game/data/models/game_model.dart';
+import 'package:skribla/src/app/history/data/models/exhibit_model.dart';
+import 'package:skribla/src/app/history/data/repository/history_repository.dart';
+import 'package:skribla/src/app/history/presentation/provider/history_state.dart';
+import 'package:skribla/src/core/platform/mobile.dart'
+    if (dart.library.html) 'package:skribla/src/core/platform/web.dart' as platform;
+import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/types.dart';
 
 class HistoryProvider extends StateNotifier<HistoryState> {
   HistoryProvider({

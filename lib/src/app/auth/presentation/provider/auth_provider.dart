@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/app/auth/data/repository/auth_repository.dart';
-import 'package:draw_and_guess/src/app/auth/presentation/provider/auth_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/auth/data/repository/auth_repository.dart';
+import 'package:skribla/src/app/auth/presentation/provider/auth_state.dart';
 
 class AuthProvider extends StateNotifier<AuthState> {
   AuthProvider({required this.authRepository}) : super(const AuthState());

@@ -1,9 +1,9 @@
-import 'package:draw_and_guess/src/app/game/data/models/word_model.dart';
 import 'package:flutter/material.dart';
+import 'package:skribla/src/app/game/data/models/word_model.dart';
 
 abstract class Constants {
   static const points = 10;
-  static const email = 'readandguesseng@gmail.com';
+  static const email = 'skriblaapp@gmail.com';
   static final colors = [...Colors.primaries];
   static final allColors = [...Colors.primaries, ...Colors.accents];
   static const words = [

@@ -1,4 +1,4 @@
-name: draw_and_guess
+name: skribla
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -27,7 +27,7 @@ dependencies:
   json_annotation: ^4.9.0
   path_provider: ^2.1.4
   phosphor_flutter: ^2.1.0
-  share_plus: ^9.0.0
+  share_plus: ^10.0.0
   shared_preferences: ^2.2.3
   shimmer: ^3.0.0
   sign_in_with_apple: ^6.1.1

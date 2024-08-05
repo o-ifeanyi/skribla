@@ -1,14 +1,14 @@
-import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
-import 'package:draw_and_guess/src/app/history/presentation/widgets/art_scroll.dart';
-import 'package:draw_and_guess/src/app/history/presentation/widgets/exhibit_footer.dart';
-import 'package:draw_and_guess/src/app/history/presentation/widgets/light_painter.dart';
-import 'package:draw_and_guess/src/app/history/presentation/widgets/shared_widget.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skribla/src/app/history/data/models/exhibit_model.dart';
+import 'package:skribla/src/app/history/presentation/widgets/art_scroll.dart';
+import 'package:skribla/src/app/history/presentation/widgets/exhibit_footer.dart';
+import 'package:skribla/src/app/history/presentation/widgets/light_painter.dart';
+import 'package:skribla/src/app/history/presentation/widgets/shared_widget.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
 
 class ExhibitsScreen extends ConsumerStatefulWidget {
   const ExhibitsScreen({

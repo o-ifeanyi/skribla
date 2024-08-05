@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/app/game/data/models/game_model.dart';
 
 part 'generated/game_state.freezed.dart';
 

@@ -1,10 +1,10 @@
-import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
-import 'package:draw_and_guess/src/app/leaderboard/data/models/leaderboard_model.dart';
-import 'package:draw_and_guess/src/app/leaderboard/data/repository/leaderboard_repository.dart';
-import 'package:draw_and_guess/src/app/leaderboard/presentation/provider/leaderboard_state.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/util/types.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/auth/data/models/user_model.dart';
+import 'package:skribla/src/app/leaderboard/data/models/leaderboard_model.dart';
+import 'package:skribla/src/app/leaderboard/data/repository/leaderboard_repository.dart';
+import 'package:skribla/src/app/leaderboard/presentation/provider/leaderboard_state.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/util/types.dart';
 
 class LeaderboardProvider extends StateNotifier<LeaderboardState> {
   LeaderboardProvider({

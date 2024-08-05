@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/core/widgets/error_widget.dart';
 import 'package:flutter/material.dart' hide ErrorWidget;
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:skribla/src/core/widgets/error_widget.dart';
 
 enum PageType { grid, list }
 

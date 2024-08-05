@@ -1,12 +1,12 @@
-import 'package:draw_and_guess/src/app/settings/data/repository/settings_repository.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/widgets/default_app_bar.dart';
-import 'package:draw_and_guess/src/core/widgets/error_widget.dart';
-import 'package:draw_and_guess/src/core/widgets/shimmer_widget.dart';
 import 'package:flutter/material.dart' hide ErrorWidget;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/settings/data/repository/settings_repository.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/widgets/default_app_bar.dart';
+import 'package:skribla/src/core/widgets/error_widget.dart';
+import 'package:skribla/src/core/widgets/shimmer_widget.dart';
 
 class LegalScreen extends ConsumerStatefulWidget {
   const LegalScreen({required this.name, super.key});

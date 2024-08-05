@@ -1,6 +1,6 @@
 {
-    "name": "draw_and_guess",
-    "short_name": "draw_and_guess",
+    "name": "skribla",
+    "short_name": "skribla",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

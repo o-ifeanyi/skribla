@@ -1,7 +1,7 @@
-import 'package:draw_and_guess/src/app/game/data/models/line_model.dart';
-import 'package:draw_and_guess/src/app/game/data/models/player_model.dart';
-import 'package:draw_and_guess/src/app/game/data/models/word_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/app/game/data/models/line_model.dart';
+import 'package:skribla/src/app/game/data/models/player_model.dart';
+import 'package:skribla/src/app/game/data/models/word_model.dart';
 
 part 'generated/exhibit_model.g.dart';
 

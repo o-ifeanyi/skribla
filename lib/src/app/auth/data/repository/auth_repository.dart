@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
-import 'package:draw_and_guess/src/core/service/logger.dart';
-import 'package:draw_and_guess/src/core/util/result.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:skribla/src/app/auth/data/models/user_model.dart';
+import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/util/result.dart';
 
 enum AuthOptions { apple, google }
 

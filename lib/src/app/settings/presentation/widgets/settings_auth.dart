@@ -1,17 +1,17 @@
 import 'dart:io';
 
-import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
-import 'package:draw_and_guess/src/app/auth/data/repository/auth_repository.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/resource/app_icons.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/widgets/app_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skribla/src/app/auth/data/models/user_model.dart';
+import 'package:skribla/src/app/auth/data/repository/auth_repository.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/resource/app_icons.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/widgets/app_button.dart';
 
 class SettingsAuth extends ConsumerWidget {
   const SettingsAuth({

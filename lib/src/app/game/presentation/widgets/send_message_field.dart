@@ -1,10 +1,10 @@
-import 'package:draw_and_guess/src/app/game/presentation/provider/game_state.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/resource/app_icons.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/resource/app_icons.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/widgets/input_field.dart';
 
 class SendMessageField extends ConsumerStatefulWidget {
   const SendMessageField({

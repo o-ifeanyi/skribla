@@ -1,8 +1,8 @@
-import 'package:draw_and_guess/src/app/history/data/models/exhibit_model.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/widgets/app_button.dart';
 import 'package:flutter/material.dart';
+import 'package:skribla/src/app/history/data/models/exhibit_model.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/widgets/app_button.dart';
 
 class ExhibitFooter extends StatelessWidget {
   const ExhibitFooter({

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:draw_and_guess/src/app/game/presentation/provider/timer_state.dart';
-import 'package:draw_and_guess/src/core/service/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/game/presentation/provider/timer_state.dart';
+import 'package:skribla/src/core/service/logger.dart';
 
 class TimerProvider extends StateNotifier<TimerState> {
   TimerProvider() : super(const TimerState());

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:draw_and_guess/src/core/service/logger.dart';
-import 'package:draw_and_guess/src/core/util/constants.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/util/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final class Support {
@@ -25,7 +25,7 @@ final class Support {
 
   Future<void> openStoreListing() async {
     try {
-      await inAppReview.openStoreListing(appStoreId: '');
+      await inAppReview.openStoreListing(appStoreId: '6608960206');
     } catch (e, s) {
       _logger.error('openStoreListing $e', stack: s);
     }
@@ -37,7 +37,7 @@ final class Support {
         scheme: 'mailto',
         path: Constants.email,
         query: _encodeQueryParameters(<String, String>{
-          'subject': 'Support: Draw and Guess',
+          'subject': 'Support: Skribla',
           'body': '\n\n\nDetails of the device',
         }),
       );

@@ -1,8 +1,8 @@
-import 'package:draw_and_guess/src/app/game/data/models/line_model.dart';
-import 'package:draw_and_guess/src/app/game/data/models/player_model.dart';
-import 'package:draw_and_guess/src/app/game/data/models/word_model.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/app/game/data/models/line_model.dart';
+import 'package:skribla/src/app/game/data/models/player_model.dart';
+import 'package:skribla/src/app/game/data/models/word_model.dart';
+import 'package:skribla/src/core/util/extension.dart';
 
 part 'generated/game_model.freezed.dart';
 part 'generated/game_model.g.dart';

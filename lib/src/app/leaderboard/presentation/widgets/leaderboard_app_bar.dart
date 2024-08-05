@@ -1,11 +1,11 @@
-import 'package:draw_and_guess/src/app/leaderboard/presentation/widgets/top_three_item.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/resource/app_icons.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skribla/src/app/leaderboard/presentation/widgets/top_three_item.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/resource/app_icons.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
 
 class LeaderboardAppBar extends ConsumerStatefulWidget {
   const LeaderboardAppBar({super.key});

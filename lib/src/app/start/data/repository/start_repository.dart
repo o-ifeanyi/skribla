@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
-import 'package:draw_and_guess/src/app/game/data/models/game_model.dart';
-import 'package:draw_and_guess/src/core/service/logger.dart';
-import 'package:draw_and_guess/src/core/util/constants.dart';
-import 'package:draw_and_guess/src/core/util/result.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:skribla/src/app/auth/data/models/user_model.dart';
+import 'package:skribla/src/app/game/data/models/game_model.dart';
+import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/src/core/util/result.dart';
 
 final class StartRepository {
   const StartRepository({

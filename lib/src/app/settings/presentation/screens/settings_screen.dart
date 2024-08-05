@@ -1,19 +1,19 @@
-import 'package:draw_and_guess/src/app/settings/data/repository/settings_repository.dart';
-import 'package:draw_and_guess/src/app/settings/presentation/widgets/custom_list_tile.dart';
-import 'package:draw_and_guess/src/app/settings/presentation/widgets/settings_auth.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/resource/app_icons.dart';
-import 'package:draw_and_guess/src/core/router/routes.dart';
-import 'package:draw_and_guess/src/core/service/support.dart';
-import 'package:draw_and_guess/src/core/theme/app_theme.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/widgets/default_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skribla/src/app/settings/data/repository/settings_repository.dart';
+import 'package:skribla/src/app/settings/presentation/widgets/custom_list_tile.dart';
+import 'package:skribla/src/app/settings/presentation/widgets/settings_auth.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/resource/app_icons.dart';
+import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/service/support.dart';
+import 'package:skribla/src/core/theme/app_theme.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/widgets/default_app_bar.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});

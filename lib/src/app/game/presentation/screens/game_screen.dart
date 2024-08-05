@@ -1,14 +1,14 @@
-import 'package:draw_and_guess/src/app/game/presentation/widgets/draw_board.dart';
-import 'package:draw_and_guess/src/app/game/presentation/widgets/message_view.dart';
-import 'package:draw_and_guess/src/app/game/presentation/widgets/players_view.dart';
-import 'package:draw_and_guess/src/app/game/presentation/widgets/send_message_field.dart';
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/widgets/default_app_bar.dart';
-import 'package:draw_and_guess/src/core/widgets/progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/game/presentation/widgets/draw_board.dart';
+import 'package:skribla/src/app/game/presentation/widgets/message_view.dart';
+import 'package:skribla/src/app/game/presentation/widgets/players_view.dart';
+import 'package:skribla/src/app/game/presentation/widgets/send_message_field.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/widgets/default_app_bar.dart';
+import 'package:skribla/src/core/widgets/progress_bar.dart';
 
 class GameScreen extends ConsumerStatefulWidget {
   const GameScreen({required this.id, super.key});

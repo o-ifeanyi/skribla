@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/util/types.dart';
 import 'package:flutter/material.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/util/types.dart';
 
 class LeaderboardItem extends StatelessWidget {
   const LeaderboardItem({

@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:draw_and_guess/firebase_options_dev.dart';
-import 'package:draw_and_guess/src/app/main_app.dart';
-import 'package:draw_and_guess/src/core/observers/provider_watch.dart';
-import 'package:draw_and_guess/src/core/service/logger.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/firebase_options_dev.dart';
+import 'package:skribla/src/app/main_app.dart';
+import 'package:skribla/src/core/observers/provider_watch.dart';
+import 'package:skribla/src/core/service/logger.dart';
 
 void main() {
   const logger = Logger('Main Dev');

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:draw_and_guess/src/core/service/logger.dart';
-import 'package:draw_and_guess/src/core/util/constants.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/util/types.dart';
+import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/util/types.dart';
 
 final _legalCache = <String, CachedData<String>>{};
 

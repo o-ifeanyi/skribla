@@ -1,3 +1,3 @@
-# draw_and_guess
+# skribla
 
 A new Flutter project.

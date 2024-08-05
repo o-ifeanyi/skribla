@@ -1,6 +1,6 @@
-import 'package:draw_and_guess/src/app/leaderboard/data/models/leaderboard_model.dart';
-import 'package:draw_and_guess/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/app/leaderboard/data/models/leaderboard_model.dart';
+import 'package:skribla/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 
 part 'generated/leaderboard_state.freezed.dart';
 

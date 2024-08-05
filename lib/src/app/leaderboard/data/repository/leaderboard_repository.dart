@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:draw_and_guess/src/app/game/data/models/player_model.dart';
-import 'package:draw_and_guess/src/app/leaderboard/data/models/leaderboard_model.dart';
-import 'package:draw_and_guess/src/core/service/logger.dart';
-import 'package:draw_and_guess/src/core/util/constants.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/util/result.dart';
-import 'package:draw_and_guess/src/core/util/types.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:skribla/src/app/game/data/models/player_model.dart';
+import 'package:skribla/src/app/leaderboard/data/models/leaderboard_model.dart';
+import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/util/result.dart';
+import 'package:skribla/src/core/util/types.dart';
 
 enum LeaderboardType { monthly, alltime }
 

@@ -1,13 +1,13 @@
 import 'dart:ui' show PlatformDispatcher, PointerDeviceKind;
 
-import 'package:draw_and_guess/src/core/di/di.dart';
-import 'package:draw_and_guess/src/core/router/router.dart';
-import 'package:draw_and_guess/src/core/theme/app_theme.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/router/router.dart';
+import 'package:skribla/src/core/theme/app_theme.dart';
+import 'package:skribla/src/core/util/extension.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -47,7 +47,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           final routerConfig = ref.watch(routerProvider);
           final themeOption = ref.watch(themeProvider);
           return MaterialApp.router(
-            title: 'Draw & Guess',
+            title: 'Skribla',
             theme: AppTheme.themeOptions(themeOption),
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {

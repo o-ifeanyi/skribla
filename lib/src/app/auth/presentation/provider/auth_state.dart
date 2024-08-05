@@ -1,5 +1,5 @@
-import 'package:draw_and_guess/src/app/auth/data/models/user_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/app/auth/data/models/user_model.dart';
 
 part 'generated/auth_state.freezed.dart';
 

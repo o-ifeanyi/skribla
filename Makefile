@@ -24,21 +24,21 @@ format:
 	dart format --line-length 100 --set-exit-if-changed lib
 
 functions:
-	firebase deploy --only functions --project=draw-and-guess-$(flavor)
+	firebase deploy --only functions --project=skribla-$(flavor)
 
 configure_dev:
-	flutterfire configure --project=draw-and-guess-dev \
+	flutterfire configure --project=skribla-dev \
 	--out=lib/firebase_options_dev.dart \
-	--ios-bundle-id=app.ifeanyi.drawAndGuess.dev \
-	--android-package-name=app.ifeanyi.draw_and_guess.dev \
-	--web-app-id=1:773620093493:web:8bc4fefdbf393ec549177c
+	--ios-bundle-id=com.skribla.ios.dev \
+	--android-package-name=com.skribla.android.dev \
+	--web-app-id=1:1056704511056:web:c268b2cdb298bbf326e555
 
 configure_prod:
-	flutterfire configure --project=draw-and-guess-prod \
+	flutterfire configure --project=skribla-prod \
 	--out=lib/firebase_options_prod.dart \
-	--ios-bundle-id=app.ifeanyi.drawAndGuess.prod \
-	--android-package-name=app.ifeanyi.draw_and_guess.prod \
-	--web-app-id=1:866543961476:web:a2294c8345ca1f156389d1
+	--ios-bundle-id=com.skribla.ios.prod \
+	--android-package-name=com.skribla.android.prod \
+	--web-app-id=1:676660663299:web:6912a4b78f5b8cbcb82a36
 
 deploy_dev:
 	firebase login --reauth
@@ -53,7 +53,7 @@ deploy_dev:
 	--flavor dev \
 	--target lib/main_dev.dart
 
-	firebase appdistribution:distribute build/ios/ipa/drawAndGuess.ipa  \
+	firebase appdistribution:distribute build/ios/ipa/skribla.ipa  \
     --app 1:2121200722:ios:d096f1b7a4d858eb309b8b  \
     --release-notes-file "release_notes.txt"  --groups "beta_testers"
 

@@ -1,7 +1,8 @@
-import 'package:draw_and_guess/src/core/util/config.dart';
-import 'package:draw_and_guess/src/core/util/extension.dart';
-import 'package:draw_and_guess/src/core/widgets/app_button.dart';
 import 'package:flutter/material.dart';
+import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/src/core/util/extension.dart';
+import 'package:skribla/src/core/widgets/app_button.dart';
 
 class ErrorWidget extends StatelessWidget {
   const ErrorWidget({
@@ -24,7 +25,7 @@ class ErrorWidget extends StatelessWidget {
         ),
         Config.vBox12,
         const Text(
-          'Try again or contact us at drawandguesseng@gmail.com',
+          'Try again or contact us at ${Constants.email}',
           textAlign: TextAlign.center,
         ),
         if (retry != null) ...[
