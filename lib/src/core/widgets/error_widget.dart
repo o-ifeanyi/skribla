@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/constants.dart';
 import 'package:skribla/src/core/util/extension.dart';
@@ -17,15 +19,26 @@ class ErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(height: topSpacer ?? Config.height * 0.3),
         Text(
           'Something went wrong',
+          textAlign: TextAlign.center,
           style: context.textTheme.titleSmall,
         ),
         Config.vBox12,
-        const Text(
-          'Try again or contact us at ${Constants.email}',
+        Text.rich(
+          TextSpan(
+            text: 'Try again or contact us at ',
+            children: [
+              TextSpan(
+                text: Constants.email,
+                style: const TextStyle(decoration: TextDecoration.underline),
+                recognizer: TapGestureRecognizer()..onTap = Support.instance.contactSupport,
+              ),
+            ],
+          ),
           textAlign: TextAlign.center,
         ),
         if (retry != null) ...[

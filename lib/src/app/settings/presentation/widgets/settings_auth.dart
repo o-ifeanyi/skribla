@@ -25,7 +25,7 @@ class SettingsAuth extends ConsumerWidget {
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        if (snapshot.data == null || user?.status == AuthStatus.anonymous) {
+        if (snapshot.data == null || user == null || user.status == AuthStatus.anonymous) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,

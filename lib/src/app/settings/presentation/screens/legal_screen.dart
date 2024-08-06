@@ -54,7 +54,7 @@ class _LegalScreenState extends ConsumerState<LegalScreen> {
         },
         loading: () {
           return ListView.separated(
-            itemCount: 15,
+            itemCount: 10,
             padding: Config.all(15),
             separatorBuilder: (_, __) => Config.vBox12,
             itemBuilder: (context, index) {

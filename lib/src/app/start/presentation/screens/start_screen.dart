@@ -125,12 +125,12 @@ class _StartScreenState extends ConsumerState<StartScreen> {
                 StartAction(
                   icon: AppIcons.trophy,
                   text: 'Leaderboard',
-                  onTap: () => context.goNamed(Routes.leaderboard),
+                  onTap: user == null ? null : () => context.goNamed(Routes.leaderboard),
                 ),
                 StartAction(
                   icon: AppIcons.clockCounterClockwise,
                   text: 'History',
-                  onTap: () => context.goNamed(Routes.history),
+                  onTap: user == null ? null : () => context.goNamed(Routes.history),
                 ),
               ],
             ),

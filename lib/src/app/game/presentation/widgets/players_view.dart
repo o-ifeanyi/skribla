@@ -25,12 +25,12 @@ class PlayersView extends ConsumerWidget {
           return Row(
             children: [
               CircleAvatar(
-                radius: Config.w(15),
+                radius: Config.h(15),
                 backgroundColor: context.colorScheme.tertiaryContainer,
                 child: (game?.canDraw(player.uid) ?? false)
-                    ? Icon(AppIcons.highlighter, size: Config.dg(14))
+                    ? Icon(AppIcons.highlighter, size: Config.h(14))
                     : (game?.correctGuess ?? []).contains(player.uid)
-                        ? Icon(AppIcons.check, size: Config.dg(14))
+                        ? Icon(AppIcons.check, size: Config.h(14))
                         : null,
               ),
               Config.hBox4,

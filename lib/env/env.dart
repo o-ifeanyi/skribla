@@ -1,3 +1,3 @@
 class Env {
-  static const String mixPanelId = String.fromEnvironment('MIX_PANEL_ID');
+  static const String gIdClientIdWWeb = String.fromEnvironment('GID_CLIENT_ID_WEB');
 }

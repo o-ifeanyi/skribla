@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:skribla/env/env.dart';
 import 'package:skribla/src/app/auth/data/models/user_model.dart';
 import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/util/result.dart';
@@ -51,6 +53,7 @@ final class AuthRepository {
           );
         case AuthOptions.google:
           final googleUser = await GoogleSignIn(
+            clientId: kIsWeb ? Env.gIdClientIdWWeb : null,
             scopes: ['email'],
           ).signIn();
           if (googleUser == null) {

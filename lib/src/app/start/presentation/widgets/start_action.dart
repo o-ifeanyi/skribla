@@ -6,13 +6,13 @@ class StartAction extends StatelessWidget {
   const StartAction({
     required this.icon,
     required this.text,
-    required this.onTap,
+    this.onTap,
     super.key,
   });
 
   final IconData icon;
   final String text;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
