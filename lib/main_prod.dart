@@ -7,11 +7,13 @@ import 'package:skribla/firebase_options_prod.dart';
 import 'package:skribla/src/app/main_app.dart';
 import 'package:skribla/src/core/observers/provider_watch.dart';
 import 'package:skribla/src/core/service/logger.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
   const logger = Logger('Main Prod');
   runZonedGuarded(
     () async {
+      setPathUrlStrategy();
       WidgetsFlutterBinding.ensureInitialized();
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
