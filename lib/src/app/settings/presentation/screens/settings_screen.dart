@@ -2,13 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:skribla/src/app/settings/data/repository/settings_repository.dart';
 import 'package:skribla/src/app/settings/presentation/widgets/custom_list_tile.dart';
 import 'package:skribla/src/app/settings/presentation/widgets/settings_auth.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
-import 'package:skribla/src/core/router/routes.dart';
 import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/theme/app_theme.dart';
 import 'package:skribla/src/core/util/config.dart';
@@ -95,19 +92,13 @@ class SettingsScreen extends ConsumerWidget {
           CustomListTile(
             icon: AppIcons.shield,
             title: 'Privacy policy',
-            onTap: () => context.goNamed(
-              Routes.legal,
-              pathParameters: {'name': LegalType.privacy.name},
-            ),
+            onTap: Support.instance.openPrivacy,
           ),
           Config.vBox12,
           CustomListTile(
             icon: AppIcons.listChecks,
             title: 'Terms of service',
-            onTap: () => context.goNamed(
-              Routes.legal,
-              pathParameters: {'name': LegalType.terms.name},
-            ),
+            onTap: Support.instance.openTerms,
           ),
           SizedBox(height: Config.height * 0.3),
         ],

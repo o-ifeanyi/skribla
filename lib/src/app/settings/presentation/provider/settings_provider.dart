@@ -22,6 +22,4 @@ class SettingsProvider extends StateNotifier<SettingsState> {
     await sharedPreferences?.setBool(AppKeys.haptics, val);
     state = state.copyWith(hapticsOn: val);
   }
-
-  Future<String> getLegalDoc(LegalType type) async => settingsRepository.getLegalDoc(type);
 }
