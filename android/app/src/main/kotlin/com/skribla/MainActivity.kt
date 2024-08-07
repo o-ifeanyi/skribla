@@ -1,4 +1,4 @@
-package com.skribla.android
+package com.skribla.android.prod
 
 import io.flutter.embedding.android.FlutterActivity
 
