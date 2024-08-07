@@ -1,0 +1,26 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.skribla.android.prod",
+            "sha256_cert_fingerprints": [
+                "64:00:16:e5:c8:40:9c:c6:09:6c:b4:44:cf:e1:6d:e8:d8:08:c6:0c:73:73:50:4c:66:51:d2:ef:09:35:87:95"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.skribla.android.dev",
+            "sha256_cert_fingerprints": [
+                "64:00:16:e5:c8:40:9c:c6:09:6c:b4:44:cf:e1:6d:e8:d8:08:c6:0c:73:73:50:4c:66:51:d2:ef:09:35:87:95"
+            ]
+        }
+    }
+]

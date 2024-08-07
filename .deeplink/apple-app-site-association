@@ -1,0 +1,29 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appIDs": [
+                    "YYA8WP4LNJ.com.skribla.ios.prod"
+                ],
+                "components": [
+                    {
+                        "/": "*",
+                        "comment": "Matches any URL with a path that starts with /mobile/."
+                    }
+                ]
+            },
+            {
+                "appIDs": [
+                    "YYA8WP4LNJ.com.skribla.ios.dev"
+                ],
+                "components": [
+                    {
+                        "/": "*",
+                        "comment": "Matches any URL with a path that starts with /mobile/."
+                    }
+                ]
+            }
+        ]
+    }
+}
