@@ -8,6 +8,7 @@ import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/repository/game_repository.dart';
 import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
 import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/service/remote_config.dart';
 
 part 'game_provider_ext.dart';
 
@@ -22,6 +23,7 @@ class GameProvider extends StateNotifier<GameState> {
 
   StreamSubscription<GameModel?>? _gameStreamSub;
   Timer? _updateArtTimer;
+  final delay = RemoteConfig.instance.featureFlags.drawDelayMilliseconds;
 
   void onPanStart(
     BuildContext context,
@@ -61,10 +63,9 @@ class GameProvider extends StateNotifier<GameState> {
     final exceedsBoundry = _exceedsBoundry(point, constraint);
     if (exceedsBoundry) return;
 
-    // 1 second delay to reduce the number of updates
-    // might even move this update to a websocket
+    // uses a delay gotten from remote config, default is 100ms
     _updateArtTimer ??= Timer.periodic(
-      const Duration(milliseconds: 1000),
+      Duration(milliseconds: delay),
       (_) async => _updateGameArt(),
     );
 

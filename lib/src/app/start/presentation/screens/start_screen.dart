@@ -7,6 +7,7 @@ import 'package:skribla/src/app/start/presentation/widgets/start_action.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/service/remote_config.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/app_button.dart';
@@ -32,12 +33,15 @@ class _StartScreenState extends ConsumerState<StartScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await RemoteConfig.instance.init();
+
       final isLoggedIn = FirebaseAuth.instance.currentUser != null;
       if (isLoggedIn) {
         await ref.read(authProvider.notifier).getUser();
       } else {
         await ref.read(authProvider.notifier).signInAnonymously();
       }
+      if (!mounted) return;
       final user = ref.read(authProvider).user;
       setState(() {
         _nameCtrl.text = user?.name ?? '';
@@ -68,14 +72,20 @@ class _StartScreenState extends ConsumerState<StartScreen> {
           children: [
             GradientText(
               'Skribla',
-              style: context.textTheme.titleLarge,
+              style: context.textTheme.displayLarge,
               gradient: LinearGradient(
+                stops: const [0.2, 0.5, 0.8],
                 colors: [
-                  context.colorScheme.secondary,
+                  context.colorScheme.primaryContainer,
                   context.colorScheme.primary,
-                  context.colorScheme.secondary,
+                  context.colorScheme.primaryContainer,
                 ],
               ),
+            ),
+            Text(
+              'draw, guess, and have fun',
+              textAlign: TextAlign.center,
+              style: context.textTheme.bodyLarge,
             ),
             Config.vBox24,
             InputField(

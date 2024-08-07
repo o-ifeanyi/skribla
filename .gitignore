@@ -30,6 +30,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+.firebase
 firebase.json
 /android/app/src/dev/google-services.json
 /android/app/src/prod/google-services.json

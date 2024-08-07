@@ -23,4 +23,6 @@ abstract class AppIcons {
   static IconData get listChecks => PhosphorIconsBold.listChecks;
   static IconData get arrowUpRight => PhosphorIconsBold.arrowUpRight;
   static IconData get vibrate => PhosphorIconsBold.vibrate;
+  static IconData get cloudSlash => PhosphorIconsBold.cloudSlash;
+  static IconData get downloadSimple => PhosphorIconsBold.downloadSimple;
 }

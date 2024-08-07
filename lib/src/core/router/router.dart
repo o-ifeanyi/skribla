@@ -3,88 +3,93 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skribla/src/app/game/presentation/screens/game_screen.dart';
 import 'package:skribla/src/app/history/presentation/screens/history_screen.dart';
 import 'package:skribla/src/app/leaderboard/presentation/screens/leaderboard_screen.dart';
-import 'package:skribla/src/app/settings/presentation/screens/legal_screen.dart';
 import 'package:skribla/src/app/settings/presentation/screens/settings_screen.dart';
 import 'package:skribla/src/app/start/presentation/screens/start_screen.dart';
+import 'package:skribla/src/app/start/presentation/screens/unavailable_screen.dart';
+import 'package:skribla/src/app/start/presentation/screens/update_screen.dart';
 import 'package:skribla/src/core/router/routes.dart';
 import 'package:skribla/src/core/util/extension.dart';
 
-final routerProvider = Provider<GoRouter>(
-  (ref) {
-    final rootNavigatorKey = GlobalKey<NavigatorState>();
+final class Router {
+  Router._internal();
+  static final _singleton = Router._internal();
+  static Router get instance => _singleton;
 
-    Page<dynamic> pushScreen(Widget screen) {
-      if (kIsWeb || Platform.isAndroid) {
-        return MaterialPage<void>(child: screen);
-      }
-      return CupertinoPage(child: screen);
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
+  static Page<dynamic> _pushScreen(Widget screen) {
+    if (kIsWeb || Platform.isAndroid) {
+      return MaterialPage<void>(child: screen);
     }
+    return CupertinoPage(child: screen);
+  }
 
-    GoRoute route({
-      required String path,
-      required Widget? screen,
-      Page<dynamic> Function(BuildContext, GoRouterState)? pageBuilder,
-      Widget Function(BuildContext, GoRouterState)? builder,
-      List<RouteBase> routes = const <RouteBase>[],
-    }) {
-      return GoRoute(
-        path: path,
-        name: path.routeName,
-        builder: builder,
-        pageBuilder: screen != null ? (_, __) => pushScreen(screen) : pageBuilder,
-        routes: routes,
-      );
-    }
+  static GoRoute _route({
+    required String path,
+    required Widget? screen,
+    Widget Function(BuildContext, GoRouterState)? builder,
+    List<RouteBase> routes = const <RouteBase>[],
+  }) {
+    assert(screen != null || builder != null, 'Both screen and builder cannot be null');
 
-    return GoRouter(
-      initialLocation: Routes.start,
-      navigatorKey: rootNavigatorKey,
-      routes: [
-        route(
-          path: Routes.start,
-          screen: const StartScreen(),
-          routes: [
-            route(
-              path: Routes.game,
-              screen: null,
-              builder: (_, state) {
-                final id = state.pathParameters['id'] ?? '';
-                return GameScreen(id: id);
-              },
-            ),
-            route(
-              path: Routes.history,
-              screen: const HistoryScreen(),
-            ),
-            route(
-              path: Routes.leaderboard,
-              screen: const LeaderboardScreen(),
-            ),
-            route(
-              path: Routes.settings,
-              screen: const SettingsScreen(),
-              routes: [
-                route(
-                  path: Routes.legal,
-                  screen: null,
-                  builder: (_, state) {
-                    final name = state.pathParameters['name'] ?? '';
-                    return LegalScreen(name: name);
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
+    return GoRoute(
+      path: path,
+      name: path.routeName,
+      builder: builder,
+      pageBuilder: screen != null ? (_, __) => _pushScreen(screen) : null,
+      routes: routes,
     );
-  },
-);
+  }
+
+  final goRouter = GoRouter(
+    initialLocation: Routes.start,
+    navigatorKey: _rootNavigatorKey,
+    routes: [
+      _route(
+        path: Routes.unavailable,
+        screen: const UnavailableScreen(),
+      ),
+      _route(
+        path: Routes.update,
+        screen: null,
+        builder: (_, state) {
+          final forced = state.extra as bool? ?? false;
+          return UpdateScreen(forced: forced);
+        },
+      ),
+      _route(
+        path: Routes.start,
+        screen: const StartScreen(),
+        routes: [
+          _route(
+            path: Routes.game,
+            screen: null,
+            builder: (_, state) {
+              final id = state.pathParameters['id'] ?? '';
+              return GameScreen(id: id);
+            },
+          ),
+          _route(
+            path: Routes.history,
+            screen: const HistoryScreen(),
+          ),
+          _route(
+            path: Routes.leaderboard,
+            screen: const LeaderboardScreen(),
+          ),
+          _route(
+            path: Routes.settings,
+            screen: const SettingsScreen(),
+          ),
+        ],
+      ),
+    ],
+  );
+}
 
 class TransparentRoute<T> extends PageRoute<T> {
   TransparentRoute({required this.builder}) : super(fullscreenDialog: false);

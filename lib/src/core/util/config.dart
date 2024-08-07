@@ -7,15 +7,18 @@ abstract class Config {
   static double get width => 1.sw;
 
   static TextTheme get textTheme => TextTheme(
+        displayLarge: GoogleFonts.sora(fontSize: 44.sp, fontWeight: FontWeight.w600),
+        displayMedium: GoogleFonts.sora(fontSize: 40.sp, fontWeight: FontWeight.w600),
+        displaySmall: GoogleFonts.sora(fontSize: 36.sp, fontWeight: FontWeight.w600),
         titleLarge: GoogleFonts.sora(fontSize: 32.sp, fontWeight: FontWeight.w600),
         titleMedium: GoogleFonts.sora(fontSize: 28.sp, fontWeight: FontWeight.w600),
         titleSmall: GoogleFonts.sora(fontSize: 18.sp, fontWeight: FontWeight.w600),
         bodyLarge: GoogleFonts.sora(fontSize: 16.sp, fontWeight: FontWeight.w600),
-        bodyMedium: GoogleFonts.sora(fontSize: 14.sp),
-        bodySmall: GoogleFonts.sora(fontSize: 12.sp),
+        bodyMedium: GoogleFonts.sora(fontSize: 14.sp, fontWeight: FontWeight.w400),
+        bodySmall: GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w400),
         labelLarge: GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w600),
-        labelMedium: GoogleFonts.sora(fontSize: 12.sp),
-        labelSmall: GoogleFonts.sora(fontSize: 10.sp),
+        labelMedium: GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w400),
+        labelSmall: GoogleFonts.sora(fontSize: 10.sp, fontWeight: FontWeight.w400),
       );
 
   static EdgeInsets all(double padding) => EdgeInsets.all(padding.w);

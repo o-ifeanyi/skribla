@@ -40,9 +40,13 @@ configure_prod:
 	--android-package-name=com.skribla.android.prod \
 	--web-app-id=1:676660663299:web:6912a4b78f5b8cbcb82a36
 
+
 deploy_dev:
 	firebase login --reauth
 	sh release_notes.sh
+
+	flutter build web --web-renderer canvaskit
+	firebase deploy
 
 	flutter build ipa --release \
 	--export-method ad-hoc \
@@ -54,11 +58,11 @@ deploy_dev:
 	--target lib/main_dev.dart
 
 	firebase appdistribution:distribute build/ios/ipa/skribla.ipa  \
-    --app 1:2121200722:ios:d096f1b7a4d858eb309b8b  \
+    --app 1:1056704511056:ios:3c65b99d3d4ab0e526e555  \
     --release-notes-file "release_notes.txt"  --groups "beta_testers"
 
 	firebase appdistribution:distribute build/app/outputs/apk/dev/release/app-dev-release.apk  \
-    --app 1:2121200722:android:ca8d79b1be12b17f309b8b  \
+    --app 1:1056704511056:android:b1a81f5adcdab0d926e555  \
     --release-notes-file "release_notes.txt"  --groups "beta_testers"
 
 auth:

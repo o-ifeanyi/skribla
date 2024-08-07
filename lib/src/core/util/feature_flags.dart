@@ -3,24 +3,30 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'generated/feature_flags.freezed.dart';
 part 'generated/feature_flags.g.dart';
 
-@freezed
-class FeatureFlags with _$FeatureFlags {
-  const factory FeatureFlags({
-    @Default(1) int majorVersion,
-    @Default(0) int minorVersion,
-    @Default(false) bool webDown,
-    @Default(false) bool iosDown,
-    @Default(false) bool androidDown,
-    @Default(false) bool macDown,
-    @Default(100) int drawDelayMilliseconds,
-  }) = _FeatureFlags;
-
-  const FeatureFlags._();
-
+@JsonSerializable()
+class FeatureFlags {
+  const FeatureFlags({
+    this.majorVersion = 1,
+    this.minorVersion = 0,
+    this.webDown = false,
+    this.iosDown = false,
+    this.androidDown = false,
+    this.macDown = false,
+    this.drawDelayMilliseconds = 100,
+  });
   factory FeatureFlags.fromJson(Map<String, Object?> json) => _$FeatureFlagsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FeatureFlagsToJson(this);
+
+  final int majorVersion;
+  final int minorVersion;
+  final bool webDown;
+  final bool iosDown;
+  final bool androidDown;
+  final bool macDown;
+  final int drawDelayMilliseconds;
 
   bool get plaformDown {
     if (kIsWeb) {

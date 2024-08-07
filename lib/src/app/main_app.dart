@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/router/router.dart';
-import 'package:skribla/src/core/service/remote_config.dart';
 import 'package:skribla/src/core/theme/app_theme.dart';
 import 'package:skribla/src/core/util/extension.dart';
 
@@ -21,11 +20,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance
-      ..addObserver(this)
-      ..addPostFrameCallback((_) {
-        RemoteConfig.instance.init(context);
-      });
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -49,7 +44,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
       fontSizeResolver: (fontSize, instance) => fontSize.toDouble(),
       child: Consumer(
         builder: (context, ref, child) {
-          final routerConfig = ref.watch(routerProvider);
+          final routerConfig = Router.instance.goRouter;
           final themeOption = ref.watch(themeProvider);
           return MaterialApp.router(
             title: 'Skribla',

@@ -6,7 +6,7 @@ part of '../feature_flags.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FeatureFlagsImpl _$$FeatureFlagsImplFromJson(Map<String, dynamic> json) => _$FeatureFlagsImpl(
+FeatureFlags _$FeatureFlagsFromJson(Map<String, dynamic> json) => FeatureFlags(
       majorVersion: (json['major_version'] as num?)?.toInt() ?? 1,
       minorVersion: (json['minor_version'] as num?)?.toInt() ?? 0,
       webDown: json['web_down'] as bool? ?? false,
@@ -16,7 +16,7 @@ _$FeatureFlagsImpl _$$FeatureFlagsImplFromJson(Map<String, dynamic> json) => _$F
       drawDelayMilliseconds: (json['draw_delay_milliseconds'] as num?)?.toInt() ?? 100,
     );
 
-Map<String, dynamic> _$$FeatureFlagsImplToJson(_$FeatureFlagsImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$FeatureFlagsToJson(FeatureFlags instance) => <String, dynamic>{
       'major_version': instance.majorVersion,
       'minor_version': instance.minorVersion,
       'web_down': instance.webDown,

@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/util/constants.dart';
@@ -31,6 +33,23 @@ final class Support {
     }
   }
 
+  Future<void> openStore() async {
+    try {
+      if (kIsWeb) return;
+
+      final uri = Uri.parse(
+        Platform.isAndroid
+            ? Constants.playstore
+            : (Platform.isIOS || Platform.isMacOS)
+                ? Constants.appstore
+                : Constants.website,
+      );
+      await launchUrl(uri);
+    } catch (e, s) {
+      _logger.error('openStoreListing $e', stack: s);
+    }
+  }
+
   Future<void> contactSupport() async {
     try {
       final emailUri = Uri(
@@ -43,6 +62,22 @@ final class Support {
       );
 
       await launchUrl(emailUri);
+    } catch (e, s) {
+      _logger.error('contactSupport $e', stack: s);
+    }
+  }
+
+  Future<void> openPrivacy() async {
+    try {
+      await launchUrl(Uri.parse(Constants.privacy));
+    } catch (e, s) {
+      _logger.error('contactSupport $e', stack: s);
+    }
+  }
+
+  Future<void> openTerms() async {
+    try {
+      await launchUrl(Uri.parse(Constants.terms));
     } catch (e, s) {
       _logger.error('contactSupport $e', stack: s);
     }
