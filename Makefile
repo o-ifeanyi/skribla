@@ -44,6 +44,7 @@ configure_prod:
 deploy_dev:
 	firebase login --reauth
 	sh release_notes.sh
+	sh web_flavor_setup.sh dev
 
 	flutter build web --web-renderer canvaskit
 	firebase deploy
@@ -51,11 +52,13 @@ deploy_dev:
 	flutter build ipa --release \
 	--export-method ad-hoc \
 	--flavor dev \
-	--target lib/main_dev.dart
+	--target lib/main_dev.dart \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/dev_creds.json
 
 	flutter build apk --release \
 	--flavor dev \
-	--target lib/main_dev.dart
+	--target lib/main_dev.dart \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/dev_creds.json
 
 	firebase appdistribution:distribute build/ios/ipa/skribla.ipa  \
     --app 1:1056704511056:ios:3c65b99d3d4ab0e526e555  \
