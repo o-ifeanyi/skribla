@@ -15,7 +15,11 @@ class UnavailableScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Icon(AppIcons.cloudSlash, size: Config.height * 0.2),
+            Icon(
+              AppIcons.cloudSlash,
+              size: Config.height * 0.2,
+              color: context.colorScheme.primary,
+            ),
             Text(
               'Our server is feeling a little down',
               textAlign: TextAlign.center,

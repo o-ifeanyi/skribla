@@ -45,6 +45,7 @@ Map<String, dynamic> _$$GameModelImplToJson(_$GameModelImpl instance) => <String
 
 const _$StatusEnumMap = {
   Status.open: 'open',
+  Status.private: 'private',
   Status.closed: 'closed',
   Status.complete: 'complete',
 };

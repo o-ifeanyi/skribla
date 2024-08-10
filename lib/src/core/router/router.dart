@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skribla/src/app/game/presentation/screens/game_screen.dart';
 import 'package:skribla/src/app/history/presentation/screens/history_screen.dart';
+import 'package:skribla/src/app/home/presentation/screens/home_screen.dart';
+import 'package:skribla/src/app/home/presentation/screens/join_screen.dart';
 import 'package:skribla/src/app/leaderboard/presentation/screens/leaderboard_screen.dart';
 import 'package:skribla/src/app/settings/presentation/screens/settings_screen.dart';
-import 'package:skribla/src/app/start/presentation/screens/start_screen.dart';
-import 'package:skribla/src/app/start/presentation/screens/unavailable_screen.dart';
-import 'package:skribla/src/app/start/presentation/screens/update_screen.dart';
 import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/screens/unavailable_screen.dart';
+import 'package:skribla/src/core/screens/update_screen.dart';
 import 'package:skribla/src/core/util/extension.dart';
 
 final class Router {
@@ -46,25 +47,21 @@ final class Router {
   }
 
   final goRouter = GoRouter(
-    initialLocation: Routes.start,
+    initialLocation: Routes.home,
     navigatorKey: _rootNavigatorKey,
     routes: [
       _route(
-        path: Routes.unavailable,
-        screen: const UnavailableScreen(),
-      ),
-      _route(
-        path: Routes.update,
-        screen: null,
-        builder: (_, state) {
-          final forced = state.extra as bool? ?? false;
-          return UpdateScreen(forced: forced);
-        },
-      ),
-      _route(
-        path: Routes.start,
-        screen: const StartScreen(),
+        path: Routes.home,
+        screen: const HomeScreen(),
         routes: [
+          _route(
+            path: Routes.join,
+            screen: null,
+            builder: (_, state) {
+              final id = state.pathParameters['id'] ?? '';
+              return JoinScreen(id: id);
+            },
+          ),
           _route(
             path: Routes.game,
             screen: null,
@@ -86,6 +83,18 @@ final class Router {
             screen: const SettingsScreen(),
           ),
         ],
+      ),
+      _route(
+        path: Routes.unavailable,
+        screen: const UnavailableScreen(),
+      ),
+      _route(
+        path: Routes.update,
+        screen: null,
+        builder: (_, state) {
+          final forced = state.extra as bool? ?? false;
+          return UpdateScreen(forced: forced);
+        },
       ),
     ],
   );

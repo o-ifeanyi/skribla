@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:skribla/src/app/game/data/models/player_model.dart';
@@ -23,10 +25,12 @@ class UserModel with _$UserModel {
 
   factory UserModel.fromCredential(UserCredential credential) {
     final user = credential.user!;
+    final random = List.generate(10, (index) => index)
+      ..shuffle(Random(DateTime.now().millisecondsSinceEpoch));
     return UserModel(
       uid: user.uid,
       email: user.email ?? '',
-      name: user.displayName ?? 'Anon',
+      name: user.displayName ?? 'anon_${random.take(4).join()}',
       status: (user.email ?? '').isEmpty ? AuthStatus.anonymous : AuthStatus.verified,
       createdAt: DateTime.now(),
     );

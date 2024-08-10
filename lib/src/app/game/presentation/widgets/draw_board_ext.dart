@@ -33,20 +33,23 @@ class _BoardOverlay extends ConsumerWidget {
           AppButton(
             text: 'View Gallery',
             onPressed: () {
+              Support.instance.requestReview();
               ref.read(gameProvider.notifier).leaveGame();
               context.goNamed(Routes.history);
             },
           ),
         ] else if ((game?.online ?? []).length < 2) ...[
           Text(
-            'Waiting for players to join',
+            game?.status == Status.private
+                ? 'Only invited players can join'
+                : 'Waiting for players to join',
             style: context.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
           Config.vBox12,
           AppButton(
             text: 'Invite someone',
-            onPressed: () {},
+            onPressed: () => Deeplink.instance.shareJoinLink(id: game?.id),
           ),
         ] else if (showCoolTimer) ...[
           Text.rich(

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "skribla-prod",
+    "fertitude-staging": "skribla-dev"
+  },
+  "targets": {},
+  "etags": {}
+}

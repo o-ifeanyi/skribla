@@ -31,7 +31,7 @@ class RemoteConfig {
       if (_hasBeenInitialized) return;
       _hasBeenInitialized = true;
 
-      final doc = await FirebaseFirestore.instance.collection('public').doc(AppKeys.flags).get();
+      final doc = await FirebaseFirestore.instance.collection('_public').doc(AppKeys.flags).get();
       featureFlags = FeatureFlags.fromJson(doc.data()!);
       if (featureFlags.plaformDown) {
         Router.instance.goRouter.go(Routes.unavailable);

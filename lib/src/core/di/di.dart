@@ -13,15 +13,15 @@ import 'package:skribla/src/app/game/presentation/provider/timer_state.dart';
 import 'package:skribla/src/app/history/data/repository/history_repository.dart';
 import 'package:skribla/src/app/history/presentation/provider/history_provider.dart';
 import 'package:skribla/src/app/history/presentation/provider/history_state.dart';
+import 'package:skribla/src/app/home/data/repository/home_repository.dart';
+import 'package:skribla/src/app/home/presentation/provider/home_provider.dart';
+import 'package:skribla/src/app/home/presentation/provider/home_state.dart';
 import 'package:skribla/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 import 'package:skribla/src/app/leaderboard/presentation/provider/leaderboard_provider.dart';
 import 'package:skribla/src/app/leaderboard/presentation/provider/leaderboard_state.dart';
 import 'package:skribla/src/app/settings/data/repository/settings_repository.dart';
 import 'package:skribla/src/app/settings/presentation/provider/settings_provider.dart';
 import 'package:skribla/src/app/settings/presentation/provider/settings_state.dart';
-import 'package:skribla/src/app/start/data/repository/start_repository.dart';
-import 'package:skribla/src/app/start/presentation/provider/start_provider.dart';
-import 'package:skribla/src/app/start/presentation/provider/start_state.dart';
 import 'package:skribla/src/core/theme/app_theme.dart';
 import 'package:skribla/src/core/theme/theme_provider.dart';
 
@@ -32,9 +32,9 @@ final authProvider = StateNotifierProvider<AuthProvider, AuthState>(
   ),
 );
 
-final startProvider = StateNotifierProvider<StartProvider, StartState>(
-  (ref) => StartProvider(
-    startRepository: ref.read(startRepoProvider),
+final homeProvider = StateNotifierProvider<HomeProvider, HomeState>(
+  (ref) => HomeProvider(
+    homeRepository: ref.read(homeRepoProvider),
   ),
 );
 
@@ -83,8 +83,8 @@ final authRepoProvider = Provider<AuthRepository>(
   ),
 );
 
-final startRepoProvider = Provider<StartRepository>(
-  (ref) => StartRepository(
+final homeRepoProvider = Provider<HomeRepository>(
+  (ref) => HomeRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
     firebaseFirestore: ref.read(firebaseFireStoreProvider),
   ),

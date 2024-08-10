@@ -7,7 +7,7 @@ import 'package:skribla/src/core/util/extension.dart';
 part 'generated/game_model.freezed.dart';
 part 'generated/game_model.g.dart';
 
-enum Status { open, closed, complete }
+enum Status { open, private, closed, complete }
 
 @freezed
 class GameModel with _$GameModel {
@@ -30,7 +30,8 @@ class GameModel with _$GameModel {
 
   factory GameModel.fromJson(Map<String, Object?> json) => _$GameModelFromJson(json);
 
-  bool canDraw(String? uid) => currentPlayer.uid == uid && status != Status.complete;
+  bool canDraw(String? uid) =>
+      currentPlayer.uid == uid && online.length > 1 && status != Status.complete;
 
   List<WordModel> get availableWords => onlinePlayers
       .map((player) => player.words.where((word) => word.available))

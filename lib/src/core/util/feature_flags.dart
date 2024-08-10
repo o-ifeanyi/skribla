@@ -8,7 +8,7 @@ part 'generated/feature_flags.g.dart';
 @JsonSerializable()
 class FeatureFlags {
   const FeatureFlags({
-    this.majorVersion = 1,
+    this.majorVersion = 0,
     this.minorVersion = 0,
     this.webDown = false,
     this.iosDown = false,

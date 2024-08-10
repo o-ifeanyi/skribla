@@ -7,7 +7,7 @@
             "namespace": "android_app",
             "package_name": "com.skribla.android.prod",
             "sha256_cert_fingerprints": [
-                "64:00:16:e5:c8:40:9c:c6:09:6c:b4:44:cf:e1:6d:e8:d8:08:c6:0c:73:73:50:4c:66:51:d2:ef:09:35:87:95"
+                "64:00:16:E5:C8:40:9C:C6:09:6C:B4:44:CF:E1:6D:E8:D8:08:C6:0C:73:73:50:4C:66:51:D2:EF:09:35:87:95"
             ]
         }
     },
@@ -19,7 +19,7 @@
             "namespace": "android_app",
             "package_name": "com.skribla.android.dev",
             "sha256_cert_fingerprints": [
-                "64:00:16:e5:c8:40:9c:c6:09:6c:b4:44:cf:e1:6d:e8:d8:08:c6:0c:73:73:50:4c:66:51:d2:ef:09:35:87:95"
+                "64:00:16:E5:C8:40:9C:C6:09:6C:B4:44:CF:E1:6D:E8:D8:08:C6:0C:73:73:50:4C:66:51:D2:EF:09:35:87:95"
             ]
         }
     }

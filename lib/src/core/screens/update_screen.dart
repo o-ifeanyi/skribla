@@ -24,7 +24,11 @@ class UpdateScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Icon(AppIcons.downloadSimple, size: Config.height * 0.2),
+            Icon(
+              AppIcons.downloadSimple,
+              size: Config.height * 0.2,
+              color: context.colorScheme.primary,
+            ),
             Text(
               'New update available',
               textAlign: TextAlign.center,
@@ -54,7 +58,7 @@ class UpdateScreen extends StatelessWidget {
               hPadding: 15,
               type: ButtonType.outlined,
               text: 'Close',
-              onPressed: () => context.go(Routes.start),
+              onPressed: () => context.go(Routes.home),
             ),
           ],
           Config.vBox30,

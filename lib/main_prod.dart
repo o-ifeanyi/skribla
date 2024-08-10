@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' hide Router;
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/firebase_options_prod.dart';
 import 'package:skribla/src/app/main_app.dart';
@@ -15,6 +16,11 @@ void main() {
     () async {
       setPathUrlStrategy();
       WidgetsFlutterBinding.ensureInitialized();
+      // FlutterNativeSplash.preserve(widgetsBinding: binding);
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );

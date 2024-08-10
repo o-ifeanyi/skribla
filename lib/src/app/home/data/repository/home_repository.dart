@@ -6,8 +6,8 @@ import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/util/constants.dart';
 import 'package:skribla/src/core/util/result.dart';
 
-final class StartRepository {
-  const StartRepository({
+final class HomeRepository {
+  const HomeRepository({
     required this.firebaseAuth,
     required this.firebaseFirestore,
   });
@@ -15,6 +15,34 @@ final class StartRepository {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
   static const _logger = Logger('StartRepository');
+
+  Future<Result<String>> createGame(UserModel user) async {
+    try {
+      _logger.request('Creating game - ${user.uid}');
+      // fetch player words first
+      final words = Constants.words.take(2).toList();
+
+      _logger.info('Creating game');
+      final player = user.toPlayer().copyWith(words: words);
+      final doc = firebaseFirestore.collection('games').doc();
+      final game = GameModel(
+        id: doc.id,
+        currentPlayer: player,
+        currentWord: words.first,
+        status: Status.private,
+        players: [player],
+        uids: [player.uid],
+        online: [player.uid],
+        createdAt: DateTime.now(),
+      );
+      await doc.set(game.toJson());
+
+      return Result.success(game.id);
+    } catch (e, s) {
+      _logger.error('findGame - $e', stack: s);
+      return Result.error(CustomError(message: e.toString()));
+    }
+  }
 
   Future<Result<String>> findGame(UserModel user) async {
     try {
@@ -62,6 +90,48 @@ final class StartRepository {
           },
         );
       }
+
+      return Result.success(game.id);
+    } catch (e, s) {
+      _logger.error('findGame - $e', stack: s);
+      return Result.error(CustomError(message: e.toString()));
+    }
+  }
+
+  Future<Result<String>> joinGame({required String id, required UserModel user}) async {
+    try {
+      _logger.request('Joining game - $id');
+      final data = await firebaseFirestore.collection('games').doc(id).get();
+
+      if (!data.exists) {
+        return findGame(user);
+      }
+
+      // fetch player words first
+      final words = Constants.words.take(2).toList();
+
+      final game = GameModel.fromJson(data.data()!);
+
+      if (game.status == Status.closed) {
+        return findGame(user);
+      }
+
+      final doc = firebaseFirestore.collection('games').doc(game.id);
+      final player = game.players.firstWhere(
+        (e) => e.uid == user.uid,
+        orElse: () => user.toPlayer().copyWith(words: words),
+      );
+
+      await doc.update(
+        {
+          'players': FieldValue.arrayUnion([player.toJson()]),
+          'uids': FieldValue.arrayUnion([player.uid]),
+          'online': FieldValue.arrayUnion([player.uid]),
+          if (game.online.length >= game.numOfPlayers - 1) ...{
+            'status': Status.closed.name,
+          },
+        },
+      );
 
       return Result.success(game.id);
     } catch (e, s) {

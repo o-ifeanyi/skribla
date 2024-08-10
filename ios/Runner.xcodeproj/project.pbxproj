@@ -10,6 +10,7 @@
 		0F7886E41DD73C2246C5768B /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2765FAB5D8105301DF29E6EB /* Pods_RunnerTests.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		1910CF08763871EEE158784A /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB13330ACAB050C4B65CC2E /* Pods_Runner.framework */; };
+		1E5999542C66DE37005479B1 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1E5999532C66DE37005479B1 /* Base.lproj */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 		0F2267472A342755D65A7CDE /* Pods-Runner.debug-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dev.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dev.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
+		1E5999532C66DE37005479B1 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
 		1E6A9F3F2C5F16D500E802D8 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		1E8129EA2C45DD2C00ADECAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E8129EC2C45DD9C00ADECAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				1E5999532C66DE37005479B1 /* Base.lproj */,
 				1E6A9F3F2C5F16D500E802D8 /* Runner.entitlements */,
 				1E06E4242C42123700063F0D /* dev */,
 				1E06E4232C42122F00063F0D /* prod */,
@@ -297,6 +300,7 @@
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				1E5999542C66DE37005479B1 /* Base.lproj in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
@@ -547,6 +551,7 @@
 				APP_DISPLAY_NAME = "Skribla Dev";
 				APP_IDENTIFIER_PREFIX = YYA8WP4LNJ;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
+				ASSOCIATED_DOMAINS = "applinks:dev.skribla.com";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -654,6 +659,7 @@
 				APP_DISPLAY_NAME = "Skribla Dev";
 				APP_IDENTIFIER_PREFIX = YYA8WP4LNJ;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
+				ASSOCIATED_DOMAINS = "applinks:dev.skribla.com";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -756,6 +762,7 @@
 				APP_DISPLAY_NAME = "Skribla Dev";
 				APP_IDENTIFIER_PREFIX = YYA8WP4LNJ;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
+				ASSOCIATED_DOMAINS = "applinks:dev.skribla.com";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -858,6 +865,7 @@
 				APP_DISPLAY_NAME = Skribla;
 				APP_IDENTIFIER_PREFIX = YYA8WP4LNJ;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-prod";
+				ASSOCIATED_DOMAINS = "applinks:app.skribla.com";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -1054,6 +1062,7 @@
 				APP_DISPLAY_NAME = Skribla;
 				APP_IDENTIFIER_PREFIX = YYA8WP4LNJ;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-prod";
+				ASSOCIATED_DOMAINS = "applinks:app.skribla.com";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -1088,6 +1097,7 @@
 				APP_DISPLAY_NAME = Skribla;
 				APP_IDENTIFIER_PREFIX = YYA8WP4LNJ;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-prod";
+				ASSOCIATED_DOMAINS = "applinks:app.skribla.com";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";

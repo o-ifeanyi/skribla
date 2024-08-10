@@ -67,11 +67,13 @@ android {
             dimension "app"
             applicationId "com.skribla.android.prod"
             resValue("string", "app_name", "Skribla")
+            resValue("string", "host", "app.skribla.com")
         }
         dev {
             dimension "app"
             applicationId "com.skribla.android.dev"
             resValue("string", "app_name", "Skribla Dev")
+            resValue("string", "host", "dev.skribla.com")
         }
     }
 }

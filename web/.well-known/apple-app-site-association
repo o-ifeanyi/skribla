@@ -9,7 +9,7 @@
                 "components": [
                     {
                         "/": "*",
-                        "comment": "Matches any URL with a path that starts with /mobile/."
+                        "comment": "Matches all url paths."
                     }
                 ]
             },
@@ -20,7 +20,7 @@
                 "components": [
                     {
                         "/": "*",
-                        "comment": "Matches any URL with a path that starts with /mobile/."
+                        "comment": "Matches all url paths."
                     }
                 ]
             }

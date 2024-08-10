@@ -6,6 +6,8 @@ import 'package:skribla/src/app/game/presentation/widgets/art_painter.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/service/deeplink.dart';
+import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/constants.dart';
 import 'package:skribla/src/core/util/extension.dart';

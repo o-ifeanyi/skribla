@@ -13,12 +13,14 @@ final class Support {
   static const _logger = Logger('Support');
 
   static Support get instance => _singleton;
-  final inAppReview = InAppReview.instance;
+  final _inAppReview = InAppReview.instance;
 
   Future<void> requestReview() async {
     try {
-      if (await inAppReview.isAvailable()) {
-        unawaited(inAppReview.requestReview());
+      if (kIsWeb || Platform.isWindows) return;
+
+      if (await _inAppReview.isAvailable()) {
+        unawaited(_inAppReview.requestReview());
       }
     } catch (e, s) {
       _logger.error('requestReview $e', stack: s);
@@ -27,7 +29,7 @@ final class Support {
 
   Future<void> openStoreListing() async {
     try {
-      await inAppReview.openStoreListing(appStoreId: '6608960206');
+      await _inAppReview.openStoreListing(appStoreId: '6608960206');
     } catch (e, s) {
       _logger.error('openStoreListing $e', stack: s);
     }

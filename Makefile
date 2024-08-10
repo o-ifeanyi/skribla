@@ -40,14 +40,24 @@ configure_prod:
 	--android-package-name=com.skribla.android.prod \
 	--web-app-id=1:676660663299:web:6912a4b78f5b8cbcb82a36
 
+deeplink:
+	adb shell am start -a android.intent.action.VIEW \
+  	-c android.intent.category.BROWSABLE \
+  	-d https://dev.skribla.com \
+  	com.skribla.android.dev
 
-deploy_dev:
-	firebase login --reauth
+serve_web:
+	sh web_flavor_setup.sh $(flavor)
+	flutter build web --target lib/main_$(flavor).dart --web-renderer canvaskit
+	firebase serve --only hosting --project=skribla-$(flavor)
+
+deploy_web:
+	sh web_flavor_setup.sh $(flavor)
+	flutter build web --target lib/main_$(flavor).dart --web-renderer canvaskit
+	firebase deploy --only hosting --project=skribla-$(flavor)
+
+deploy_mobile:
 	sh release_notes.sh
-	sh web_flavor_setup.sh dev
-
-	flutter build web --web-renderer canvaskit
-	firebase deploy
 
 	flutter build ipa --release \
 	--export-method ad-hoc \
