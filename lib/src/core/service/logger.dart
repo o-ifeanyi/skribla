@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class Logger {
   const Logger(this.tag);
@@ -14,9 +15,10 @@ class Logger {
 
   void watch(Object x) => _print('[👀 $tag]: $x');
 
-  void error(Object x, {StackTrace? stack}) => _print(
-        '[🐞 $tag]: $x${stack != null ? '\nStack: $stack' : ''}',
-      );
+  void error(Object x, {StackTrace? stack}) {
+    _print('[🐞 $tag]: $x${stack != null ? '\nStack: $stack' : ''}');
+    Sentry.captureException(x, stackTrace: stack);
+  }
 
   static void _print(String text) {
     if (kDebugMode) debugPrint(text);
