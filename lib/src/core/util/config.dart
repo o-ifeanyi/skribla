@@ -49,6 +49,7 @@ abstract class Config {
   static SizedBox get vBox30 => 30.verticalSpace;
 
   static BorderRadius get radius8 => BorderRadius.circular(8);
+  static BorderRadius get radius10 => BorderRadius.circular(10);
   static BorderRadius get radius16 => BorderRadius.circular(16);
   static BorderRadius get radius24 => BorderRadius.circular(24);
   static BorderRadius get radius32 => BorderRadius.circular(32);

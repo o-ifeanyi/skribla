@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/router/router.dart';
+import 'package:skribla/src/core/service/toast.dart';
 import 'package:skribla/src/core/theme/app_theme.dart';
 import 'package:skribla/src/core/util/extension.dart';
 
@@ -72,7 +73,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
                 data: context.mediaQuery.copyWith(
                   textScaler: scale,
                 ),
-                child: child!,
+                child: ToastProvider(child: child!),
               );
             },
           );

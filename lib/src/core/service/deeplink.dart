@@ -1,17 +1,22 @@
 import 'package:flutter/services.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/env/env.dart';
+import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/service/toast.dart';
 
 final class Deeplink {
   Deeplink._internal();
   static final _singleton = Deeplink._internal();
+  static const _logger = Logger('Deeplink');
 
   static Deeplink get instance => _singleton;
 
-  final flavor = appFlavor ?? 'prod';
-
-  Future<void> shareJoinLink({required String? id}) {
-    final link = '${Constants.baseDeeplink}/join/$id';
-    return Share.shareUri(Uri.parse(link));
+  Future<void> copyJoinLink({required String? id}) async {
+    try {
+      final data = ClipboardData(text: '${Env.baseUrl}/join/$id');
+      await Clipboard.setData(data);
+      Toast.instance.showSucess('Link copied successfully', title: 'Clipboard');
+    } catch (e, s) {
+      _logger.error('shareJoinLink $e', stack: s);
+    }
   }
 }

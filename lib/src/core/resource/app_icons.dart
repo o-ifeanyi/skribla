@@ -9,6 +9,7 @@ abstract class AppIcons {
   static IconData get highlighter => PhosphorIconsBold.highlighter;
   static IconData get clockCounterClockwise => PhosphorIconsBold.clockCounterClockwise;
   static IconData get check => PhosphorIconsBold.check;
+  static IconData get copy => PhosphorIconsBold.copy;
   static IconData get paperPlaneRight => PhosphorIconsBold.paperPlaneRight;
   static IconData get x => PhosphorIconsBold.x;
   static IconData get trophy => PhosphorIconsBold.trophy;

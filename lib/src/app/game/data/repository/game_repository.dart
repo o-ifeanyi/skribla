@@ -34,6 +34,7 @@ final class GameRepository {
       // or last online player is leaving when no art has been drawn
       if (game.players.length == 1 || (game.online.length == 1 && game.numOfArts == 0)) {
         await firebaseFirestore.collection('games').doc(game.id).delete();
+        _logger.info('Game deleted - uid $uid, id ${game.id}');
         return const Result.success(true);
       }
 

@@ -81,4 +81,4 @@ deploy_mobile:
 auth:
 	firebase login --reauth
 
-.PHONY: clean gen loc splash run format functions configure_dev configure_prod deploy_dev auth
+.PHONY: clean gen loc splash run format functions configure_dev configure_prod deeplink serve_web deploy_web deploy_mobile auth

@@ -9,15 +9,8 @@ import 'package:skribla/src/app/main_app.dart';
 import 'package:skribla/src/core/observers/provider_watch.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  setPathUrlStrategy();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
-  await SentryFlutter.init(
+void main() {
+  SentryFlutter.init(
     (options) {
       options
         ..dsn = Env.sentryDNS
@@ -26,6 +19,12 @@ void main() async {
         ..profilesSampleRate = 1.0;
     },
     appRunner: () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      setPathUrlStrategy();
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );

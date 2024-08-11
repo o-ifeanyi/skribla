@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
@@ -29,10 +28,10 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       elevation: 0,
       centerTitle: true,
-      leading: kIsWeb || !automaticallyImplyLeading
+      leading: !automaticallyImplyLeading
           ? const SizedBox.shrink()
           : Padding(
-              padding: Config.fromLTRB(15, 0, 0, 0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
               child: GestureDetector(
                 onTap: context.pop,
                 child: CircleAvatar(

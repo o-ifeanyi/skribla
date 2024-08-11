@@ -16,6 +16,8 @@ class InputField extends StatelessWidget {
     this.header,
     this.hint,
     this.preficIcon,
+    this.suffixIcon,
+    this.fillColor,
     this.textAlign = TextAlign.start,
     this.readOnly = false,
     this.optional = false,
@@ -33,6 +35,8 @@ class InputField extends StatelessWidget {
   final int? maxLength;
   final MaxLengthEnforcement? maxLengthEnforcement;
   final Widget? preficIcon;
+  final Widget? suffixIcon;
+  final Color? fillColor;
   final bool readOnly;
   final bool optional;
   final TextAlign textAlign;
@@ -66,6 +70,8 @@ class InputField extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 15),
             prefix: preficIcon,
+            suffixIcon: suffixIcon,
+            fillColor: fillColor,
             hintText: hint,
             hintStyle: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.normal),
             enabledBorder: OutlineInputBorder(

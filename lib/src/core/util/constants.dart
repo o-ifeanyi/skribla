@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:skribla/src/app/game/data/models/word_model.dart';
 
 abstract class Constants {
@@ -30,5 +29,4 @@ abstract class Constants {
   static const website = 'https://skribla.com/';
   static const playstore = 'https://skribla.com/';
   static const appstore = 'https://skribla.com/';
-  static const baseDeeplink = 'https://${appFlavor ?? 'prod'}.skribla.com';
 }

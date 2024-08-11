@@ -77,20 +77,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               controller: _nameCtrl,
               hint: 'Enter name',
               textAlign: TextAlign.center,
-              readOnly: status == HomeStatus.findingGame,
+              readOnly: status == HomeStatus.findingGame || status == HomeStatus.creatingGame,
             ),
             Config.vBox24,
             ValueListenableBuilder(
               valueListenable: _nameCtrl,
               builder: (context, value, child) {
+                final inValid = value.text.trim().isEmpty ||
+                    user == null ||
+                    status == HomeStatus.findingGame ||
+                    status == HomeStatus.creatingGame;
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     AppButton(
                       text: 'Play',
-                      onPressed: value.text.trim().isEmpty ||
-                              user == null ||
-                              status == HomeStatus.findingGame
+                      onPressed: inValid
                           ? null
                           : () async {
                               if (user.name != value.text.trim()) {
@@ -115,9 +117,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     AppButton(
                       text: 'Create game',
                       type: ButtonType.outlined,
-                      onPressed: value.text.trim().isEmpty ||
-                              user == null ||
-                              status == HomeStatus.findingGame
+                      onPressed: inValid
                           ? null
                           : () async {
                               if (user.name != value.text.trim()) {

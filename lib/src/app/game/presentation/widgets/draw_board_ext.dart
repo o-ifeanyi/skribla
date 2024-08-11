@@ -47,9 +47,23 @@ class _BoardOverlay extends ConsumerWidget {
             textAlign: TextAlign.center,
           ),
           Config.vBox12,
-          AppButton(
-            text: 'Invite someone',
-            onPressed: () => Deeplink.instance.shareJoinLink(id: game?.id),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 450),
+            child: InputField(
+              key: ValueKey(game?.id),
+              readOnly: true,
+              initialValue: '${Env.baseUrl}/join/${game?.id}',
+              fillColor: context.colorScheme.surface,
+              suffixIcon: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: ActionChip(
+                  label: const Text('Copy'),
+                  shape: RoundedRectangleBorder(borderRadius: Config.radius10),
+                  avatar: Icon(AppIcons.copy),
+                  onPressed: () => Deeplink.instance.copyJoinLink(id: game?.id),
+                ),
+              ),
+            ),
           ),
         ] else if (showCoolTimer) ...[
           Text.rich(

@@ -40,11 +40,15 @@ class PlayersView extends ConsumerWidget {
                   children: [
                     Text(
                       player.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: context.textTheme.labelSmall,
                     ),
-                    Text(
-                      '${player.points} pts',
-                      style: context.textTheme.labelLarge,
+                    FittedBox(
+                      child: Text(
+                        '${player.points} pts',
+                        style: context.textTheme.labelLarge,
+                      ),
                     ),
                   ],
                 ),

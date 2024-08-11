@@ -25,7 +25,7 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
       elevation: 0,
       scrolledUnderElevation: 0,
       leading: Padding(
-        padding: Config.fromLTRB(15, 0, 0, 0),
+        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
         child: GestureDetector(
           onTap: context.pop,
           child: CircleAvatar(
@@ -54,38 +54,44 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         if (topThree.length > 1) ...[
-                          TopThreeItem(
-                            height: constraints.maxHeight * 0.15,
-                            width: constraints.maxWidth * 0.2,
-                            color: Colors.grey,
-                            position: '2',
-                            posiionStyle: context.textTheme.titleMedium,
-                            title: topThree[1].name,
-                            subtitle: '${topThree[1].points} pts',
+                          Expanded(
+                            child: TopThreeItem(
+                              height: constraints.maxHeight * 0.15,
+                              width: constraints.maxWidth * 0.2,
+                              color: Colors.grey,
+                              position: '2',
+                              posiionStyle: context.textTheme.titleMedium,
+                              title: topThree[1].name,
+                              subtitle: '${topThree[1].points} pts',
+                            ),
                           ),
                         ],
                         if (topThree.isNotEmpty) ...[
                           Config.hBox12,
-                          TopThreeItem(
-                            height: constraints.maxHeight * 0.25,
-                            width: constraints.maxWidth * 0.4,
-                            color: Colors.orange,
-                            position: '1',
-                            posiionStyle: context.textTheme.titleLarge,
-                            title: topThree[0].name,
-                            subtitle: '${topThree[0].points} pts',
+                          Expanded(
+                            child: TopThreeItem(
+                              height: constraints.maxHeight * 0.25,
+                              width: constraints.maxWidth * 0.4,
+                              color: Colors.orange,
+                              position: '1',
+                              posiionStyle: context.textTheme.titleLarge,
+                              title: topThree[0].name,
+                              subtitle: '${topThree[0].points} pts',
+                            ),
                           ),
                         ],
                         if (topThree.length > 2) ...[
                           Config.hBox12,
-                          TopThreeItem(
-                            height: constraints.maxHeight * 0.12,
-                            width: constraints.maxWidth * 0.2,
-                            color: Colors.brown,
-                            position: '3',
-                            posiionStyle: context.textTheme.titleSmall,
-                            title: topThree[2].name,
-                            subtitle: '${topThree[2].points} pts',
+                          Expanded(
+                            child: TopThreeItem(
+                              height: constraints.maxHeight * 0.12,
+                              width: constraints.maxWidth * 0.2,
+                              color: Colors.brown,
+                              position: '3',
+                              posiionStyle: context.textTheme.titleSmall,
+                              title: topThree[2].name,
+                              subtitle: '${topThree[2].points} pts',
+                            ),
                           ),
                         ],
                       ],
