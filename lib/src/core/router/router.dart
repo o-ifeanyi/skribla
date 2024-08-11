@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:skribla/src/app/game/presentation/screens/game_screen.dart';
 import 'package:skribla/src/app/history/presentation/screens/history_screen.dart';
 import 'package:skribla/src/app/home/presentation/screens/home_screen.dart';
@@ -49,6 +50,7 @@ final class Router {
   final goRouter = GoRouter(
     initialLocation: Routes.home,
     navigatorKey: _rootNavigatorKey,
+    observers: [SentryNavigatorObserver()],
     routes: [
       _route(
         path: Routes.home,
