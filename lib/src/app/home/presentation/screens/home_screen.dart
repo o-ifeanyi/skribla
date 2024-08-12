@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skribla/src/app/home/presentation/provider/home_state.dart';
@@ -41,7 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       } else {
         await ref.read(authProvider.notifier).signInAnonymously();
       }
-      // FlutterNativeSplash.remove();
+      FlutterNativeSplash.remove();
 
       if (!mounted) return;
       final user = ref.read(authProvider).user;

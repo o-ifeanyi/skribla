@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:skribla/env/env.dart';
@@ -19,7 +20,8 @@ void main() {
         ..profilesSampleRate = 1.0;
     },
     appRunner: () async {
-      WidgetsFlutterBinding.ensureInitialized();
+      final binding = WidgetsFlutterBinding.ensureInitialized();
+      FlutterNativeSplash.preserve(widgetsBinding: binding);
       setPathUrlStrategy();
       await SystemChrome.setPreferredOrientations([
         DeviceOrientation.portraitUp,
