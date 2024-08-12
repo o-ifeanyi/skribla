@@ -36,6 +36,8 @@ firebase.json
 /android/app/src/prod/google-services.json
 /ios/Runner/dev/GoogleService-Info.plist
 /ios/Runner/prod/GoogleService-Info.plist
+/macos/Runner/dev/GoogleService-Info.plist
+/macos/Runner/prod/GoogleService-Info.plist
 /lib/firebase_options**
 
 # Symbolication related

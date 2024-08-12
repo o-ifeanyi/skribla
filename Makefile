@@ -30,6 +30,7 @@ configure_dev:
 	flutterfire configure --project=skribla-dev \
 	--out=lib/firebase_options_dev.dart \
 	--ios-bundle-id=com.skribla.ios.dev \
+	--macos-bundle-id=com.skribla.macos.dev \
 	--android-package-name=com.skribla.android.dev \
 	--web-app-id=1:1056704511056:web:c268b2cdb298bbf326e555
 
@@ -37,6 +38,7 @@ configure_prod:
 	flutterfire configure --project=skribla-prod \
 	--out=lib/firebase_options_prod.dart \
 	--ios-bundle-id=com.skribla.ios.prod \
+	--macos-bundle-id=com.skribla.macos.prod \
 	--android-package-name=com.skribla.android.prod \
 	--web-app-id=1:676660663299:web:6912a4b78f5b8cbcb82a36
 

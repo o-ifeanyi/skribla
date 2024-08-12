@@ -19,7 +19,6 @@ class ErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(height: topSpacer ?? Config.height * 0.3),
         Text(
