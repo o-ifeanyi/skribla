@@ -53,7 +53,7 @@ class SharedWidget extends ConsumerWidget {
                     text: exhibit.word.text,
                     children: [
                       TextSpan(
-                        text: ' by ',
+                        text: ' ${context.loc.by} ',
                         style: TextStyle(
                           color: context.colorScheme.secondary,
                           fontStyle: FontStyle.italic,

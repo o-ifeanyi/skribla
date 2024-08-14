@@ -30,8 +30,8 @@ class SettingsAuth extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Sign in to save progress',
+              Text(
+                context.loc.signinToSaveProgress,
                 textAlign: TextAlign.center,
               ),
               Config.vBox12,
@@ -41,7 +41,7 @@ class SettingsAuth extends ConsumerWidget {
                     Expanded(
                       child: AppButton(
                         icon: Icon(AppIcons.appleLogo),
-                        text: 'Apple',
+                        text: context.loc.apple,
                         onPressed: () =>
                             ref.read(authProvider.notifier).signInWithProvider(AuthOptions.apple),
                       ),
@@ -50,7 +50,7 @@ class SettingsAuth extends ConsumerWidget {
                     Expanded(
                       child: AppButton(
                         icon: Icon(AppIcons.googleLogo),
-                        text: 'Google',
+                        text: context.loc.google,
                         onPressed: () =>
                             ref.read(authProvider.notifier).signInWithProvider(AuthOptions.google),
                       ),
@@ -60,7 +60,7 @@ class SettingsAuth extends ConsumerWidget {
               ] else ...[
                 AppButton(
                   icon: Icon(AppIcons.googleLogo),
-                  text: 'Continue with Google',
+                  text: context.loc.continueWithGoogle,
                   onPressed: () =>
                       ref.read(authProvider.notifier).signInWithProvider(AuthOptions.google),
                 ),
@@ -74,7 +74,7 @@ class SettingsAuth extends ConsumerWidget {
             children: [
               AppButton(
                 icon: Icon(AppIcons.trashSimple),
-                text: 'Delete account',
+                text: context.loc.deleteAccount,
                 style: FilledButton.styleFrom(
                   backgroundColor: context.colorScheme.error,
                   shape: RoundedRectangleBorder(
@@ -86,23 +86,23 @@ class SettingsAuth extends ConsumerWidget {
                     context: context,
                     builder: (context) {
                       return AlertDialog.adaptive(
-                        title: const Text(
-                          'Are you sure?',
+                        title: Text(
+                          context.loc.areYouSure,
                           textAlign: TextAlign.center,
                         ),
-                        content: const Text(
-                          'Deleting your account cannot be reversed.',
+                        content: Text(
+                          context.loc.deleteAccountWarning,
                           textAlign: TextAlign.center,
                         ),
                         actions: [
                           AppButton(
                             type: ButtonType.text,
-                            text: 'Cancel',
+                            text: context.loc.cancel,
                             onPressed: () => context.pop(false),
                           ),
                           AppButton(
                             type: ButtonType.text,
-                            text: 'Delete',
+                            text: context.loc.delete,
                             onPressed: () => context.pop(true),
                           ),
                         ],

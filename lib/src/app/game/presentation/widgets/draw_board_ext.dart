@@ -16,10 +16,10 @@ class _BoardOverlay extends ConsumerWidget {
         if (game?.status == Status.complete) ...[
           Text.rich(
             TextSpan(
-              text: 'Game ',
+              text: '${context.loc.game} ',
               children: [
                 TextSpan(
-                  text: 'Completed!',
+                  text: context.loc.completed,
                   style: TextStyle(
                     color: context.colorScheme.secondary,
                   ),
@@ -31,7 +31,7 @@ class _BoardOverlay extends ConsumerWidget {
           ),
           Config.vBox12,
           AppButton(
-            text: 'View Gallery',
+            text: context.loc.viewGallery,
             onPressed: () {
               Support.instance.requestReview();
               ref.read(gameProvider.notifier).leaveGame();
@@ -41,8 +41,8 @@ class _BoardOverlay extends ConsumerWidget {
         ] else if ((game?.online ?? []).length < 2) ...[
           Text(
             game?.status == Status.private
-                ? 'Only invited players can join'
-                : 'Waiting for players to join',
+                ? context.loc.privateWaitingTxt
+                : context.loc.publicWaitingTxt,
             style: context.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
@@ -57,7 +57,7 @@ class _BoardOverlay extends ConsumerWidget {
               suffixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 6),
                 child: ActionChip(
-                  label: const Text('Copy'),
+                  label: Text(context.loc.copy),
                   shape: RoundedRectangleBorder(borderRadius: Config.radius10),
                   avatar: Icon(AppIcons.copy),
                   onPressed: () => Deeplink.instance.copyJoinLink(id: game?.id),
@@ -68,7 +68,7 @@ class _BoardOverlay extends ConsumerWidget {
         ] else if (showCoolTimer) ...[
           Text.rich(
             TextSpan(
-              text: 'Get ready ',
+              text: '${context.loc.getReady} ',
               children: [
                 TextSpan(
                   text: '${game?.currentPlayer.name}',
@@ -76,7 +76,7 @@ class _BoardOverlay extends ConsumerWidget {
                     color: context.colorScheme.secondary,
                   ),
                 ),
-                const TextSpan(text: "\nYou're up next"),
+                TextSpan(text: '\n${context.loc.youAreUpNext}'),
               ],
             ),
             style: context.textTheme.titleMedium,
@@ -86,7 +86,7 @@ class _BoardOverlay extends ConsumerWidget {
           if ((game?.currentArt ?? []).isEmpty)
             Text.rich(
               TextSpan(
-                text: 'Draw ',
+                text: '${context.loc.draw} ',
                 children: [
                   TextSpan(
                     text: '${game?.currentWord.text}',
@@ -124,7 +124,7 @@ class _BoardConfig extends ConsumerWidget {
                   children: [
                     Icon(AppIcons.eraser),
                     const SizedBox(width: 12),
-                    const Text('Clear'),
+                    Text(context.loc.clear),
                   ],
                 ),
                 onPressed: ref.read(gameProvider.notifier).clearBoard,
@@ -137,7 +137,7 @@ class _BoardConfig extends ConsumerWidget {
               ),
               Padding(
                 padding: Config.symmetric(h: 8),
-                child: Text('Stroke: $stroke'),
+                child: Text('${context.loc.stroke}: $stroke'),
               ),
               IconButton(
                 style: context.iconButtonStyle,

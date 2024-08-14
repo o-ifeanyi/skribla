@@ -21,13 +21,13 @@ class UnavailableScreen extends StatelessWidget {
               color: context.colorScheme.primary,
             ),
             Text(
-              'Our server is feeling a little down',
+              context.loc.unavailableTitle,
               textAlign: TextAlign.center,
               style: context.textTheme.titleSmall,
             ),
             Config.vBox12,
-            const Text(
-              "Please try again in a few moments. We'll be back up in no time",
+            Text(
+              context.loc.unavailableSubtitle,
               textAlign: TextAlign.center,
             ),
           ],

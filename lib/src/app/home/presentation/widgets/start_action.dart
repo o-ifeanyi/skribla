@@ -29,7 +29,10 @@ class StartAction extends StatelessWidget {
             ),
           ),
           Config.vBox12,
-          Text(text),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );

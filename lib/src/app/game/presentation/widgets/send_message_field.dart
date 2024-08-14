@@ -4,6 +4,7 @@ import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/input_field.dart';
 
 class SendMessageField extends ConsumerStatefulWidget {
@@ -33,7 +34,7 @@ class _SendMessageFieldState extends ConsumerState<SendMessageField> {
                   child: InputField(
                     readOnly: status == GameStatus.sendingMessage,
                     controller: _msgCtrl,
-                    hint: 'guess or chat...',
+                    hint: context.loc.guessOrChat,
                     maxLines: null,
                   ),
                 ),

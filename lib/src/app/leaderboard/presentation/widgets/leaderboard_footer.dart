@@ -46,8 +46,8 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
         children: [
           Config.vBox12,
           if (user?.status == AuthStatus.anonymous) ...[
-            const Text(
-              'Sign in to join the leadearboard',
+            Text(
+              context.loc.signinToJoinLeaderboard,
               textAlign: TextAlign.center,
             ),
             Config.vBox12,
@@ -57,7 +57,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                   Expanded(
                     child: AppButton(
                       icon: Icon(AppIcons.appleLogo),
-                      text: 'Apple',
+                      text: context.loc.apple,
                       onPressed: () {
                         ref
                             .read(authProvider.notifier)
@@ -74,7 +74,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                   Expanded(
                     child: AppButton(
                       icon: Icon(AppIcons.googleLogo),
-                      text: 'Google',
+                      text: context.loc.google,
                       onPressed: () {
                         ref
                             .read(authProvider.notifier)
@@ -92,7 +92,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
             ] else ...[
               AppButton(
                 icon: Icon(AppIcons.googleLogo),
-                text: 'Continue with Google',
+                text: context.loc.continueWithGoogle,
                 onPressed: () {
                   ref
                       .read(authProvider.notifier)
@@ -112,7 +112,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                 if (data == null) return const SizedBox.shrink();
                 return LeaderboardItem(
                   data: data,
-                  name: '${user?.name} (you)',
+                  name: context.loc.nameLeaderboard('${user?.name}'),
                 );
               },
               error: (error, stackTrace) {

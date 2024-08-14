@@ -1,10 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/src/app/auth/data/repository/auth_repository.dart';
 import 'package:skribla/src/app/auth/presentation/provider/auth_state.dart';
+import 'package:skribla/src/core/service/toast.dart';
 
 class AuthProvider extends StateNotifier<AuthState> {
-  AuthProvider({required this.authRepository}) : super(const AuthState());
+  AuthProvider({
+    required this.toast,
+    required this.authRepository,
+  }) : super(const AuthState());
 
+  final Toast toast;
   final AuthRepository authRepository;
 
   Future<bool> signInAnonymously() async {
@@ -14,7 +19,10 @@ class AuthProvider extends StateNotifier<AuthState> {
         state = state.copyWith(user: user);
         return true;
       },
-      error: (error) => false,
+      error: (error) {
+        toast.showError(error.message);
+        return false;
+      },
     );
   }
 
@@ -25,7 +33,10 @@ class AuthProvider extends StateNotifier<AuthState> {
         state = state.copyWith(user: user);
         return true;
       },
-      error: (error) => false,
+      error: (error) {
+        toast.showError(error.message);
+        return false;
+      },
     );
   }
 
@@ -60,7 +71,10 @@ class AuthProvider extends StateNotifier<AuthState> {
         state = state.copyWith(user: null);
         return true;
       },
-      error: (error) => false,
+      error: (error) {
+        toast.showError(error.message);
+        return false;
+      },
     );
   }
 }

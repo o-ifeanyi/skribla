@@ -20,20 +20,25 @@ import 'package:skribla/src/app/leaderboard/data/repository/leaderboard_reposito
 import 'package:skribla/src/app/leaderboard/presentation/provider/leaderboard_provider.dart';
 import 'package:skribla/src/app/leaderboard/presentation/provider/leaderboard_state.dart';
 import 'package:skribla/src/app/settings/data/repository/settings_repository.dart';
+import 'package:skribla/src/app/settings/presentation/provider/loc_provider.dart';
 import 'package:skribla/src/app/settings/presentation/provider/settings_provider.dart';
 import 'package:skribla/src/app/settings/presentation/provider/settings_state.dart';
+import 'package:skribla/src/core/service/toast.dart';
 import 'package:skribla/src/core/theme/app_theme.dart';
 import 'package:skribla/src/core/theme/theme_provider.dart';
 
 // Providers
 final authProvider = StateNotifierProvider<AuthProvider, AuthState>(
   (ref) => AuthProvider(
+    toast: Toast.instance,
     authRepository: ref.read(authRepoProvider),
   ),
 );
 
 final homeProvider = StateNotifierProvider<HomeProvider, HomeState>(
   (ref) => HomeProvider(
+    ref: ref,
+    toast: Toast.instance,
     homeRepository: ref.read(homeRepoProvider),
   ),
 );
@@ -78,22 +83,24 @@ final settingsProvider = StateNotifierProvider<SettingsProvider, SettingsState>(
 // Repositories
 final authRepoProvider = Provider<AuthRepository>(
   (ref) => AuthRepository(
+    loc: ref.read(locProvider),
     firebaseAuth: ref.read(firebaseAuthProvider),
-    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+    firebaseFirestore: ref.read(firebaseFirestoreProvider),
   ),
 );
 
 final homeRepoProvider = Provider<HomeRepository>(
   (ref) => HomeRepository(
+    loc: ref.read(locProvider),
     firebaseAuth: ref.read(firebaseAuthProvider),
-    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+    firebaseFirestore: ref.read(firebaseFirestoreProvider),
   ),
 );
 
 final gameRepoProvider = Provider<GameRepository>(
   (ref) => GameRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
-    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+    firebaseFirestore: ref.read(firebaseFirestoreProvider),
     leaderboardRepository: ref.read(leaderboardRepoProvider),
   ),
 );
@@ -101,25 +108,25 @@ final gameRepoProvider = Provider<GameRepository>(
 final galleryRepoProvider = Provider<HistoryRepository>(
   (ref) => HistoryRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
-    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+    firebaseFirestore: ref.read(firebaseFirestoreProvider),
   ),
 );
 
 final leaderboardRepoProvider = Provider<LeaderboardRepository>(
   (ref) => LeaderboardRepository(
     firebaseAuth: ref.read(firebaseAuthProvider),
-    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+    firebaseFirestore: ref.read(firebaseFirestoreProvider),
   ),
 );
 
 final settingsRepoProvider = Provider<SettingsRepository>(
   (ref) => SettingsRepository(
-    firebaseFirestore: ref.read(firebaseFireStoreProvider),
+    firebaseFirestore: ref.read(firebaseFirestoreProvider),
   ),
 );
 
 // Externals
-final firebaseFireStoreProvider = Provider<FirebaseFirestore>(
+final firebaseFirestoreProvider = Provider<FirebaseFirestore>(
   (_) => FirebaseFirestore.instance,
 );
 

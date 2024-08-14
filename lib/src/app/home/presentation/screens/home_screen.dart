@@ -76,7 +76,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Config.vBox24,
             InputField(
               controller: _nameCtrl,
-              hint: 'Enter name',
+              hint: context.loc.gotoHomeBtnTxt,
               textAlign: TextAlign.center,
               readOnly: status == HomeStatus.findingGame || status == HomeStatus.creatingGame,
             ),
@@ -92,18 +92,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     AppButton(
-                      text: 'Play',
+                      text: context.loc.playBtnTxt,
                       onPressed: inValid
                           ? null
                           : () async {
-                              if (user.name != value.text.trim()) {
-                                await ref
-                                    .read(authProvider.notifier)
-                                    .updateUserName(value.text.trim());
-                              }
-
-                              if (!context.mounted) return;
-
                               await ref
                                   .read(homeProvider.notifier)
                                   .findGame(user.copyWith(name: value.text.trim()))
@@ -116,19 +108,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                     Config.vBox16,
                     AppButton(
-                      text: 'Create game',
+                      text: context.loc.createGameBtnTxt,
                       type: ButtonType.outlined,
                       onPressed: inValid
                           ? null
                           : () async {
-                              if (user.name != value.text.trim()) {
-                                await ref
-                                    .read(authProvider.notifier)
-                                    .updateUserName(value.text.trim());
-                              }
-
-                              if (!context.mounted) return;
-
                               await ref
                                   .read(homeProvider.notifier)
                                   .createGame(user.copyWith(name: value.text.trim()))
@@ -145,22 +129,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             Config.vBox24,
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                StartAction(
-                  icon: AppIcons.gear,
-                  text: 'Settings',
-                  onTap: () => context.goNamed(Routes.settings),
+                Expanded(
+                  child: StartAction(
+                    icon: AppIcons.gear,
+                    text: context.loc.settingsBtnTxt,
+                    onTap: () => context.goNamed(Routes.settings),
+                  ),
                 ),
-                StartAction(
-                  icon: AppIcons.trophy,
-                  text: 'Leaderboard',
-                  onTap: user == null ? null : () => context.goNamed(Routes.leaderboard),
+                Expanded(
+                  child: StartAction(
+                    icon: AppIcons.trophy,
+                    text: context.loc.leaderboardBtnTxt,
+                    onTap: user == null ? null : () => context.goNamed(Routes.leaderboard),
+                  ),
                 ),
-                StartAction(
-                  icon: AppIcons.clockCounterClockwise,
-                  text: 'History',
-                  onTap: user == null ? null : () => context.goNamed(Routes.history),
+                Expanded(
+                  child: StartAction(
+                    icon: AppIcons.clockCounterClockwise,
+                    text: context.loc.historyBtnTxt,
+                    onTap: user == null ? null : () => context.goNamed(Routes.history),
+                  ),
                 ),
               ],
             ),

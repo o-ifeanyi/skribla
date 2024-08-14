@@ -27,7 +27,7 @@ class ExhibitFooter extends StatelessWidget {
               text: exhibit.word.text,
               children: [
                 TextSpan(
-                  text: ' by ',
+                  text: ' ${context.loc.by} ',
                   style: TextStyle(
                     color: context.colorScheme.secondary,
                     fontStyle: FontStyle.italic,
@@ -43,7 +43,7 @@ class ExhibitFooter extends StatelessWidget {
         Config.vBox12,
         AppButton(
           hPadding: 15,
-          text: 'Share',
+          text: context.loc.shareBtnTxt,
           onPressed: onShare,
         ),
         Config.vBox30,

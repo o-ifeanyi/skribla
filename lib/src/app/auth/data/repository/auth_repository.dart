@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:skribla/env/env.dart';
@@ -12,11 +13,13 @@ enum AuthOptions { apple, google }
 
 final class AuthRepository {
   const AuthRepository({
+    required this.loc,
     required this.firebaseAuth,
     required this.firebaseFirestore,
   });
   static const _logger = Logger('AuthRepository');
 
+  final AppLocalizations loc;
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
 
@@ -32,7 +35,7 @@ final class AuthRepository {
       }
     } catch (e, s) {
       _logger.error('signInAnonymously - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.signinErr));
     }
   }
 
@@ -56,10 +59,9 @@ final class AuthRepository {
             clientId: kIsWeb ? Env.gIdClientIdWWeb : null,
             scopes: ['email'],
           ).signIn();
+
           if (googleUser == null) {
-            return const Result.error(
-              CustomError(message: 'Authenticataion failed'),
-            );
+            return Result.error(CustomError(message: loc.authFailedErr));
           }
           final googleAuth = await googleUser.authentication;
 
@@ -81,7 +83,7 @@ final class AuthRepository {
             _logger.info('Signing in existing user - ${e.code}');
             userCredential = await firebaseAuth.signInWithCredential(credential);
           default:
-            return Result.error(CustomError(message: e.toString()));
+            return Result.error(CustomError(message: loc.authFailedErr));
         }
       }
 
@@ -93,7 +95,7 @@ final class AuthRepository {
       return await getUser();
     } catch (e, s) {
       _logger.error('signInWithProvider - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.createAccountErr));
     }
   }
 
@@ -107,7 +109,7 @@ final class AuthRepository {
       return Result.success(user);
     } catch (e, s) {
       _logger.error('saveAnonumousUser - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.saveUserErr));
     }
   }
 
@@ -128,7 +130,7 @@ final class AuthRepository {
       return Result.success(user);
     } catch (e, s) {
       _logger.error('getUser - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.getUserErr));
     }
   }
 
@@ -144,7 +146,7 @@ final class AuthRepository {
       return const Result.success(true);
     } catch (e, s) {
       _logger.error('updateUserName - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.updateUserErr));
     }
   }
 
@@ -164,11 +166,11 @@ final class AuthRepository {
         case 'requires-recent-login':
           return _reauthenticateAndDelete();
         default:
-          return Result.error(CustomError(message: e.toString()));
+          return Result.error(CustomError(message: loc.accountDeletionFailedErr));
       }
     } catch (e, s) {
       _logger.error('deleteAccount - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.deleteAccountErr));
     }
   }
 
@@ -187,7 +189,7 @@ final class AuthRepository {
       return const Result.success(true);
     } catch (e, s) {
       _logger.error('_reauthenticateAndDelete - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.deleteAccountErr));
     }
   }
 }

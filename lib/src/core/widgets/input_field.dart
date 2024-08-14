@@ -86,13 +86,6 @@ class InputField extends StatelessWidget {
               borderRadius: Config.radius16,
             ),
           ),
-          validator: optional
-              ? null
-              : (value) {
-                  return value == null || value.trim().isEmpty
-                      ? '${hint ?? hint} is required'
-                      : null;
-                },
         ),
       ],
     );

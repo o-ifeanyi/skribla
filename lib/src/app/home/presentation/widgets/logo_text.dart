@@ -24,7 +24,7 @@ class LogoText extends StatelessWidget {
           ),
         ),
         Text(
-          'draw, guess, and have fun',
+          context.loc.logoSubtitle,
           textAlign: TextAlign.center,
           style: context.textTheme.bodyLarge,
         ),

@@ -87,12 +87,12 @@ class _LeaderboardScreenState extends ConsumerState<LeaderboardScreen> {
                 children: [
                   SizedBox(height: Config.height * 0.15),
                   Text(
-                    'Nothing to see here',
+                    context.loc.leaderboardEmptyTitle,
                     style: context.textTheme.titleSmall,
                   ),
                   Config.vBox12,
-                  const Text(
-                    'Players in the leaderboard will show up here',
+                  Text(
+                    context.loc.leaderboardEmptySubtitle,
                     textAlign: TextAlign.center,
                   ),
                 ],

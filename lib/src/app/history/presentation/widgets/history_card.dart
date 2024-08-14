@@ -69,7 +69,7 @@ class _HistoryCardState extends State<HistoryCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('${widget.game.players.length} players joined'),
+                Text(context.loc.nPlayersJoined(widget.game.players.length)),
                 Text(
                   widget.game.createdAt.formatEDMHM,
                   style: context.textTheme.bodySmall,

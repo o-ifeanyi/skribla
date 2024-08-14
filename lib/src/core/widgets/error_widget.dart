@@ -22,14 +22,14 @@ class ErrorWidget extends StatelessWidget {
       children: [
         SizedBox(height: topSpacer ?? Config.height * 0.3),
         Text(
-          'Something went wrong',
+          context.loc.errorTitle,
           textAlign: TextAlign.center,
           style: context.textTheme.titleSmall,
         ),
         Config.vBox12,
         Text.rich(
           TextSpan(
-            text: 'Try again or contact us at ',
+            text: '${context.loc.errorSubtitle} ',
             children: [
               TextSpan(
                 text: Constants.email,
@@ -43,7 +43,7 @@ class ErrorWidget extends StatelessWidget {
         if (retry != null) ...[
           Config.vBox12,
           AppButton(
-            text: 'Retry',
+            text: context.loc.retry,
             onPressed: retry,
           ),
         ],

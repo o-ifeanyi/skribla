@@ -1,3 +1,99 @@
 {
-    "@@locale": "en"
+    "@@locale": "en",
+    "logoSubtitle": "draw, guess, and have fun",
+    "enterNameHint": "Enter name",
+    "playBtnTxt": "Play",
+    "createGameBtnTxt": "Create game",
+    "joinGameBtnTxt": "Join game",
+    "gotoHomeBtnTxt": "Go to home page",
+    "settingsBtnTxt": "Settings",
+    "leaderboardBtnTxt": "Leaderboard",
+    "historyBtnTxt": "History",
+    "guessOrChat": "guess or chat...",
+    "game": "Game",
+    "completed": "Completed!",
+    "viewGallery": "View Gallery",
+    "copy": "Copy",
+    "getReady": "Get ready",
+    "youAreUpNext": "You're up next",
+    "draw": "Draw",
+    "stroke": "Stroke",
+    "clear": "Clear",
+    "privateWaitingTxt": "Only invited players can join",
+    "publicWaitingTxt": "Waiting for players to join",
+    "historyEmptyTitle": "Nothing to see here",
+    "historyEmptySubtitle": "Games you played will show up here",
+    "by": "by",
+    "nPlayersJoined": "{number} players joined",
+    "@nPlayersJoined": {
+        "placeholders": {
+            "number": {
+                "type": "num"
+            }
+        }
+    },
+    "shareBtnTxt": "Share",
+    "nameLeaderboard": "{name} (you)",
+    "@nameLeaderboard": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "lastUpdatedAt": "Last updated {date}",
+    "@lastUpdatedAt": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "monthly": "Monthly",
+    "allTime": "All time",
+    "leaderboardEmptyTitle": "Nothing to see here",
+    "leaderboardEmptySubtitle": "Players in the leaderboard will show up here",
+    "signinToJoinLeaderboard": "Sign in to join the leadearboard",
+    "apple": "Apple",
+    "google": "Google",
+    "continueWithGoogle": "Continue with Google",
+    "errorTitle": "Something went wrong",
+    "errorSubtitle": "Try again or contact us at",
+    "retry": "Retry",
+    "general": "General",
+    "haptics": "Haptics",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "support": "Support",
+    "leaveReview": "Leave a review",
+    "contactSupport": "Contact support",
+    "about": "About",
+    "privacyPolicy": "Privacy policy",
+    "termsOfService": "Terms of service",
+    "signinToSaveProgress": "Sign in to save progress",
+    "deleteAccount": "Delete account",
+    "areYouSure": "Are you sure?",
+    "deleteAccountWarning": "Deleting your account cannot be reversed.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "updateTitle": "New update available",
+    "updateSubtitle": "Get the latest update from the store for a better experience",
+    "update": "Update",
+    "maybeLater": "Maybe later",
+    "unavailableTitle": "Our server is feeling a little down",
+    "unavailableSubtitle": "Please try again in a few moments. We'll be back up in no time",
+    "signinErr": "An error occured while signing in. Please try again later",
+    "authFailedErr": "Authenticataion failed",
+    "createAccountErr": "An error occured while creating account. Please try again later",
+    "saveUserErr": "An error occured while saving user. Please try again later",
+    "userNotErr": "User not found",
+    "getUserErr": "An error occured while getting user. Please try again later",
+    "updateUserErr": "An error occured while updating username. Please try again later",
+    "accountDeletionFailedErr": "Account deletion failed",
+    "deleteAccountErr": "An error occured while deleting account. Please try again later",
+    "createGameErr": "An error occured while creating game. Please try again later",
+    "findGameErr": "An error occured while finding game. Please try again later",
+    "joinGameErr": "An error occured while joining game. Please try again later"
 }

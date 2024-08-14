@@ -30,13 +30,13 @@ class UpdateScreen extends StatelessWidget {
               color: context.colorScheme.primary,
             ),
             Text(
-              'New update available',
+              context.loc.updateTitle,
               textAlign: TextAlign.center,
               style: context.textTheme.titleSmall,
             ),
             Config.vBox12,
-            const Text(
-              'Get the latest update from the store for a better experience',
+            Text(
+              context.loc.updateSubtitle,
               textAlign: TextAlign.center,
             ),
           ],
@@ -49,7 +49,7 @@ class UpdateScreen extends StatelessWidget {
           Config.vBox12,
           AppButton(
             hPadding: 15,
-            text: 'Update',
+            text: context.loc.update,
             onPressed: Support.instance.openStore,
           ),
           if (!forced) ...[
@@ -57,7 +57,7 @@ class UpdateScreen extends StatelessWidget {
             AppButton(
               hPadding: 15,
               type: ButtonType.outlined,
-              text: 'Close',
+              text: context.loc.maybeLater,
               onPressed: () => context.go(Routes.home),
             ),
           ],

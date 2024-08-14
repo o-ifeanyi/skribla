@@ -22,7 +22,7 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: DefaultAppBar(
         title: Text(
-          'Settings',
+          context.loc.settingsBtnTxt,
           style: context.textTheme.bodyLarge,
         ),
       ),
@@ -30,13 +30,13 @@ class SettingsScreen extends ConsumerWidget {
         padding: Config.all(15),
         children: [
           Text(
-            'General',
+            context.loc.general,
             style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
           ),
           Config.vBox12,
           CustomListTile(
             icon: AppIcons.vibrate,
-            title: 'Haptics',
+            title: context.loc.haptics,
             trailing: Switch.adaptive(
               value: hapticsOn,
               onChanged: ref.read(settingsProvider.notifier).toggleHaptics,
@@ -44,7 +44,7 @@ class SettingsScreen extends ConsumerWidget {
           ),
           Config.vBox12,
           Text(
-            'Theme',
+            context.loc.theme,
             style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
           ),
           Config.vBox12,
@@ -53,10 +53,10 @@ class SettingsScreen extends ConsumerWidget {
             padding: Config.symmetric(h: 8, v: 12),
             backgroundColor: context.theme.inputDecorationTheme.fillColor!,
             thumbColor: context.colorScheme.surface,
-            children: const {
-              ThemeOptions.light: Text('Light'),
-              ThemeOptions.dark: Text('Dark'),
-              ThemeOptions.system: Text('System'),
+            children: {
+              ThemeOptions.light: Text(context.loc.light),
+              ThemeOptions.dark: Text(context.loc.dark),
+              ThemeOptions.system: Text(context.loc.system),
             },
             onValueChanged: (option) {
               if (option != null) {
@@ -66,38 +66,38 @@ class SettingsScreen extends ConsumerWidget {
           ),
           Config.vBox12,
           Text(
-            'Support',
+            context.loc.support,
             style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
           ),
           if (!kIsWeb) ...[
             Config.vBox12,
             CustomListTile(
               icon: AppIcons.star,
-              title: 'Leave a review',
+              title: context.loc.leaveReview,
               onTap: Support.instance.openStoreListing,
             ),
           ],
           Config.vBox12,
           CustomListTile(
             icon: AppIcons.envelopeSimple,
-            title: 'Contact support',
+            title: context.loc.contactSupport,
             onTap: Support.instance.contactSupport,
           ),
           Config.vBox12,
           Text(
-            'About',
+            context.loc.about,
             style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
           ),
           Config.vBox12,
           CustomListTile(
             icon: AppIcons.shield,
-            title: 'Privacy policy',
+            title: context.loc.privacyPolicy,
             onTap: Support.instance.openPrivacy,
           ),
           Config.vBox12,
           CustomListTile(
             icon: AppIcons.listChecks,
-            title: 'Terms of service',
+            title: context.loc.termsOfService,
             onTap: Support.instance.openTerms,
           ),
           SizedBox(height: Config.height * 0.3),

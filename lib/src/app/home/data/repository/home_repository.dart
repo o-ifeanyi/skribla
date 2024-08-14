@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skribla/src/app/auth/data/models/user_model.dart';
 import 'package:skribla/src/app/game/data/models/game_model.dart';
 import 'package:skribla/src/core/service/logger.dart';
@@ -8,10 +9,12 @@ import 'package:skribla/src/core/util/result.dart';
 
 final class HomeRepository {
   const HomeRepository({
+    required this.loc,
     required this.firebaseAuth,
     required this.firebaseFirestore,
   });
 
+  final AppLocalizations loc;
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
   static const _logger = Logger('StartRepository');
@@ -39,8 +42,8 @@ final class HomeRepository {
 
       return Result.success(game.id);
     } catch (e, s) {
-      _logger.error('findGame - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      _logger.error('createGame - $e', stack: s);
+      return Result.error(CustomError(message: loc.createGameErr));
     }
   }
 
@@ -94,7 +97,7 @@ final class HomeRepository {
       return Result.success(game.id);
     } catch (e, s) {
       _logger.error('findGame - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      return Result.error(CustomError(message: loc.findGameErr));
     }
   }
 
@@ -112,7 +115,7 @@ final class HomeRepository {
 
       final game = GameModel.fromJson(data.data()!);
 
-      if (game.status == Status.closed) {
+      if (game.status == Status.closed || game.status == Status.complete) {
         return findGame(user);
       }
 
@@ -135,8 +138,8 @@ final class HomeRepository {
 
       return Result.success(game.id);
     } catch (e, s) {
-      _logger.error('findGame - $e', stack: s);
-      return Result.error(CustomError(message: e.toString()));
+      _logger.error('joinGame - $e', stack: s);
+      return Result.error(CustomError(message: loc.joinGameErr));
     }
   }
 }

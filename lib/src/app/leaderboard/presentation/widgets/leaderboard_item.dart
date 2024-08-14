@@ -32,7 +32,7 @@ class LeaderboardItem extends StatelessWidget {
       ),
       title: Text(name ?? ''),
       subtitle: Text(
-        'Last updated ${data.model.updatedAt.formatEDMHM}',
+        context.loc.lastUpdatedAt(data.model.updatedAt.formatEDMHM),
         style: context.textTheme.bodySmall,
       ),
       trailing: Text('${data.model.points} pts'),

@@ -62,7 +62,7 @@ class _JoinScreenState extends ConsumerState<JoinScreen> {
             Config.vBox24,
             InputField(
               controller: _nameCtrl,
-              hint: 'Enter name',
+              hint: context.loc.enterNameHint,
               textAlign: TextAlign.center,
               readOnly: status == HomeStatus.joiningGame,
             ),
@@ -71,36 +71,29 @@ class _JoinScreenState extends ConsumerState<JoinScreen> {
               valueListenable: _nameCtrl,
               builder: (context, value, child) {
                 return AppButton(
-                  text: 'Join game',
-                  onPressed: value.text.trim().isEmpty ||
-                          user == null ||
-                          status == HomeStatus.joiningGame
-                      ? null
-                      : () async {
-                          if (user.name != value.text.trim()) {
-                            await ref.read(authProvider.notifier).updateUserName(value.text.trim());
-                          }
-
-                          if (!context.mounted) return;
-
-                          await ref
-                              .read(homeProvider.notifier)
-                              .joinGame(
-                                id: widget.id,
-                                user: user.copyWith(name: value.text.trim()),
-                              )
-                              .then((id) {
-                            if (id != null) {
-                              context.replaceNamed(Routes.game, pathParameters: {'id': id});
-                            }
-                          });
-                        },
+                  text: context.loc.joinGameBtnTxt,
+                  onPressed:
+                      value.text.trim().isEmpty || user == null || status == HomeStatus.joiningGame
+                          ? null
+                          : () async {
+                              await ref
+                                  .read(homeProvider.notifier)
+                                  .joinGame(
+                                    id: widget.id,
+                                    user: user.copyWith(name: value.text.trim()),
+                                  )
+                                  .then((id) {
+                                if (id != null) {
+                                  context.replaceNamed(Routes.game, pathParameters: {'id': id});
+                                }
+                              });
+                            },
                 );
               },
             ),
             Config.vBox16,
             AppButton(
-              text: 'Go to home page',
+              text: context.loc.gotoHomeBtnTxt,
               type: ButtonType.outlined,
               onPressed: context.pop,
             ),

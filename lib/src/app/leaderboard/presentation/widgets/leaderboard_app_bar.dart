@@ -35,7 +35,7 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
         ),
       ),
       title: Text(
-        'Leaderboard',
+        context.loc.leaderboardBtnTxt,
         style: context.textTheme.bodyLarge,
       ),
       bottom: const _SliverBottomWidget(),
@@ -140,9 +140,9 @@ class _SliverBottomWidgetState extends State<_SliverBottomWidget>
           return TabBar(
             controller: _controller,
             splashBorderRadius: Config.radius24,
-            tabs: const [
-              Tab(text: 'Monthly'),
-              Tab(text: 'All time'),
+            tabs: [
+              Tab(text: context.loc.monthly),
+              Tab(text: context.loc.allTime),
             ],
             dividerColor: Colors.transparent,
             labelStyle: context.textTheme.bodyMedium,

@@ -38,7 +38,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
     return Scaffold(
       appBar: DefaultAppBar(
         title: Text(
-          'Play history',
+          context.loc.historyBtnTxt,
           style: context.textTheme.bodyLarge,
         ),
       ),
@@ -84,12 +84,12 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
               children: [
                 SizedBox(height: Config.height * 0.3),
                 Text(
-                  'Nothing to see here',
+                  context.loc.historyEmptyTitle,
                   style: context.textTheme.titleSmall,
                 ),
                 Config.vBox12,
-                const Text(
-                  'Games you played will show up here',
+                Text(
+                  context.loc.historyEmptySubtitle,
                   textAlign: TextAlign.center,
                 ),
               ],
