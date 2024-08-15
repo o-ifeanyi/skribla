@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:skribla/src/core/service/haptics.dart';
 import 'package:toastification/toastification.dart';
 
 class Toast {
@@ -16,12 +17,14 @@ class Toast {
     _controller.add(
       ToastModel(title: title, message: message, type: ToastificationType.error),
     );
+    Haptics.instance.mediumImpact();
   }
 
   void showSucess(String message, {String? title}) {
     _controller.add(
       ToastModel(title: title, message: message, type: ToastificationType.success),
     );
+    Haptics.instance.mediumImpact();
   }
 
   void dispose() => _controller.close();

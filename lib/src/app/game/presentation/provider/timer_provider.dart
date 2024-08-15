@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/src/app/game/presentation/provider/timer_state.dart';
+import 'package:skribla/src/core/service/haptics.dart';
 import 'package:skribla/src/core/service/logger.dart';
 
 class TimerProvider extends StateNotifier<TimerState> {
@@ -75,6 +76,7 @@ class TimerProvider extends StateNotifier<TimerState> {
       const Duration(seconds: 1),
       (ticker) {
         Logger.log('SkipTimer === ${duration.inSeconds}');
+        Haptics.instance.heavyImpact();
         if (ticker.tick == duration.inSeconds) {
           stopSkipTimer();
           callback.call();
@@ -107,6 +109,11 @@ class TimerProvider extends StateNotifier<TimerState> {
       const Duration(seconds: 1),
       (ticker) {
         Logger.log('TurnTimer === ${duration.inSeconds}');
+        if (ticker.tick >= (duration.inSeconds ~/ 2)) {
+          Haptics.instance.lightImpact();
+        } else if (ticker.tick >= (duration.inSeconds ~/ 1.2)) {
+          Haptics.instance.heavyImpact();
+        }
         if (ticker.tick == duration.inSeconds) {
           _stopTurnTimer();
           callback.call();

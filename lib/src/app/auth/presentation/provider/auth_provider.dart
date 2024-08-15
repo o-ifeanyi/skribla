@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/src/app/auth/data/repository/auth_repository.dart';
 import 'package:skribla/src/app/auth/presentation/provider/auth_state.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/toast.dart';
 
 class AuthProvider extends StateNotifier<AuthState> {
@@ -31,6 +32,7 @@ class AuthProvider extends StateNotifier<AuthState> {
     return res.when(
       success: (user) {
         state = state.copyWith(user: user);
+        Analytics.instance.capture(Event.signUp);
         return true;
       },
       error: (error) {

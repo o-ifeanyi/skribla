@@ -56,6 +56,6 @@ class _ProgressBarState extends State<ProgressBar> {
           ),
         );
       },
-    ).watchBuild('ProgressBar');
+    );
   }
 }

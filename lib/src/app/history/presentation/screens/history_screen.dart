@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/src/app/history/presentation/widgets/history_card.dart';
 import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/util/types.dart';
@@ -21,6 +22,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
   @override
   void initState() {
     super.initState();
+    Analytics.instance.capture(Event.viewHistory);
     final history = ref.read(historyProvider.notifier);
     _controller.addPageRequestListener(
       (lastItem) => history.getHistory(controller: _controller, lastItem: lastItem),
@@ -97,6 +99,6 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
           },
         ),
       ),
-    ).watchBuild('HistoryScreen');
+    );
   }
 }

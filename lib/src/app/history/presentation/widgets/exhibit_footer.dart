@@ -20,8 +20,9 @@ class ExhibitFooter extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
+        Config.vBox8,
         Padding(
-          padding: Config.all(15),
+          padding: Config.symmetric(h: 15),
           child: Text.rich(
             TextSpan(
               text: exhibit.word.text,

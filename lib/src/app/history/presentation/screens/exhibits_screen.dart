@@ -7,8 +7,8 @@ import 'package:skribla/src/app/history/presentation/widgets/exhibit_footer.dart
 import 'package:skribla/src/app/history/presentation/widgets/light_painter.dart';
 import 'package:skribla/src/app/history/presentation/widgets/shared_widget.dart';
 import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/util/config.dart';
-import 'package:skribla/src/core/util/extension.dart';
 
 class ExhibitsScreen extends ConsumerStatefulWidget {
   const ExhibitsScreen({
@@ -128,9 +128,12 @@ class _ExhibitsScreenState extends ConsumerState<ExhibitsScreen>
         ),
         bottomSheet: ExhibitFooter(
           exhibit: widget.exhibits[_currentIndex],
-          onShare: () => ref.read(historyProvider.notifier).shareImage(_screenshotKey),
+          onShare: () {
+            Analytics.instance.capture(Event.shareArt);
+            ref.read(historyProvider.notifier).shareImage(_screenshotKey);
+          },
         ),
-      ).watchBuild('ExhibitsScreen'),
+      ),
     );
   }
 }

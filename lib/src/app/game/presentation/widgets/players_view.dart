@@ -56,7 +56,7 @@ class PlayersView extends ConsumerWidget {
             ],
           );
         },
-      ).watchBuild('PlayersView'),
+      ),
     );
   }
 }

@@ -60,7 +60,17 @@ class _BoardOverlay extends ConsumerWidget {
                   label: Text(context.loc.copy),
                   shape: RoundedRectangleBorder(borderRadius: Config.radius10),
                   avatar: Icon(AppIcons.copy),
-                  onPressed: () => Deeplink.instance.copyJoinLink(id: game?.id),
+                  onPressed: () => Support.instance
+                      .copyToClipboard('${Env.baseUrl}/join/${game?.id}')
+                      .then((success) {
+                    if (success && context.mounted) {
+                      Analytics.instance.capture(Event.copyLink);
+                      Toast.instance.showSucess(
+                        '${Env.baseUrl}/join/${game?.id}',
+                        title: context.loc.copiedToClipboard,
+                      );
+                    }
+                  }),
                 ),
               ),
             ),

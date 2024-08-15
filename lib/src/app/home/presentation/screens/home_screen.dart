@@ -9,6 +9,7 @@ import 'package:skribla/src/app/home/presentation/widgets/start_action.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/extension.dart';
@@ -66,97 +67,102 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final status = ref.watch(homeProvider.select((it) => it.status));
 
     return Scaffold(
-      body: Padding(
-        padding: Config.symmetric(h: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const LogoText(),
-            Config.vBox24,
-            InputField(
-              controller: _nameCtrl,
-              hint: context.loc.gotoHomeBtnTxt,
-              textAlign: TextAlign.center,
-              readOnly: status == HomeStatus.findingGame || status == HomeStatus.creatingGame,
-            ),
-            Config.vBox24,
-            ValueListenableBuilder(
-              valueListenable: _nameCtrl,
-              builder: (context, value, child) {
-                final inValid = value.text.trim().isEmpty ||
-                    user == null ||
-                    status == HomeStatus.findingGame ||
-                    status == HomeStatus.creatingGame;
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    AppButton(
-                      text: context.loc.playBtnTxt,
-                      onPressed: inValid
-                          ? null
-                          : () async {
-                              await ref
-                                  .read(homeProvider.notifier)
-                                  .findGame(user.copyWith(name: value.text.trim()))
-                                  .then((id) {
-                                if (id != null) {
-                                  context.goNamed(Routes.game, pathParameters: {'id': id});
-                                }
-                              });
-                            },
+      body: Center(
+        child: Container(
+          padding: Config.symmetric(h: 15),
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const LogoText(),
+              Config.vBox24,
+              InputField(
+                controller: _nameCtrl,
+                hint: context.loc.gotoHomeBtnTxt,
+                textAlign: TextAlign.center,
+                readOnly: status == HomeStatus.findingGame || status == HomeStatus.creatingGame,
+              ),
+              Config.vBox24,
+              ValueListenableBuilder(
+                valueListenable: _nameCtrl,
+                builder: (context, value, child) {
+                  final inValid = value.text.trim().isEmpty ||
+                      user == null ||
+                      status == HomeStatus.findingGame ||
+                      status == HomeStatus.creatingGame;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      AppButton(
+                        text: context.loc.playBtnTxt,
+                        onPressed: inValid
+                            ? null
+                            : () async {
+                                await ref
+                                    .read(homeProvider.notifier)
+                                    .findGame(user.copyWith(name: value.text.trim()))
+                                    .then((id) {
+                                  if (id != null && context.mounted) {
+                                    Analytics.instance.capture(Event.playGame);
+                                    context.goNamed(Routes.game, pathParameters: {'id': id});
+                                  }
+                                });
+                              },
+                      ),
+                      Config.vBox16,
+                      AppButton(
+                        text: context.loc.createGameBtnTxt,
+                        type: ButtonType.outlined,
+                        onPressed: inValid
+                            ? null
+                            : () async {
+                                await ref
+                                    .read(homeProvider.notifier)
+                                    .createGame(user.copyWith(name: value.text.trim()))
+                                    .then((id) {
+                                  if (id != null && context.mounted) {
+                                    Analytics.instance.capture(Event.createGame);
+                                    context.goNamed(Routes.game, pathParameters: {'id': id});
+                                  }
+                                });
+                              },
+                      ),
+                    ],
+                  );
+                },
+              ),
+              Config.vBox24,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: StartAction(
+                      icon: AppIcons.gear,
+                      text: context.loc.settingsBtnTxt,
+                      onTap: () => context.goNamed(Routes.settings),
                     ),
-                    Config.vBox16,
-                    AppButton(
-                      text: context.loc.createGameBtnTxt,
-                      type: ButtonType.outlined,
-                      onPressed: inValid
-                          ? null
-                          : () async {
-                              await ref
-                                  .read(homeProvider.notifier)
-                                  .createGame(user.copyWith(name: value.text.trim()))
-                                  .then((id) {
-                                if (id != null) {
-                                  context.goNamed(Routes.game, pathParameters: {'id': id});
-                                }
-                              });
-                            },
+                  ),
+                  Expanded(
+                    child: StartAction(
+                      icon: AppIcons.trophy,
+                      text: context.loc.leaderboardBtnTxt,
+                      onTap: user == null ? null : () => context.goNamed(Routes.leaderboard),
                     ),
-                  ],
-                );
-              },
-            ),
-            Config.vBox24,
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: StartAction(
-                    icon: AppIcons.gear,
-                    text: context.loc.settingsBtnTxt,
-                    onTap: () => context.goNamed(Routes.settings),
                   ),
-                ),
-                Expanded(
-                  child: StartAction(
-                    icon: AppIcons.trophy,
-                    text: context.loc.leaderboardBtnTxt,
-                    onTap: user == null ? null : () => context.goNamed(Routes.leaderboard),
+                  Expanded(
+                    child: StartAction(
+                      icon: AppIcons.clockCounterClockwise,
+                      text: context.loc.historyBtnTxt,
+                      onTap: user == null ? null : () => context.goNamed(Routes.history),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: StartAction(
-                    icon: AppIcons.clockCounterClockwise,
-                    text: context.loc.historyBtnTxt,
-                    onTap: user == null ? null : () => context.goNamed(Routes.history),
-                  ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-    ).watchBuild('StartScreen');
+    );
   }
 }

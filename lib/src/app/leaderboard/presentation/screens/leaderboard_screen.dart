@@ -4,6 +4,7 @@ import 'package:skribla/src/app/leaderboard/presentation/widgets/leaderboard_app
 import 'package:skribla/src/app/leaderboard/presentation/widgets/leaderboard_footer.dart';
 import 'package:skribla/src/app/leaderboard/presentation/widgets/leaderboard_item.dart';
 import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/util/types.dart';
@@ -22,6 +23,7 @@ class _LeaderboardScreenState extends ConsumerState<LeaderboardScreen> {
   @override
   void initState() {
     super.initState();
+    Analytics.instance.capture(Event.viewLeaderboard);
     final leaderboard = ref.read(leaderboardProvider.notifier);
     _controller.addPageRequestListener(
       (lastItem) => leaderboard.getLeaderboard(

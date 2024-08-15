@@ -55,30 +55,41 @@ serve_web:
 
 deploy_web:
 	sh web_flavor_setup.sh $(flavor)
-	flutter build web --target lib/main_$(flavor).dart --web-renderer canvaskit
+	flutter build web --release --target lib/main_$(flavor).dart --web-renderer canvaskit
 	firebase deploy --only hosting --project=skribla-$(flavor)
+
+patch_mobile:
+	shorebird patch --platforms=android \
+	--flavor=$(flavor) \
+	--target=lib/main_$(flavor).dart \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
+
+	shorebird patch --platforms=ios \
+	--flavor=$(flavor) \
+	--target=lib/main_$(flavor).dart \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
 
 deploy_mobile:
 	sh release_notes.sh
 
-	flutter build ipa --release \
+	yes | shorebird release ios \
 	--export-method ad-hoc \
 	--flavor dev \
 	--target lib/main_dev.dart \
 	--dart-define-from-file /Users/ifeanyionuoha/skribla/dev_creds.json
 
-	flutter build apk --release \
+	yes | shorebird release android --artifact=apk \
 	--flavor dev \
 	--target lib/main_dev.dart \
 	--dart-define-from-file /Users/ifeanyionuoha/skribla/dev_creds.json
 
 	firebase appdistribution:distribute build/ios/ipa/skribla.ipa  \
     --app 1:1056704511056:ios:3c65b99d3d4ab0e526e555  \
-    --release-notes-file "release_notes.txt"  --groups "beta_testers"
+    --release-notes-file "release_notes.txt"
 
 	firebase appdistribution:distribute build/app/outputs/apk/dev/release/app-dev-release.apk  \
     --app 1:1056704511056:android:b1a81f5adcdab0d926e555  \
-    --release-notes-file "release_notes.txt"  --groups "beta_testers"
+    --release-notes-file "release_notes.txt"
 
 auth:
 	firebase login --reauth

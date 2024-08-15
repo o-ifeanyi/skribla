@@ -118,9 +118,9 @@ final class LeaderboardRepository {
           .get()
           .then((value) => value.data());
       if (model == null) {
-        final msg = 'Leaderboard position not available - ${type.name}';
+        const msg = 'Leaderboard position not available';
         _logger.info(msg);
-        throw CustomError(message: msg);
+        throw const CustomError(message: msg, reason: ErrorReason.noPoints);
       }
       final positions = await firebaseFirestore
           .collection('leaderboard/${type.name}/users')

@@ -17,7 +17,7 @@ class Logger {
 
   void error(Object x, {StackTrace? stack}) {
     _print('[🐞 $tag]: $x${stack != null ? '\nStack: $stack' : ''}');
-    Sentry.captureException(x, stackTrace: stack);
+    if (kReleaseMode) Sentry.captureException(x, stackTrace: stack);
   }
 
   static void _print(String text) {

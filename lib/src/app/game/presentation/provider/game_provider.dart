@@ -8,6 +8,7 @@ import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/repository/game_repository.dart';
 import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
 import 'package:skribla/src/core/di/di.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
 
 part 'game_provider_ext.dart';

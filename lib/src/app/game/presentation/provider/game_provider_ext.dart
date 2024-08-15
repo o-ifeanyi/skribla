@@ -31,6 +31,16 @@ extension GameProviderExt on GameProvider {
     if (current.status == Status.complete) {
       // game ended
       // stop all timers & cancel sunscription
+      if (current.online.first == user?.uid) {
+        Analytics.instance.capture(
+          Event.gameEnd,
+          properties: {
+            'num_of_arts': current.numOfArts,
+            'num_of_players': current.players.length,
+          },
+        );
+      }
+
       timer.reset();
       _gameStreamSub?.cancel();
       update();

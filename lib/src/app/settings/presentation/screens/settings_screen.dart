@@ -6,17 +6,29 @@ import 'package:skribla/src/app/settings/presentation/widgets/custom_list_tile.d
 import 'package:skribla/src/app/settings/presentation/widgets/settings_auth.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/theme/app_theme.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/default_app_bar.dart';
 
-class SettingsScreen extends ConsumerWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Analytics.instance.capture(Event.viewSettings);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final hapticsOn = ref.watch(settingsProvider.select((it) => it.hapticsOn));
 
     return Scaffold(
@@ -106,13 +118,14 @@ class SettingsScreen extends ConsumerWidget {
       bottomSheet: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Config.vBox8,
           Padding(
-            padding: Config.all(15),
+            padding: Config.symmetric(h: 15),
             child: const SettingsAuth(),
           ),
-          Config.vBox16,
+          Config.vBox30,
         ],
       ),
-    ).watchBuild('SettingsScreen');
+    );
   }
 }

@@ -5,6 +5,7 @@ import 'package:skribla/src/app/home/presentation/provider/home_state.dart';
 import 'package:skribla/src/app/home/presentation/widgets/logo_text.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/app_button.dart';
@@ -83,7 +84,8 @@ class _JoinScreenState extends ConsumerState<JoinScreen> {
                                     user: user.copyWith(name: value.text.trim()),
                                   )
                                   .then((id) {
-                                if (id != null) {
+                                if (id != null && context.mounted) {
+                                  Analytics.instance.capture(Event.joinGame);
                                   context.replaceNamed(Routes.game, pathParameters: {'id': id});
                                 }
                               });
@@ -101,6 +103,6 @@ class _JoinScreenState extends ConsumerState<JoinScreen> {
           ],
         ),
       ),
-    ).watchBuild('JoinScreen');
+    );
   }
 }

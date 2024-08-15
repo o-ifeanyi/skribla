@@ -44,7 +44,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Config.vBox12,
+          Config.vBox8,
           if (user?.status == AuthStatus.anonymous) ...[
             Text(
               context.loc.signinToJoinLeaderboard,

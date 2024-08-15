@@ -8,7 +8,13 @@ sealed class Result<T> with _$Result<T> {
   const factory Result.error(CustomError error) = _ErrorResult;
 }
 
-enum ErrorReason { unknown }
+enum ErrorReason {
+  unknown('unknown'),
+  noPoints('No points on the board');
+
+  const ErrorReason(this.value);
+  final String value;
+}
 
 class CustomError implements Exception {
   const CustomError({
@@ -19,5 +25,5 @@ class CustomError implements Exception {
   final ErrorReason reason;
 
   @override
-  String toString() => 'Message: $message Reason: ${reason.name}, ';
+  String toString() => 'Message: $message Reason: ${reason.value}';
 }

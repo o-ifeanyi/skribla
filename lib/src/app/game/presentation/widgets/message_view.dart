@@ -78,7 +78,7 @@ class _MessagesViewState extends State<MessagesView> {
             orElse: () => const SizedBox.expand(),
           );
         },
-      ).watchBuild('MessagesView'),
+      ),
     );
   }
 }

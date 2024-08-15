@@ -7,8 +7,9 @@ import 'package:skribla/src/app/game/presentation/widgets/art_painter.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/router/routes.dart';
-import 'package:skribla/src/core/service/deeplink.dart';
+import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/support.dart';
+import 'package:skribla/src/core/service/toast.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/constants.dart';
 import 'package:skribla/src/core/util/extension.dart';
@@ -52,7 +53,7 @@ class DrawBoard extends ConsumerWidget {
                     padding: Config.all(10),
                     child: const _BoardOverlay(),
                   ),
-                  if ((game?.canDraw(user?.uid) ?? false) && !showCoolTimer)
+                  if ((game?.canDraw(user?.uid) ?? false) && !showCoolTimer) ...[
                     GestureDetector(
                       onPanStart: (details) {
                         ref.read(gameProvider.notifier).onPanStart(context, details, constraint);
@@ -64,6 +65,26 @@ class DrawBoard extends ConsumerWidget {
                         ref.read(gameProvider.notifier).onPanEnd();
                       },
                     ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Config.radius16.topRight,
+                          ),
+                          color: context.colorScheme.surface,
+                        ),
+                        child: Text(
+                          game?.currentWord.text ?? '',
+                          style: context.textTheme.bodySmall?.copyWith(
+                            color: context.colorScheme.secondary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
               );
             },
@@ -76,6 +97,6 @@ class DrawBoard extends ConsumerWidget {
         ),
         Config.vBox8,
       ],
-    ).watchBuild('DrawBoard');
+    );
   }
 }
