@@ -86,11 +86,11 @@ deploy_mobile:
 
 	firebase appdistribution:distribute build/ios/ipa/skribla.ipa  \
     --app 1:1056704511056:ios:3c65b99d3d4ab0e526e555  \
-    --release-notes-file "release_notes.txt"
+    --release-notes-file "release_notes.txt" --groups "dev_testers"
 
 	firebase appdistribution:distribute build/app/outputs/apk/dev/release/app-dev-release.apk  \
     --app 1:1056704511056:android:b1a81f5adcdab0d926e555  \
-    --release-notes-file "release_notes.txt"
+    --release-notes-file "release_notes.txt" --groups "dev_testers"
 
 auth:
 	firebase login --reauth
