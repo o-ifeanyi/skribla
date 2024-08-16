@@ -28,7 +28,10 @@ class _SendMessageFieldState extends ConsumerState<SendMessageField> {
       children: [
         Expanded(
           child: InputField(
-            readOnly: (game?.canDraw(user?.uid) ?? false) || status == GameStatus.sendingMessage,
+            readOnly: (game?.canDraw(user?.uid) ?? false) || // your turn
+                (game?.online ?? []).length < 2 || // only one person
+                !(game?.online ?? []).contains(user?.uid) || // spectator (via deeplink)
+                status == GameStatus.sendingMessage, // loading
             controller: _msgCtrl,
             hint: context.loc.guessOrChat,
             maxLines: null,
