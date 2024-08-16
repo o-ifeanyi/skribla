@@ -41,7 +41,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
       appBar: DefaultAppBar(
         title: Text(
           context.loc.historyBtnTxt,
-          style: context.textTheme.bodyLarge,
+          style: context.textTheme.titleSmall,
         ),
       ),
       body: RefreshIndicator(

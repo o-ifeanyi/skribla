@@ -42,7 +42,7 @@ class PlayersView extends ConsumerWidget {
                       player.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: context.textTheme.labelSmall,
+                      style: context.textTheme.labelMedium,
                     ),
                     FittedBox(
                       child: Text(

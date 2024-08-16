@@ -62,7 +62,7 @@ class _MessagesViewState extends State<MessagesView> {
                         ] else ...[
                           Text(
                             '@ ${message.name}',
-                            style: context.textTheme.labelSmall,
+                            style: context.textTheme.labelMedium,
                           ),
                           Text(
                             message.text,

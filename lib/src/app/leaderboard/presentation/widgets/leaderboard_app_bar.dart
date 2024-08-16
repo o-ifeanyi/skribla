@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -36,7 +37,7 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
       ),
       title: Text(
         context.loc.leaderboardBtnTxt,
-        style: context.textTheme.bodyLarge,
+        style: context.textTheme.titleSmall,
       ),
       bottom: const _SliverBottomWidget(),
       expandedHeight: Config.height * 0.4,
@@ -48,7 +49,7 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
                 : Container(
                     width: double.infinity,
                     alignment: Alignment.center,
-                    padding: Config.fromLTRB(15, 45, 15, 15),
+                    padding: Config.fromLTRB(15, kIsWeb ? 15 : 45, 15, 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -141,8 +142,8 @@ class _SliverBottomWidgetState extends State<_SliverBottomWidget>
             controller: _controller,
             splashBorderRadius: Config.radius24,
             tabs: [
-              Tab(text: context.loc.monthly),
-              Tab(text: context.loc.allTime),
+              Tab(text: context.loc.monthly, height: 35),
+              Tab(text: context.loc.allTime, height: 35),
             ],
             dividerColor: Colors.transparent,
             labelStyle: context.textTheme.bodyMedium,

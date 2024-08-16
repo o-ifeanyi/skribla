@@ -35,7 +35,10 @@ class LeaderboardItem extends StatelessWidget {
         context.loc.lastUpdatedAt(data.model.updatedAt.formatEDMHM),
         style: context.textTheme.bodySmall,
       ),
-      trailing: Text('${data.model.points} pts'),
+      trailing: Text(
+        '${data.model.points} pts',
+        style: context.textTheme.bodySmall,
+      ),
     );
   }
 }

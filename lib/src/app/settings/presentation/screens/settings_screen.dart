@@ -36,7 +36,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       appBar: DefaultAppBar(
         title: Text(
           context.loc.settingsBtnTxt,
-          style: context.textTheme.bodyLarge,
+          style: context.textTheme.titleSmall,
         ),
       ),
       body: ListView(

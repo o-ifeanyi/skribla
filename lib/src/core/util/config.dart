@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 abstract class Config {
   static double get height => 1.sh;
   static double get width => 1.sw;
 
   static TextTheme get textTheme => TextTheme(
-        displayLarge: GoogleFonts.sora(fontSize: 44.sp, fontWeight: FontWeight.w600),
-        displayMedium: GoogleFonts.sora(fontSize: 40.sp, fontWeight: FontWeight.w600),
-        displaySmall: GoogleFonts.sora(fontSize: 36.sp, fontWeight: FontWeight.w600),
-        titleLarge: GoogleFonts.sora(fontSize: 32.sp, fontWeight: FontWeight.w600),
-        titleMedium: GoogleFonts.sora(fontSize: 28.sp, fontWeight: FontWeight.w600),
-        titleSmall: GoogleFonts.sora(fontSize: 18.sp, fontWeight: FontWeight.w600),
-        bodyLarge: GoogleFonts.sora(fontSize: 16.sp, fontWeight: FontWeight.w600),
-        bodyMedium: GoogleFonts.sora(fontSize: 14.sp, fontWeight: FontWeight.w400),
-        bodySmall: GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w400),
-        labelLarge: GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w600),
-        labelMedium: GoogleFonts.sora(fontSize: 12.sp, fontWeight: FontWeight.w400),
-        labelSmall: GoogleFonts.sora(fontSize: 10.sp, fontWeight: FontWeight.w400),
+        displayLarge: TextStyle(fontSize: 44.sp, fontWeight: FontWeight.w900),
+        displayMedium: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w900),
+        displaySmall: TextStyle(fontSize: 36.sp, fontWeight: FontWeight.w900),
+        titleLarge: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.w900),
+        titleMedium: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.w900),
+        titleSmall: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w900),
+        bodyLarge: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w900),
+        bodyMedium: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400),
+        bodySmall: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+        labelLarge: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w900),
+        labelMedium: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w400),
+        labelSmall: TextStyle(fontSize: 8.sp, fontWeight: FontWeight.w400),
       );
 
   static EdgeInsets all(double padding) => EdgeInsets.all(padding.w);
