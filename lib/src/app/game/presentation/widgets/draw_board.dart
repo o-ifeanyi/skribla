@@ -95,7 +95,6 @@ class DrawBoard extends ConsumerWidget {
           child:
               (game?.canDraw(user?.uid) ?? false) ? const _BoardConfig() : const SizedBox.shrink(),
         ),
-        Config.vBox8,
       ],
     );
   }

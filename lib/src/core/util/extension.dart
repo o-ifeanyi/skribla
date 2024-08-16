@@ -43,7 +43,8 @@ extension BuildContextExt on BuildContext {
   Color? get textColor => theme.textTheme.bodyMedium?.color;
   Size get screenSize => MediaQuery.sizeOf(this);
   MediaQueryData get mediaQuery => MediaQuery.of(this);
-  EdgeInsets get edgeInset => MediaQuery.viewPaddingOf(this);
+  EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
+  EdgeInsets get padding => MediaQuery.viewPaddingOf(this);
   AppLocalizations get loc => AppLocalizations.of(this);
   ThemeMode get themeMode => theme.brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
 

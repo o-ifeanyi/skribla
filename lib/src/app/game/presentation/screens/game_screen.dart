@@ -7,6 +7,7 @@ import 'package:skribla/src/app/game/presentation/widgets/players_view.dart';
 import 'package:skribla/src/app/game/presentation/widgets/send_message_field.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/default_app_bar.dart';
 import 'package:skribla/src/core/widgets/progress_bar.dart';
 
@@ -26,9 +27,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // setState(() {
       _bottomSheetHeight.value = _bottomSheetKey.currentContext?.size?.height ?? 90;
-      // });
       ref.read(gameProvider.notifier).getGameStream(widget.id);
     });
   }
@@ -70,6 +69,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           body: Column(
             children: [
               const RepaintBoundary(child: DrawBoard()),
+              Config.vBox8,
               Expanded(
                 child: Padding(
                   padding: Config.symmetric(h: 15),
@@ -98,16 +98,15 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             key: _bottomSheetKey,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SafeArea(
-                child: Padding(
-                  padding: Config.fromLTRB(
-                    15,
-                    8,
-                    15,
-                    MediaQuery.viewInsetsOf(context).bottom + (kIsWeb ? 15 : 0),
-                  ),
-                  child: const SendMessageField(),
+              AnimatedPadding(
+                duration: const Duration(milliseconds: 50),
+                padding: context.padding.copyWith(
+                  top: Config.h(8),
+                  left: Config.w(15),
+                  right: Config.w(15),
+                  bottom: context.viewInsets.bottom + (kIsWeb ? 8 : 30),
                 ),
+                child: const SendMessageField(),
               ),
             ],
           ),

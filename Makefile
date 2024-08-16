@@ -15,11 +15,6 @@ loc:
 splash:
 	dart run flutter_native_splash:create
 
-run:
-	flutter run \
-	--flavor $(flavor) \
-	--target lib/main_$(flavor).dart
-
 format:
 	dart format --line-length 100 --set-exit-if-changed lib
 
@@ -50,12 +45,18 @@ deeplink:
 
 serve_web:
 	sh web_flavor_setup.sh $(flavor)
-	flutter build web --target lib/main_$(flavor).dart --web-renderer canvaskit
+	flutter build web \
+	--target lib/main_$(flavor).dart \
+	--web-renderer canvaskit \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
 	firebase serve --only hosting --project=skribla-$(flavor)
 
 deploy_web:
 	sh web_flavor_setup.sh $(flavor)
-	flutter build web --release --target lib/main_$(flavor).dart --web-renderer canvaskit
+	flutter build web \
+	--target lib/main_$(flavor).dart \
+	--web-renderer canvaskit \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
 	firebase deploy --only hosting --project=skribla-$(flavor)
 
 patch_mobile:
@@ -94,4 +95,4 @@ deploy_mobile:
 auth:
 	firebase login --reauth
 
-.PHONY: clean gen loc splash run format functions configure_dev configure_prod deeplink serve_web deploy_web deploy_mobile auth
+.PHONY: clean gen loc splash format functions configure_dev configure_prod deeplink serve_web deploy_web patch_mobile deploy_mobile auth

@@ -24,46 +24,44 @@ class _SendMessageFieldState extends ConsumerState<SendMessageField> {
     final game = ref.watch(gameProvider.select((it) => it.game));
     final status = ref.watch(gameProvider.select((it) => it.status));
 
-    return AnimatedSwitcher(
-      duration: Config.duration300,
-      child: (game?.canDraw(user?.uid) ?? false)
-          ? const SizedBox.shrink()
-          : Row(
-              children: [
-                Expanded(
-                  child: InputField(
-                    readOnly: status == GameStatus.sendingMessage,
-                    controller: _msgCtrl,
-                    hint: context.loc.guessOrChat,
-                    maxLines: null,
-                  ),
-                ),
-                Config.hBox8,
-                ValueListenableBuilder(
-                  valueListenable: _msgCtrl,
-                  builder: (context, ctrl, child) {
-                    return GestureDetector(
-                      onTap: _msgCtrl.text.trim().isEmpty
-                          ? null
-                          : () {
-                              final user = ref.read(authProvider).user;
-                              if (user == null) return;
-                              ref
-                                  .read(gameProvider.notifier)
-                                  .sendMessage(
-                                    text: _msgCtrl.text,
-                                    name: user.name,
-                                  )
-                                  .then((success) {
-                                if (success) _msgCtrl.clear();
-                              });
-                            },
-                      child: Icon(AppIcons.paperPlaneRight),
-                    );
-                  },
-                ),
-              ],
-            ),
+    return Row(
+      children: [
+        Expanded(
+          child: InputField(
+            readOnly: (game?.canDraw(user?.uid) ?? false) || status == GameStatus.sendingMessage,
+            controller: _msgCtrl,
+            hint: context.loc.guessOrChat,
+            maxLines: null,
+          ),
+        ),
+        Config.hBox8,
+        ValueListenableBuilder(
+          valueListenable: _msgCtrl,
+          builder: (context, ctrl, child) {
+            return GestureDetector(
+              onTap: _msgCtrl.text.trim().isEmpty
+                  ? null
+                  : () {
+                      final user = ref.read(authProvider).user;
+                      if (user == null) return;
+                      ref
+                          .read(gameProvider.notifier)
+                          .sendMessage(
+                            text: _msgCtrl.text,
+                            name: user.name,
+                          )
+                          .then((success) {
+                        if (success && context.mounted) {
+                          _msgCtrl.clear();
+                          FocusScope.of(context).unfocus();
+                        }
+                      });
+                    },
+              child: Icon(AppIcons.paperPlaneRight),
+            );
+          },
+        ),
+      ],
     );
   }
 }

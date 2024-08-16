@@ -9,6 +9,7 @@ class InputField extends StatelessWidget {
     super.key,
     this.initialValue,
     this.controller,
+    this.focusNode,
     this.onTap,
     this.maxLines = 1,
     this.maxLength,
@@ -28,6 +29,7 @@ class InputField extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? initialValue;
   final TextEditingController? controller;
+  final FocusNode? focusNode;
   final void Function()? onTap;
   final String? header;
   final String? hint;
@@ -55,6 +57,7 @@ class InputField extends StatelessWidget {
         ],
         TextFormField(
           controller: controller,
+          focusNode: focusNode,
           initialValue: initialValue,
           keyboardType: keyboardType,
           readOnly: readOnly,

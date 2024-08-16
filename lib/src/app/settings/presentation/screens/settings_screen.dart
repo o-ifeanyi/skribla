@@ -41,20 +41,22 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       body: ListView(
         padding: Config.all(15),
         children: [
-          Text(
-            context.loc.general,
-            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
-          ),
-          Config.vBox12,
-          CustomListTile(
-            icon: AppIcons.vibrate,
-            title: context.loc.haptics,
-            trailing: Switch.adaptive(
-              value: hapticsOn,
-              onChanged: ref.read(settingsProvider.notifier).toggleHaptics,
+          if (!kIsWeb) ...[
+            Text(
+              context.loc.general,
+              style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
-          ),
-          Config.vBox12,
+            Config.vBox12,
+            CustomListTile(
+              icon: AppIcons.vibrate,
+              title: context.loc.haptics,
+              trailing: Switch.adaptive(
+                value: hapticsOn,
+                onChanged: ref.read(settingsProvider.notifier).toggleHaptics,
+              ),
+            ),
+            Config.vBox12,
+          ],
           Text(
             context.loc.theme,
             style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
