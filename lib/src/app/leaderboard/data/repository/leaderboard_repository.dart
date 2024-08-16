@@ -40,11 +40,6 @@ final class LeaderboardRepository {
               'name': player.name,
               'updated_at': now.toIso8601String(),
             });
-            await doc.update({
-              'points': FieldValue.increment(points),
-              'name': player.name,
-              'updated_at': now.toIso8601String(),
-            });
           } else {
             final model = LeaderboardModel(
               uid: player.uid,
@@ -53,7 +48,6 @@ final class LeaderboardRepository {
               updatedAt: now,
               createdAt: now,
             );
-            await doc.set(model.toJson());
             await doc.set(model.toJson());
           }
         }
