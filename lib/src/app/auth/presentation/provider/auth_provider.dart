@@ -14,7 +14,9 @@ class AuthProvider extends StateNotifier<AuthState> {
   final AuthRepository authRepository;
 
   Future<bool> signInAnonymously() async {
+    state = state.copyWith(status: AuthStatus.signingIn);
     final res = await authRepository.signInAnonymously();
+    state = state.copyWith(status: AuthStatus.idle);
     return res.when(
       success: (user) {
         state = state.copyWith(user: user);
@@ -28,7 +30,9 @@ class AuthProvider extends StateNotifier<AuthState> {
   }
 
   Future<bool> signInWithProvider(AuthOptions option) async {
+    state = state.copyWith(status: AuthStatus.signingIn);
     final res = await authRepository.signInWithProvider(option);
+    state = state.copyWith(status: AuthStatus.idle);
     return res.when(
       success: (user) {
         state = state.copyWith(user: user);
@@ -67,7 +71,9 @@ class AuthProvider extends StateNotifier<AuthState> {
 
   Future<bool> deleteAccount() async {
     if (state.user == null) return false;
+    state = state.copyWith(status: AuthStatus.deletingAccount);
     final res = await authRepository.deleteAccount();
+    state = state.copyWith(status: AuthStatus.idle);
     return res.when(
       success: (success) {
         state = state.copyWith(user: null);

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/src/app/auth/data/models/user_model.dart';
 import 'package:skribla/src/app/auth/data/repository/auth_repository.dart';
+import 'package:skribla/src/app/auth/presentation/provider/auth_state.dart';
 import 'package:skribla/src/app/leaderboard/presentation/widgets/leaderboard_item.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
@@ -33,6 +34,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(authProvider.select((it) => it.user));
+    final status = ref.watch(authProvider.select((it) => it.status));
     ref.listen(
       leaderboardProvider.select((it) => it.type),
       (_, __) => ref.refresh(getPosition),
@@ -45,7 +47,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Config.vBox8,
-          if (user?.status == AuthStatus.anonymous) ...[
+          if (user?.status == UserStatus.anonymous) ...[
             Text(
               context.loc.signinToJoinLeaderboard,
               textAlign: TextAlign.center,
@@ -58,16 +60,18 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                     child: AppButton(
                       icon: Icon(AppIcons.appleLogo),
                       text: context.loc.apple,
-                      onPressed: () {
-                        ref
-                            .read(authProvider.notifier)
-                            .signInWithProvider(AuthOptions.apple)
-                            .then((success) {
-                          if (success) {
-                            final _ = ref.refresh(getPosition);
-                          }
-                        });
-                      },
+                      onPressed: status == AuthStatus.signingIn
+                          ? null
+                          : () {
+                              ref
+                                  .read(authProvider.notifier)
+                                  .signInWithProvider(AuthOptions.apple)
+                                  .then((success) {
+                                if (success) {
+                                  final _ = ref.refresh(getPosition);
+                                }
+                              });
+                            },
                     ),
                   ),
                   Config.hBox12,
@@ -75,7 +79,29 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                     child: AppButton(
                       icon: Icon(AppIcons.googleLogo),
                       text: context.loc.google,
-                      onPressed: () {
+                      onPressed: status == AuthStatus.signingIn
+                          ? null
+                          : () {
+                              ref
+                                  .read(authProvider.notifier)
+                                  .signInWithProvider(AuthOptions.google)
+                                  .then((success) {
+                                if (success) {
+                                  final _ = ref.refresh(getPosition);
+                                }
+                              });
+                            },
+                    ),
+                  ),
+                ],
+              ),
+            ] else ...[
+              AppButton(
+                icon: Icon(AppIcons.googleLogo),
+                text: context.loc.continueWithGoogle,
+                onPressed: status == AuthStatus.signingIn
+                    ? null
+                    : () {
                         ref
                             .read(authProvider.notifier)
                             .signInWithProvider(AuthOptions.google)
@@ -85,27 +111,9 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                           }
                         });
                       },
-                    ),
-                  ),
-                ],
-              ),
-            ] else ...[
-              AppButton(
-                icon: Icon(AppIcons.googleLogo),
-                text: context.loc.continueWithGoogle,
-                onPressed: () {
-                  ref
-                      .read(authProvider.notifier)
-                      .signInWithProvider(AuthOptions.google)
-                      .then((success) {
-                    if (success) {
-                      final _ = ref.refresh(getPosition);
-                    }
-                  });
-                },
               ),
             ],
-          ] else if (user?.status == AuthStatus.verified) ...[
+          ] else if (user?.status == UserStatus.verified) ...[
             positionRef.when(
               skipLoadingOnRefresh: false,
               data: (data) {

@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthState {
+  AuthStatus get status => throw _privateConstructorUsedError;
   UserModel? get user => throw _privateConstructorUsedError;
 
   /// Create a copy of AuthState
@@ -29,7 +30,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({UserModel? user});
+  $Res call({AuthStatus status, UserModel? user});
 
   $UserModelCopyWith<$Res>? get user;
 }
@@ -48,9 +49,14 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState> implements $AuthStat
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AuthStatus,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -79,7 +85,7 @@ abstract class _$$AuthStateImplCopyWith<$Res> implements $AuthStateCopyWith<$Res
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel? user});
+  $Res call({AuthStatus status, UserModel? user});
 
   @override
   $UserModelCopyWith<$Res>? get user;
@@ -96,9 +102,14 @@ class __$$AuthStateImplCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res, 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? user = freezed,
   }) {
     return _then(_$AuthStateImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AuthStatus,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -110,15 +121,18 @@ class __$$AuthStateImplCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res, 
 /// @nodoc
 
 class _$AuthStateImpl implements _AuthState {
-  const _$AuthStateImpl({this.user = null});
+  const _$AuthStateImpl({this.status = AuthStatus.idle, this.user = null});
 
+  @override
+  @JsonKey()
+  final AuthStatus status;
   @override
   @JsonKey()
   final UserModel? user;
 
   @override
   String toString() {
-    return 'AuthState(user: $user)';
+    return 'AuthState(status: $status, user: $user)';
   }
 
   @override
@@ -126,11 +140,12 @@ class _$AuthStateImpl implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthStateImpl &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, status, user);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -142,8 +157,10 @@ class _$AuthStateImpl implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState({final UserModel? user}) = _$AuthStateImpl;
+  const factory _AuthState({final AuthStatus status, final UserModel? user}) = _$AuthStateImpl;
 
+  @override
+  AuthStatus get status;
   @override
   UserModel? get user;
 

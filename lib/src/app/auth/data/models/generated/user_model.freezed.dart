@@ -24,7 +24,7 @@ mixin _$UserModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  AuthStatus get status => throw _privateConstructorUsedError;
+  UserStatus get status => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String uid, DateTime createdAt, String name, String email, AuthStatus status});
+  $Res call({String uid, DateTime createdAt, String name, String email, UserStatus status});
 }
 
 /// @nodoc
@@ -83,7 +83,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserMode
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
+              as UserStatus,
     ) as $Val);
   }
 }
@@ -94,7 +94,7 @@ abstract class _$$UserModelImplCopyWith<$Res> implements $UserModelCopyWith<$Res
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid, DateTime createdAt, String name, String email, AuthStatus status});
+  $Res call({String uid, DateTime createdAt, String name, String email, UserStatus status});
 }
 
 /// @nodoc
@@ -134,7 +134,7 @@ class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, 
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
+              as UserStatus,
     ));
   }
 }
@@ -147,7 +147,7 @@ class _$UserModelImpl extends _UserModel {
       required this.createdAt,
       this.name = '',
       this.email = '',
-      this.status = AuthStatus.anonymous})
+      this.status = UserStatus.anonymous})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) => _$$UserModelImplFromJson(json);
@@ -164,7 +164,7 @@ class _$UserModelImpl extends _UserModel {
   final String email;
   @override
   @JsonKey()
-  final AuthStatus status;
+  final UserStatus status;
 
   @override
   String toString() {
@@ -209,7 +209,7 @@ abstract class _UserModel extends UserModel {
       required final DateTime createdAt,
       final String name,
       final String email,
-      final AuthStatus status}) = _$UserModelImpl;
+      final UserStatus status}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) = _$UserModelImpl.fromJson;
@@ -223,7 +223,7 @@ abstract class _UserModel extends UserModel {
   @override
   String get email;
   @override
-  AuthStatus get status;
+  UserStatus get status;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

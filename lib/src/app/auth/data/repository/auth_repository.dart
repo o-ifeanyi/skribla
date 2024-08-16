@@ -88,7 +88,7 @@ final class AuthRepository {
       }
 
       await firebaseFirestore.collection('users').doc(firebaseAuth.currentUser!.uid).update({
-        'status': AuthStatus.verified.name,
+        'status': UserStatus.verified.name,
         'email': userCredential.user?.email ?? '',
       });
 
@@ -156,7 +156,7 @@ final class AuthRepository {
       await firebaseFirestore
           .collection('users')
           .doc(firebaseAuth.currentUser!.uid)
-          .update({'name': 'Deleted', 'email': '', 'status': AuthStatus.anonymous.name});
+          .update({'name': 'Deleted', 'email': '', 'status': UserStatus.anonymous.name});
 
       await firebaseAuth.currentUser!.delete();
       return const Result.success(true);

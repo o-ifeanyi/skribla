@@ -29,7 +29,7 @@ class LeaderboardProvider extends StateNotifier<LeaderboardState> {
     res.when(
       success: (data) {
         final isFirstPage = controller.firstPageKey == null;
-        final isAnonymousUser = ref.read(authProvider).user?.status == AuthStatus.anonymous;
+        final isAnonymousUser = ref.read(authProvider).user?.status == UserStatus.anonymous;
         if (isFirstPage) {
           state = state.copyWith(topThree: data.take(3).toList());
         }
@@ -59,7 +59,7 @@ class LeaderboardProvider extends StateNotifier<LeaderboardState> {
 
   Future<LeaderboardPosition?> getLeaderboardPosition() async {
     final user = ref.read(authProvider).user;
-    if (user?.status == AuthStatus.anonymous) return null;
+    if (user?.status == UserStatus.anonymous) return null;
     return leaderboardRepository.getLeaderboardPosition(state.type);
   }
 }

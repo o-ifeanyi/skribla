@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skribla/src/app/auth/data/models/user_model.dart';
 import 'package:skribla/src/app/auth/data/repository/auth_repository.dart';
+import 'package:skribla/src/app/auth/presentation/provider/auth_state.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/util/config.dart';
@@ -21,11 +22,12 @@ class SettingsAuth extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(authProvider.select((it) => it.user));
+    final status = ref.watch(authProvider.select((it) => it.status));
 
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        if (snapshot.data == null || user == null || user.status == AuthStatus.anonymous) {
+        if (snapshot.data == null || user == null || user.status == UserStatus.anonymous) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
@@ -42,8 +44,11 @@ class SettingsAuth extends ConsumerWidget {
                       child: AppButton(
                         icon: Icon(AppIcons.appleLogo),
                         text: context.loc.apple,
-                        onPressed: () =>
-                            ref.read(authProvider.notifier).signInWithProvider(AuthOptions.apple),
+                        onPressed: status == AuthStatus.signingIn
+                            ? null
+                            : () => ref
+                                .read(authProvider.notifier)
+                                .signInWithProvider(AuthOptions.apple),
                       ),
                     ),
                     Config.hBox12,
@@ -51,8 +56,11 @@ class SettingsAuth extends ConsumerWidget {
                       child: AppButton(
                         icon: Icon(AppIcons.googleLogo),
                         text: context.loc.google,
-                        onPressed: () =>
-                            ref.read(authProvider.notifier).signInWithProvider(AuthOptions.google),
+                        onPressed: status == AuthStatus.signingIn
+                            ? null
+                            : () => ref
+                                .read(authProvider.notifier)
+                                .signInWithProvider(AuthOptions.google),
                       ),
                     ),
                   ],
@@ -61,8 +69,10 @@ class SettingsAuth extends ConsumerWidget {
                 AppButton(
                   icon: Icon(AppIcons.googleLogo),
                   text: context.loc.continueWithGoogle,
-                  onPressed: () =>
-                      ref.read(authProvider.notifier).signInWithProvider(AuthOptions.google),
+                  onPressed: status == AuthStatus.signingIn
+                      ? null
+                      : () =>
+                          ref.read(authProvider.notifier).signInWithProvider(AuthOptions.google),
                 ),
               ],
             ],
@@ -81,38 +91,40 @@ class SettingsAuth extends ConsumerWidget {
                     borderRadius: Config.radius8,
                   ),
                 ),
-                onPressed: () {
-                  showDialog<bool>(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog.adaptive(
-                        title: Text(
-                          context.loc.areYouSure,
-                          textAlign: TextAlign.center,
-                        ),
-                        content: Text(
-                          context.loc.deleteAccountWarning,
-                          textAlign: TextAlign.center,
-                        ),
-                        actions: [
-                          AppButton(
-                            type: ButtonType.text,
-                            text: context.loc.cancel,
-                            onPressed: () => context.pop(false),
-                          ),
-                          AppButton(
-                            type: ButtonType.text,
-                            text: context.loc.delete,
-                            onPressed: () => context.pop(true),
-                          ),
-                        ],
-                      );
-                    },
-                  ).then((proceed) {
-                    if (proceed != true) return;
-                    ref.read(authProvider.notifier).deleteAccount();
-                  });
-                },
+                onPressed: status == AuthStatus.deletingAccount
+                    ? null
+                    : () {
+                        showDialog<bool>(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog.adaptive(
+                              title: Text(
+                                context.loc.areYouSure,
+                                textAlign: TextAlign.center,
+                              ),
+                              content: Text(
+                                context.loc.deleteAccountWarning,
+                                textAlign: TextAlign.center,
+                              ),
+                              actions: [
+                                AppButton(
+                                  type: ButtonType.text,
+                                  text: context.loc.cancel,
+                                  onPressed: () => context.pop(false),
+                                ),
+                                AppButton(
+                                  type: ButtonType.text,
+                                  text: context.loc.delete,
+                                  onPressed: () => context.pop(true),
+                                ),
+                              ],
+                            );
+                          },
+                        ).then((proceed) {
+                          if (proceed != true) return;
+                          ref.read(authProvider.notifier).deleteAccount();
+                        });
+                      },
               ),
             ],
           );

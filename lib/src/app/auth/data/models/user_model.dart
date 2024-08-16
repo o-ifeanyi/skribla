@@ -7,7 +7,7 @@ import 'package:skribla/src/app/game/data/models/player_model.dart';
 part 'generated/user_model.freezed.dart';
 part 'generated/user_model.g.dart';
 
-enum AuthStatus { anonymous, verified }
+enum UserStatus { anonymous, verified }
 
 @freezed
 class UserModel with _$UserModel {
@@ -16,7 +16,7 @@ class UserModel with _$UserModel {
     required DateTime createdAt,
     @Default('') String name,
     @Default('') String email,
-    @Default(AuthStatus.anonymous) AuthStatus status,
+    @Default(UserStatus.anonymous) UserStatus status,
   }) = _UserModel;
 
   const UserModel._();
@@ -31,7 +31,7 @@ class UserModel with _$UserModel {
       uid: user.uid,
       email: user.email ?? '',
       name: user.displayName ?? 'anon_${random.take(4).join()}',
-      status: (user.email ?? '').isEmpty ? AuthStatus.anonymous : AuthStatus.verified,
+      status: (user.email ?? '').isEmpty ? UserStatus.anonymous : UserStatus.verified,
       createdAt: DateTime.now(),
     );
   }
