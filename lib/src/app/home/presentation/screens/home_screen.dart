@@ -79,7 +79,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               Config.vBox24,
               InputField(
                 controller: _nameCtrl,
-                hint: context.loc.gotoHomeBtnTxt,
+                hint: context.loc.enterNameHint,
                 textAlign: TextAlign.center,
                 readOnly: status == HomeStatus.findingGame || status == HomeStatus.creatingGame,
               ),

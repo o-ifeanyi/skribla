@@ -65,6 +65,7 @@ class TimerProvider extends StateNotifier<TimerState> {
   Future<void> startSkipTimer({
     required VoidCallback callback,
     Duration duration = const Duration(seconds: 5),
+    bool useHaptics = false,
   }) async {
     if (state.showSkipTimer) return;
     Logger.log('startSkipTimer');
@@ -76,7 +77,9 @@ class TimerProvider extends StateNotifier<TimerState> {
       const Duration(seconds: 1),
       (ticker) {
         Logger.log('SkipTimer === ${duration.inSeconds}');
-        Haptics.instance.heavyImpact();
+        if (useHaptics) {
+          Haptics.instance.heavyImpact();
+        }
         if (ticker.tick == duration.inSeconds) {
           stopSkipTimer();
           callback.call();
@@ -98,6 +101,7 @@ class TimerProvider extends StateNotifier<TimerState> {
   Future<void> startTurnTimer({
     required VoidCallback callback,
     Duration duration = const Duration(seconds: 15),
+    bool useHaptics = false,
   }) async {
     if (state.showTurnTimer) return;
     Logger.log('startTurnTimer');
@@ -109,9 +113,7 @@ class TimerProvider extends StateNotifier<TimerState> {
       const Duration(seconds: 1),
       (ticker) {
         Logger.log('TurnTimer === ${duration.inSeconds}');
-        if (ticker.tick >= (duration.inSeconds ~/ 2)) {
-          Haptics.instance.lightImpact();
-        } else if (ticker.tick >= (duration.inSeconds ~/ 1.2)) {
+        if (useHaptics && ticker.tick >= (duration.inSeconds ~/ 2)) {
           Haptics.instance.heavyImpact();
         }
         if (ticker.tick == duration.inSeconds) {

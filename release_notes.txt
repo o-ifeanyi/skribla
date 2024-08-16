@@ -1,4 +1,4 @@
 ## What's Changed
 
 
-**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/...v0.1.0+1
+**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/...v0.1.1+2

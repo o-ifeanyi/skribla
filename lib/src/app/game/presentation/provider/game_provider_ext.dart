@@ -66,6 +66,7 @@ extension GameProviderExt on GameProvider {
               updateNextPlayer();
             }
           },
+          useHaptics: current.currentPlayer.uid == user?.uid,
         );
     }
 
@@ -80,6 +81,7 @@ extension GameProviderExt on GameProvider {
                 updateNextPlayer();
               }
             },
+            useHaptics: current.currentPlayer.uid == user?.uid,
           );
         },
       );
