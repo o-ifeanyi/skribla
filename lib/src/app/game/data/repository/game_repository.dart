@@ -32,7 +32,12 @@ final class GameRepository {
 
       // only one player joined
       // or last online player is leaving when no art has been drawn
-      if (game.players.length == 1 || (game.online.length == 1 && game.numOfArts == 0)) {
+      // or it's been over an hour and no art has been drawn
+
+      final existence = DateTime.now().difference(game.createdAt.toLocal());
+      if (game.players.length == 1 ||
+          (game.online.length == 1 && game.numOfArts == 0) ||
+          (game.numOfArts == 0 && existence.inMinutes > 60)) {
         await firebaseFirestore.collection('games').doc(game.id).delete();
         _logger.info('Game deleted - uid $uid, id ${game.id}');
         return const Result.success(true);
@@ -184,7 +189,7 @@ final class GameRepository {
 
       await doc.set(message.toJson());
 
-      if (correctGuess) {
+      if (correctGuess && !game.correctGuess.contains(uid)) {
         // update guesser points by Constants.points
         final players = List<PlayerModel>.from(game.players);
         final guesserIndex = game.players.indexWhere(
