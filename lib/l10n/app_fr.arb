@@ -25,7 +25,6 @@
     "historyEmptyTitle": "Rien à voir ici",
     "historyEmptySubtitle": "Les jeux auxquels vous avez joué apparaîtront ici",
     "by": "par",
-    "nPlayersJoined": "{number} joueurs ont rejoint",
     "shareBtnTxt": "Partager",
     "nameLeaderboard": "{name} (vous)",
     "lastUpdatedAt": "Dernière mise à jour {date}",

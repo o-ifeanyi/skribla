@@ -12,6 +12,7 @@ class SettingsProvider extends StateNotifier<SettingsState> {
   }) : super(
           SettingsState(
             hapticsOn: sharedPreferences?.getBool(AppKeys.haptics) ?? true,
+            version: sharedPreferences?.getString(AppKeys.version) ?? '',
           ),
         );
 

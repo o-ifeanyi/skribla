@@ -70,6 +70,9 @@ class _$ResultCopyWithImpl<T, $Res, $Val extends Result<T>> implements $ResultCo
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -89,6 +92,8 @@ class __$$SuccessResultImplCopyWithImpl<T, $Res>
       _$SuccessResultImpl<T> _value, $Res Function(_$SuccessResultImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,7 +132,9 @@ class _$SuccessResultImpl<T> implements _SuccessResult<T> {
   @override
   int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessResultImplCopyWith<T, _$SuccessResultImpl<T>> get copyWith =>
@@ -200,7 +207,10 @@ abstract class _SuccessResult<T> implements Result<T> {
   const factory _SuccessResult(final T value) = _$SuccessResultImpl<T>;
 
   T get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessResultImplCopyWith<T, _$SuccessResultImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -222,6 +232,8 @@ class __$$ErrorResultImplCopyWithImpl<T, $Res>
       _$ErrorResultImpl<T> _value, $Res Function(_$ErrorResultImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -260,7 +272,9 @@ class _$ErrorResultImpl<T> implements _ErrorResult<T> {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorResultImplCopyWith<T, _$ErrorResultImpl<T>> get copyWith =>
@@ -333,7 +347,10 @@ abstract class _ErrorResult<T> implements Result<T> {
   const factory _ErrorResult(final CustomError error) = _$ErrorResultImpl<T>;
 
   CustomError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorResultImplCopyWith<T, _$ErrorResultImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

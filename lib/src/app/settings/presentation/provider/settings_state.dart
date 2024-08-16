@@ -9,5 +9,6 @@ class SettingsState with _$SettingsState {
   const factory SettingsState({
     @Default(SettingsStatus.idle) SettingsStatus status,
     @Default(true) bool hapticsOn,
+    @Default('') String version,
   }) = _SettingsState;
 }

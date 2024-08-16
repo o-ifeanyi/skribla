@@ -26,8 +26,12 @@ mixin _$LeaderboardModel {
   String get name => throw _privateConstructorUsedError;
   int get points => throw _privateConstructorUsedError;
 
+  /// Serializes this LeaderboardModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeaderboardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LeaderboardModelCopyWith<LeaderboardModel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -49,6 +53,8 @@ class _$LeaderboardModelCopyWithImpl<$Res, $Val extends LeaderboardModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LeaderboardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$LeaderboardModelImplCopyWithImpl<$Res>
       _$LeaderboardModelImpl _value, $Res Function(_$LeaderboardModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeaderboardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,11 +186,13 @@ class _$LeaderboardModelImpl implements _LeaderboardModel {
             (identical(other.points, points) || other.points == points));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, uid, updatedAt, createdAt, name, points);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeaderboardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaderboardModelImplCopyWith<_$LeaderboardModelImpl> get copyWith =>
@@ -216,8 +226,11 @@ abstract class _LeaderboardModel implements LeaderboardModel {
   String get name;
   @override
   int get points;
+
+  /// Create a copy of LeaderboardModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeaderboardModelImplCopyWith<_$LeaderboardModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

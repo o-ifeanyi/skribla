@@ -157,7 +157,7 @@ final class GameRepository {
 
       return const Result.success(true);
     } catch (e, s) {
-      _logger.error('updateGameArt - $e', stack: s);
+      _logger.error('updateNextPlayer - $e', stack: s);
       return Result.error(CustomError(message: e.toString()));
     }
   }

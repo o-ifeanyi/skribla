@@ -133,7 +133,7 @@ final class LeaderboardRepository {
         expiry: DateTime.now().add(const Duration(minutes: 30)),
       );
 
-      return (position: positions.size + 1, model: model);
+      return (position: positions.size, model: model);
     } catch (e, s) {
       _logger.error('getLeaderboardPosition - $e', stack: s);
       rethrow;

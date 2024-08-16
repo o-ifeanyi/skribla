@@ -7,7 +7,7 @@ part of '../feature_flags.dart';
 // **************************************************************************
 
 FeatureFlags _$FeatureFlagsFromJson(Map<String, dynamic> json) => FeatureFlags(
-      majorVersion: (json['major_version'] as num?)?.toInt() ?? 1,
+      majorVersion: (json['major_version'] as num?)?.toInt() ?? 0,
       minorVersion: (json['minor_version'] as num?)?.toInt() ?? 0,
       webDown: json['web_down'] as bool? ?? false,
       iosDown: json['ios_down'] as bool? ?? false,

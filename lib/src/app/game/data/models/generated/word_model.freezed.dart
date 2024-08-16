@@ -24,8 +24,12 @@ mixin _$WordModel {
   String get text => throw _privateConstructorUsedError;
   bool get available => throw _privateConstructorUsedError;
 
+  /// Serializes this WordModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WordModelCopyWith<WordModel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$WordModelCopyWithImpl<$Res, $Val extends WordModel> implements $WordMode
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$WordModelImplCopyWithImpl<$Res> extends _$WordModelCopyWithImpl<$Res, 
   __$$WordModelImplCopyWithImpl(_$WordModelImpl _value, $Res Function(_$WordModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,11 +148,13 @@ class _$WordModelImpl implements _WordModel {
             (identical(other.available, available) || other.available == available));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, text, available);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WordModelImplCopyWith<_$WordModelImpl> get copyWith =>
@@ -170,7 +180,10 @@ abstract class _WordModel implements WordModel {
   String get text;
   @override
   bool get available;
+
+  /// Create a copy of WordModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WordModelImplCopyWith<_$WordModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

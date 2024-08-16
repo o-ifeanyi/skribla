@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/constants.dart';
@@ -27,18 +29,25 @@ class ErrorWidget extends StatelessWidget {
           style: context.textTheme.titleSmall,
         ),
         Config.vBox12,
-        Text.rich(
-          TextSpan(
-            text: '${context.loc.errorSubtitle} ',
-            children: [
+        Consumer(
+          builder: (context, ref, child) {
+            final user = ref.watch(authProvider.select((it) => it.user));
+
+            return Text.rich(
               TextSpan(
-                text: Constants.email,
-                style: const TextStyle(decoration: TextDecoration.underline),
-                recognizer: TapGestureRecognizer()..onTap = Support.instance.contactSupport,
+                text: '${context.loc.errorSubtitle} ',
+                children: [
+                  TextSpan(
+                    text: Constants.email,
+                    style: const TextStyle(decoration: TextDecoration.underline),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => Support.instance.contactSupport(user),
+                  ),
+                ],
               ),
-            ],
-          ),
-          textAlign: TextAlign.center,
+              textAlign: TextAlign.center,
+            );
+          },
         ),
         if (retry != null) ...[
           Config.vBox12,

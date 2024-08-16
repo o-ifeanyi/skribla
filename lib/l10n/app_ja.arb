@@ -25,7 +25,6 @@
     "historyEmptyTitle": "ここには何もありません",
     "historyEmptySubtitle": "プレイしたゲームはここに表示されます",
     "by": "によって",
-    "nPlayersJoined": "{number} 人のプレイヤーが参加しました",
     "shareBtnTxt": "共有する",
     "nameLeaderboard": "{name}（あなた）",
     "lastUpdatedAt": "最終更新 {date}",

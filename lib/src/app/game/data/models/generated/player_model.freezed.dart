@@ -26,8 +26,12 @@ mixin _$PlayerModel {
   int get points => throw _privateConstructorUsedError;
   List<WordModel> get words => throw _privateConstructorUsedError;
 
+  /// Serializes this PlayerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlayerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlayerModelCopyWith<PlayerModel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -49,6 +53,8 @@ class _$PlayerModelCopyWithImpl<$Res, $Val extends PlayerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlayerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$PlayerModelImplCopyWithImpl<$Res>
   __$$PlayerModelImplCopyWithImpl(_$PlayerModelImpl _value, $Res Function(_$PlayerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlayerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,12 +191,14 @@ class _$PlayerModelImpl extends _PlayerModel {
             const DeepCollectionEquality().equals(other._words, _words));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, uid, name, createdAt, points, const DeepCollectionEquality().hash(_words));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlayerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlayerModelImplCopyWith<_$PlayerModelImpl> get copyWith =>
@@ -223,7 +233,10 @@ abstract class _PlayerModel extends PlayerModel {
   int get points;
   @override
   List<WordModel> get words;
+
+  /// Create a copy of PlayerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlayerModelImplCopyWith<_$PlayerModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

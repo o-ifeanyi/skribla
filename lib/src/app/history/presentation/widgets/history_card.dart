@@ -66,15 +66,9 @@ class _HistoryCardState extends State<HistoryCard> {
         children: [
           Padding(
             padding: Config.symmetric(h: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(context.loc.nPlayersJoined(widget.game.players.length)),
-                Text(
-                  widget.game.createdAt.formatEDMHM,
-                  style: context.textTheme.bodySmall,
-                ),
-              ],
+            child: Text(
+              widget.game.createdAt.formatEDMHM,
+              textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 15),

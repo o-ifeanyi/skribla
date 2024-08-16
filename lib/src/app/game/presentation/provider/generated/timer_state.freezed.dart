@@ -23,7 +23,9 @@ mixin _$TimerState {
   bool get showTurnTimer => throw _privateConstructorUsedError;
   Duration get turnTimer => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TimerStateCopyWith<TimerState> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -50,6 +52,8 @@ class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState> implements $TimerS
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +114,8 @@ class __$$TimerStateImplCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res
   __$$TimerStateImplCopyWithImpl(_$TimerStateImpl _value, $Res Function(_$TimerStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,7 +211,9 @@ class _$TimerStateImpl extends _TimerState {
   int get hashCode => Object.hash(
       runtimeType, showCoolTimer, coolTimer, showSkipTimer, skipTimer, showTurnTimer, turnTimer);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith =>
@@ -234,7 +242,10 @@ abstract class _TimerState extends TimerState {
   bool get showTurnTimer;
   @override
   Duration get turnTimer;
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -60,12 +60,12 @@ deploy_web:
 	firebase deploy --only hosting --project=skribla-$(flavor)
 
 patch_mobile:
-	shorebird patch --platforms=android \
+	yes | shorebird patch --platforms=android \
 	--flavor=$(flavor) \
 	--target=lib/main_$(flavor).dart \
 	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
 
-	shorebird patch --platforms=ios \
+	yes | shorebird patch --platforms=ios \
 	--flavor=$(flavor) \
 	--target=lib/main_$(flavor).dart \
 	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json

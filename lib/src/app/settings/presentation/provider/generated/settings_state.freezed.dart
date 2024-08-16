@@ -18,8 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SettingsState {
   SettingsStatus get status => throw _privateConstructorUsedError;
   bool get hapticsOn => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SettingsStateCopyWith<SettingsState> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -28,7 +31,7 @@ abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
-  $Res call({SettingsStatus status, bool hapticsOn});
+  $Res call({SettingsStatus status, bool hapticsOn, String version});
 }
 
 /// @nodoc
@@ -41,11 +44,14 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? hapticsOn = null,
+    Object? version = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -56,6 +62,10 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
           ? _value.hapticsOn
           : hapticsOn // ignore: cast_nullable_to_non_nullable
               as bool,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -67,7 +77,7 @@ abstract class _$$SettingsStateImplCopyWith<$Res> implements $SettingsStateCopyW
       __$$SettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SettingsStatus status, bool hapticsOn});
+  $Res call({SettingsStatus status, bool hapticsOn, String version});
 }
 
 /// @nodoc
@@ -78,11 +88,14 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
       _$SettingsStateImpl _value, $Res Function(_$SettingsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? hapticsOn = null,
+    Object? version = null,
   }) {
     return _then(_$SettingsStateImpl(
       status: null == status
@@ -93,6 +106,10 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
           ? _value.hapticsOn
           : hapticsOn // ignore: cast_nullable_to_non_nullable
               as bool,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -100,7 +117,8 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SettingsStateImpl implements _SettingsState {
-  const _$SettingsStateImpl({this.status = SettingsStatus.idle, this.hapticsOn = true});
+  const _$SettingsStateImpl(
+      {this.status = SettingsStatus.idle, this.hapticsOn = true, this.version = ''});
 
   @override
   @JsonKey()
@@ -108,10 +126,13 @@ class _$SettingsStateImpl implements _SettingsState {
   @override
   @JsonKey()
   final bool hapticsOn;
+  @override
+  @JsonKey()
+  final String version;
 
   @override
   String toString() {
-    return 'SettingsState(status: $status, hapticsOn: $hapticsOn)';
+    return 'SettingsState(status: $status, hapticsOn: $hapticsOn, version: $version)';
   }
 
   @override
@@ -120,13 +141,16 @@ class _$SettingsStateImpl implements _SettingsState {
         (other.runtimeType == runtimeType &&
             other is _$SettingsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.hapticsOn, hapticsOn) || other.hapticsOn == hapticsOn));
+            (identical(other.hapticsOn, hapticsOn) || other.hapticsOn == hapticsOn) &&
+            (identical(other.version, version) || other.version == version));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, hapticsOn);
+  int get hashCode => Object.hash(runtimeType, status, hapticsOn, version);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>
@@ -134,15 +158,22 @@ class _$SettingsStateImpl implements _SettingsState {
 }
 
 abstract class _SettingsState implements SettingsState {
-  const factory _SettingsState({final SettingsStatus status, final bool hapticsOn}) =
-      _$SettingsStateImpl;
+  const factory _SettingsState(
+      {final SettingsStatus status,
+      final bool hapticsOn,
+      final String version}) = _$SettingsStateImpl;
 
   @override
   SettingsStatus get status;
   @override
   bool get hapticsOn;
   @override
-  @JsonKey(ignore: true)
+  String get version;
+
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

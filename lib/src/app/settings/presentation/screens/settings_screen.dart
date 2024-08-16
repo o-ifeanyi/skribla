@@ -29,7 +29,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final hapticsOn = ref.watch(settingsProvider.select((it) => it.hapticsOn));
+    final user = ref.watch(authProvider.select((it) => it.user));
+    final state = ref.watch(settingsProvider);
 
     return Scaffold(
       appBar: DefaultAppBar(
@@ -51,7 +52,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               icon: AppIcons.vibrate,
               title: context.loc.haptics,
               trailing: Switch.adaptive(
-                value: hapticsOn,
+                value: state.hapticsOn,
                 onChanged: ref.read(settingsProvider.notifier).toggleHaptics,
               ),
             ),
@@ -95,7 +96,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           CustomListTile(
             icon: AppIcons.envelopeSimple,
             title: context.loc.contactSupport,
-            onTap: Support.instance.contactSupport,
+            onTap: () => Support.instance.contactSupport(user),
           ),
           Config.vBox12,
           Text(
@@ -114,6 +115,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             title: context.loc.termsOfService,
             onTap: Support.instance.openTerms,
           ),
+          if (state.version.isNotEmpty) ...[
+            Config.vBox12,
+            Text(
+              'v${state.version}',
+              textAlign: TextAlign.center,
+            ),
+          ],
           SizedBox(height: Config.height * 0.3),
         ],
       ),

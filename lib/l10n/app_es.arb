@@ -25,7 +25,6 @@
     "historyEmptyTitle": "Nada que ver aquí",
     "historyEmptySubtitle": "Los juegos que has jugado aparecerán aquí",
     "by": "por",
-    "nPlayersJoined": "{number} jugadores se unieron",
     "shareBtnTxt": "Compartir",
     "nameLeaderboard": "{name} (tú)",
     "lastUpdatedAt": "Última actualización {date}",

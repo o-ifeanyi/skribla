@@ -25,14 +25,6 @@
     "historyEmptyTitle": "Nothing to see here",
     "historyEmptySubtitle": "Games you played will show up here",
     "by": "by",
-    "nPlayersJoined": "{number} players joined",
-    "@nPlayersJoined": {
-        "placeholders": {
-            "number": {
-                "type": "num"
-            }
-        }
-    },
     "shareBtnTxt": "Share",
     "nameLeaderboard": "{name} (you)",
     "@nameLeaderboard": {

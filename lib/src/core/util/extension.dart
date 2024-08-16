@@ -35,6 +35,11 @@ extension ListExt on List<Object> {
   int get lastIndex => length - 1;
 }
 
+extension MapExtension on Map<String, dynamic> {
+  Map<String, dynamic> get removeNull =>
+      this..removeWhere((String key, dynamic value) => value == null);
+}
+
 extension BuildContextExt on BuildContext {
   ThemeData get theme => Theme.of(this);
   ColorScheme get colorScheme => theme.colorScheme;

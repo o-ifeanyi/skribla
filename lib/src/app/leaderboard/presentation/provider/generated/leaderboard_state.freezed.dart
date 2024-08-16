@@ -20,7 +20,9 @@ mixin _$LeaderboardState {
   LeaderboardType get type => throw _privateConstructorUsedError;
   List<LeaderboardModel> get topThree => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeaderboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LeaderboardStateCopyWith<LeaderboardState> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -42,6 +44,8 @@ class _$LeaderboardStateCopyWithImpl<$Res, $Val extends LeaderboardState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LeaderboardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$LeaderboardStateImplCopyWithImpl<$Res>
       _$LeaderboardStateImpl _value, $Res Function(_$LeaderboardStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeaderboardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +157,9 @@ class _$LeaderboardStateImpl implements _LeaderboardState {
   int get hashCode =>
       Object.hash(runtimeType, status, type, const DeepCollectionEquality().hash(_topThree));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeaderboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaderboardStateImplCopyWith<_$LeaderboardStateImpl> get copyWith =>
@@ -170,8 +178,11 @@ abstract class _LeaderboardState implements LeaderboardState {
   LeaderboardType get type;
   @override
   List<LeaderboardModel> get topThree;
+
+  /// Create a copy of LeaderboardState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeaderboardStateImplCopyWith<_$LeaderboardStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,7 +25,6 @@
     "historyEmptyTitle": "这里什么都没有",
     "historyEmptySubtitle": "您玩过的游戏会显示在这里",
     "by": "由",
-    "nPlayersJoined": "{number} 位玩家已加入",
     "shareBtnTxt": "分享",
     "nameLeaderboard": "{name}（你）",
     "lastUpdatedAt": "最后更新于 {date}",

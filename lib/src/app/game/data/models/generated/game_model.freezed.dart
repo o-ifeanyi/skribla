@@ -33,8 +33,12 @@ mixin _$GameModel {
   int get numOfPlayers => throw _privateConstructorUsedError;
   int get numOfArts => throw _privateConstructorUsedError;
 
+  /// Serializes this GameModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameModelCopyWith<GameModel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -70,6 +74,8 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel> implements $GameMode
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel> implements $GameMode
     ) as $Val);
   }
 
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlayerModelCopyWith<$Res> get currentPlayer {
@@ -146,6 +154,8 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel> implements $GameMode
     });
   }
 
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $WordModelCopyWith<$Res> get currentWord {
@@ -187,6 +197,8 @@ class __$$GameModelImplCopyWithImpl<$Res> extends _$GameModelCopyWithImpl<$Res, 
   __$$GameModelImplCopyWithImpl(_$GameModelImpl _value, $Res Function(_$GameModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -369,7 +381,7 @@ class _$GameModelImpl extends _GameModel {
             (identical(other.numOfArts, numOfArts) || other.numOfArts == numOfArts));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -386,7 +398,9 @@ class _$GameModelImpl extends _GameModel {
       numOfPlayers,
       numOfArts);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameModelImplCopyWith<_$GameModelImpl> get copyWith =>
@@ -442,7 +456,10 @@ abstract class _GameModel extends GameModel {
   int get numOfPlayers;
   @override
   int get numOfArts;
+
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameModelImplCopyWith<_$GameModelImpl> get copyWith => throw _privateConstructorUsedError;
 }
