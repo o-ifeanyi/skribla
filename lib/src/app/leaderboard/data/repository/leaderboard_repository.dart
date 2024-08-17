@@ -73,8 +73,8 @@ final class LeaderboardRepository {
           .limit(pageSize);
 
       if (lastItem != null) {
-        _logger.info('After - ${lastItem.points}');
-        query = query.startAfter([lastItem.points]);
+        _logger.info('After - ${lastItem.points}, ${lastItem.updatedAt.toIso8601String()}');
+        query = query.startAfter([lastItem.points, lastItem.updatedAt.toIso8601String()]);
       }
       final leaderboard = await query
           .withConverter(

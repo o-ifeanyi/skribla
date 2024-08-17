@@ -32,7 +32,7 @@ final class HistoryRepository {
           .limit(pageSize);
 
       if (lastItem != null) {
-        _logger.info('After - ${lastItem.id}');
+        _logger.info('After - ${lastItem.createdAt.toIso8601String()}');
         query = query.startAfter([lastItem.createdAt.toIso8601String()]);
       }
       final history = await query

@@ -28,7 +28,7 @@ class LeaderboardProvider extends StateNotifier<LeaderboardState> {
     );
     res.when(
       success: (data) {
-        final isFirstPage = controller.firstPageKey == null;
+        final isFirstPage = lastItem == null;
         final isAnonymousUser = ref.read(authProvider).user?.status == UserStatus.anonymous;
         if (isFirstPage) {
           state = state.copyWith(topThree: data.take(3).toList());
