@@ -26,9 +26,7 @@ extension GameProviderExt on GameProvider {
     if (prev == null) {
       update();
       return;
-    }
-
-    if (current.status == Status.complete) {
+    } else if (current.status == Status.complete) {
       // game ended
       // stop all timers & cancel sunscription
       if (current.online.first == user?.uid) {
@@ -45,32 +43,30 @@ extension GameProviderExt on GameProvider {
       _gameStreamSub?.cancel();
       update();
       return;
-    }
-
-    if (prev.online.length > current.online.length && current.online.length < 2) {
+    } else if (prev.online.length > current.online.length && current.online.length < 2) {
       // a player just left and only one(this) player left
       // the invite players screen should be showing at this point
       timer.reset();
+    } else if ((prev.correctGuess.length != current.correctGuess.length) &&
+        (current.correctGuess.length == current.onlinePlayers.length - 1)) {
+      // all players guessed correctly
+      // update so that updateNextPlayer will called with current which has the latest points
       update();
+
+      timer.stopTurnTimer();
+      if (current.online.first == user?.uid) {
+        updateNextPlayer().then((success) {
+          if (success) {
+            gameRepository.sendMessage(
+              game: current,
+              text: ref.read(locProvider).everyoneGuessedCorrectly,
+              name: null,
+            );
+          }
+        });
+      }
       return;
-    }
-
-    if (current.currentArt.isNotEmpty) {
-      // player started drawing
-      // stop skip timer, start turn timer
-      timer
-        ..stopSkipTimer()
-        ..startTurnTimer(
-          callback: () {
-            if (current.online.first == user?.uid) {
-              updateNextPlayer();
-            }
-          },
-          useHaptics: current.currentPlayer.uid == user?.uid,
-        );
-    }
-
-    if (prev.currentPlayer.uid != current.currentPlayer.uid) {
+    } else if (prev.currentPlayer.uid != current.currentPlayer.uid) {
       // current player changed
       // start cool down timer after which skip timer starts
       timer.startCoolTimer(
@@ -85,7 +81,27 @@ extension GameProviderExt on GameProvider {
           );
         },
       );
+      update();
+      return;
+    } else if (current.currentArt.isNotEmpty) {
+      // player started drawing
+      // stop skip timer, start turn timer
+      // can be called mutiple times because turn timer cannot be trigger more than once
+      timer
+        ..stopSkipTimer()
+        ..startTurnTimer(
+          callback: () {
+            if (current.online.first == user?.uid) {
+              updateNextPlayer();
+            }
+          },
+          useHaptics: current.currentPlayer.uid == user?.uid,
+        );
+      update();
+      return;
     }
+
+    // it was not a change that needed a reaction
     update();
   }
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skribla/src/app/game/data/models/game_model.dart';
 import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/models/player_model.dart';
@@ -13,11 +14,13 @@ import 'package:skribla/src/core/util/result.dart';
 
 final class GameRepository {
   const GameRepository({
+    required this.loc,
     required this.firebaseAuth,
     required this.firebaseFirestore,
     required this.leaderboardRepository,
   });
 
+  final AppLocalizations loc;
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
   final LeaderboardRepository leaderboardRepository;
@@ -154,7 +157,7 @@ final class GameRepository {
         unawaited(
           sendMessage(
             game: game,
-            text: 'the word was ${game.currentWord.text}'.toUpperCase(),
+            text: loc.revealWordMsg(game.currentWord.text),
             name: null,
           ),
         );
@@ -181,7 +184,7 @@ final class GameRepository {
       final message = MessageModel(
         id: doc.id,
         uid: (correctGuess || name == null) ? 'game_bot' : uid,
-        text: correctGuess ? '$name guessed the word!' : text,
+        text: correctGuess ? loc.correctGuessMsg('$name') : text,
         name: (correctGuess || name == null) ? null : name,
         correctGuess: correctGuess,
         createdAt: DateTime.now(),
@@ -202,8 +205,8 @@ final class GameRepository {
         final currentPlayerIndex = game.players.indexWhere(
           (player) => player.uid == game.currentPlayer.uid,
         );
-        players[currentPlayerIndex] = game.currentPlayer.copyWith(
-          points: game.currentPlayer.points + Constants.points,
+        players[currentPlayerIndex] = players[currentPlayerIndex].copyWith(
+          points: players[currentPlayerIndex].points + Constants.points,
         );
 
         unawaited(
@@ -216,7 +219,7 @@ final class GameRepository {
         // update guesser and player points in leadear board
         unawaited(
           leaderboardRepository.updateLeaderboard(
-            players: [game.currentPlayer, players[guesserIndex]],
+            players: [players[currentPlayerIndex], players[guesserIndex]],
           ),
         );
       }

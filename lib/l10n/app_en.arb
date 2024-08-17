@@ -11,6 +11,23 @@
     "historyBtnTxt": "History",
     "guessOrChat": "guess or chat...",
     "game": "Game",
+    "everyoneGuessedCorrectly": "everyone guessed correctly!",
+    "revealWordMsg": "the word was {word}",
+    "@revealWordMsg": {
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "correctGuessMsg": "{name} guessed the word",
+    "@correctGuessMsg": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "completed": "Completed!",
     "viewGallery": "View Gallery",
     "copy": "Copy",

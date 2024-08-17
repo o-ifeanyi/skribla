@@ -16,7 +16,7 @@ class TimerProvider extends StateNotifier<TimerState> {
   void reset() {
     stopSkipTimer();
     _stopCoolTimer();
-    _stopTurnTimer();
+    stopTurnTimer();
     state = const TimerState();
   }
 
@@ -88,7 +88,7 @@ class TimerProvider extends StateNotifier<TimerState> {
     );
   }
 
-  void _stopTurnTimer() {
+  void stopTurnTimer() {
     Logger.log('stopTurnTimer');
     _turnTimer?.cancel();
     _turnTimer = null;
@@ -117,7 +117,7 @@ class TimerProvider extends StateNotifier<TimerState> {
           Haptics.instance.heavyImpact();
         }
         if (ticker.tick == duration.inSeconds) {
-          _stopTurnTimer();
+          stopTurnTimer();
           callback.call();
         }
       },

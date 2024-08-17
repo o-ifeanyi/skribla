@@ -99,6 +99,7 @@ final homeRepoProvider = Provider<HomeRepository>(
 
 final gameRepoProvider = Provider<GameRepository>(
   (ref) => GameRepository(
+    loc: ref.read(locProvider),
     firebaseAuth: ref.read(firebaseAuthProvider),
     firebaseFirestore: ref.read(firebaseFirestoreProvider),
     leaderboardRepository: ref.read(leaderboardRepoProvider),
