@@ -18,6 +18,22 @@ class SendMessageField extends ConsumerStatefulWidget {
 
 class _SendMessageFieldState extends ConsumerState<SendMessageField> {
   final _msgCtrl = TextEditingController();
+
+  void _sendMessage(String name) {
+    ref
+        .read(gameProvider.notifier)
+        .sendMessage(
+          text: _msgCtrl.text,
+          name: name,
+        )
+        .then((success) {
+      if (success && mounted) {
+        _msgCtrl.clear();
+        FocusScope.of(context).unfocus();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(authProvider.select((it) => it.user));
@@ -39,18 +55,7 @@ class _SendMessageFieldState extends ConsumerState<SendMessageField> {
             onFieldSubmitted: (value) {
               final user = ref.read(authProvider).user;
               if (value.trim().isEmpty || user == null) return;
-              ref
-                  .read(gameProvider.notifier)
-                  .sendMessage(
-                    text: _msgCtrl.text,
-                    name: user.name,
-                  )
-                  .then((success) {
-                if (success && context.mounted) {
-                  _msgCtrl.clear();
-                  FocusScope.of(context).unfocus();
-                }
-              });
+              _sendMessage(user.name);
             },
           ),
         ),
@@ -64,18 +69,7 @@ class _SendMessageFieldState extends ConsumerState<SendMessageField> {
                   : () {
                       final user = ref.read(authProvider).user;
                       if (user == null) return;
-                      ref
-                          .read(gameProvider.notifier)
-                          .sendMessage(
-                            text: _msgCtrl.text,
-                            name: user.name,
-                          )
-                          .then((success) {
-                        if (success && context.mounted) {
-                          _msgCtrl.clear();
-                          FocusScope.of(context).unfocus();
-                        }
-                      });
+                      _sendMessage(user.name);
                     },
               child: Icon(AppIcons.paperPlaneRight),
             );
