@@ -11,6 +11,7 @@ class InputField extends StatelessWidget {
     this.controller,
     this.focusNode,
     this.onTap,
+    this.onFieldSubmitted,
     this.maxLines = 1,
     this.maxLength,
     this.maxLengthEnforcement,
@@ -31,6 +32,7 @@ class InputField extends StatelessWidget {
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final void Function()? onTap;
+  final void Function(String)? onFieldSubmitted;
   final String? header;
   final String? hint;
   final int? maxLines;
@@ -68,7 +70,9 @@ class InputField extends StatelessWidget {
           onChanged: onChanged,
           maxLength: maxLength,
           textAlign: textAlign,
+          onFieldSubmitted: onFieldSubmitted,
           maxLengthEnforcement: maxLengthEnforcement,
+          textCapitalization: TextCapitalization.sentences,
           style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.normal),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 15),

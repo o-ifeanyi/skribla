@@ -35,6 +35,23 @@ class _SendMessageFieldState extends ConsumerState<SendMessageField> {
             controller: _msgCtrl,
             hint: context.loc.guessOrChat,
             maxLines: null,
+            textInputAction: TextInputAction.send,
+            onFieldSubmitted: (value) {
+              final user = ref.read(authProvider).user;
+              if (value.trim().isEmpty || user == null) return;
+              ref
+                  .read(gameProvider.notifier)
+                  .sendMessage(
+                    text: _msgCtrl.text,
+                    name: user.name,
+                  )
+                  .then((success) {
+                if (success && context.mounted) {
+                  _msgCtrl.clear();
+                  FocusScope.of(context).unfocus();
+                }
+              });
+            },
           ),
         ),
         Config.hBox8,
