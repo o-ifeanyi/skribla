@@ -6,18 +6,18 @@ abstract class Config {
   static double get width => 1.sw;
 
   static TextTheme get textTheme => TextTheme(
-        displayLarge: TextStyle(fontSize: 44.sp, fontWeight: FontWeight.w900),
-        displayMedium: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w900),
-        displaySmall: TextStyle(fontSize: 36.sp, fontWeight: FontWeight.w900),
-        titleLarge: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.w900),
-        titleMedium: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.w900),
-        titleSmall: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w900),
-        bodyLarge: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w900),
-        bodyMedium: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400),
-        bodySmall: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-        labelLarge: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w900),
-        labelMedium: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w400),
-        labelSmall: TextStyle(fontSize: 8.sp, fontWeight: FontWeight.w400),
+        displayLarge: TextStyle(fontSize: 44.sp, fontFamily: 'MoreSugarMedium'),
+        displayMedium: TextStyle(fontSize: 40.sp, fontFamily: 'MoreSugarMedium'),
+        displaySmall: TextStyle(fontSize: 36.sp, fontFamily: 'MoreSugarMedium'),
+        titleLarge: TextStyle(fontSize: 32.sp, fontFamily: 'MoreSugarMedium'),
+        titleMedium: TextStyle(fontSize: 28.sp, fontFamily: 'MoreSugarMedium'),
+        titleSmall: TextStyle(fontSize: 20.sp, fontFamily: 'MoreSugarMedium'),
+        bodyLarge: TextStyle(fontSize: 18.sp, fontFamily: 'MoreSugarMedium'),
+        bodyMedium: TextStyle(fontSize: 16.sp, fontFamily: 'MoreSugarRegular'),
+        bodySmall: TextStyle(fontSize: 14.sp, fontFamily: 'MoreSugarRegular'),
+        labelLarge: TextStyle(fontSize: 12.sp, fontFamily: 'MoreSugarMedium'),
+        labelMedium: TextStyle(fontSize: 10.sp, fontFamily: 'MoreSugarRegular'),
+        labelSmall: TextStyle(fontSize: 8.sp, fontFamily: 'MoreSugarRegular'),
       );
 
   static EdgeInsets all(double padding) => EdgeInsets.all(padding.w);

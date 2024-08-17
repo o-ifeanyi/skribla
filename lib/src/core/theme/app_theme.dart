@@ -27,7 +27,7 @@ abstract class AppTheme {
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
-        fontFamily: 'MoreSugar',
+        fontFamily: 'MoreSugarRegular',
         textTheme: Config.textTheme,
       );
 
@@ -43,7 +43,7 @@ abstract class AppTheme {
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
-        fontFamily: 'MoreSugar',
+        fontFamily: 'MoreSugarRegular',
         textTheme: Config.textTheme,
       );
 
