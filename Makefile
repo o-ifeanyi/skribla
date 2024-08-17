@@ -92,7 +92,25 @@ deploy_mobile:
     --app 1:1056704511056:android:b1a81f5adcdab0d926e555  \
     --release-notes-file "release_notes.txt" --groups "dev_testers"
 
+build_prod:
+	sh web_flavor_setup.sh prod
+	flutter build web \
+	--target lib/main_prod.dart \
+	--web-renderer canvaskit \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/prod_creds.json
+	firebase deploy --only hosting --project=skribla-prod
+
+	yes | shorebird release ios \
+	--flavor prod \
+	--target lib/main_prod.dart \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/prod_creds.json
+
+	yes | shorebird release android \
+	--flavor prod \
+	--target lib/main_prod.dart \
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/prod_creds.json
+
 auth:
 	firebase login --reauth
 
-.PHONY: clean gen loc splash format functions configure_dev configure_prod deeplink serve_web deploy_web patch_mobile deploy_mobile auth
+.PHONY: clean gen loc splash format functions configure_dev configure_prod deeplink serve_web deploy_web patch_mobile deploy_mobile build_prod auth
