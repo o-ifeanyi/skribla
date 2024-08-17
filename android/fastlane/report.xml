@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000498">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: Switch to android set_full_version lane" time="0.000134">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.001022">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: android_set_version_name" time="0.002437">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: android_set_version_code" time="0.001586">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: shorebird_release" time="104.299323">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: firebase_app_distribution" time="31.937651">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

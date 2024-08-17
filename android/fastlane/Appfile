@@ -1,0 +1,2 @@
+json_key_file("/Users/ifeanyionuoha/skribla/skribla-prod-play-store.json")
+package_name("com.skribla.android.prod")

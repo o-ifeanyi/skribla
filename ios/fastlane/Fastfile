@@ -1,0 +1,69 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Set Info.plist Version and Build Number"
+  lane :set_full_version do
+    version = flutter_version()
+
+    increment_version_number(version_number: version['version_name'])
+
+    increment_build_number(build_number: version['version_code'])
+  end
+
+  desc "Deploy a dev build to Firebase App Distribution"
+  lane :dev do
+    set_full_version()
+    
+    shorebird_release(
+      platform: "ios",
+      args: "--flavor=dev -- --target=lib/main_dev.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json"
+    )
+  
+    firebase_app_distribution(
+			app: '1:1056704511056:ios:3c65b99d3d4ab0e526e555',
+			service_credentials_file: "/Users/ifeanyionuoha/skribla/skribla-dev-firebase.json",
+			groups: 'dev_testers',
+			release_notes: File.read("../../release_notes.txt"),
+			ipa_path: "../build/ios/ipa/skribla.ipa"
+		)
+  end
+  
+  desc "Deploy a prod build to TestFlight"
+  lane :prod do
+    set_full_version()
+
+    shorebird_release(
+      platform: "ios",
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+    )
+    upload_to_testflight(
+      api_key_path: "/Users/ifeanyionuoha/skribla/skribla-prod-app-store.json",
+      ipa: '../build/ios/ipa/skribla.ipa',
+      skip_waiting_for_build_processing: true,
+    )
+  end
+      
+  desc "Patch latest prod build on App Store"
+  lane :patch do
+    shorebird_patch(
+      platform: "ios",
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+    )
+  end
+end

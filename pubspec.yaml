@@ -1,7 +1,7 @@
 name: skribla
 description: "A new Flutter project."
 publish_to: 'none'
-version: 0.1.2+3
+version: 0.1.3+4
 
 environment:
   sdk: '>=3.5.0 <4.0.0'
@@ -52,8 +52,14 @@ flutter:
   generate: true
   assets:
     - assets/images/
+    - assets/fonts/
     - shorebird.yaml
   fonts:
-    - family: MoreSugar
+    - family: MoreSugarMedium
       fonts:
-        - asset: assets/fonts/more-sugar.ttf
+        - asset: assets/fonts/more-sugar-medium.ttf
+          weight: 800
+    - family: MoreSugarRegular
+      fonts:
+        - asset: assets/fonts/more-sugar-regular.ttf
+          weight: 400

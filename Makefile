@@ -43,14 +43,6 @@ deeplink:
   	-d https://dev.skribla.com \
   	com.skribla.android.dev
 
-serve_web:
-	sh web_flavor_setup.sh $(flavor)
-	flutter build web \
-	--target lib/main_$(flavor).dart \
-	--web-renderer canvaskit \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
-	firebase serve --only hosting --project=skribla-$(flavor)
-
 deploy_web:
 	sh web_flavor_setup.sh $(flavor)
 	flutter build web \
@@ -60,57 +52,24 @@ deploy_web:
 	firebase deploy --only hosting --project=skribla-$(flavor)
 
 patch_mobile:
-	yes | shorebird patch --platforms=android \
-	--flavor=$(flavor) \
-	--target=lib/main_$(flavor).dart \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
+	cd ios && bundle exec fastlane patch
+	cd android && bundle exec fastlane patch
 
-	yes | shorebird patch --platforms=ios \
-	--flavor=$(flavor) \
-	--target=lib/main_$(flavor).dart \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
-
-deploy_mobile:
+deploy:
 	sh release_notes.sh
+	sh web_flavor_setup.sh $(flavor)
 
-	yes | shorebird release ios \
-	--export-method ad-hoc \
-	--flavor dev \
-	--target lib/main_dev.dart \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/dev_creds.json
-
-	yes | shorebird release android --artifact=apk \
-	--flavor dev \
-	--target lib/main_dev.dart \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/dev_creds.json
-
-	firebase appdistribution:distribute build/ios/ipa/skribla.ipa  \
-    --app 1:1056704511056:ios:3c65b99d3d4ab0e526e555  \
-    --release-notes-file "release_notes.txt" --groups "dev_testers"
-
-	firebase appdistribution:distribute build/app/outputs/apk/dev/release/app-dev-release.apk  \
-    --app 1:1056704511056:android:b1a81f5adcdab0d926e555  \
-    --release-notes-file "release_notes.txt" --groups "dev_testers"
-
-build_prod:
-	sh web_flavor_setup.sh prod
 	flutter build web \
-	--target lib/main_prod.dart \
+	--target lib/main_$(flavor).dart \
 	--web-renderer canvaskit \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/prod_creds.json
-	firebase deploy --only hosting --project=skribla-prod
+	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
+	
+	firebase deploy --only hosting --project=skribla-$(flavor)
 
-	yes | shorebird release ios \
-	--flavor prod \
-	--target lib/main_prod.dart \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/prod_creds.json
-
-	yes | shorebird release android \
-	--flavor prod \
-	--target lib/main_prod.dart \
-	--dart-define-from-file /Users/ifeanyionuoha/skribla/prod_creds.json
+	cd ios && bundle exec fastlane $(flavor)
+	cd android && bundle exec fastlane $(flavor)
 
 auth:
 	firebase login --reauth
 
-.PHONY: clean gen loc splash format functions configure_dev configure_prod deeplink serve_web deploy_web patch_mobile deploy_mobile build_prod auth
+.PHONY: clean gen loc splash format functions configure_dev configure_prod deeplink deploy_web patch_mobile deploy auth

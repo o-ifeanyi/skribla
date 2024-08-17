@@ -33,8 +33,10 @@ migrate_working_dir/
 .fvm/flutter_sdk
 .firebase
 firebase.json
+/android/build/
 /android/app/src/dev/google-services.json
 /android/app/src/prod/google-services.json
+/ios/build
 /ios/Runner/dev/GoogleService-Info.plist
 /ios/Runner/prod/GoogleService-Info.plist
 /macos/Runner/dev/GoogleService-Info.plist

@@ -1,0 +1,69 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Set Gradle Version and Build Number"
+  lane :set_full_version do 
+    version = flutter_version()
+    android_set_version_name(version_name: version['version_name'])
+    android_set_version_code(version_code: version['version_code'])
+  end
+
+  desc "Deploy a dev build to Firebase App Distribution"
+  lane :dev do
+    set_full_version()
+    
+    shorebird_release(
+      platform: "android",
+      args: "--flavor=dev -- --target=lib/main_dev.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json"
+    )
+  
+    firebase_app_distribution(
+			app: '1:1056704511056:android:b1a81f5adcdab0d926e555',
+			service_credentials_file: "/Users/ifeanyionuoha/skribla/skribla-dev-firebase.json",
+			groups: 'dev_testers',
+			android_artifact_type: 'APK',
+			release_notes: File.read("../../release_notes.txt"),
+			android_artifact_path: "../build/app/outputs/apk/dev/release/app-dev-release.apk"
+		)
+  end
+  
+  desc "Deploy a prod build to Google Play Internal Test"
+  lane :prod do
+    set_full_version()
+    
+    shorebird_release(
+      platform: "android",
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+    )
+      
+    upload_to_play_store(
+      aab: "../build/app/outputs/bundle/prodRelease/app-prod-release.aab",
+      track: "internal",
+      release_status: "draft", # remove this when in beta or prod
+    )
+  end
+      
+  desc "Patch latest prod build on Google Play"
+  lane :patch do
+    shorebird_patch(
+      platform: "android",
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+    )
+  end
+end
