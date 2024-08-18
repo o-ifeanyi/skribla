@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skribla/src/app/game/presentation/widgets/board_config.dart';
 import 'package:skribla/src/app/game/presentation/widgets/draw_board.dart';
 import 'package:skribla/src/app/game/presentation/widgets/message_view.dart';
 import 'package:skribla/src/app/game/presentation/widgets/players_view.dart';
@@ -68,23 +69,59 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           ),
           body: Column(
             children: [
-              const RepaintBoundary(child: DrawBoard()),
-              Config.vBox8,
-              Expanded(
-                child: Padding(
-                  padding: Config.symmetric(h: 15),
+              if (Config.width < 800) ...[
+                const Expanded(
+                  flex: 3,
+                  child: RepaintBoundary(child: DrawBoard()),
+                ),
+                const BoardConfig(),
+                Config.vBox8,
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: Config.symmetric(h: 15),
+                    child: Row(
+                      children: [
+                        const Expanded(child: PlayersView()),
+                        Config.hBox8,
+                        Expanded(
+                          flex: 3,
+                          child: MessagesView(id: widget.id),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ] else
+                Expanded(
                   child: Row(
                     children: [
-                      const Expanded(child: PlayersView()),
-                      Config.hBox8,
                       Expanded(
                         flex: 3,
-                        child: MessagesView(id: widget.id),
+                        child: Column(
+                          children: [
+                            const Expanded(child: RepaintBoundary(child: DrawBoard())),
+                            const BoardConfig(),
+                            Config.vBox8,
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Padding(
+                          padding: Config.fromLTRB(0, 0, 15, 0),
+                          child: Column(
+                            children: [
+                              const Expanded(child: PlayersView()),
+                              Config.vBox8,
+                              Expanded(child: MessagesView(id: widget.id)),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ),
               ValueListenableBuilder(
                 valueListenable: _bottomSheetHeight,
                 builder: (context, height, child) {

@@ -12,6 +12,7 @@ class Toast {
   final StreamController<ToastModel> _controller = StreamController<ToastModel>();
 
   Stream<ToastModel> get stream => _controller.stream;
+  bool get hasListener => _controller.hasListener;
 
   void showError(String message, {String? title}) {
     _controller.add(
@@ -69,6 +70,7 @@ class _ToastProviderState extends State<ToastProvider> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (Toast.instance.hasListener) return;
       Toast.instance.stream.listen(_showToast);
     });
   }

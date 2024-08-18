@@ -11,7 +11,6 @@ import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/service/toast.dart';
 import 'package:skribla/src/core/util/config.dart';
-import 'package:skribla/src/core/util/constants.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/app_button.dart';
 import 'package:skribla/src/core/widgets/input_field.dart';
@@ -29,73 +28,63 @@ class DrawBoard extends ConsumerWidget {
       timerProvider.select((it) => it.showCoolTimer),
     );
 
-    return Column(
-      children: [
-        Container(
-          margin: Config.symmetric(h: 15),
-          height: Config.height * 0.45,
-          decoration: BoxDecoration(
-            borderRadius: Config.radius16,
-            color: context.theme.inputDecorationTheme.fillColor,
-          ),
-          child: LayoutBuilder(
-            builder: (context, constraint) {
-              return Stack(
-                fit: StackFit.expand,
-                children: [
-                  CustomPaint(
-                    size: constraint.biggest,
-                    painter: ArtPainter(
-                      art: game?.currentArt ?? [],
+    return Container(
+      margin: Config.symmetric(h: 15),
+      decoration: BoxDecoration(
+        borderRadius: Config.radius16,
+        color: context.theme.inputDecorationTheme.fillColor,
+      ),
+      child: LayoutBuilder(
+        builder: (context, constraint) {
+          return Stack(
+            fit: StackFit.expand,
+            children: [
+              CustomPaint(
+                size: constraint.biggest,
+                painter: ArtPainter(
+                  art: game?.currentArt ?? [],
+                ),
+              ),
+              Padding(
+                padding: Config.all(10),
+                child: const _BoardOverlay(),
+              ),
+              if ((game?.canDraw(user?.uid) ?? false) && !showCoolTimer) ...[
+                GestureDetector(
+                  onPanStart: (details) {
+                    ref.read(gameProvider.notifier).onPanStart(context, details, constraint);
+                  },
+                  onPanUpdate: (details) {
+                    ref.read(gameProvider.notifier).onPanUpdate(context, details, constraint);
+                  },
+                  onPanEnd: (details) {
+                    ref.read(gameProvider.notifier).onPanEnd();
+                  },
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Config.radius16.topRight,
+                      ),
+                      color: context.colorScheme.surface,
                     ),
-                  ),
-                  Padding(
-                    padding: Config.all(10),
-                    child: const _BoardOverlay(),
-                  ),
-                  if ((game?.canDraw(user?.uid) ?? false) && !showCoolTimer) ...[
-                    GestureDetector(
-                      onPanStart: (details) {
-                        ref.read(gameProvider.notifier).onPanStart(context, details, constraint);
-                      },
-                      onPanUpdate: (details) {
-                        ref.read(gameProvider.notifier).onPanUpdate(context, details, constraint);
-                      },
-                      onPanEnd: (details) {
-                        ref.read(gameProvider.notifier).onPanEnd();
-                      },
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topRight: Config.radius16.topRight,
-                          ),
-                          color: context.colorScheme.surface,
-                        ),
-                        child: Text(
-                          game?.currentWord.text ?? '',
-                          style: context.textTheme.bodySmall?.copyWith(
-                            color: context.colorScheme.secondary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                    child: Text(
+                      game?.currentWord.text ?? '',
+                      style: context.textTheme.bodySmall?.copyWith(
+                        color: context.colorScheme.secondary,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
-                ],
-              );
-            },
-          ),
-        ),
-        AnimatedSwitcher(
-          duration: Config.duration300,
-          child:
-              (game?.canDraw(user?.uid) ?? false) ? const _BoardConfig() : const SizedBox.shrink(),
-        ),
-      ],
+                  ),
+                ),
+              ],
+            ],
+          );
+        },
+      ),
     );
   }
 }

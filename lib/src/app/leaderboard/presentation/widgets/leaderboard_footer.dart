@@ -49,7 +49,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
           Config.vBox8,
           if (user?.status == UserStatus.anonymous) ...[
             Text(
-              context.loc.signinToJoinLeaderboard,
+              context.loc.signinToSaveProgress,
               textAlign: TextAlign.center,
             ),
             Config.vBox12,
