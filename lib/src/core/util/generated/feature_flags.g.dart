@@ -14,6 +14,9 @@ FeatureFlags _$FeatureFlagsFromJson(Map<String, dynamic> json) => FeatureFlags(
       androidDown: json['android_down'] as bool? ?? false,
       macDown: json['mac_down'] as bool? ?? false,
       drawDelayMilliseconds: (json['draw_delay_milliseconds'] as num?)?.toInt() ?? 100,
+      coolDurationSeconds: (json['cool_duration_seconds'] as num?)?.toInt() ?? 5,
+      skipDurationSeconds: (json['skip_duration_seconds'] as num?)?.toInt() ?? 7,
+      turnDurationSeconds: (json['turn_duration_seconds'] as num?)?.toInt() ?? 20,
     );
 
 Map<String, dynamic> _$FeatureFlagsToJson(FeatureFlags instance) => <String, dynamic>{
@@ -24,4 +27,7 @@ Map<String, dynamic> _$FeatureFlagsToJson(FeatureFlags instance) => <String, dyn
       'android_down': instance.androidDown,
       'mac_down': instance.macDown,
       'draw_delay_milliseconds': instance.drawDelayMilliseconds,
+      'cool_duration_seconds': instance.coolDurationSeconds,
+      'skip_duration_seconds': instance.skipDurationSeconds,
+      'turn_duration_seconds': instance.turnDurationSeconds,
     };

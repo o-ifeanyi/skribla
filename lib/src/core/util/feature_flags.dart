@@ -15,6 +15,9 @@ class FeatureFlags {
     this.androidDown = false,
     this.macDown = false,
     this.drawDelayMilliseconds = 100,
+    this.coolDurationSeconds = 5,
+    this.skipDurationSeconds = 7,
+    this.turnDurationSeconds = 20,
   });
   factory FeatureFlags.fromJson(Map<String, Object?> json) => _$FeatureFlagsFromJson(json);
 
@@ -27,6 +30,9 @@ class FeatureFlags {
   final bool androidDown;
   final bool macDown;
   final int drawDelayMilliseconds;
+  final int coolDurationSeconds;
+  final int skipDurationSeconds;
+  final int turnDurationSeconds;
 
   bool get plaformDown {
     if (kIsWeb) {

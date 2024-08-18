@@ -5,9 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/src/app/game/presentation/provider/timer_state.dart';
 import 'package:skribla/src/core/service/haptics.dart';
 import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/service/remote_config.dart';
 
 class TimerProvider extends StateNotifier<TimerState> {
   TimerProvider() : super(const TimerState());
+
+  final featureFlags = RemoteConfig.instance.featureFlags;
 
   Timer? _coolTimer;
   Timer? _skipTimer;
@@ -32,9 +35,9 @@ class TimerProvider extends StateNotifier<TimerState> {
 
   Future<void> startCoolTimer({
     required VoidCallback callback,
-    Duration duration = const Duration(seconds: 5),
   }) async {
     if (state.showCoolTimer) return;
+    final duration = Duration(seconds: featureFlags.coolDurationSeconds);
     Logger.log('startCoolTimer');
     state = state.copyWith(
       showCoolTimer: true,
@@ -64,10 +67,10 @@ class TimerProvider extends StateNotifier<TimerState> {
 
   Future<void> startSkipTimer({
     required VoidCallback callback,
-    Duration duration = const Duration(seconds: 5),
     bool useHaptics = false,
   }) async {
     if (state.showSkipTimer) return;
+    final duration = Duration(seconds: featureFlags.skipDurationSeconds);
     Logger.log('startSkipTimer');
     state = state.copyWith(
       showSkipTimer: true,
@@ -100,10 +103,11 @@ class TimerProvider extends StateNotifier<TimerState> {
 
   Future<void> startTurnTimer({
     required VoidCallback callback,
-    Duration duration = const Duration(seconds: 15),
     bool useHaptics = false,
   }) async {
     if (state.showTurnTimer) return;
+    final duration = Duration(seconds: featureFlags.turnDurationSeconds);
+
     Logger.log('startTurnTimer');
     state = state.copyWith(
       showTurnTimer: true,
