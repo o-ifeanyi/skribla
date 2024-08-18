@@ -11,6 +11,7 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		1910CF08763871EEE158784A /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB13330ACAB050C4B65CC2E /* Pods_Runner.framework */; };
 		1E5999542C66DE37005479B1 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1E5999532C66DE37005479B1 /* Base.lproj */; };
+		1E8D0DEA2C726A0B00CE0FD9 /* adhoc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D0DE92C726A0B00CE0FD9 /* adhoc.plist */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		1E6A9F3F2C5F16D500E802D8 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		1E8129EA2C45DD2C00ADECAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E8129EC2C45DD9C00ADECAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E8D0DE92C726A0B00CE0FD9 /* adhoc.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = adhoc.plist; sourceTree = "<group>"; };
 		2765FAB5D8105301DF29E6EB /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB13330ACAB050C4B65CC2E /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				1E8D0DE92C726A0B00CE0FD9 /* adhoc.plist */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8D0DEA2C726A0B00CE0FD9 /* adhoc.plist in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				1E5999542C66DE37005479B1 /* Base.lproj in Resources */,

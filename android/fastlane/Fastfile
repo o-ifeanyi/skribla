@@ -30,7 +30,9 @@ platform :android do
     
     shorebird_release(
       platform: "android",
-      args: "--flavor=dev -- --target=lib/main_dev.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json"
+      args: "--flavor=dev -- " \
+      "--target=lib/main_dev.dart -- " \
+      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json"
     )
   
     firebase_app_distribution(
@@ -49,7 +51,9 @@ platform :android do
     
     shorebird_release(
       platform: "android",
-      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+      args: "--flavor=prod -- " \
+      "--target=lib/main_prod.dart -- " \
+      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
     )
       
     upload_to_play_store(
@@ -63,7 +67,9 @@ platform :android do
   lane :patch do
     shorebird_patch(
       platform: "android",
-      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+      args: "--flavor=prod -- " \
+      "--target=lib/main_prod.dart -- " \
+      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
     )
   end
 end
