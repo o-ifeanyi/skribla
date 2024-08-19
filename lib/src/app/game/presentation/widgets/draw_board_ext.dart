@@ -7,8 +7,8 @@ class _BoardOverlay extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(authProvider.select((it) => it.user));
     final game = ref.watch(gameProvider.select((it) => it.game));
-    final showCoolTimer = ref.watch(
-      timerProvider.select((it) => it.showCoolTimer),
+    final timerType = ref.watch(
+      timerProvider.select((it) => it.timerType),
     );
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +75,7 @@ class _BoardOverlay extends ConsumerWidget {
               ),
             ),
           ),
-        ] else if (showCoolTimer) ...[
+        ] else if (timerType == TimerType.cool) ...[
           Text.rich(
             TextSpan(
               text: '${context.loc.getReady} ',
@@ -89,6 +89,12 @@ class _BoardOverlay extends ConsumerWidget {
                 TextSpan(text: '\n${context.loc.youAreUpNext}'),
               ],
             ),
+            style: context.textTheme.titleMedium,
+            textAlign: TextAlign.center,
+          ),
+        ] else if (timerType == TimerType.complete) ...[
+          Text(
+            '🥳 ${context.loc.everyoneGuessedCorrectly}',
             style: context.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),

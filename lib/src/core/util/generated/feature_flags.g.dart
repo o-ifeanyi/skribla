@@ -17,6 +17,7 @@ FeatureFlags _$FeatureFlagsFromJson(Map<String, dynamic> json) => FeatureFlags(
       coolDurationSeconds: (json['cool_duration_seconds'] as num?)?.toInt() ?? 5,
       skipDurationSeconds: (json['skip_duration_seconds'] as num?)?.toInt() ?? 7,
       turnDurationSeconds: (json['turn_duration_seconds'] as num?)?.toInt() ?? 20,
+      completeDurationSeconds: (json['complete_duration_seconds'] as num?)?.toInt() ?? 3,
     );
 
 Map<String, dynamic> _$FeatureFlagsToJson(FeatureFlags instance) => <String, dynamic>{
@@ -30,4 +31,5 @@ Map<String, dynamic> _$FeatureFlagsToJson(FeatureFlags instance) => <String, dyn
       'cool_duration_seconds': instance.coolDurationSeconds,
       'skip_duration_seconds': instance.skipDurationSeconds,
       'turn_duration_seconds': instance.turnDurationSeconds,
+      'complete_duration_seconds': instance.completeDurationSeconds,
     };

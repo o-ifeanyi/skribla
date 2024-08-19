@@ -15,33 +15,36 @@ class TimerProvider extends StateNotifier<TimerState> {
   Timer? _coolTimer;
   Timer? _skipTimer;
   Timer? _turnTimer;
+  Timer? _completeTimer;
 
   void reset() {
     stopSkipTimer();
     _stopCoolTimer();
     stopTurnTimer();
+    stopCompleteTimer();
     state = const TimerState();
   }
 
   void _stopCoolTimer() {
+    if (state.timerType != TimerType.cool) return;
     Logger.log('stopSkipTimer');
     _coolTimer?.cancel();
     _coolTimer = null;
     state = state.copyWith(
-      showCoolTimer: false,
-      coolTimer: Duration.zero,
+      timerType: TimerType.idle,
+      coolDuration: Duration.zero,
     );
   }
 
   Future<void> startCoolTimer({
     required VoidCallback callback,
   }) async {
-    if (state.showCoolTimer) return;
+    if (state.coolDuration != Duration.zero) return;
     final duration = Duration(seconds: featureFlags.coolDurationSeconds);
     Logger.log('startCoolTimer');
     state = state.copyWith(
-      showCoolTimer: true,
-      coolTimer: duration,
+      timerType: TimerType.cool,
+      coolDuration: duration,
     );
     _coolTimer = Timer.periodic(
       const Duration(seconds: 1),
@@ -56,12 +59,13 @@ class TimerProvider extends StateNotifier<TimerState> {
   }
 
   void stopSkipTimer() {
+    if (state.timerType != TimerType.skip) return;
     Logger.log('stopSkipTimer');
     _skipTimer?.cancel();
     _skipTimer = null;
     state = state.copyWith(
-      showSkipTimer: false,
-      skipTimer: Duration.zero,
+      timerType: TimerType.idle,
+      skipDuration: Duration.zero,
     );
   }
 
@@ -69,12 +73,12 @@ class TimerProvider extends StateNotifier<TimerState> {
     required VoidCallback callback,
     bool useHaptics = false,
   }) async {
-    if (state.showSkipTimer) return;
+    if (state.skipDuration != Duration.zero) return;
     final duration = Duration(seconds: featureFlags.skipDurationSeconds);
     Logger.log('startSkipTimer');
     state = state.copyWith(
-      showSkipTimer: true,
-      skipTimer: duration,
+      timerType: TimerType.skip,
+      skipDuration: duration,
     );
     _skipTimer = Timer.periodic(
       const Duration(seconds: 1),
@@ -92,12 +96,13 @@ class TimerProvider extends StateNotifier<TimerState> {
   }
 
   void stopTurnTimer() {
+    if (state.timerType != TimerType.turn) return;
     Logger.log('stopTurnTimer');
     _turnTimer?.cancel();
     _turnTimer = null;
     state = state.copyWith(
-      showTurnTimer: false,
-      turnTimer: Duration.zero,
+      timerType: TimerType.idle,
+      turnDuration: Duration.zero,
     );
   }
 
@@ -105,13 +110,13 @@ class TimerProvider extends StateNotifier<TimerState> {
     required VoidCallback callback,
     bool useHaptics = false,
   }) async {
-    if (state.showTurnTimer) return;
+    if (state.turnDuration != Duration.zero) return;
     final duration = Duration(seconds: featureFlags.turnDurationSeconds);
 
     Logger.log('startTurnTimer');
     state = state.copyWith(
-      showTurnTimer: true,
-      turnTimer: duration,
+      timerType: TimerType.turn,
+      turnDuration: duration,
     );
     _turnTimer = Timer.periodic(
       const Duration(seconds: 1),
@@ -122,6 +127,38 @@ class TimerProvider extends StateNotifier<TimerState> {
         }
         if (ticker.tick == duration.inSeconds) {
           stopTurnTimer();
+          callback.call();
+        }
+      },
+    );
+  }
+
+  void stopCompleteTimer() {
+    if (state.timerType != TimerType.complete) return;
+    Logger.log('stopCompleteTimer');
+    _completeTimer?.cancel();
+    _completeTimer = null;
+    state = state.copyWith(
+      timerType: TimerType.idle,
+      completeDuration: Duration.zero,
+    );
+  }
+
+  Future<void> startCompleteTimer({required VoidCallback callback}) async {
+    if (state.completeDuration != Duration.zero) return;
+    final duration = Duration(seconds: featureFlags.completeDurationSeconds);
+
+    Logger.log('startCompleteTimer');
+    state = state.copyWith(
+      timerType: TimerType.complete,
+      completeDuration: duration,
+    );
+    _completeTimer = Timer.periodic(
+      const Duration(seconds: 1),
+      (ticker) {
+        Logger.log('CompleteTimer === ${duration.inSeconds}');
+        if (ticker.tick == duration.inSeconds) {
+          stopCompleteTimer();
           callback.call();
         }
       },
