@@ -66,18 +66,21 @@ extension GameProviderExt on GameProvider {
     } else if (prev.currentPlayer.uid != current.currentPlayer.uid) {
       // current player changed
       // start cool down timer after which skip timer starts
-      timer.startCoolTimer(
-        callback: () {
-          timer.startSkipTimer(
-            callback: () {
-              if (current.online.first == user?.uid) {
-                updateNextPlayer();
-              }
-            },
-            useHaptics: current.currentPlayer.uid == user?.uid,
-          );
-        },
-      );
+      timer
+        ..stopSkipTimer()
+        ..stopCompleteTimer()
+        ..startCoolTimer(
+          callback: () {
+            timer.startSkipTimer(
+              callback: () {
+                if (current.online.first == user?.uid) {
+                  updateNextPlayer();
+                }
+              },
+              useHaptics: current.currentPlayer.uid == user?.uid,
+            );
+          },
+        );
       update();
       return;
     } else if (current.currentArt.isNotEmpty) {

@@ -25,8 +25,8 @@ class DrawBoard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final game = ref.watch(gameProvider.select((it) => it.game));
     final user = ref.watch(authProvider.select((it) => it.user));
-    final isCoolPeriod = ref.watch(
-      timerProvider.select((it) => it.timerType == TimerType.cool),
+    final timerType = ref.watch(
+      timerProvider.select((it) => it.timerType),
     );
 
     return Container(
@@ -43,14 +43,14 @@ class DrawBoard extends ConsumerWidget {
               CustomPaint(
                 size: constraint.biggest,
                 painter: ArtPainter(
-                  art: game?.currentArt ?? [],
+                  art: timerType == TimerType.complete ? [] : (game?.currentArt ?? []),
                 ),
               ),
               Padding(
                 padding: Config.all(10),
                 child: const _BoardOverlay(),
               ),
-              if ((game?.canDraw(user?.uid) ?? false) && !isCoolPeriod) ...[
+              if ((game?.canDraw(user?.uid) ?? false) && timerType != TimerType.cool) ...[
                 GestureDetector(
                   onPanStart: (details) {
                     ref.read(gameProvider.notifier).onPanStart(context, details, constraint);

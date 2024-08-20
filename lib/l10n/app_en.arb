@@ -29,10 +29,12 @@
         }
     },
     "completed": "Completed!",
-    "viewGallery": "View Gallery",
+    "viewLeaderboard": "View leaderboard",
+    "viewGallery": "View gallery",
     "copy": "Copy",
     "copiedToClipboard": "Copied to clipboard",
     "getReady": "Get ready",
+    "isUpNext": "is up next",
     "youAreUpNext": "You're up next",
     "draw": "Draw",
     "stroke": "Stroke",

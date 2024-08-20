@@ -27,7 +27,7 @@ class TimerProvider extends StateNotifier<TimerState> {
 
   void _stopCoolTimer() {
     if (state.timerType != TimerType.cool) return;
-    Logger.log('stopSkipTimer');
+    Logger.log('stopCoolTimer');
     _coolTimer?.cancel();
     _coolTimer = null;
     state = state.copyWith(
@@ -83,7 +83,7 @@ class TimerProvider extends StateNotifier<TimerState> {
     _skipTimer = Timer.periodic(
       const Duration(seconds: 1),
       (ticker) {
-        Logger.log('SkipTimer === ${duration.inSeconds}');
+        Logger.log('SkipTimer === ${ticker.tick}');
         if (useHaptics) {
           Haptics.instance.heavyImpact();
         }
@@ -121,7 +121,7 @@ class TimerProvider extends StateNotifier<TimerState> {
     _turnTimer = Timer.periodic(
       const Duration(seconds: 1),
       (ticker) {
-        Logger.log('TurnTimer === ${duration.inSeconds}');
+        Logger.log('TurnTimer === ${ticker.tick}');
         if (useHaptics && ticker.tick >= (duration.inSeconds ~/ 2)) {
           Haptics.instance.heavyImpact();
         }
@@ -156,7 +156,7 @@ class TimerProvider extends StateNotifier<TimerState> {
     _completeTimer = Timer.periodic(
       const Duration(seconds: 1),
       (ticker) {
-        Logger.log('CompleteTimer === ${duration.inSeconds}');
+        Logger.log('CompleteTimer === ${ticker.tick}');
         if (ticker.tick == duration.inSeconds) {
           stopCompleteTimer();
           callback.call();
