@@ -1,6 +1,6 @@
 {
-    "name": "Skribla Dev",
-    "short_name": "Skribla Dev",
+    "name": "Skribla",
+    "short_name": "Skribla",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

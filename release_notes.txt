@@ -1,16 +1,7 @@
 ## What's Changed
+* make game end ui flexible by o-ifeanyi
+* fix platform issue on web by o-ifeanyi
+* use flutter for dev builds + fix macos blank screen release build by o-ifeanyi
 * new dev build by o-ifeanyi
-* Merge pull request #1 from o-ifeanyi/refactor-timer by Ifeanyi
-* make light painter uniform on all devices + minor changes by o-ifeanyi
-* add/fix apple sign in for mac by o-ifeanyi
-* deleting user should make user anonymous again by o-ifeanyi
-* test/fix timer refactor, personalise up next text, add option to view leaderboard after game by o-ifeanyi
-* refactor timer implementation (not tested) by o-ifeanyi
-* record crashes to sentry only in release mode by o-ifeanyi
-* build adhoc for dev ios using shorebird + format lenghty args by o-ifeanyi
-* make game screen responsive, update loc, fix toast stream error by o-ifeanyi
-* add github release command to makefile by o-ifeanyi
-* use feature flags for countdown durations by o-ifeanyi
-* fix web 404 + deploy dev by o-ifeanyi
 
-**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.3+4...0.1.5+6
+**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.4+5...0.1.5+6
