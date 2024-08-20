@@ -77,6 +77,7 @@ class AuthProvider extends StateNotifier<AuthState> {
     return res.when(
       success: (success) {
         state = state.copyWith(user: null);
+        signInAnonymously();
         return true;
       },
       error: (error) {
