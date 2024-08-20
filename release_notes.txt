@@ -1,4 +1,5 @@
 ## What's Changed
+* new dev build by o-ifeanyi
 * Merge pull request #1 from o-ifeanyi/refactor-timer by Ifeanyi
 * make light painter uniform on all devices + minor changes by o-ifeanyi
 * add/fix apple sign in for mac by o-ifeanyi
@@ -12,4 +13,4 @@
 * use feature flags for countdown durations by o-ifeanyi
 * fix web 404 + deploy dev by o-ifeanyi
 
-**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.3+4...0.1.4+5
+**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.3+4...0.1.5+6

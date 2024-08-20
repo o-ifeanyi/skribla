@@ -30,13 +30,11 @@ platform :ios do
   lane :dev do
     set_full_version()
     
-    shorebird_release(
-      platform: "ios",
-      args: "--flavor=dev -- " \
-      "--target=lib/main_dev.dart -- " \
-      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json -- " \
-      "--export-options-plist=/Users/ifeanyionuoha/Projects/skribla/ios/Runner/adhoc.plist"
-    )
+    sh("flutter build ipa --release \
+	  --flavor=dev \
+	  --export-method=ad-hoc \
+	  --target=lib/main_dev.dart \
+	  --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json")
   
     firebase_app_distribution(
 			app: '1:1056704511056:ios:3c65b99d3d4ab0e526e555',

@@ -47,7 +47,7 @@ deeplink:
 
 deploy_web:
 	sh web_flavor_setup.sh $(flavor)
-	flutter build web \
+	flutter build web --release \
 	--target lib/main_$(flavor).dart \
 	--web-renderer canvaskit \
 	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
@@ -66,7 +66,7 @@ deploy:
 	sh release_notes.sh
 	sh web_flavor_setup.sh $(flavor)
 
-	flutter build web \
+	flutter build web --release \
 	--target lib/main_$(flavor).dart \
 	--web-renderer canvaskit \
 	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
