@@ -16,12 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TimerState {
-  bool get showCoolTimer => throw _privateConstructorUsedError;
-  Duration get coolTimer => throw _privateConstructorUsedError;
-  bool get showSkipTimer => throw _privateConstructorUsedError;
-  Duration get skipTimer => throw _privateConstructorUsedError;
-  bool get showTurnTimer => throw _privateConstructorUsedError;
-  Duration get turnTimer => throw _privateConstructorUsedError;
+  TimerType get timerType => throw _privateConstructorUsedError;
+  Duration get coolDuration => throw _privateConstructorUsedError;
+  Duration get skipDuration => throw _privateConstructorUsedError;
+  Duration get turnDuration => throw _privateConstructorUsedError;
+  Duration get completeDuration => throw _privateConstructorUsedError;
 
   /// Create a copy of TimerState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,12 +34,11 @@ abstract class $TimerStateCopyWith<$Res> {
       _$TimerStateCopyWithImpl<$Res, TimerState>;
   @useResult
   $Res call(
-      {bool showCoolTimer,
-      Duration coolTimer,
-      bool showSkipTimer,
-      Duration skipTimer,
-      bool showTurnTimer,
-      Duration turnTimer});
+      {TimerType timerType,
+      Duration coolDuration,
+      Duration skipDuration,
+      Duration turnDuration,
+      Duration completeDuration});
 }
 
 /// @nodoc
@@ -57,37 +55,32 @@ class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState> implements $TimerS
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? showCoolTimer = null,
-    Object? coolTimer = null,
-    Object? showSkipTimer = null,
-    Object? skipTimer = null,
-    Object? showTurnTimer = null,
-    Object? turnTimer = null,
+    Object? timerType = null,
+    Object? coolDuration = null,
+    Object? skipDuration = null,
+    Object? turnDuration = null,
+    Object? completeDuration = null,
   }) {
     return _then(_value.copyWith(
-      showCoolTimer: null == showCoolTimer
-          ? _value.showCoolTimer
-          : showCoolTimer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      coolTimer: null == coolTimer
-          ? _value.coolTimer
-          : coolTimer // ignore: cast_nullable_to_non_nullable
+      timerType: null == timerType
+          ? _value.timerType
+          : timerType // ignore: cast_nullable_to_non_nullable
+              as TimerType,
+      coolDuration: null == coolDuration
+          ? _value.coolDuration
+          : coolDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
-      showSkipTimer: null == showSkipTimer
-          ? _value.showSkipTimer
-          : showSkipTimer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      skipTimer: null == skipTimer
-          ? _value.skipTimer
-          : skipTimer // ignore: cast_nullable_to_non_nullable
+      skipDuration: null == skipDuration
+          ? _value.skipDuration
+          : skipDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
-      showTurnTimer: null == showTurnTimer
-          ? _value.showTurnTimer
-          : showTurnTimer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      turnTimer: null == turnTimer
-          ? _value.turnTimer
-          : turnTimer // ignore: cast_nullable_to_non_nullable
+      turnDuration: null == turnDuration
+          ? _value.turnDuration
+          : turnDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      completeDuration: null == completeDuration
+          ? _value.completeDuration
+          : completeDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
     ) as $Val);
   }
@@ -100,12 +93,11 @@ abstract class _$$TimerStateImplCopyWith<$Res> implements $TimerStateCopyWith<$R
   @override
   @useResult
   $Res call(
-      {bool showCoolTimer,
-      Duration coolTimer,
-      bool showSkipTimer,
-      Duration skipTimer,
-      bool showTurnTimer,
-      Duration turnTimer});
+      {TimerType timerType,
+      Duration coolDuration,
+      Duration skipDuration,
+      Duration turnDuration,
+      Duration completeDuration});
 }
 
 /// @nodoc
@@ -119,37 +111,32 @@ class __$$TimerStateImplCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? showCoolTimer = null,
-    Object? coolTimer = null,
-    Object? showSkipTimer = null,
-    Object? skipTimer = null,
-    Object? showTurnTimer = null,
-    Object? turnTimer = null,
+    Object? timerType = null,
+    Object? coolDuration = null,
+    Object? skipDuration = null,
+    Object? turnDuration = null,
+    Object? completeDuration = null,
   }) {
     return _then(_$TimerStateImpl(
-      showCoolTimer: null == showCoolTimer
-          ? _value.showCoolTimer
-          : showCoolTimer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      coolTimer: null == coolTimer
-          ? _value.coolTimer
-          : coolTimer // ignore: cast_nullable_to_non_nullable
+      timerType: null == timerType
+          ? _value.timerType
+          : timerType // ignore: cast_nullable_to_non_nullable
+              as TimerType,
+      coolDuration: null == coolDuration
+          ? _value.coolDuration
+          : coolDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
-      showSkipTimer: null == showSkipTimer
-          ? _value.showSkipTimer
-          : showSkipTimer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      skipTimer: null == skipTimer
-          ? _value.skipTimer
-          : skipTimer // ignore: cast_nullable_to_non_nullable
+      skipDuration: null == skipDuration
+          ? _value.skipDuration
+          : skipDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
-      showTurnTimer: null == showTurnTimer
-          ? _value.showTurnTimer
-          : showTurnTimer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      turnTimer: null == turnTimer
-          ? _value.turnTimer
-          : turnTimer // ignore: cast_nullable_to_non_nullable
+      turnDuration: null == turnDuration
+          ? _value.turnDuration
+          : turnDuration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      completeDuration: null == completeDuration
+          ? _value.completeDuration
+          : completeDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
     ));
   }
@@ -159,36 +146,32 @@ class __$$TimerStateImplCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res
 
 class _$TimerStateImpl extends _TimerState {
   const _$TimerStateImpl(
-      {this.showCoolTimer = false,
-      this.coolTimer = Duration.zero,
-      this.showSkipTimer = false,
-      this.skipTimer = Duration.zero,
-      this.showTurnTimer = false,
-      this.turnTimer = Duration.zero})
+      {this.timerType = TimerType.idle,
+      this.coolDuration = Duration.zero,
+      this.skipDuration = Duration.zero,
+      this.turnDuration = Duration.zero,
+      this.completeDuration = Duration.zero})
       : super._();
 
   @override
   @JsonKey()
-  final bool showCoolTimer;
+  final TimerType timerType;
   @override
   @JsonKey()
-  final Duration coolTimer;
+  final Duration coolDuration;
   @override
   @JsonKey()
-  final bool showSkipTimer;
+  final Duration skipDuration;
   @override
   @JsonKey()
-  final Duration skipTimer;
+  final Duration turnDuration;
   @override
   @JsonKey()
-  final bool showTurnTimer;
-  @override
-  @JsonKey()
-  final Duration turnTimer;
+  final Duration completeDuration;
 
   @override
   String toString() {
-    return 'TimerState(showCoolTimer: $showCoolTimer, coolTimer: $coolTimer, showSkipTimer: $showSkipTimer, skipTimer: $skipTimer, showTurnTimer: $showTurnTimer, turnTimer: $turnTimer)';
+    return 'TimerState(timerType: $timerType, coolDuration: $coolDuration, skipDuration: $skipDuration, turnDuration: $turnDuration, completeDuration: $completeDuration)';
   }
 
   @override
@@ -196,20 +179,17 @@ class _$TimerStateImpl extends _TimerState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TimerStateImpl &&
-            (identical(other.showCoolTimer, showCoolTimer) ||
-                other.showCoolTimer == showCoolTimer) &&
-            (identical(other.coolTimer, coolTimer) || other.coolTimer == coolTimer) &&
-            (identical(other.showSkipTimer, showSkipTimer) ||
-                other.showSkipTimer == showSkipTimer) &&
-            (identical(other.skipTimer, skipTimer) || other.skipTimer == skipTimer) &&
-            (identical(other.showTurnTimer, showTurnTimer) ||
-                other.showTurnTimer == showTurnTimer) &&
-            (identical(other.turnTimer, turnTimer) || other.turnTimer == turnTimer));
+            (identical(other.timerType, timerType) || other.timerType == timerType) &&
+            (identical(other.coolDuration, coolDuration) || other.coolDuration == coolDuration) &&
+            (identical(other.skipDuration, skipDuration) || other.skipDuration == skipDuration) &&
+            (identical(other.turnDuration, turnDuration) || other.turnDuration == turnDuration) &&
+            (identical(other.completeDuration, completeDuration) ||
+                other.completeDuration == completeDuration));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, showCoolTimer, coolTimer, showSkipTimer, skipTimer, showTurnTimer, turnTimer);
+      runtimeType, timerType, coolDuration, skipDuration, turnDuration, completeDuration);
 
   /// Create a copy of TimerState
   /// with the given fields replaced by the non-null parameter values.
@@ -222,26 +202,23 @@ class _$TimerStateImpl extends _TimerState {
 
 abstract class _TimerState extends TimerState {
   const factory _TimerState(
-      {final bool showCoolTimer,
-      final Duration coolTimer,
-      final bool showSkipTimer,
-      final Duration skipTimer,
-      final bool showTurnTimer,
-      final Duration turnTimer}) = _$TimerStateImpl;
+      {final TimerType timerType,
+      final Duration coolDuration,
+      final Duration skipDuration,
+      final Duration turnDuration,
+      final Duration completeDuration}) = _$TimerStateImpl;
   const _TimerState._() : super._();
 
   @override
-  bool get showCoolTimer;
+  TimerType get timerType;
   @override
-  Duration get coolTimer;
+  Duration get coolDuration;
   @override
-  bool get showSkipTimer;
+  Duration get skipDuration;
   @override
-  Duration get skipTimer;
+  Duration get turnDuration;
   @override
-  bool get showTurnTimer;
-  @override
-  Duration get turnTimer;
+  Duration get completeDuration;
 
   /// Create a copy of TimerState
   /// with the given fields replaced by the non-null parameter values.

@@ -18,6 +18,7 @@ class FeatureFlags {
     this.coolDurationSeconds = 5,
     this.skipDurationSeconds = 7,
     this.turnDurationSeconds = 20,
+    this.completeDurationSeconds = 3,
   });
   factory FeatureFlags.fromJson(Map<String, Object?> json) => _$FeatureFlagsFromJson(json);
 
@@ -33,6 +34,7 @@ class FeatureFlags {
   final int coolDurationSeconds;
   final int skipDurationSeconds;
   final int turnDurationSeconds;
+  final int completeDurationSeconds;
 
   bool get plaformDown {
     if (kIsWeb) {

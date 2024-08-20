@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skribla/env/env.dart';
 import 'package:skribla/src/app/game/data/models/game_model.dart';
+import 'package:skribla/src/app/game/presentation/provider/timer_state.dart';
 import 'package:skribla/src/app/game/presentation/widgets/art_painter.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
@@ -24,8 +25,8 @@ class DrawBoard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final game = ref.watch(gameProvider.select((it) => it.game));
     final user = ref.watch(authProvider.select((it) => it.user));
-    final showCoolTimer = ref.watch(
-      timerProvider.select((it) => it.showCoolTimer),
+    final timerType = ref.watch(
+      timerProvider.select((it) => it.timerType),
     );
 
     return Container(
@@ -42,14 +43,14 @@ class DrawBoard extends ConsumerWidget {
               CustomPaint(
                 size: constraint.biggest,
                 painter: ArtPainter(
-                  art: game?.currentArt ?? [],
+                  art: timerType == TimerType.complete ? [] : (game?.currentArt ?? []),
                 ),
               ),
               Padding(
                 padding: Config.all(10),
                 child: const _BoardOverlay(),
               ),
-              if ((game?.canDraw(user?.uid) ?? false) && !showCoolTimer) ...[
+              if ((game?.canDraw(user?.uid) ?? false) && timerType != TimerType.cool) ...[
                 GestureDetector(
                   onPanStart: (details) {
                     ref.read(gameProvider.notifier).onPanStart(context, details, constraint);

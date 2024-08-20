@@ -7,8 +7,8 @@ class _BoardOverlay extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(authProvider.select((it) => it.user));
     final game = ref.watch(gameProvider.select((it) => it.game));
-    final showCoolTimer = ref.watch(
-      timerProvider.select((it) => it.showCoolTimer),
+    final timerType = ref.watch(
+      timerProvider.select((it) => it.timerType),
     );
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -30,13 +30,27 @@ class _BoardOverlay extends ConsumerWidget {
             textAlign: TextAlign.center,
           ),
           Config.vBox12,
-          AppButton(
-            text: context.loc.viewGallery,
-            onPressed: () {
-              Support.instance.requestReview();
-              ref.read(gameProvider.notifier).leaveGame();
-              context.goNamed(Routes.history);
-            },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppButton(
+                text: context.loc.leaderboardBtnTxt,
+                onPressed: () {
+                  Support.instance.requestReview();
+                  ref.read(gameProvider.notifier).leaveGame();
+                  context.goNamed(Routes.leaderboard);
+                },
+              ),
+              Config.hBox12,
+              AppButton(
+                text: context.loc.historyBtnTxt,
+                onPressed: () {
+                  Support.instance.requestReview();
+                  ref.read(gameProvider.notifier).leaveGame();
+                  context.goNamed(Routes.history);
+                },
+              ),
+            ],
           ),
         ] else if ((game?.online ?? []).length < 2) ...[
           Text(
@@ -75,20 +89,47 @@ class _BoardOverlay extends ConsumerWidget {
               ),
             ),
           ),
-        ] else if (showCoolTimer) ...[
-          Text.rich(
-            TextSpan(
-              text: '${context.loc.getReady} ',
-              children: [
-                TextSpan(
-                  text: '${game?.currentPlayer.name}',
-                  style: TextStyle(
-                    color: context.colorScheme.secondary,
+        ] else if (timerType == TimerType.cool) ...[
+          if (game?.currentPlayer.uid == user?.uid) ...[
+            Text.rich(
+              TextSpan(
+                text: '${context.loc.getReady} ',
+                children: [
+                  TextSpan(
+                    text: '${game?.currentPlayer.name}',
+                    style: TextStyle(
+                      color: context.colorScheme.secondary,
+                    ),
                   ),
-                ),
-                TextSpan(text: '\n${context.loc.youAreUpNext}'),
-              ],
+                  TextSpan(text: '\n${context.loc.youAreUpNext}'),
+                ],
+              ),
+              style: context.textTheme.titleMedium,
+              textAlign: TextAlign.center,
             ),
+          ] else ...[
+            Text.rich(
+              TextSpan(
+                text: '${game?.currentPlayer.name}',
+                style: TextStyle(
+                  color: context.colorScheme.secondary,
+                ),
+                children: [
+                  TextSpan(
+                    text: ' ${context.loc.isUpNext}',
+                    style: TextStyle(
+                      color: context.colorScheme.onSurface,
+                    ),
+                  ),
+                ],
+              ),
+              style: context.textTheme.titleMedium,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ] else if (timerType == TimerType.complete) ...[
+          Text(
+            '🥳 ${context.loc.everyoneGuessedCorrectly}',
             style: context.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),

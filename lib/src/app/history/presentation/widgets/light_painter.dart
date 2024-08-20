@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skribla/src/core/util/config.dart';
 
 class LightPainter extends CustomPainter {
   @override
@@ -18,10 +17,10 @@ class LightPainter extends CustomPainter {
       );
 
     final path = Path()
-      ..moveTo(size.width / 2 - Config.w(10), 20)
-      ..lineTo(Config.w(15), size.height)
-      ..lineTo(size.width - Config.w(15), size.height)
-      ..lineTo(size.width / 2 + Config.w(10), 20)
+      ..moveTo(size.width / 2 - 10, 20)
+      ..lineTo(size.width / 2 - 180, size.height)
+      ..lineTo(size.width / 2 + 180, size.height)
+      ..lineTo(size.width / 2 + 10, 20)
       ..close();
 
     canvas.drawPath(path, paint);

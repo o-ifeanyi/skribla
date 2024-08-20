@@ -40,7 +40,7 @@ class SharedWidget extends ConsumerWidget {
                     borderRadius: Config.radius8,
                   ),
                   child: CustomPaint(
-                    size: const Size.square(250),
+                    size: const Size.square(300),
                     painter: AnimatedArtPainter(
                       art: exhibit.art,
                       progress: 1,

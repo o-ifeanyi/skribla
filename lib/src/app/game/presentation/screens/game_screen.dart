@@ -47,20 +47,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             title: Consumer(
               builder: (context, timer, child) {
                 final state = timer.watch(timerProvider);
-                if (state.showCoolTimer) {
+                if (state.showTimer) {
                   return ProgressBar(
-                    key: const ValueKey('cool_timer'),
-                    duration: state.coolTimer,
-                  );
-                } else if (state.showSkipTimer) {
-                  return ProgressBar(
-                    key: const ValueKey('skip_timer'),
-                    duration: state.skipTimer,
-                  );
-                } else if (state.showTurnTimer) {
-                  return ProgressBar(
-                    key: const ValueKey('turn_timer'),
-                    duration: state.turnTimer,
+                    key: ValueKey(state.timerType),
+                    duration: state.timerDuration,
                   );
                 }
                 return const SizedBox.shrink();

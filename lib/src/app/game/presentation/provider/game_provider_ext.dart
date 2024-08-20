@@ -47,40 +47,40 @@ extension GameProviderExt on GameProvider {
       // a player just left and only one(this) player left
       // the invite players screen should be showing at this point
       timer.reset();
+      update();
+      return;
     } else if ((prev.correctGuess.length != current.correctGuess.length) &&
         (current.correctGuess.length == current.onlinePlayers.length - 1)) {
       // all players guessed correctly
-      // update so that updateNextPlayer will called with current which has the latest points
+      timer
+        ..stopTurnTimer()
+        ..startCompleteTimer(
+          callback: () {
+            if (current.online.first == user?.uid) {
+              updateNextPlayer();
+            }
+          },
+        );
       update();
-
-      timer.stopTurnTimer();
-      if (current.online.first == user?.uid) {
-        updateNextPlayer().then((success) {
-          if (success) {
-            gameRepository.sendMessage(
-              game: current,
-              text: ref.read(locProvider).everyoneGuessedCorrectly,
-              name: null,
-            );
-          }
-        });
-      }
       return;
     } else if (prev.currentPlayer.uid != current.currentPlayer.uid) {
       // current player changed
       // start cool down timer after which skip timer starts
-      timer.startCoolTimer(
-        callback: () {
-          timer.startSkipTimer(
-            callback: () {
-              if (current.online.first == user?.uid) {
-                updateNextPlayer();
-              }
-            },
-            useHaptics: current.currentPlayer.uid == user?.uid,
-          );
-        },
-      );
+      timer
+        ..stopSkipTimer()
+        ..stopCompleteTimer()
+        ..startCoolTimer(
+          callback: () {
+            timer.startSkipTimer(
+              callback: () {
+                if (current.online.first == user?.uid) {
+                  updateNextPlayer();
+                }
+              },
+              useHaptics: current.currentPlayer.uid == user?.uid,
+            );
+          },
+        );
       update();
       return;
     } else if (current.currentArt.isNotEmpty) {
