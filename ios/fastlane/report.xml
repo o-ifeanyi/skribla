@@ -5,12 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000564">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000428">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: shorebird_release" time="403.318818">
+      <testcase classname="fastlane.lanes" name="1: Switch to ios set_full_version lane" time="0.000124">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.001685">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.194203">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.206654">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: shorebird_release" time="432.83174">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: firebase_app_distribution" time="15.968484">
         
       </testcase>
     

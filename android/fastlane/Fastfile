@@ -30,7 +30,8 @@ platform :android do
     
     shorebird_release(
       platform: "android",
-      args: "--flavor=dev -- " \
+      args: "--artifact=apk -- " \
+      "--flavor=dev -- " \
       "--target=lib/main_dev.dart -- " \
       "--dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json"
     )
