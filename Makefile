@@ -59,8 +59,8 @@ patch_mobile:
 
 gh_release:
 	@version=$$(cat pubspec.yaml | grep -o 'version:[^:]*' | cut -f2 -d":" | xargs); \
-	echo "Creating GitHub release for: $${version}"
-	gh release create $(version) --generate-notes
+	echo "Creating GitHub release for: $${version}"; \
+	gh release create "$${version}" --generate-notes
 
 deploy:
 	sh release_notes.sh
