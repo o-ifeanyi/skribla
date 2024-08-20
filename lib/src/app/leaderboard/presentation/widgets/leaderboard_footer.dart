@@ -53,7 +53,7 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
               textAlign: TextAlign.center,
             ),
             Config.vBox12,
-            if (!kIsWeb && Platform.isIOS) ...[
+            if (!kIsWeb && Platform.isIOS || Platform.isMacOS) ...[
               Row(
                 children: [
                   Expanded(
