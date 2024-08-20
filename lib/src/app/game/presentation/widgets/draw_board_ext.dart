@@ -30,8 +30,10 @@ class _BoardOverlay extends ConsumerWidget {
             textAlign: TextAlign.center,
           ),
           Config.vBox12,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Wrap(
+            spacing: Config.w(12),
+            runSpacing: Config.h(12),
+            alignment: WrapAlignment.center,
             children: [
               AppButton(
                 text: context.loc.leaderboardBtnTxt,
@@ -41,7 +43,6 @@ class _BoardOverlay extends ConsumerWidget {
                   context.goNamed(Routes.leaderboard);
                 },
               ),
-              Config.hBox12,
               AppButton(
                 text: context.loc.historyBtnTxt,
                 onPressed: () {
