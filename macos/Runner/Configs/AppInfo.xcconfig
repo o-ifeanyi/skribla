@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = skribla
+PRODUCT_NAME = Skribla
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = app.ifeanyi.drawAndGuess
+PRODUCT_BUNDLE_IDENTIFIER = com.skribla.macos.prod
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 app.ifeanyi. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 Skribla. All rights reserved.
