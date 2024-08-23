@@ -4,6 +4,24 @@ import 'package:skribla/src/app/auth/presentation/provider/auth_state.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/toast.dart';
 
+/// A provider class for managing authentication-related operations.
+///
+/// This class extends [StateNotifier] and manages the state of type [AuthState].
+/// It provides functionality for signing in anonymously, signing in with providers (Apple and Google),
+/// and retrieving the current user. It interacts with [AuthRepository] for authentication operations.
+///
+/// Key features:
+/// - Supports anonymous sign-in
+/// - Implements sign-in with Apple and Google providers
+/// - Retrieves the current user
+/// - Updates the user's name
+/// - Deletes the user's account
+/// - Manages the authentication state of the application
+///
+/// Usage:
+/// This provider is typically used in conjunction with Riverpod to manage
+/// the authentication state of the application throughout the app.
+
 class AuthProvider extends StateNotifier<AuthState> {
   AuthProvider({
     required this.toast,

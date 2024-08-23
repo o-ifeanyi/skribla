@@ -7,6 +7,20 @@ import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/util/device_info.dart';
 import 'package:skribla/src/core/util/extension.dart';
 
+/// A singleton class for managing device information.
+///
+/// This class is responsible for fetching and providing device information such as platform, system name, system version, app version, and build number.
+/// It uses the DeviceInfoPlus library to fetch device information and provides a singleton instance for accessing device information throughout the app.
+///
+/// Key features:
+/// - Fetches device information including platform, system name, system version, app version, and build number.
+/// - Provides a singleton instance for accessing device information.
+///
+/// Usage:
+/// This class is typically used to fetch device information when needed. For example, to log device information for debugging or analytics purposes.
+/// The `getInfo` method is used to fetch the device information, which returns a `DeviceInfo` object containing the fetched information.
+///
+
 final class Device {
   Device._internal();
   static final _singleton = Device._internal();

@@ -18,6 +18,8 @@ FeatureFlags _$FeatureFlagsFromJson(Map<String, dynamic> json) => FeatureFlags(
       skipDurationSeconds: (json['skip_duration_seconds'] as num?)?.toInt() ?? 7,
       turnDurationSeconds: (json['turn_duration_seconds'] as num?)?.toInt() ?? 20,
       completeDurationSeconds: (json['complete_duration_seconds'] as num?)?.toInt() ?? 3,
+      totalWordsCount: (json['total_words_count'] as num?)?.toInt() ?? 100,
+      wordsPerGame: (json['words_per_game'] as num?)?.toInt() ?? 3,
     );
 
 Map<String, dynamic> _$FeatureFlagsToJson(FeatureFlags instance) => <String, dynamic>{
@@ -32,4 +34,6 @@ Map<String, dynamic> _$FeatureFlagsToJson(FeatureFlags instance) => <String, dyn
       'skip_duration_seconds': instance.skipDurationSeconds,
       'turn_duration_seconds': instance.turnDurationSeconds,
       'complete_duration_seconds': instance.completeDurationSeconds,
+      'total_words_count': instance.totalWordsCount,
+      'words_per_game': instance.wordsPerGame,
     };

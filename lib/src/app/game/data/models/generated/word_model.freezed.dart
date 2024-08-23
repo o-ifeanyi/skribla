@@ -21,7 +21,10 @@ WordModel _$WordModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WordModel {
   String get id => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+  Map<String, String> get loc => throw _privateConstructorUsedError;
   bool get available => throw _privateConstructorUsedError;
 
   /// Serializes this WordModel to a JSON map.
@@ -38,7 +41,13 @@ abstract class $WordModelCopyWith<$Res> {
   factory $WordModelCopyWith(WordModel value, $Res Function(WordModel) then) =
       _$WordModelCopyWithImpl<$Res, WordModel>;
   @useResult
-  $Res call({String id, String text, bool available});
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      String text,
+      int index,
+      Map<String, String> loc,
+      bool available});
 }
 
 /// @nodoc
@@ -56,7 +65,10 @@ class _$WordModelCopyWithImpl<$Res, $Val extends WordModel> implements $WordMode
   @override
   $Res call({
     Object? id = null,
+    Object? createdAt = null,
     Object? text = null,
+    Object? index = null,
+    Object? loc = null,
     Object? available = null,
   }) {
     return _then(_value.copyWith(
@@ -64,10 +76,22 @@ class _$WordModelCopyWithImpl<$Res, $Val extends WordModel> implements $WordMode
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      loc: null == loc
+          ? _value.loc
+          : loc // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -82,7 +106,13 @@ abstract class _$$WordModelImplCopyWith<$Res> implements $WordModelCopyWith<$Res
       __$$WordModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String text, bool available});
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      String text,
+      int index,
+      Map<String, String> loc,
+      bool available});
 }
 
 /// @nodoc
@@ -97,7 +127,10 @@ class __$$WordModelImplCopyWithImpl<$Res> extends _$WordModelCopyWithImpl<$Res, 
   @override
   $Res call({
     Object? id = null,
+    Object? createdAt = null,
     Object? text = null,
+    Object? index = null,
+    Object? loc = null,
     Object? available = null,
   }) {
     return _then(_$WordModelImpl(
@@ -105,10 +138,22 @@ class __$$WordModelImplCopyWithImpl<$Res> extends _$WordModelCopyWithImpl<$Res, 
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      loc: null == loc
+          ? _value._loc
+          : loc // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
@@ -119,23 +164,44 @@ class __$$WordModelImplCopyWithImpl<$Res> extends _$WordModelCopyWithImpl<$Res, 
 
 /// @nodoc
 @JsonSerializable()
-class _$WordModelImpl implements _WordModel {
-  const _$WordModelImpl({required this.id, this.text = '', this.available = true});
+class _$WordModelImpl extends _WordModel {
+  const _$WordModelImpl(
+      {required this.id,
+      required this.createdAt,
+      required this.text,
+      this.index = 0,
+      final Map<String, String> loc = const {},
+      this.available = true})
+      : _loc = loc,
+        super._();
 
   factory _$WordModelImpl.fromJson(Map<String, dynamic> json) => _$$WordModelImplFromJson(json);
 
   @override
   final String id;
   @override
-  @JsonKey()
+  final DateTime createdAt;
+  @override
   final String text;
+  @override
+  @JsonKey()
+  final int index;
+  final Map<String, String> _loc;
+  @override
+  @JsonKey()
+  Map<String, String> get loc {
+    if (_loc is EqualUnmodifiableMapView) return _loc;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_loc);
+  }
+
   @override
   @JsonKey()
   final bool available;
 
   @override
   String toString() {
-    return 'WordModel(id: $id, text: $text, available: $available)';
+    return 'WordModel(id: $id, createdAt: $createdAt, text: $text, index: $index, loc: $loc, available: $available)';
   }
 
   @override
@@ -144,13 +210,17 @@ class _$WordModelImpl implements _WordModel {
         (other.runtimeType == runtimeType &&
             other is _$WordModelImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.text, text) || other.text == text) &&
+            (identical(other.index, index) || other.index == index) &&
+            const DeepCollectionEquality().equals(other._loc, _loc) &&
             (identical(other.available, available) || other.available == available));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, text, available);
+  int get hashCode => Object.hash(runtimeType, id, createdAt, text, index,
+      const DeepCollectionEquality().hash(_loc), available);
 
   /// Create a copy of WordModel
   /// with the given fields replaced by the non-null parameter values.
@@ -168,16 +238,28 @@ class _$WordModelImpl implements _WordModel {
   }
 }
 
-abstract class _WordModel implements WordModel {
-  const factory _WordModel({required final String id, final String text, final bool available}) =
-      _$WordModelImpl;
+abstract class _WordModel extends WordModel {
+  const factory _WordModel(
+      {required final String id,
+      required final DateTime createdAt,
+      required final String text,
+      final int index,
+      final Map<String, String> loc,
+      final bool available}) = _$WordModelImpl;
+  const _WordModel._() : super._();
 
   factory _WordModel.fromJson(Map<String, dynamic> json) = _$WordModelImpl.fromJson;
 
   @override
   String get id;
   @override
+  DateTime get createdAt;
+  @override
   String get text;
+  @override
+  int get index;
+  @override
+  Map<String, String> get loc;
   @override
   bool get available;
 

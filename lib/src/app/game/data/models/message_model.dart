@@ -2,6 +2,15 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'generated/message_model.g.dart';
 
+enum MessageType {
+  text('text'),
+  correctGuess('correct_guess'),
+  wordReveal('word_reveal');
+
+  const MessageType(this.value);
+  final String value;
+}
+
 @JsonSerializable()
 class MessageModel {
   const MessageModel({
@@ -9,8 +18,8 @@ class MessageModel {
     required this.uid,
     required this.text,
     required this.name,
+    required this.messageType,
     required this.createdAt,
-    this.correctGuess = false,
   });
 
   factory MessageModel.fromJson(Map<String, dynamic> json) => _$MessageModelFromJson(json);
@@ -20,7 +29,7 @@ class MessageModel {
   final String id;
   final String uid;
   final String text;
-  final String? name;
+  final String name;
+  final MessageType messageType;
   final DateTime createdAt;
-  final bool correctGuess;
 }

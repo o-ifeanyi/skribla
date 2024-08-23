@@ -1,0 +1,1152 @@
+[
+    {
+        "text": "Apple",
+        "loc": {
+            "de": "Apfel",
+            "es": "Manzana",
+            "fr": "Pomme",
+            "ja": "りんご",
+            "zh": "苹果"
+        }
+    },
+    {
+        "text": "Car",
+        "loc": {
+            "de": "Auto",
+            "es": "Coche",
+            "fr": "Voiture",
+            "ja": "車",
+            "zh": "车"
+        }
+    },
+    {
+        "text": "Tree",
+        "loc": {
+            "de": "Baum",
+            "es": "Árbol",
+            "fr": "Arbre",
+            "ja": "木",
+            "zh": "树"
+        }
+    },
+    {
+        "text": "House",
+        "loc": {
+            "de": "Haus",
+            "es": "Casa",
+            "fr": "Maison",
+            "ja": "家",
+            "zh": "房子"
+        }
+    },
+    {
+        "text": "Cat",
+        "loc": {
+            "de": "Katze",
+            "es": "Gato",
+            "fr": "Chat",
+            "ja": "猫",
+            "zh": "猫"
+        }
+    },
+    {
+        "text": "Dog",
+        "loc": {
+            "de": "Hund",
+            "es": "Perro",
+            "fr": "Chien",
+            "ja": "犬",
+            "zh": "狗"
+        }
+    },
+    {
+        "text": "Sun",
+        "loc": {
+            "de": "Sonne",
+            "es": "Sol",
+            "fr": "Soleil",
+            "ja": "太陽",
+            "zh": "太阳"
+        }
+    },
+    {
+        "text": "Moon",
+        "loc": {
+            "de": "Mond",
+            "es": "Luna",
+            "fr": "Lune",
+            "ja": "月",
+            "zh": "月亮"
+        }
+    },
+    {
+        "text": "Star",
+        "loc": {
+            "de": "Stern",
+            "es": "Estrella",
+            "fr": "Étoile",
+            "ja": "星",
+            "zh": "星星"
+        }
+    },
+    {
+        "text": "Fish",
+        "loc": {
+            "de": "Fisch",
+            "es": "Pez",
+            "fr": "Poisson",
+            "ja": "魚",
+            "zh": "鱼"
+        }
+    },
+    {
+        "text": "Book",
+        "loc": {
+            "de": "Buch",
+            "es": "Libro",
+            "fr": "Livre",
+            "ja": "本",
+            "zh": "书"
+        }
+    },
+    {
+        "text": "Chair",
+        "loc": {
+            "de": "Stuhl",
+            "es": "Silla",
+            "fr": "Chaise",
+            "ja": "椅子",
+            "zh": "椅子"
+        }
+    },
+    {
+        "text": "Table",
+        "loc": {
+            "de": "Tisch",
+            "es": "Mesa",
+            "fr": "Table",
+            "ja": "テーブル",
+            "zh": "桌子"
+        }
+    },
+    {
+        "text": "Bird",
+        "loc": {
+            "de": "Vogel",
+            "es": "Pájaro",
+            "fr": "Oiseau",
+            "ja": "鳥",
+            "zh": "鸟"
+        }
+    },
+    {
+        "text": "Cup",
+        "loc": {
+            "de": "Tasse",
+            "es": "Taza",
+            "fr": "Tasse",
+            "ja": "カップ",
+            "zh": "杯子"
+        }
+    },
+    {
+        "text": "Hat",
+        "loc": {
+            "de": "Hut",
+            "es": "Sombrero",
+            "fr": "Chapeau",
+            "ja": "帽子",
+            "zh": "帽子"
+        }
+    },
+    {
+        "text": "Shoe",
+        "loc": {
+            "de": "Schuh",
+            "es": "Zapato",
+            "fr": "Chaussure",
+            "ja": "靴",
+            "zh": "鞋"
+        }
+    },
+    {
+        "text": "Clock",
+        "loc": {
+            "de": "Uhr",
+            "es": "Reloj",
+            "fr": "Horloge",
+            "ja": "時計",
+            "zh": "钟"
+        }
+    },
+    {
+        "text": "Banana",
+        "loc": {
+            "de": "Banane",
+            "es": "Plátano",
+            "fr": "Banane",
+            "ja": "バナナ",
+            "zh": "香蕉"
+        }
+    },
+    {
+        "text": "Ball",
+        "loc": {
+            "de": "Ball",
+            "es": "Pelota",
+            "fr": "Balle",
+            "ja": "ボール",
+            "zh": "球"
+        }
+    },
+    {
+        "text": "Plane",
+        "loc": {
+            "de": "Flugzeug",
+            "es": "Avión",
+            "fr": "Avion",
+            "ja": "飛行機",
+            "zh": "飞机"
+        }
+    },
+    {
+        "text": "Train",
+        "loc": {
+            "de": "Zug",
+            "es": "Tren",
+            "fr": "Train",
+            "ja": "電車",
+            "zh": "火车"
+        }
+    },
+    {
+        "text": "Boat",
+        "loc": {
+            "de": "Boot",
+            "es": "Barco",
+            "fr": "Bateau",
+            "ja": "船",
+            "zh": "船"
+        }
+    },
+    {
+        "text": "Flower",
+        "loc": {
+            "de": "Blume",
+            "es": "Flor",
+            "fr": "Fleur",
+            "ja": "花",
+            "zh": "花"
+        }
+    },
+    {
+        "text": "Bottle",
+        "loc": {
+            "de": "Flasche",
+            "es": "Botella",
+            "fr": "Bouteille",
+            "ja": "瓶",
+            "zh": "瓶子"
+        }
+    },
+    {
+        "text": "Glasses",
+        "loc": {
+            "de": "Brille",
+            "es": "Gafas",
+            "fr": "Lunettes",
+            "ja": "眼鏡",
+            "zh": "眼镜"
+        }
+    },
+    {
+        "text": "Phone",
+        "loc": {
+            "de": "Telefon",
+            "es": "Teléfono",
+            "fr": "Téléphone",
+            "ja": "電話",
+            "zh": "电话"
+        }
+    },
+    {
+        "text": "Pen",
+        "loc": {
+            "de": "Stift",
+            "es": "Bolígrafo",
+            "fr": "Stylo",
+            "ja": "ペン",
+            "zh": "笔"
+        }
+    },
+    {
+        "text": "Pencil",
+        "loc": {
+            "de": "Bleistift",
+            "es": "Lápiz",
+            "fr": "Crayon",
+            "ja": "鉛筆",
+            "zh": "铅笔"
+        }
+    },
+    {
+        "text": "Laptop",
+        "loc": {
+            "de": "Laptop",
+            "es": "Portátil",
+            "fr": "Ordinateur portable",
+            "ja": "ラップトップ",
+            "zh": "笔记本电脑"
+        }
+    },
+    {
+        "text": "Fork",
+        "loc": {
+            "de": "Gabel",
+            "es": "Tenedor",
+            "fr": "Fourchette",
+            "ja": "フォーク",
+            "zh": "叉子"
+        }
+    },
+    {
+        "text": "Spoon",
+        "loc": {
+            "de": "Löffel",
+            "es": "Cuchara",
+            "fr": "Cuillère",
+            "ja": "スプーン",
+            "zh": "勺子"
+        }
+    },
+    {
+        "text": "Knife",
+        "loc": {
+            "de": "Messer",
+            "es": "Cuchillo",
+            "fr": "Couteau",
+            "ja": "ナイフ",
+            "zh": "刀"
+        }
+    },
+    {
+        "text": "Plate",
+        "loc": {
+            "de": "Teller",
+            "es": "Plato",
+            "fr": "Assiette",
+            "ja": "皿",
+            "zh": "盘子"
+        }
+    },
+    {
+        "text": "Bed",
+        "loc": {
+            "de": "Bett",
+            "es": "Cama",
+            "fr": "Lit",
+            "ja": "ベッド",
+            "zh": "床"
+        }
+    },
+    {
+        "text": "Camera",
+        "loc": {
+            "de": "Kamera",
+            "es": "Cámara",
+            "fr": "Caméra",
+            "ja": "カメラ",
+            "zh": "相机"
+        }
+    },
+    {
+        "text": "Bike",
+        "loc": {
+            "de": "Fahrrad",
+            "es": "Bicicleta",
+            "fr": "Vélo",
+            "ja": "自転車",
+            "zh": "自行车"
+        }
+    },
+    {
+        "text": "Bus",
+        "loc": {
+            "de": "Bus",
+            "es": "Autobús",
+            "fr": "Bus",
+            "ja": "バス",
+            "zh": "公交车"
+        }
+    },
+    {
+        "text": "Bread",
+        "loc": {
+            "de": "Brot",
+            "es": "Pan",
+            "fr": "Pain",
+            "ja": "パン",
+            "zh": "面包"
+        }
+    },
+    {
+        "text": "Egg",
+        "loc": {
+            "de": "Ei",
+            "es": "Huevo",
+            "fr": "Oeuf",
+            "ja": "卵",
+            "zh": "鸡蛋"
+        }
+    },
+    {
+        "text": "Umbrella",
+        "loc": {
+            "de": "Regenschirm",
+            "es": "Paraguas",
+            "fr": "Parapluie",
+            "ja": "傘",
+            "zh": "伞"
+        }
+    },
+    {
+        "text": "Turtle",
+        "loc": {
+            "de": "Schildkröte",
+            "es": "Tortuga",
+            "fr": "Tortue",
+            "ja": "亀",
+            "zh": "龟"
+        }
+    },
+    {
+        "text": "Lion",
+        "loc": {
+            "de": "Löwe",
+            "es": "León",
+            "fr": "Lion",
+            "ja": "ライオン",
+            "zh": "狮子"
+        }
+    },
+    {
+        "text": "Mouse",
+        "loc": {
+            "de": "Maus",
+            "es": "Ratón",
+            "fr": "Souris",
+            "ja": "マウス",
+            "zh": "鼠标"
+        }
+    },
+    {
+        "text": "Bat",
+        "loc": {
+            "de": "Fledermaus",
+            "es": "Murciélago",
+            "fr": "Chauve-souris",
+            "ja": "コウモリ",
+            "zh": "蝙蝠"
+        }
+    },
+    {
+        "text": "Carrot",
+        "loc": {
+            "de": "Karotte",
+            "es": "Zanahoria",
+            "fr": "Carotte",
+            "ja": "ニンジン",
+            "zh": "胡萝卜"
+        }
+    },
+    {
+        "text": "Mushroom",
+        "loc": {
+            "de": "Pilz",
+            "es": "Hongo",
+            "fr": "Champignon",
+            "ja": "キノコ",
+            "zh": "蘑菇"
+        }
+    },
+    {
+        "text": "Crown",
+        "loc": {
+            "de": "Krone",
+            "es": "Corona",
+            "fr": "Couronne",
+            "ja": "王冠",
+            "zh": "皇冠"
+        }
+    },
+    {
+        "text": "Dolphin",
+        "loc": {
+            "de": "Delfin",
+            "es": "Delfín",
+            "fr": "Dauphin",
+            "ja": "イルカ",
+            "zh": "海豚"
+        }
+    },
+    {
+        "text": "Elephant",
+        "loc": {
+            "de": "Elefant",
+            "es": "Elefante",
+            "fr": "Éléphant",
+            "ja": "象",
+            "zh": "大象"
+        }
+    },
+    {
+        "text": "Ice Cream",
+        "loc": {
+            "de": "Eis",
+            "es": "Helado",
+            "fr": "Glace",
+            "ja": "アイスクリーム",
+            "zh": "冰淇淋"
+        }
+    },
+    {
+        "text": "Pineapple",
+        "loc": {
+            "de": "Ananas",
+            "es": "Piña",
+            "fr": "Ananas",
+            "ja": "パイナップル",
+            "zh": "菠萝"
+        }
+    },
+    {
+        "text": "Monkey",
+        "loc": {
+            "de": "Affe",
+            "es": "Mono",
+            "fr": "Singe",
+            "ja": "サル",
+            "zh": "猴子"
+        }
+    },
+    {
+        "text": "Octopus",
+        "loc": {
+            "de": "Oktopus",
+            "es": "Pulpo",
+            "fr": "Poulpe",
+            "ja": "タコ",
+            "zh": "章鱼"
+        }
+    },
+    {
+        "text": "Snake",
+        "loc": {
+            "de": "Schlange",
+            "es": "Serpiente",
+            "fr": "Serpent",
+            "ja": "ヘビ",
+            "zh": "蛇"
+        }
+    },
+    {
+        "text": "Rainbow",
+        "loc": {
+            "de": "Regenbogen",
+            "es": "Arcoíris",
+            "fr": "Arc-en-ciel",
+            "ja": "虹",
+            "zh": "彩虹"
+        }
+    },
+    {
+        "text": "Guitar",
+        "loc": {
+            "de": "Gitarre",
+            "es": "Guitarra",
+            "fr": "Guitare",
+            "ja": "ギター",
+            "zh": "吉他"
+        }
+    },
+    {
+        "text": "Snowman",
+        "loc": {
+            "de": "Schneemann",
+            "es": "Muñeco de nieve",
+            "fr": "Bonhomme de neige",
+            "ja": "雪だるま",
+            "zh": "雪人"
+        }
+    },
+    {
+        "text": "Zebra",
+        "loc": {
+            "de": "Zebra",
+            "es": "Cebra",
+            "fr": "Zèbre",
+            "ja": "シマウマ",
+            "zh": "斑马"
+        }
+    },
+    {
+        "text": "Cake",
+        "loc": {
+            "de": "Kuchen",
+            "es": "Pastel",
+            "fr": "Gâteau",
+            "ja": "ケーキ",
+            "zh": "蛋糕"
+        }
+    },
+    {
+        "text": "Iceberg",
+        "loc": {
+            "de": "Eisberg",
+            "es": "Iceberg",
+            "fr": "Iceberg",
+            "ja": "氷山",
+            "zh": "冰山"
+        }
+    },
+    {
+        "text": "Ladder",
+        "loc": {
+            "de": "Leiter",
+            "es": "Escalera",
+            "fr": "Échelle",
+            "ja": "はしご",
+            "zh": "梯子"
+        }
+    },
+    {
+        "text": "Lamp",
+        "loc": {
+            "de": "Lampe",
+            "es": "Lámpara",
+            "fr": "Lampe",
+            "ja": "ランプ",
+            "zh": "灯"
+        }
+    },
+    {
+        "text": "Leaf",
+        "loc": {
+            "de": "Blatt",
+            "es": "Hoja",
+            "fr": "Feuille",
+            "ja": "葉",
+            "zh": "叶子"
+        }
+    },
+    {
+        "text": "Mountain",
+        "loc": {
+            "de": "Berg",
+            "es": "Montaña",
+            "fr": "Montagne",
+            "ja": "山",
+            "zh": "山"
+        }
+    },
+    {
+        "text": "Panda",
+        "loc": {
+            "de": "Panda",
+            "es": "Panda",
+            "fr": "Panda",
+            "ja": "パンダ",
+            "zh": "熊猫"
+        }
+    },
+    {
+        "text": "Penguin",
+        "loc": {
+            "de": "Pinguin",
+            "es": "Pingüino",
+            "fr": "Pingouin",
+            "ja": "ペンギン",
+            "zh": "企鹅"
+        }
+    },
+    {
+        "text": "Piano",
+        "loc": {
+            "de": "Klavier",
+            "es": "Piano",
+            "fr": "Piano",
+            "ja": "ピアノ",
+            "zh": "钢琴"
+        }
+    },
+    {
+        "text": "Pig",
+        "loc": {
+            "de": "Schwein",
+            "es": "Cerdo",
+            "fr": "Cochon",
+            "ja": "豚",
+            "zh": "猪"
+        }
+    },
+    {
+        "text": "Pizza",
+        "loc": {
+            "de": "Pizza",
+            "es": "Pizza",
+            "fr": "Pizza",
+            "ja": "ピザ",
+            "zh": "披萨"
+        }
+    },
+    {
+        "text": "Pyramid",
+        "loc": {
+            "de": "Pyramide",
+            "es": "Pirámide",
+            "fr": "Pyramide",
+            "ja": "ピラミッド",
+            "zh": "金字塔"
+        }
+    },
+    {
+        "text": "Rocket",
+        "loc": {
+            "de": "Rakete",
+            "es": "Cohete",
+            "fr": "Fusée",
+            "ja": "ロケット",
+            "zh": "火箭"
+        }
+    },
+    {
+        "text": "Sandwich",
+        "loc": {
+            "de": "Sandwich",
+            "es": "Sándwich",
+            "fr": "Sandwich",
+            "ja": "サンドイッチ",
+            "zh": "三明治"
+        }
+    },
+    {
+        "text": "Scissors",
+        "loc": {
+            "de": "Schere",
+            "es": "Tijeras",
+            "fr": "Ciseaux",
+            "ja": "はさみ",
+            "zh": "剪刀"
+        }
+    },
+    {
+        "text": "Balloon",
+        "loc": {
+            "de": "Ballon",
+            "es": "Globo",
+            "fr": "Ballon",
+            "ja": "風船",
+            "zh": "气球"
+        }
+    },
+    {
+        "text": "Envelope",
+        "loc": {
+            "de": "Umschlag",
+            "es": "Sobre",
+            "fr": "Enveloppe",
+            "ja": "封筒",
+            "zh": "信封"
+        }
+    },
+    {
+        "text": "Calculator",
+        "loc": {
+            "de": "Taschenrechner",
+            "es": "Calculadora",
+            "fr": "Calculatrice",
+            "ja": "電卓",
+            "zh": "计算器"
+        }
+    },
+    {
+        "text": "Fan",
+        "loc": {
+            "de": "Ventilator",
+            "es": "Ventilador",
+            "fr": "Ventilateur",
+            "ja": "扇風機",
+            "zh": "风扇"
+        }
+    },
+    {
+        "text": "Bucket",
+        "loc": {
+            "de": "Eimer",
+            "es": "Cubo",
+            "fr": "Seau",
+            "ja": "バケツ",
+            "zh": "桶"
+        }
+    },
+    {
+        "text": "Ruler",
+        "loc": {
+            "de": "Lineal",
+            "es": "Regla",
+            "fr": "Règle",
+            "ja": "定規",
+            "zh": "尺子"
+        }
+    },
+    {
+        "text": "Key",
+        "loc": {
+            "de": "Schlüssel",
+            "es": "Llave",
+            "fr": "Clé",
+            "ja": "鍵",
+            "zh": "钥匙"
+        }
+    },
+    {
+        "text": "Toothbrush",
+        "loc": {
+            "de": "Zahnbürste",
+            "es": "Cepillo de dientes",
+            "fr": "Brosse à dents",
+            "ja": "歯ブラシ",
+            "zh": "牙刷"
+        }
+    },
+    {
+        "text": "Socks",
+        "loc": {
+            "de": "Socken",
+            "es": "Calcetines",
+            "fr": "Chaussettes",
+            "ja": "靴下",
+            "zh": "袜子"
+        }
+    },
+    {
+        "text": "Television",
+        "loc": {
+            "de": "Fernseher",
+            "es": "Televisión",
+            "fr": "Télévision",
+            "ja": "テレビ",
+            "zh": "电视"
+        }
+    },
+    {
+        "text": "Bicycle",
+        "loc": {
+            "de": "Fahrrad",
+            "es": "Bicicleta",
+            "fr": "Vélo",
+            "ja": "自転車",
+            "zh": "自行车"
+        }
+    },
+    {
+        "text": "Headphone",
+        "loc": {
+            "de": "Kopfhörer",
+            "es": "Auriculares",
+            "fr": "Casque",
+            "ja": "ヘッドフォン",
+            "zh": "耳机"
+        }
+    },
+    {
+        "text": "Pot",
+        "loc": {
+            "de": "Topf",
+            "es": "Olla",
+            "fr": "Pot",
+            "ja": "鍋",
+            "zh": "锅"
+        }
+    },
+    {
+        "text": "Kettle",
+        "loc": {
+            "de": "Wasserkocher",
+            "es": "Hervidor",
+            "fr": "Bouilloire",
+            "ja": "ケトル",
+            "zh": "水壶"
+        }
+    },
+    {
+        "text": "Toothpaste",
+        "loc": {
+            "de": "Zahnpasta",
+            "es": "Pasta de dientes",
+            "fr": "Dentifrice",
+            "ja": "歯磨き粉",
+            "zh": "牙膏"
+        }
+    },
+    {
+        "text": "Lightbulb",
+        "loc": {
+            "de": "Glühbirne",
+            "es": "Bombilla",
+            "fr": "Ampoule",
+            "ja": "電球",
+            "zh": "灯泡"
+        }
+    },
+    {
+        "text": "Streetlight",
+        "loc": {
+            "de": "Straßenlaterne",
+            "es": "Farola",
+            "fr": "Réverbère",
+            "ja": "街灯",
+            "zh": "路灯"
+        }
+    },
+    {
+        "text": "Staircase",
+        "loc": {
+            "de": "Treppe",
+            "es": "Escalera",
+            "fr": "Escalier",
+            "ja": "階段",
+            "zh": "楼梯"
+        }
+    },
+    {
+        "text": "Suitcase",
+        "loc": {
+            "de": "Koffer",
+            "es": "Maleta",
+            "fr": "Valise",
+            "ja": "スーツケース",
+            "zh": "行李箱"
+        }
+    },
+    {
+        "text": "Stethoscope",
+        "loc": {
+            "de": "Stethoskop",
+            "es": "Estetoscopio",
+            "fr": "Stéthoscope",
+            "ja": "聴診器",
+            "zh": "听诊器"
+        }
+    },
+    {
+        "text": "Watch",
+        "loc": {
+            "de": "Uhr",
+            "es": "Reloj",
+            "fr": "Montre",
+            "ja": "時計",
+            "zh": "手表"
+        }
+    },
+    {
+        "text": "Dress",
+        "loc": {
+            "de": "Kleid",
+            "es": "Vestido",
+            "fr": "Robe",
+            "ja": "ドレス",
+            "zh": "连衣裙"
+        }
+    },
+    {
+        "text": "Butterfly",
+        "loc": {
+            "de": "Schmetterling",
+            "es": "Mariposa",
+            "fr": "Papillon",
+            "ja": "蝶",
+            "zh": "蝴蝶"
+        }
+    },
+    {
+        "text": "Microphone",
+        "loc": {
+            "de": "Mikrofon",
+            "es": "Micrófono",
+            "fr": "Microphone",
+            "ja": "マイク",
+            "zh": "麦克风"
+        }
+    },
+    {
+        "text": "Spider",
+        "loc": {
+            "de": "Spinne",
+            "es": "Araña",
+            "fr": "Araignée",
+            "ja": "クモ",
+            "zh": "蜘蛛"
+        }
+    },
+    {
+        "text": "Drum",
+        "loc": {
+            "de": "Trommel",
+            "es": "Tambor",
+            "fr": "Tambour",
+            "ja": "ドラム",
+            "zh": "鼓"
+        }
+    },
+    {
+        "text": "Nose",
+        "loc": {
+            "de": "Nase",
+            "es": "Nariz",
+            "fr": "Nez",
+            "ja": "鼻",
+            "zh": "鼻子"
+        }
+    },
+    {
+        "text": "Eye",
+        "loc": {
+            "de": "Auge",
+            "es": "Ojo",
+            "fr": "Oeil",
+            "ja": "目",
+            "zh": "眼睛"
+        }
+    },
+    {
+        "text": "Ear",
+        "loc": {
+            "de": "Ohr",
+            "es": "Oreja",
+            "fr": "Oreille",
+            "ja": "耳",
+            "zh": "耳朵"
+        }
+    },
+    {
+        "text": "Hand",
+        "loc": {
+            "de": "Hand",
+            "es": "Mano",
+            "fr": "Main",
+            "ja": "手",
+            "zh": "手"
+        }
+    },
+    {
+        "text": "Shirt",
+        "loc": {
+            "de": "Hemd",
+            "es": "Camisa",
+            "fr": "Chemise",
+            "ja": "シャツ",
+            "zh": "衬衫"
+        }
+    },
+    {
+        "text": "Christmas tree",
+        "loc": {
+            "de": "Weihnachtsbaum",
+            "es": "Árbol de Navidad",
+            "fr": "Sapin de Noël",
+            "ja": "クリスマスツリー",
+            "zh": "圣诞树"
+        }
+    },
+    {
+        "text": "Torch",
+        "loc": {
+            "de": "Taschenlampe",
+            "es": "Linterna",
+            "fr": "Lampe torche",
+            "ja": "懐中電灯",
+            "zh": "手电筒"
+        }
+    },
+    {
+        "text": "Candle",
+        "loc": {
+            "de": "Kerze",
+            "es": "Vela",
+            "fr": "Bougie",
+            "ja": "ろうそく",
+            "zh": "蜡烛"
+        }
+    },
+    {
+        "text": "Gun",
+        "loc": {
+            "de": "Pistole",
+            "es": "Pistola",
+            "fr": "Pistolet",
+            "ja": "銃",
+            "zh": "枪"
+        }
+    },
+    {
+        "text": "Flag",
+        "loc": {
+            "de": "Flagge",
+            "es": "Bandera",
+            "fr": "Drapeau",
+            "ja": "旗",
+            "zh": "旗"
+        }
+    },
+    {
+        "text": "Tombstone",
+        "loc": {
+            "de": "Grabstein",
+            "es": "Lápida",
+            "fr": "Tombe",
+            "ja": "墓石",
+            "zh": "墓碑"
+        }
+    },
+    {
+        "text": "Kite",
+        "loc": {
+            "de": "Drachen",
+            "es": "Cometa",
+            "fr": "Cerf-volant",
+            "ja": "凧",
+            "zh": "风筝"
+        }
+    },
+    {
+        "text": "Door",
+        "loc": {
+            "de": "Tür",
+            "es": "Puerta",
+            "fr": "Porte",
+            "ja": "ドア",
+            "zh": "门"
+        }
+    },
+    {
+        "text": "Skateboard",
+        "loc": {
+            "de": "Skateboard",
+            "es": "Patineta",
+            "fr": "Skateboard",
+            "ja": "スケートボード",
+            "zh": "滑板"
+        }
+    },
+    {
+        "text": "Mouth",
+        "loc": {
+            "de": "Mund",
+            "es": "Boca",
+            "fr": "Bouche",
+            "ja": "口",
+            "zh": "嘴"
+        }
+    }
+]

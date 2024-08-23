@@ -5,6 +5,24 @@ import 'package:skribla/src/app/settings/presentation/provider/settings_state.da
 import 'package:skribla/src/core/resource/app_keys.dart';
 import 'package:skribla/src/core/service/haptics.dart';
 
+/// A provider class for managing application settings.
+///
+/// This class extends [StateNotifier] and manages the state of type [SettingsState].
+/// It provides functionality to toggle haptic feedback and store/retrieve settings
+/// using [SharedPreferences].
+///
+/// The class interacts with [SettingsRepository] for potential future expansion
+/// of settings-related operations.
+///
+/// Key features:
+/// - Manages haptic feedback settings
+/// - Stores and retrieves settings using SharedPreferences
+/// - Provides the current app version
+///
+/// Usage:
+/// This provider is typically used in conjunction with Riverpod to manage
+/// the state of application settings throughout the app.
+
 class SettingsProvider extends StateNotifier<SettingsState> {
   SettingsProvider({
     required this.sharedPreferences,

@@ -12,6 +12,7 @@
     "guessOrChat": "推測するかチャット...",
     "game": "ゲーム",
     "everyoneGuessedCorrectly": "全員が正解しました！",
+    "gamebot": "ゲームボット",
     "revealWordMsg": "その言葉は{word}でした",
     "correctGuessMsg": "{name}がその言葉を当てました",
     "completed": "完了！",
@@ -78,5 +79,7 @@
     "deleteAccountErr": "アカウント削除中にエラーが発生しました。後でもう一度お試しください",
     "createGameErr": "ゲームの作成中にエラーが発生しました。後でもう一度お試しください",
     "findGameErr": "ゲームの検索中にエラーが発生しました。後でもう一度お試しください",
-    "joinGameErr": "ゲームの参加中にエラーが発生しました。後でもう一度お試しください"
+    "joinGameErr": "ゲームの参加中にエラーが発生しました。後でもう一度お試しください",
+    "fetchWordsMaxAttemptsErr": "{attempts}回の試行後に単語を取得できませんでした",
+    "unexpectedFetchWordsErr": "単語の取得中にエラーが発生しました"
 }

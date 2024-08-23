@@ -7,11 +7,29 @@ import 'package:skribla/src/app/game/data/models/line_model.dart';
 import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/repository/game_repository.dart';
 import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
+import 'package:skribla/src/app/settings/presentation/provider/loc_provider.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
 
 part 'game_provider_ext.dart';
+
+/// A provider class for managing game-related operations.
+///
+/// This class extends [StateNotifier] and manages the state of type [GameState].
+/// It provides functionality for handling game-related actions such as starting a pan gesture,
+/// updating the game state during a pan gesture, and managing the game stream subscription.
+/// It interacts with [GameRepository] for game data operations.
+///
+/// Key features:
+/// - Handles game-related gestures (pan start and update)
+/// - Manages the game state
+/// - Subscribes to the game stream for real-time updates
+/// - Interacts with [GameRepository] for game data operations
+///
+/// Usage:
+/// This provider is typically used in conjunction with Riverpod to manage
+/// the game state of the application throughout the app.
 
 class GameProvider extends StateNotifier<GameState> {
   GameProvider({
@@ -128,6 +146,7 @@ class GameProvider extends StateNotifier<GameState> {
   }
 
   void getGameStream(String id) {
+    _gameStreamSub?.cancel();
     _gameStreamSub = gameRepository.getGameStream(id).listen(
       (game) {
         if (game != null) {
@@ -181,11 +200,16 @@ class GameProvider extends StateNotifier<GameState> {
     if (game == null) return true;
 
     state = state.copyWith(status: GameStatus.sendingMessage);
-    final res = await gameRepository.sendMessage(
-      game: game,
-      text: text,
-      name: name,
-    );
+    final correctGuess = game.currentWord.text.toLowerCase() == text.toLowerCase();
+
+    final res = correctGuess
+        ? await gameRepository.sendMessage(
+            game: game,
+            text: name,
+            name: ref.read(locProvider).gamebot,
+            messageType: MessageType.correctGuess,
+          )
+        : await gameRepository.sendMessage(game: game, text: text, name: name);
     state = state.copyWith(status: GameStatus.idle);
     return res.when(
       success: (success) => success,
@@ -193,5 +217,12 @@ class GameProvider extends StateNotifier<GameState> {
     );
   }
 
-  Stream<List<MessageModel>> getMessages(String id) => gameRepository.getMessages(id);
+  @override
+  void dispose() {
+    _gameStreamSub?.cancel();
+    _gameStreamSub = null;
+    _updateArtTimer?.cancel();
+    _updateArtTimer = null;
+    super.dispose();
+  }
 }

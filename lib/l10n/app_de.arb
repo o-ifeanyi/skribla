@@ -12,6 +12,7 @@
     "guessOrChat": "raten oder chatten...",
     "game": "Spiel",
     "everyoneGuessedCorrectly": "Alle haben richtig geraten!",
+    "gamebot": "Spielbot",
     "revealWordMsg": "Das Wort war {word}",
     "correctGuessMsg": "{name} hat das Wort erraten",
     "completed": "Abgeschlossen!",
@@ -78,5 +79,7 @@
     "deleteAccountErr": "Beim Löschen des Kontos ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "createGameErr": "Beim Erstellen des Spiels ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "findGameErr": "Beim Suchen des Spiels ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
-    "joinGameErr": "Beim Beitreten des Spiels ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut"
+    "joinGameErr": "Beim Beitreten des Spiels ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
+    "fetchWordsMaxAttemptsErr": "Wörter konnten nach {attempts} Versuchen nicht abgerufen werden",
+    "unexpectedFetchWordsErr": "Beim Abrufen der Wörter ist ein Fehler aufgetreten"
 }

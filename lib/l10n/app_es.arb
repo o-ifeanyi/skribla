@@ -12,6 +12,7 @@
     "guessOrChat": "adivina o chatea...",
     "game": "Juego",
     "everyoneGuessedCorrectly": "¡Todos adivinaron correctamente!",
+    "gamebot": "Bot del juego",
     "revealWordMsg": "La palabra era {word}",
     "correctGuessMsg": "{name} adivinó la palabra",
     "completed": "¡Completado!",
@@ -78,5 +79,7 @@
     "deleteAccountErr": "Ocurrió un error al eliminar la cuenta. Por favor, inténtalo de nuevo más tarde",
     "createGameErr": "Ocurrió un error al crear el juego. Por favor, inténtalo de nuevo más tarde",
     "findGameErr": "Ocurrió un error al buscar el juego. Por favor, inténtalo de nuevo más tarde",
-    "joinGameErr": "Ocurrió un error al unirse al juego. Por favor, inténtalo de nuevo más tarde"
+    "joinGameErr": "Ocurrió un error al unirse al juego. Por favor, inténtalo de nuevo más tarde",
+    "fetchWordsMaxAttemptsErr": "No se pudieron obtener las palabras después de {attempts} intentos",
+    "unexpectedFetchWordsErr": "Ocurrió un error al obtener las palabras"
 }

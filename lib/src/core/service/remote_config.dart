@@ -15,6 +15,24 @@ extension XPackageInfo on PackageInfo {
   int get minorVersion => int.parse(version.split('.')[1]);
 }
 
+/// A singleton class for managing remote configuration.
+///
+/// This class is responsible for fetching and managing remote configuration data, such as feature flags and version information.
+/// It provides a singleton instance for accessing remote configuration throughout the app.
+///
+/// Key features:
+/// - Fetches remote configuration data from Firestore.
+/// - Manages feature flags for the application.
+/// - Checks the app version against the remote configuration version.
+/// - Provides a singleton instance for accessing remote configuration.
+///
+/// Usage:
+/// This class is typically used to initialize the remote configuration at app launch.
+/// The `init` method is called to fetch the remote configuration data and check the app version.
+/// The `featureFlags` property can be accessed to check the current state of feature flags.
+/// The `init` method also handles routing to the update screen if the app version is outdated.
+///
+
 class RemoteConfig {
   RemoteConfig._internal();
   static final _singleton = RemoteConfig._internal();
@@ -41,6 +59,7 @@ class RemoteConfig {
       await _checkVersion();
     } catch (e, s) {
       _logger.error('init $e', stack: s);
+      Router.instance.goRouter.go(Routes.unavailable);
     }
   }
 

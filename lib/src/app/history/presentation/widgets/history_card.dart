@@ -52,7 +52,7 @@ class _HistoryCardState extends State<HistoryCard> {
 
   final getExhibits = FutureProvider.family<List<ExhibitModel>, String>(
     (ref, id) async {
-      return ref.read(historyProvider.notifier).getExhibits(id);
+      return ref.read(galleryRepoProvider).getExhibits(id);
     },
   );
 

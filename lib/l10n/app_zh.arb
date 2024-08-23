@@ -12,6 +12,7 @@
     "guessOrChat": "猜测或聊天...",
     "game": "游戏",
     "everyoneGuessedCorrectly": "所有人都猜对了！",
+    "gamebot": "游戏机器人",
     "revealWordMsg": "这个词是{word}",
     "correctGuessMsg": "{name}猜到了这个词",
     "completed": "已完成！",
@@ -78,5 +79,7 @@
     "deleteAccountErr": "删除账户时发生错误。请稍后再试",
     "createGameErr": "创建游戏时发生错误。请稍后再试",
     "findGameErr": "查找游戏时发生错误。请稍后再试",
-    "joinGameErr": "加入游戏时发生错误。请稍后再试"
+    "joinGameErr": "加入游戏时发生错误。请稍后再试",
+    "fetchWordsMaxAttemptsErr": "在{attempts}次尝试后无法获取单词",
+    "unexpectedFetchWordsErr": "获取单词时发生错误"
 }

@@ -19,7 +19,7 @@ class MessagesView extends StatefulWidget {
 class _MessagesViewState extends State<MessagesView> {
   final getMessages = StreamProvider.family<List<MessageModel>, String>(
     (ref, id) async* {
-      final messages = ref.read(gameProvider.notifier).getMessages(id);
+      final messages = ref.read(gameRepoProvider).getMessages(id);
       await for (final message in messages) {
         yield message;
       }
@@ -45,32 +45,13 @@ class _MessagesViewState extends State<MessagesView> {
                 separatorBuilder: (_, __) => Config.vBox8,
                 itemBuilder: (context, index) {
                   final message = data.reversed.toList()[index];
-                  return Container(
-                    padding: Config.symmetric(h: 10, v: 4),
-                    decoration: BoxDecoration(
-                      borderRadius: Config.radius8,
-                      color: context.colorScheme.tertiaryContainer,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (message.correctGuess || message.name == null) ...[
-                          Text(
-                            message.text.toUpperCase(),
-                            style: context.textTheme.labelLarge,
-                          ),
-                        ] else ...[
-                          Text(
-                            '@ ${message.name}',
-                            style: context.textTheme.labelMedium,
-                          ),
-                          Text(
-                            message.text,
-                            style: context.textTheme.bodySmall,
-                          ),
-                        ],
-                      ],
-                    ),
+                  return _MessageBubble(
+                    title: message.name,
+                    subtitle: switch (message.messageType) {
+                      MessageType.correctGuess => context.loc.correctGuessMsg(message.text),
+                      MessageType.wordReveal => context.loc.revealWordMsg(message.text),
+                      _ => message.text,
+                    },
                   );
                 },
               );
@@ -78,6 +59,37 @@ class _MessagesViewState extends State<MessagesView> {
             orElse: () => const SizedBox.expand(),
           );
         },
+      ),
+    );
+  }
+}
+
+class _MessageBubble extends StatelessWidget {
+  const _MessageBubble({required this.title, required this.subtitle});
+
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: Config.symmetric(h: 10, v: 4),
+      decoration: BoxDecoration(
+        borderRadius: Config.radius8,
+        color: context.colorScheme.tertiaryContainer,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '@ $title',
+            style: context.textTheme.labelMedium,
+          ),
+          Text(
+            subtitle,
+            style: context.textTheme.bodySmall,
+          ),
+        ],
       ),
     );
   }

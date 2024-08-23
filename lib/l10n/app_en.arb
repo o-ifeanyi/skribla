@@ -12,6 +12,7 @@
     "guessOrChat": "guess or chat...",
     "game": "Game",
     "everyoneGuessedCorrectly": "everyone guessed correctly!",
+    "gamebot": "Game bot",
     "revealWordMsg": "the word was {word}",
     "@revealWordMsg": {
         "placeholders": {
@@ -106,5 +107,14 @@
     "deleteAccountErr": "An error occured while deleting account. Please try again later",
     "createGameErr": "An error occured while creating game. Please try again later",
     "findGameErr": "An error occured while finding game. Please try again later",
-    "joinGameErr": "An error occured while joining game. Please try again later"
+    "joinGameErr": "An error occured while joining game. Please try again later",
+    "fetchWordsMaxAttemptsErr": "Failed to fetch words after {attempts} attempts",
+    "@fetchWordsMaxAttemptsErr": {
+        "placeholders": {
+            "attempts": {
+                "type": "int"
+            }
+        }
+    },
+    "unexpectedFetchWordsErr": "An error occured while while fetching words"
 }

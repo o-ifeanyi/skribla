@@ -12,6 +12,7 @@
     "guessOrChat": "devine ou discute...",
     "game": "Jeu",
     "everyoneGuessedCorrectly": "Tout le monde a deviné correctement !",
+    "gamebot": "Bot du jeu",
     "revealWordMsg": "Le mot était {word}",
     "correctGuessMsg": "{name} a deviné le mot",
     "completed": "Terminé!",
@@ -78,5 +79,7 @@
     "deleteAccountErr": "Une erreur est survenue lors de la suppression du compte. Veuillez réessayer plus tard",
     "createGameErr": "Une erreur est survenue lors de la création du jeu. Veuillez réessayer plus tard",
     "findGameErr": "Une erreur est survenue lors de la recherche du jeu. Veuillez réessayer plus tard",
-    "joinGameErr": "Une erreur est survenue lors de la jonction au jeu. Veuillez réessayer plus tard"
+    "joinGameErr": "Une erreur est survenue lors de la jonction au jeu. Veuillez réessayer plus tard",
+    "fetchWordsMaxAttemptsErr": "Échec de la récupération des mots après {attempts} tentatives",
+    "unexpectedFetchWordsErr": "Une erreur s'est produite lors de la récupération des mots"
 }

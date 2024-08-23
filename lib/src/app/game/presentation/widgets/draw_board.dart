@@ -73,7 +73,7 @@ class DrawBoard extends ConsumerWidget {
                       color: context.colorScheme.surface,
                     ),
                     child: Text(
-                      game?.currentWord.text ?? '',
+                      game?.currentWord.locText ?? '',
                       style: context.textTheme.bodySmall?.copyWith(
                         color: context.colorScheme.secondary,
                         fontWeight: FontWeight.w600,

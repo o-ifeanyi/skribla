@@ -8,9 +8,26 @@ import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/models/player_model.dart';
 import 'package:skribla/src/app/history/data/models/exhibit_model.dart';
 import 'package:skribla/src/app/leaderboard/data/repository/leaderboard_repository.dart';
+import 'package:skribla/src/core/resource/firebase_paths.dart';
 import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/util/constants.dart';
 import 'package:skribla/src/core/util/result.dart';
+
+/// Repository class for managing game-related data operations.
+///
+/// It interacts with Firebase services (Authentication and Firestore) to
+/// perform these operations.
+///
+/// It also utilizes [LeaderboardRepository] to update leaderboard and [AppLocalizations]
+/// to localize the error messages.
+///
+/// Key methods:
+/// - [leaveGame]: Leaves a game.
+/// - [getGameStream]: Gets a stream of a game.
+/// - [updateGameArt]: Updates the art of a game.
+/// - [updateNextPlayer]: Updates the next player of a game.
+/// - [sendMessage]: Sends a message to a game.
+/// - [getMessages]: Gets messages from a game.
 
 final class GameRepository {
   const GameRepository({
@@ -26,6 +43,22 @@ final class GameRepository {
   final LeaderboardRepository leaderboardRepository;
   static const _logger = Logger('GameRepository');
 
+  /// Leaves a game for the given user.
+  ///
+  /// This method updates the game document in Firestore to remove the user from the game.
+  /// It checks specific conditions before allowing the user to leave the game, such as:
+  /// - If the user is the only player in the game.
+  /// - If the user is the last online player and no art has been drawn.
+  /// - If it's been over an hour since the game started and no art has been drawn.
+  ///
+  /// If any of these conditions are met, the game is deleted. Otherwise, the user is removed from the game.
+  ///
+  /// Parameters:
+  /// - [uid]: The ID of the user leaving the game.
+  /// - [game]: The [GameModel] object representing the game.
+  ///
+  /// Returns a [Result] containing a boolean indicating success or failure.
+  /// If successful, it returns `true`. If an error occurs, it returns an error object.
   Future<Result<bool>> leaveGame({
     required String uid,
     required GameModel game,
@@ -41,12 +74,12 @@ final class GameRepository {
       if (game.players.length == 1 ||
           (game.online.length == 1 && game.numOfArts == 0) ||
           (game.numOfArts == 0 && existence.inMinutes > 60)) {
-        await firebaseFirestore.collection('games').doc(game.id).delete();
+        await firebaseFirestore.collection(FirebasePaths.games).doc(game.id).delete();
         _logger.info('Game deleted - uid $uid, id ${game.id}');
         return const Result.success(true);
       }
 
-      await firebaseFirestore.collection('games').doc(game.id).update(
+      await firebaseFirestore.collection(FirebasePaths.games).doc(game.id).update(
         {
           'online': FieldValue.arrayRemove([uid]),
           if (game.online.length == 1) ...{
@@ -62,10 +95,23 @@ final class GameRepository {
     }
   }
 
+  /// Retrieves a stream of the game document with the specified ID.
+  ///
+  /// This method fetches a stream of the game document from Firestore based on the provided game ID.
+  /// It maps the snapshot to a [GameModel] object and returns a stream of the game model.
+  ///
+  /// Parameters:
+  /// - [id]: The ID of the game to fetch.
+  ///
+  /// Returns a [Stream] of [GameModel] containing the game data. If the game is not found, it returns null.
   Stream<GameModel?> getGameStream(String id) {
     try {
       _logger.request('Getting game stream game - $id');
-      return firebaseFirestore.collection('games').where('id', isEqualTo: id).snapshots().map(
+      return firebaseFirestore
+          .collection(FirebasePaths.games)
+          .where('id', isEqualTo: id)
+          .snapshots()
+          .map(
             (event) => event.docs
                 .map(
                   (e) => GameModel.fromJson(e.data()),
@@ -79,10 +125,18 @@ final class GameRepository {
     }
   }
 
+  /// Updates the game art in Firestore.
+  ///
+  /// This method updates the game's current art in Firestore based on the provided game model.
+  ///
+  /// Parameters:
+  /// - [game]: The [GameModel] containing the game data to update.
+  ///
+  /// Returns a [Future] containing a [Result] with a boolean value indicating the success of the operation or an error if the operation fails.
   Future<Result<bool>> updateGameArt(GameModel game) async {
     try {
       _logger.request('Updating art - ${game.currentArt}');
-      await firebaseFirestore.collection('games').doc(game.id).update(
+      await firebaseFirestore.collection(FirebasePaths.games).doc(game.id).update(
         {'current_art': game.currentArt.map((e) => e.toJson()).toList()},
       );
 
@@ -93,6 +147,14 @@ final class GameRepository {
     }
   }
 
+  /// Updates the next player in the game.
+  ///
+  /// This method updates the next player in the game based on the provided game model.
+  ///
+  /// Parameters:
+  /// - [game]: The [GameModel] containing the game data to update.
+  ///
+  /// Returns a [Future] containing a [Result] with a boolean value indicating the success of the operation or an error if the operation fails.
   Future<Result<bool>> updateNextPlayer(GameModel game) async {
     try {
       _logger.request('Updating next player');
@@ -124,7 +186,7 @@ final class GameRepository {
         }).toList(),
       );
 
-      await firebaseFirestore.collection('games').doc(game.id).update(
+      await firebaseFirestore.collection(FirebasePaths.games).doc(game.id).update(
         {
           'players': players.map((e) => e.toJson()).toList(),
           'current_player': nextPlayerAndWord.player.toJson(),
@@ -140,7 +202,7 @@ final class GameRepository {
 
       if (game.currentArt.isNotEmpty) {
         // add previous play to exhibits
-        final doc = firebaseFirestore.collection('games/${game.id}/exhibits').doc();
+        final doc = firebaseFirestore.collection(FirebasePaths.exhibits(game.id)).doc();
         final exhibit = ExhibitModel(
           id: doc.id,
           player: game.currentPlayer,
@@ -150,15 +212,16 @@ final class GameRepository {
         );
         unawaited(doc.set(exhibit.toJson()));
         unawaited(
-          firebaseFirestore.collection('games').doc(game.id).update(
+          firebaseFirestore.collection(FirebasePaths.games).doc(game.id).update(
             {'num_of_arts': FieldValue.increment(1)},
           ),
         );
         unawaited(
           sendMessage(
             game: game,
-            text: loc.revealWordMsg(game.currentWord.text),
-            name: null,
+            name: loc.gamebot,
+            text: game.currentWord.text,
+            messageType: MessageType.wordReveal,
           ),
         );
       }
@@ -170,29 +233,44 @@ final class GameRepository {
     }
   }
 
+  /// Sends a message to the game.
+  ///
+  /// This method sends a message to the game's chat.
+  ///
+  /// Parameters:
+  /// - [game]: The [GameModel] of the game to send the message to.
+  /// - [text]: The text of the message.
+  /// - [name]: The name of the sender.
+  /// - [messageType]: The type of the message. Defaults to [MessageType.text].
+  ///
+  ///  Returns a [Future] containing a [Result] with a boolean value indicating the success of the operation or an error if the operation fails.
   Future<Result<bool>> sendMessage({
     required GameModel game,
     required String text,
-    required String? name,
+    required String name,
+    MessageType messageType = MessageType.text,
   }) async {
     try {
-      _logger.request('Sending message - games/${game.id}/messages');
+      _logger.request('Sending message - ${FirebasePaths.messages(game.id)}');
 
-      final doc = firebaseFirestore.collection('games/${game.id}/messages').doc();
+      final doc = firebaseFirestore.collection(FirebasePaths.messages(game.id)).doc();
       final uid = firebaseAuth.currentUser!.uid;
-      final correctGuess = game.currentWord.text.toLowerCase() == text.toLowerCase();
+
       final message = MessageModel(
         id: doc.id,
-        uid: (correctGuess || name == null) ? 'game_bot' : uid,
-        text: correctGuess ? loc.correctGuessMsg('$name') : text,
-        name: (correctGuess || name == null) ? null : name,
-        correctGuess: correctGuess,
+        uid: switch (messageType) {
+          MessageType.text => uid,
+          _ => 'game_bot',
+        },
+        text: text,
+        name: name,
+        messageType: messageType,
         createdAt: DateTime.now(),
       );
 
       await doc.set(message.toJson());
 
-      if (correctGuess && !game.correctGuess.contains(uid)) {
+      if (messageType == MessageType.correctGuess && !game.correctGuess.contains(uid)) {
         // update guesser points by Constants.points
         final players = List<PlayerModel>.from(game.players);
         final guesserIndex = game.players.indexWhere(
@@ -210,7 +288,7 @@ final class GameRepository {
         );
 
         unawaited(
-          firebaseFirestore.collection('games').doc(game.id).update({
+          firebaseFirestore.collection(FirebasePaths.games).doc(game.id).update({
             'players': players.map((e) => e.toJson()).toList(),
             'correct_guess': FieldValue.arrayUnion([uid]),
           }),
@@ -231,11 +309,20 @@ final class GameRepository {
     }
   }
 
+  /// Retrieves a stream of messages from the game's chat.
+  ///
+  /// This method fetches a stream of messages from Firestore based on the provided game ID.
+  /// It maps the snapshot to a list of [MessageModel] objects and returns a stream of the messages.
+  ///
+  /// Parameters:
+  /// - [id]: The ID of the game to fetch messages from.
+  ///
+  /// Returns a [Stream<List<MessageModel>>] containing the messages.
   Stream<List<MessageModel>> getMessages(String id) {
     try {
-      _logger.request('Getting messages - games/$id/messages');
+      _logger.request('Getting messages - ${FirebasePaths.messages(id)}');
       return firebaseFirestore
-          .collection('games/$id/messages')
+          .collection(FirebasePaths.messages(id))
           .orderBy('created_at')
           .snapshots()
           .map(

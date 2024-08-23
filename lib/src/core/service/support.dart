@@ -11,6 +11,28 @@ import 'package:skribla/src/core/util/constants.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// A singleton class for managing support-related operations.
+///
+/// This class provides a centralized way to handle support-related tasks such as requesting app reviews, opening the app's store listing, and contacting support.
+/// It uses the InAppReview plugin to manage app reviews and the url_launcher plugin to open the app's store listing or contact support.
+/// The class also integrates with the Logger class for error logging.
+///
+/// Key features:
+/// - Requests an app review from the user.
+/// - Opens the app's store listing.
+/// - Opens the app's store page.
+/// - Contacts support with device information.
+/// - Opens the app's privacy policy.
+/// - Opens the app's terms of service.
+/// - Copies text to the clipboard.
+///
+/// Usage:
+/// This class is typically used to request app reviews or open the app's store listing in response to user actions.
+/// For example, after a certain number of app launches, the `requestReview` method can be called to prompt the user to review the app.
+/// Similarly, the `openStoreListing` or `openStore` methods can be used to direct the user to the app's store page.
+/// The `contactSupport` method can be used to send device information to support when needed.
+///
+
 final class Support {
   Support._internal();
   static final _singleton = Support._internal();

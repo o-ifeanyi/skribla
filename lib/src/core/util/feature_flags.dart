@@ -19,6 +19,8 @@ class FeatureFlags {
     this.skipDurationSeconds = 7,
     this.turnDurationSeconds = 20,
     this.completeDurationSeconds = 3,
+    this.totalWordsCount = 100,
+    this.wordsPerGame = 3,
   });
   factory FeatureFlags.fromJson(Map<String, Object?> json) => _$FeatureFlagsFromJson(json);
 
@@ -35,6 +37,8 @@ class FeatureFlags {
   final int skipDurationSeconds;
   final int turnDurationSeconds;
   final int completeDurationSeconds;
+  final int totalWordsCount;
+  final int wordsPerGame;
 
   bool get plaformDown {
     if (kIsWeb) {

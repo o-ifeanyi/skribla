@@ -24,6 +24,7 @@ mixin _$UserModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  int? get lastWordIndex => throw _privateConstructorUsedError;
   UserStatus get status => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
@@ -40,7 +41,13 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String uid, DateTime createdAt, String name, String email, UserStatus status});
+  $Res call(
+      {String uid,
+      DateTime createdAt,
+      String name,
+      String email,
+      int? lastWordIndex,
+      UserStatus status});
 }
 
 /// @nodoc
@@ -61,6 +68,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserMode
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
+    Object? lastWordIndex = freezed,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -80,6 +88,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserMode
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      lastWordIndex: freezed == lastWordIndex
+          ? _value.lastWordIndex
+          : lastWordIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -94,7 +106,13 @@ abstract class _$$UserModelImplCopyWith<$Res> implements $UserModelCopyWith<$Res
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid, DateTime createdAt, String name, String email, UserStatus status});
+  $Res call(
+      {String uid,
+      DateTime createdAt,
+      String name,
+      String email,
+      int? lastWordIndex,
+      UserStatus status});
 }
 
 /// @nodoc
@@ -112,6 +130,7 @@ class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, 
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
+    Object? lastWordIndex = freezed,
     Object? status = null,
   }) {
     return _then(_$UserModelImpl(
@@ -131,6 +150,10 @@ class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, 
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      lastWordIndex: freezed == lastWordIndex
+          ? _value.lastWordIndex
+          : lastWordIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -147,6 +170,7 @@ class _$UserModelImpl extends _UserModel {
       required this.createdAt,
       this.name = '',
       this.email = '',
+      this.lastWordIndex = null,
       this.status = UserStatus.anonymous})
       : super._();
 
@@ -164,11 +188,14 @@ class _$UserModelImpl extends _UserModel {
   final String email;
   @override
   @JsonKey()
+  final int? lastWordIndex;
+  @override
+  @JsonKey()
   final UserStatus status;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, status: $status)';
+    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, lastWordIndex: $lastWordIndex, status: $status)';
   }
 
   @override
@@ -180,12 +207,14 @@ class _$UserModelImpl extends _UserModel {
             (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.lastWordIndex, lastWordIndex) ||
+                other.lastWordIndex == lastWordIndex) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, createdAt, name, email, status);
+  int get hashCode => Object.hash(runtimeType, uid, createdAt, name, email, lastWordIndex, status);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -209,6 +238,7 @@ abstract class _UserModel extends UserModel {
       required final DateTime createdAt,
       final String name,
       final String email,
+      final int? lastWordIndex,
       final UserStatus status}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
@@ -222,6 +252,8 @@ abstract class _UserModel extends UserModel {
   String get name;
   @override
   String get email;
+  @override
+  int? get lastWordIndex;
   @override
   UserStatus get status;
 

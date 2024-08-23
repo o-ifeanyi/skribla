@@ -14,3 +14,5 @@ Future<void> shareImage(ByteData byteData, String fileName) async {
 
   html.Url.revokeObjectUrl(url);
 }
+
+String get localeName => html.window.navigator.language;

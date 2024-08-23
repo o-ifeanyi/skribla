@@ -16,6 +16,7 @@ class UserModel with _$UserModel {
     required DateTime createdAt,
     @Default('') String name,
     @Default('') String email,
+    @Default(null) int? lastWordIndex,
     @Default(UserStatus.anonymous) UserStatus status,
   }) = _UserModel;
 

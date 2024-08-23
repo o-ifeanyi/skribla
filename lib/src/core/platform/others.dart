@@ -25,3 +25,5 @@ Future<void> shareImage(ByteData byteData, String fileName) async {
 
   await Share.shareXFiles([XFile(file.path)]);
 }
+
+String get localeName => Platform.localeName;

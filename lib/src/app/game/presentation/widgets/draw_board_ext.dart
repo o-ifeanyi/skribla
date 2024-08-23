@@ -141,7 +141,7 @@ class _BoardOverlay extends ConsumerWidget {
                 text: '${context.loc.draw} ',
                 children: [
                   TextSpan(
-                    text: '${game?.currentWord.text}',
+                    text: '${game?.currentWord.locText}',
                     style: TextStyle(
                       color: context.colorScheme.secondary,
                     ),
