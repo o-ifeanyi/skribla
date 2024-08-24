@@ -44,11 +44,9 @@ class PlayersView extends ConsumerWidget {
                       overflow: TextOverflow.ellipsis,
                       style: context.textTheme.labelMedium,
                     ),
-                    FittedBox(
-                      child: Text(
-                        '${player.points} pts',
-                        style: context.textTheme.labelLarge,
-                      ),
+                    Text(
+                      context.loc.npts(player.points),
+                      style: context.textTheme.labelLarge,
                     ),
                   ],
                 ),

@@ -9,6 +9,8 @@
     "settingsBtnTxt": "Configuraciones",
     "leaderboardBtnTxt": "Tabla de clasificación",
     "historyBtnTxt": "Historial",
+    "npts": "{number} pts",
+    "nletterWord": "Palabra de {number} letras",
     "guessOrChat": "adivina o chatea...",
     "game": "Juego",
     "everyoneGuessedCorrectly": "¡Todos adivinaron correctamente!",

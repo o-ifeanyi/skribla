@@ -9,6 +9,8 @@
     "settingsBtnTxt": "Paramètres",
     "leaderboardBtnTxt": "Classement",
     "historyBtnTxt": "Historique",
+    "npts": "{number} pts",
+    "nletterWord": "Mot de {number} lettres",
     "guessOrChat": "devine ou discute...",
     "game": "Jeu",
     "everyoneGuessedCorrectly": "Tout le monde a deviné correctement !",

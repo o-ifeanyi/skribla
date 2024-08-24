@@ -9,6 +9,22 @@
     "settingsBtnTxt": "Settings",
     "leaderboardBtnTxt": "Leaderboard",
     "historyBtnTxt": "History",
+    "npts": "{number} pts",
+    "@npts": {
+        "placeholders": {
+            "number": {
+                "type": "int"
+            }
+        }
+    },
+    "nletterWord": "{number} letter word",
+    "@nletterWord": {
+        "placeholders": {
+            "number": {
+                "type": "int"
+            }
+        }
+    },
     "guessOrChat": "guess or chat...",
     "game": "Game",
     "everyoneGuessedCorrectly": "everyone guessed correctly!",

@@ -9,6 +9,8 @@
     "settingsBtnTxt": "Einstellungen",
     "leaderboardBtnTxt": "Bestenliste",
     "historyBtnTxt": "Verlauf",
+    "npts": "{number} Pkt",
+    "nletterWord": "{number}-Buchstaben-Wort",
     "guessOrChat": "raten oder chatten...",
     "game": "Spiel",
     "everyoneGuessedCorrectly": "Alle haben richtig geraten!",

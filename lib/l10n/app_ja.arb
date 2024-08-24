@@ -9,6 +9,8 @@
     "settingsBtnTxt": "設定",
     "leaderboardBtnTxt": "リーダーボード",
     "historyBtnTxt": "履歴",
+    "npts": "{number} ポイント",
+    "nletterWord": "{number}文字の単語",
     "guessOrChat": "推測するかチャット...",
     "game": "ゲーム",
     "everyoneGuessedCorrectly": "全員が正解しました！",

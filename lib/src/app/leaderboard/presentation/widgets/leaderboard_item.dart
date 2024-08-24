@@ -36,7 +36,7 @@ class LeaderboardItem extends StatelessWidget {
         style: context.textTheme.bodySmall,
       ),
       trailing: Text(
-        '${data.model.points} pts',
+        context.loc.npts(data.model.points),
         style: context.textTheme.bodySmall,
       ),
     );

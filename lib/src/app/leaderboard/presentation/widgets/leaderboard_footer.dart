@@ -120,7 +120,12 @@ class _LeaderboardFooterState extends ConsumerState<LeaderboardFooter> {
                 if (data == null) return const SizedBox.shrink();
                 return LeaderboardItem(
                   data: data,
-                  avatarColor: context.colorScheme.primary,
+                  avatarColor: switch (data.position) {
+                    1 => Colors.orange,
+                    2 => Colors.grey,
+                    3 => Colors.brown,
+                    _ => context.colorScheme.primary,
+                  },
                   name: context.loc.nameLeaderboard('${user?.name}'),
                 );
               },

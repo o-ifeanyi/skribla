@@ -25,7 +25,7 @@ class ExhibitFooter extends StatelessWidget {
           padding: Config.symmetric(h: 15),
           child: Text.rich(
             TextSpan(
-              text: exhibit.word.text,
+              text: exhibit.word.locText,
               children: [
                 TextSpan(
                   text: ' ${context.loc.by} ',

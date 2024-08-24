@@ -62,6 +62,8 @@ class DrawBoard extends ConsumerWidget {
                     ref.read(gameProvider.notifier).onPanEnd();
                   },
                 ),
+              ],
+              if ((game?.currentArt ?? []).isNotEmpty)
                 Align(
                   alignment: Alignment.topRight,
                   child: Container(
@@ -72,16 +74,25 @@ class DrawBoard extends ConsumerWidget {
                       ),
                       color: context.colorScheme.surface,
                     ),
-                    child: Text(
-                      game?.currentWord.locText ?? '',
-                      style: context.textTheme.bodySmall?.copyWith(
-                        color: context.colorScheme.secondary,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    child: ((game?.canDraw(user?.uid) ?? false) && timerType != TimerType.cool)
+                        ? Text(
+                            game?.currentWord.locText ?? '',
+                            style: context.textTheme.bodySmall?.copyWith(
+                              color: context.colorScheme.secondary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        : game != null
+                            ? Text(
+                                context.loc.nletterWord(game.currentWord.locText.split('').length),
+                                style: context.textTheme.bodySmall?.copyWith(
+                                  color: context.colorScheme.secondary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              )
+                            : null,
                   ),
                 ),
-              ],
             ],
           );
         },

@@ -9,6 +9,8 @@
     "settingsBtnTxt": "设置",
     "leaderboardBtnTxt": "排行榜",
     "historyBtnTxt": "历史记录",
+    "npts": "{number} 分",
+    "nletterWord": "{number}个字的单词",
     "guessOrChat": "猜测或聊天...",
     "game": "游戏",
     "everyoneGuessedCorrectly": "所有人都猜对了！",
