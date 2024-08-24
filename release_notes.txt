@@ -1,7 +1,9 @@
 ## What's Changed
-* make game end ui flexible by o-ifeanyi
-* fix platform issue on web by o-ifeanyi
-* use flutter for dev builds + fix macos blank screen release build by o-ifeanyi
-* new dev build by o-ifeanyi
+* fix logic to cancel timer by o-ifeanyi
+* localize game pts and show word letter count for players guessing by o-ifeanyi
+* properly localise word reveal and correct guess texts by o-ifeanyi
+* generate words, add script to check duplicates, implement fetching words for game, refactoring & localisation fixes/improvements, documentation etc by o-ifeanyi
+* config changes by o-ifeanyi
+* initial commit by o-ifeanyi
 
-**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.4+5...0.1.5+6
+**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.5+6...0.1.6+7
