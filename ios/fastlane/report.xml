@@ -5,37 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000334">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000403">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: Switch to ios set_full_version lane" time="9.8e-05">
+      <testcase classname="fastlane.lanes" name="1: Switch to ios set_full_version lane" time="0.000256">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.001377">
+      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.001138">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.170797">
+      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.176562">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.171045">
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.176273">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: flutter build ipa --release 	  --flavor=dev 	  --export-method=ad-hoc 	  --target=lib/main_dev.dart 	  --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json" time="543.126769">
+      <testcase classname="fastlane.lanes" name="5: shorebird_release" time="552.979783">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: firebase_app_distribution" time="18.565025">
+      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="714.976743">
         
       </testcase>
     
