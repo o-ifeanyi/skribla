@@ -50,7 +50,7 @@ class TimerProvider extends StateNotifier<TimerState> {
       const Duration(seconds: 1),
       (ticker) {
         Logger.log('CoolTimer === ${ticker.tick}');
-        if (ticker.tick == duration.inSeconds) {
+        if (ticker.tick >= duration.inSeconds) {
           _stopCoolTimer();
           callback.call();
         }
@@ -87,7 +87,7 @@ class TimerProvider extends StateNotifier<TimerState> {
         if (useHaptics) {
           Haptics.instance.heavyImpact();
         }
-        if (ticker.tick == duration.inSeconds) {
+        if (ticker.tick >= duration.inSeconds) {
           stopSkipTimer();
           callback.call();
         }
@@ -125,7 +125,7 @@ class TimerProvider extends StateNotifier<TimerState> {
         if (useHaptics && ticker.tick >= (duration.inSeconds ~/ 2)) {
           Haptics.instance.heavyImpact();
         }
-        if (ticker.tick == duration.inSeconds) {
+        if (ticker.tick >= duration.inSeconds) {
           stopTurnTimer();
           callback.call();
         }
@@ -157,11 +157,17 @@ class TimerProvider extends StateNotifier<TimerState> {
       const Duration(seconds: 1),
       (ticker) {
         Logger.log('CompleteTimer === ${ticker.tick}');
-        if (ticker.tick == duration.inSeconds) {
+        if (ticker.tick >= duration.inSeconds) {
           stopCompleteTimer();
           callback.call();
         }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    reset();
+    super.dispose();
   }
 }
