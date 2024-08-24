@@ -219,8 +219,9 @@ final class GameRepository {
         unawaited(
           sendMessage(
             game: game,
-            name: loc.gamebot,
+            name: 'Game bot', // localized where needed
             text: game.currentWord.text,
+            loc: game.currentWord.loc,
             messageType: MessageType.wordReveal,
           ),
         );
@@ -248,6 +249,7 @@ final class GameRepository {
     required GameModel game,
     required String text,
     required String name,
+    Map<String, String> loc = const {},
     MessageType messageType = MessageType.text,
   }) async {
     try {
@@ -264,6 +266,7 @@ final class GameRepository {
         },
         text: text,
         name: name,
+        loc: loc,
         messageType: messageType,
         createdAt: DateTime.now(),
       );

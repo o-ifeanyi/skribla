@@ -7,7 +7,6 @@ import 'package:skribla/src/app/game/data/models/line_model.dart';
 import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/repository/game_repository.dart';
 import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
-import 'package:skribla/src/app/settings/presentation/provider/loc_provider.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
@@ -200,13 +199,13 @@ class GameProvider extends StateNotifier<GameState> {
     if (game == null) return true;
 
     state = state.copyWith(status: GameStatus.sendingMessage);
-    final correctGuess = game.currentWord.text.toLowerCase() == text.toLowerCase();
+    final correctGuess = game.isCorrectGuess(text.toLowerCase());
 
     final res = correctGuess
         ? await gameRepository.sendMessage(
             game: game,
             text: name,
-            name: ref.read(locProvider).gamebot,
+            name: 'Game bot', // localized where needed
             messageType: MessageType.correctGuess,
           )
         : await gameRepository.sendMessage(game: game, text: text, name: name);

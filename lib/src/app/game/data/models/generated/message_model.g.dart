@@ -13,6 +13,10 @@ MessageModel _$MessageModelFromJson(Map<String, dynamic> json) => MessageModel(
       name: json['name'] as String,
       messageType: $enumDecode(_$MessageTypeEnumMap, json['message_type']),
       createdAt: DateTime.parse(json['created_at'] as String),
+      loc: (json['loc'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as String),
+          ) ??
+          const {},
     );
 
 Map<String, dynamic> _$MessageModelToJson(MessageModel instance) => <String, dynamic>{
@@ -22,6 +26,7 @@ Map<String, dynamic> _$MessageModelToJson(MessageModel instance) => <String, dyn
       'name': instance.name,
       'message_type': _$MessageTypeEnumMap[instance.messageType]!,
       'created_at': instance.createdAt.toIso8601String(),
+      'loc': instance.loc,
     };
 
 const _$MessageTypeEnumMap = {

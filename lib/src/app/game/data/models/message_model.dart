@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/core/platform/others.dart'
+    if (dart.library.html) 'package:skribla/src/core/platform/web.dart' as platform;
 
 part 'generated/message_model.g.dart';
 
@@ -20,6 +22,7 @@ class MessageModel {
     required this.name,
     required this.messageType,
     required this.createdAt,
+    this.loc = const {}, // only available for wordReveal
   });
 
   factory MessageModel.fromJson(Map<String, dynamic> json) => _$MessageModelFromJson(json);
@@ -32,4 +35,10 @@ class MessageModel {
   final String name;
   final MessageType messageType;
   final DateTime createdAt;
+  final Map<String, String> loc;
+
+  String get locText {
+    final language = platform.localeName.split('_')[0];
+    return loc[language] ?? text;
+  }
 }

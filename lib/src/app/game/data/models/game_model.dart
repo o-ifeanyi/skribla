@@ -65,4 +65,8 @@ class GameModel with _$GameModel {
         (player) => online.contains(player.uid),
       )
       .toList();
+
+  bool isCorrectGuess(String word) =>
+      currentWord.text.toLowerCase() == word.toLowerCase() ||
+      currentWord.loc.values.map((e) => e.toLowerCase()).contains(word.toLowerCase());
 }

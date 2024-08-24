@@ -46,10 +46,13 @@ class _MessagesViewState extends State<MessagesView> {
                 itemBuilder: (context, index) {
                   final message = data.reversed.toList()[index];
                   return _MessageBubble(
-                    title: message.name,
+                    title: switch (message.messageType) {
+                      MessageType.correctGuess || MessageType.wordReveal => context.loc.gamebot,
+                      _ => message.name,
+                    },
                     subtitle: switch (message.messageType) {
                       MessageType.correctGuess => context.loc.correctGuessMsg(message.text),
-                      MessageType.wordReveal => context.loc.revealWordMsg(message.text),
+                      MessageType.wordReveal => context.loc.revealWordMsg(message.locText),
                       _ => message.text,
                     },
                   );
