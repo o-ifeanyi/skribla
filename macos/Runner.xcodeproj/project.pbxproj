@@ -621,6 +621,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
+				FLUTTER_TARGET = lib/main_dev.dart;
 				GID_CLIENT_ID = "1056704511056-t4go96um8r12mjk41u6r2lvr5f43u89v.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1056704511056-t4go96um8r12mjk41u6r2lvr5f43u89v";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -727,6 +728,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
+				FLUTTER_TARGET = lib/main_dev.dart;
 				GID_CLIENT_ID = "1056704511056-t4go96um8r12mjk41u6r2lvr5f43u89v.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1056704511056-t4go96um8r12mjk41u6r2lvr5f43u89v";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -832,6 +834,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
+				FLUTTER_TARGET = lib/main_dev.dart;
 				GID_CLIENT_ID = "1056704511056-t4go96um8r12mjk41u6r2lvr5f43u89v.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1056704511056-t4go96um8r12mjk41u6r2lvr5f43u89v";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -982,6 +985,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
+				FLUTTER_TARGET = lib/main_prod.dart;
 				GID_CLIENT_ID = "676660663299-9kctvv1cdtrrf92p07kqnflfmqa1kqle.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.676660663299-9kctvv1cdtrrf92p07kqnflfmqa1kqle";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -1129,6 +1133,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
+				FLUTTER_TARGET = lib/main_prod.dart;
 				GID_CLIENT_ID = "676660663299-9kctvv1cdtrrf92p07kqnflfmqa1kqle.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.676660663299-9kctvv1cdtrrf92p07kqnflfmqa1kqle";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -1162,6 +1167,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
+				FLUTTER_TARGET = lib/main_prod.dart;
 				GID_CLIENT_ID = "676660663299-9kctvv1cdtrrf92p07kqnflfmqa1kqle.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.676660663299-9kctvv1cdtrrf92p07kqnflfmqa1kqle";
 				INFOPLIST_FILE = Runner/Info.plist;

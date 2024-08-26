@@ -30,11 +30,7 @@ platform :ios do
   lane :dev do
     set_full_version()
     
-    sh("flutter build ipa --release \
-	  --flavor=dev \
-	  --export-method=ad-hoc \
-	  --target=lib/main_dev.dart \
-	  --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json")
+    sh("flutter build ipa --release --flavor=dev --export-method=ad-hoc --target=lib/main_dev.dart --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json")
   
     firebase_app_distribution(
 			app: '1:1056704511056:ios:3c65b99d3d4ab0e526e555',
@@ -51,9 +47,7 @@ platform :ios do
 
     shorebird_release(
       platform: "ios",
-      args: "--flavor=prod -- " \
-      "--target=lib/main_prod.dart -- " \
-      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
     )
     upload_to_testflight(
       api_key_path: "/Users/ifeanyionuoha/skribla/skribla-prod-app-store.json",
@@ -66,9 +60,7 @@ platform :ios do
   lane :patch do
     shorebird_patch(
       platform: "ios",
-      args: "--flavor=prod -- " \
-      "--target=lib/main_prod.dart -- " \
-      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
     )
   end
 end

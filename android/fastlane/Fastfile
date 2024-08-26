@@ -28,10 +28,7 @@ platform :android do
   lane :dev do
     set_full_version()
 
-    sh("flutter build apk --release \
-	  --flavor=dev \
-	  --target=lib/main_dev.dart \
-	  --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json")
+    sh("flutter build apk --release --flavor=dev --target=lib/main_dev.dart --dart-define-from-file=/Users/ifeanyionuoha/skribla/dev_creds.json")
   
     firebase_app_distribution(
 			app: '1:1056704511056:android:b1a81f5adcdab0d926e555',
@@ -49,9 +46,7 @@ platform :android do
     
     shorebird_release(
       platform: "android",
-      args: "--flavor=prod -- " \
-      "--target=lib/main_prod.dart -- " \
-      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
     )
       
     upload_to_play_store(
@@ -64,9 +59,7 @@ platform :android do
   lane :patch do
     shorebird_patch(
       platform: "android",
-      args: "--flavor=prod -- " \
-      "--target=lib/main_prod.dart -- " \
-      "--dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
     )
   end
 end

@@ -558,6 +558,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
 				ENABLE_BITCODE = NO;
+				FLUTTER_TARGET = lib/main_dev.dart;
 				GID_CLIENT_ID = "1056704511056-60t4hjifr5u98grgtf3kpjftfkf69q48.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1056704511056-60t4hjifr5u98grgtf3kpjftfkf69q48";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -668,6 +669,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
 				ENABLE_BITCODE = NO;
+				FLUTTER_TARGET = lib/main_dev.dart;
 				GID_CLIENT_ID = "1056704511056-60t4hjifr5u98grgtf3kpjftfkf69q48.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1056704511056-60t4hjifr5u98grgtf3kpjftfkf69q48";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -773,6 +775,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
 				ENABLE_BITCODE = NO;
+				FLUTTER_TARGET = lib/main_dev.dart;
 				GID_CLIENT_ID = "1056704511056-60t4hjifr5u98grgtf3kpjftfkf69q48.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1056704511056-60t4hjifr5u98grgtf3kpjftfkf69q48";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -878,6 +881,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
 				ENABLE_BITCODE = NO;
+				FLUTTER_TARGET = lib/main_prod.dart;
 				GID_CLIENT_ID = "676660663299-pmakl3a5libe4oove2evfgk4qpih9043.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.676660663299-pmakl3a5libe4oove2evfgk4qpih9043";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -1077,6 +1081,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
 				ENABLE_BITCODE = NO;
+				FLUTTER_TARGET = lib/main_prod.dart;
 				GID_CLIENT_ID = "676660663299-pmakl3a5libe4oove2evfgk4qpih9043.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.676660663299-pmakl3a5libe4oove2evfgk4qpih9043";
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -1114,6 +1119,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YYA8WP4LNJ;
 				ENABLE_BITCODE = NO;
+				FLUTTER_TARGET = lib/main_prod.dart;
 				GID_CLIENT_ID = "676660663299-pmakl3a5libe4oove2evfgk4qpih9043.apps.googleusercontent.com";
 				GID_REVERSED_CLIENT_ID = "com.googleusercontent.apps.676660663299-pmakl3a5libe4oove2evfgk4qpih9043";
 				INFOPLIST_FILE = Runner/Info.plist;
