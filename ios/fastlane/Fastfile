@@ -47,8 +47,8 @@ platform :ios do
 
     shorebird_release(
       platform: "ios",
-      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
-    )
+      args: "--flavor=prod --target=lib/main_prod.dart --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+    )    
     upload_to_testflight(
       api_key_path: "/Users/ifeanyionuoha/skribla/skribla-prod-app-store.json",
       ipa: '../build/ios/ipa/skribla.ipa',
@@ -60,7 +60,7 @@ platform :ios do
   lane :patch do
     shorebird_patch(
       platform: "ios",
-      args: "--flavor=prod -- --target=lib/main_prod.dart -- --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
+      args: "--flavor=prod --target=lib/main_prod.dart --dart-define-from-file=/Users/ifeanyionuoha/skribla/prod_creds.json"
     )
   end
 end

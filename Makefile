@@ -74,12 +74,14 @@ deploy:
 	firebase deploy --only hosting --project=skribla-$(flavor)
 
 	cd ios && bundle exec fastlane $(flavor)
-	cd android && bundle exec fastlane $(flavor)
 
 	flutter build macos --config-only \
 	--flavor $(flavor) \
 	--target lib/main_$(flavor).dart \
 	--dart-define-from-file /Users/ifeanyionuoha/skribla/$(flavor)_creds.json
+
+	cd android && bundle exec fastlane $(flavor)
+
 
 auth:
 	firebase login --reauth
