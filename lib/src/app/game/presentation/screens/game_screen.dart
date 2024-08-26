@@ -59,30 +59,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           ),
           body: Column(
             children: [
-              if (Config.width < 800) ...[
-                const Expanded(
-                  flex: 3,
-                  child: RepaintBoundary(child: DrawBoard()),
-                ),
-                const BoardConfig(),
-                Config.vBox8,
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: Config.symmetric(h: 15),
-                    child: Row(
-                      children: [
-                        const Expanded(child: PlayersView()),
-                        Config.hBox8,
-                        Expanded(
-                          flex: 3,
-                          child: MessagesView(id: widget.id),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ] else
+              if (Config.width > 800 && Config.width > Config.height) ...[
                 Expanded(
                   child: Row(
                     children: [
@@ -112,6 +89,30 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     ],
                   ),
                 ),
+              ] else ...[
+                const Expanded(
+                  flex: 3,
+                  child: RepaintBoundary(child: DrawBoard()),
+                ),
+                const BoardConfig(),
+                Config.vBox8,
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: Config.symmetric(h: 15),
+                    child: Row(
+                      children: [
+                        const Expanded(child: PlayersView()),
+                        Config.hBox8,
+                        Expanded(
+                          flex: 3,
+                          child: MessagesView(id: widget.id),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
               ValueListenableBuilder(
                 valueListenable: _bottomSheetHeight,
                 builder: (context, height, child) {
