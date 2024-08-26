@@ -1,10 +1,7 @@
 ## What's Changed
-* new dev build + revert config changes on iOS to fix deployment by o-ifeanyi
-* fix logic to cancel timer by o-ifeanyi
-* localize game pts and show word letter count for players guessing by o-ifeanyi
-* properly localise word reveal and correct guess texts by o-ifeanyi
-* generate words, add script to check duplicates, implement fetching words for game, refactoring & localisation fixes/improvements, documentation etc by o-ifeanyi
-* config changes by o-ifeanyi
-* initial commit by o-ifeanyi
+* fix ios and macos flavor issues by o-ifeanyi
+* consider height when changing game screen layout by o-ifeanyi
+* fix macos build by o-ifeanyi
+* new prod build by o-ifeanyi
 
-**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.5+6...0.1.6+7
+**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.6+7...0.1.9+10
