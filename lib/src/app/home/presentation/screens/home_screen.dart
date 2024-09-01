@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,7 +12,9 @@ import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/router/routes.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
+import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/app_button.dart';
 import 'package:skribla/src/core/widgets/input_field.dart';
@@ -47,6 +50,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
       if (!mounted) return;
       final user = ref.read(authProvider).user;
+
+      if (user?.status == UserStatus.suspended) {
+        context.go(Routes.suspended);
+      }
       setState(() {
         _nameCtrl.text = user?.name ?? '';
       });
@@ -71,93 +78,120 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: Container(
           padding: Config.symmetric(h: 15),
           constraints: const BoxConstraints(maxWidth: 600),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const LogoText(),
-              Config.vBox24,
-              InputField(
-                controller: _nameCtrl,
-                hint: context.loc.enterNameHint,
-                textAlign: TextAlign.center,
-                readOnly: status == HomeStatus.findingGame || status == HomeStatus.creatingGame,
-              ),
-              Config.vBox24,
-              ValueListenableBuilder(
-                valueListenable: _nameCtrl,
-                builder: (context, value, child) {
-                  final inValid = value.text.trim().isEmpty ||
-                      user == null ||
-                      status == HomeStatus.findingGame ||
-                      status == HomeStatus.creatingGame;
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      AppButton(
-                        text: context.loc.playBtnTxt,
-                        onPressed: inValid
-                            ? null
-                            : () async {
-                                await ref
-                                    .read(homeProvider.notifier)
-                                    .findGame(user.copyWith(name: value.text.trim()))
-                                    .then((id) {
-                                  if (id != null && context.mounted) {
-                                    Analytics.instance.capture(Event.playGame);
-                                    context.goNamed(Routes.game, pathParameters: {'id': id});
-                                  }
-                                });
-                              },
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Spacer(),
+                    const LogoText(),
+                    Config.vBox24,
+                    InputField(
+                      controller: _nameCtrl,
+                      hint: context.loc.enterNameHint,
+                      textAlign: TextAlign.center,
+                      readOnly:
+                          status == HomeStatus.findingGame || status == HomeStatus.creatingGame,
+                    ),
+                    Config.vBox24,
+                    ValueListenableBuilder(
+                      valueListenable: _nameCtrl,
+                      builder: (context, value, child) {
+                        final inValid = value.text.trim().isEmpty ||
+                            user == null ||
+                            status == HomeStatus.findingGame ||
+                            status == HomeStatus.creatingGame;
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            AppButton(
+                              text: context.loc.playBtnTxt,
+                              onPressed: inValid
+                                  ? null
+                                  : () async {
+                                      await ref
+                                          .read(homeProvider.notifier)
+                                          .findGame(user.copyWith(name: value.text.trim()))
+                                          .then((id) {
+                                        if (id != null && context.mounted) {
+                                          Analytics.instance.capture(Event.playGame);
+                                          context.goNamed(Routes.game, pathParameters: {'id': id});
+                                        }
+                                      });
+                                    },
+                            ),
+                            Config.vBox16,
+                            AppButton(
+                              text: context.loc.createGameBtnTxt,
+                              type: ButtonType.outlined,
+                              onPressed: inValid
+                                  ? null
+                                  : () async {
+                                      await ref
+                                          .read(homeProvider.notifier)
+                                          .createGame(user.copyWith(name: value.text.trim()))
+                                          .then((id) {
+                                        if (id != null && context.mounted) {
+                                          Analytics.instance.capture(Event.createGame);
+                                          context.goNamed(Routes.game, pathParameters: {'id': id});
+                                        }
+                                      });
+                                    },
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    Config.vBox24,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: StartAction(
+                            icon: AppIcons.gear,
+                            text: context.loc.settingsBtnTxt,
+                            onTap: () => context.goNamed(Routes.settings),
+                          ),
+                        ),
+                        Expanded(
+                          child: StartAction(
+                            icon: AppIcons.trophy,
+                            text: context.loc.leaderboardBtnTxt,
+                            onTap: user == null ? null : () => context.goNamed(Routes.leaderboard),
+                          ),
+                        ),
+                        Expanded(
+                          child: StartAction(
+                            icon: AppIcons.clockCounterClockwise,
+                            text: context.loc.historyBtnTxt,
+                            onTap: user == null ? null : () => context.goNamed(Routes.history),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    Text.rich(
+                      TextSpan(
+                        text: '${context.loc.byUsingSkribla} ',
+                        children: [
+                          TextSpan(
+                            text: context.loc.termsOfService,
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: context.colorScheme.primary,
+                            ),
+                            recognizer: TapGestureRecognizer()..onTap = Support.instance.openTerms,
+                          ),
+                        ],
                       ),
-                      Config.vBox16,
-                      AppButton(
-                        text: context.loc.createGameBtnTxt,
-                        type: ButtonType.outlined,
-                        onPressed: inValid
-                            ? null
-                            : () async {
-                                await ref
-                                    .read(homeProvider.notifier)
-                                    .createGame(user.copyWith(name: value.text.trim()))
-                                    .then((id) {
-                                  if (id != null && context.mounted) {
-                                    Analytics.instance.capture(Event.createGame);
-                                    context.goNamed(Routes.game, pathParameters: {'id': id});
-                                  }
-                                });
-                              },
-                      ),
-                    ],
-                  );
-                },
-              ),
-              Config.vBox24,
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: StartAction(
-                      icon: AppIcons.gear,
-                      text: context.loc.settingsBtnTxt,
-                      onTap: () => context.goNamed(Routes.settings),
+                      textAlign: TextAlign.center,
+                      style: context.textTheme.bodySmall,
                     ),
-                  ),
-                  Expanded(
-                    child: StartAction(
-                      icon: AppIcons.trophy,
-                      text: context.loc.leaderboardBtnTxt,
-                      onTap: user == null ? null : () => context.goNamed(Routes.leaderboard),
-                    ),
-                  ),
-                  Expanded(
-                    child: StartAction(
-                      icon: AppIcons.clockCounterClockwise,
-                      text: context.loc.historyBtnTxt,
-                      onTap: user == null ? null : () => context.goNamed(Routes.history),
-                    ),
-                  ),
-                ],
+                    Config.vBox30,
+                  ],
+                ),
               ),
             ],
           ),

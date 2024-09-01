@@ -9,6 +9,7 @@
     "settingsBtnTxt": "Settings",
     "leaderboardBtnTxt": "Leaderboard",
     "historyBtnTxt": "History",
+    "byUsingSkribla": "By using Skribla you agree to our",
     "npts": "{number} pts",
     "@npts": {
         "placeholders": {
@@ -48,6 +49,24 @@
     "completed": "Completed!",
     "viewLeaderboard": "View leaderboard",
     "viewGallery": "View gallery",
+    "report": "Report {name}",
+    "@report": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "block": "Block {name}",
+    "@block": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "reasonForReporting": "reason for reporting...",
+    "continueBtnTxt": "Continue",
     "copy": "Copy",
     "copiedToClipboard": "Copied to clipboard",
     "getReady": "Get ready",
@@ -112,18 +131,20 @@
     "maybeLater": "Maybe later",
     "unavailableTitle": "Our server is feeling a little down",
     "unavailableSubtitle": "Please try again in a few moments. We'll be back up in no time",
-    "signinErr": "An error occured while signing in. Please try again later",
+    "suspendedTitle": "Account suspended",
+    "suspendedSubtitle": "Your account has been suspended due to multiple reports. To restore your account please contact support at",
+    "signinErr": "An error occurred while signing in. Please try again later",
     "authFailedErr": "Authenticataion failed",
-    "createAccountErr": "An error occured while creating account. Please try again later",
-    "saveUserErr": "An error occured while saving user. Please try again later",
+    "createAccountErr": "An error occurred while creating account. Please try again later",
+    "saveUserErr": "An error occurred while saving user. Please try again later",
     "userNotErr": "User not found",
-    "getUserErr": "An error occured while getting user. Please try again later",
-    "updateUserErr": "An error occured while updating username. Please try again later",
+    "getUserErr": "An error occurred while getting user. Please try again later",
+    "updateUserErr": "An error occurred while updating username. Please try again later",
     "accountDeletionFailedErr": "Account deletion failed",
-    "deleteAccountErr": "An error occured while deleting account. Please try again later",
-    "createGameErr": "An error occured while creating game. Please try again later",
-    "findGameErr": "An error occured while finding game. Please try again later",
-    "joinGameErr": "An error occured while joining game. Please try again later",
+    "deleteAccountErr": "An error occurred while deleting account. Please try again later",
+    "createGameErr": "An error occurred while creating game. Please try again later",
+    "findGameErr": "An error occurred while finding game. Please try again later",
+    "joinGameErr": "An error occurred while joining game. Please try again later",
     "fetchWordsMaxAttemptsErr": "Failed to fetch words after {attempts} attempts",
     "@fetchWordsMaxAttemptsErr": {
         "placeholders": {
@@ -132,5 +153,9 @@
             }
         }
     },
-    "unexpectedFetchWordsErr": "An error occured while while fetching words"
+    "unexpectedFetchWordsErr": "An error occurred while while fetching words",
+    "reportUserErr": "An error occurred while while reporting user",
+    "blockUserErr": "An error occurred while while blocking user",
+    "reportUserSuccess": "User reported successfully",
+    "blockUserSuccess": "User blocked successfully"
 }

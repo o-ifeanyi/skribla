@@ -25,6 +25,7 @@ mixin _$PlayerModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   int get points => throw _privateConstructorUsedError;
   List<WordModel> get words => throw _privateConstructorUsedError;
+  List<String> get blockedUsers => throw _privateConstructorUsedError;
 
   /// Serializes this PlayerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +41,13 @@ abstract class $PlayerModelCopyWith<$Res> {
   factory $PlayerModelCopyWith(PlayerModel value, $Res Function(PlayerModel) then) =
       _$PlayerModelCopyWithImpl<$Res, PlayerModel>;
   @useResult
-  $Res call({String uid, String name, DateTime createdAt, int points, List<WordModel> words});
+  $Res call(
+      {String uid,
+      String name,
+      DateTime createdAt,
+      int points,
+      List<WordModel> words,
+      List<String> blockedUsers});
 }
 
 /// @nodoc
@@ -63,6 +70,7 @@ class _$PlayerModelCopyWithImpl<$Res, $Val extends PlayerModel>
     Object? createdAt = null,
     Object? points = null,
     Object? words = null,
+    Object? blockedUsers = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -85,6 +93,10 @@ class _$PlayerModelCopyWithImpl<$Res, $Val extends PlayerModel>
           ? _value.words
           : words // ignore: cast_nullable_to_non_nullable
               as List<WordModel>,
+      blockedUsers: null == blockedUsers
+          ? _value.blockedUsers
+          : blockedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -96,7 +108,13 @@ abstract class _$$PlayerModelImplCopyWith<$Res> implements $PlayerModelCopyWith<
       __$$PlayerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid, String name, DateTime createdAt, int points, List<WordModel> words});
+  $Res call(
+      {String uid,
+      String name,
+      DateTime createdAt,
+      int points,
+      List<WordModel> words,
+      List<String> blockedUsers});
 }
 
 /// @nodoc
@@ -116,6 +134,7 @@ class __$$PlayerModelImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? points = null,
     Object? words = null,
+    Object? blockedUsers = null,
   }) {
     return _then(_$PlayerModelImpl(
       uid: null == uid
@@ -138,6 +157,10 @@ class __$$PlayerModelImplCopyWithImpl<$Res>
           ? _value._words
           : words // ignore: cast_nullable_to_non_nullable
               as List<WordModel>,
+      blockedUsers: null == blockedUsers
+          ? _value._blockedUsers
+          : blockedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -150,8 +173,10 @@ class _$PlayerModelImpl extends _PlayerModel {
       required this.name,
       required this.createdAt,
       this.points = 0,
-      final List<WordModel> words = const []})
+      final List<WordModel> words = const [],
+      final List<String> blockedUsers = const []})
       : _words = words,
+        _blockedUsers = blockedUsers,
         super._();
 
   factory _$PlayerModelImpl.fromJson(Map<String, dynamic> json) => _$$PlayerModelImplFromJson(json);
@@ -174,27 +199,19 @@ class _$PlayerModelImpl extends _PlayerModel {
     return EqualUnmodifiableListView(_words);
   }
 
+  final List<String> _blockedUsers;
+  @override
+  @JsonKey()
+  List<String> get blockedUsers {
+    if (_blockedUsers is EqualUnmodifiableListView) return _blockedUsers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_blockedUsers);
+  }
+
   @override
   String toString() {
-    return 'PlayerModel(uid: $uid, name: $name, createdAt: $createdAt, points: $points, words: $words)';
+    return 'PlayerModel(uid: $uid, name: $name, createdAt: $createdAt, points: $points, words: $words, blockedUsers: $blockedUsers)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PlayerModelImpl &&
-            (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
-            (identical(other.points, points) || other.points == points) &&
-            const DeepCollectionEquality().equals(other._words, _words));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, uid, name, createdAt, points, const DeepCollectionEquality().hash(_words));
 
   /// Create a copy of PlayerModel
   /// with the given fields replaced by the non-null parameter values.
@@ -218,7 +235,8 @@ abstract class _PlayerModel extends PlayerModel {
       required final String name,
       required final DateTime createdAt,
       final int points,
-      final List<WordModel> words}) = _$PlayerModelImpl;
+      final List<WordModel> words,
+      final List<String> blockedUsers}) = _$PlayerModelImpl;
   const _PlayerModel._() : super._();
 
   factory _PlayerModel.fromJson(Map<String, dynamic> json) = _$PlayerModelImpl.fromJson;
@@ -233,6 +251,8 @@ abstract class _PlayerModel extends PlayerModel {
   int get points;
   @override
   List<WordModel> get words;
+  @override
+  List<String> get blockedUsers;
 
   /// Create a copy of PlayerModel
   /// with the given fields replaced by the non-null parameter values.

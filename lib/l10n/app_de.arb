@@ -9,6 +9,7 @@
     "settingsBtnTxt": "Einstellungen",
     "leaderboardBtnTxt": "Bestenliste",
     "historyBtnTxt": "Verlauf",
+    "byUsingSkribla": "Durch die Nutzung von Skribla stimmen Sie unseren",
     "npts": "{number} Pkt",
     "nletterWord": "{number}-Buchstaben-Wort",
     "guessOrChat": "raten oder chatten...",
@@ -20,6 +21,10 @@
     "completed": "Abgeschlossen!",
     "viewLeaderboard": "Rangliste anzeigen",
     "viewGallery": "Galerie ansehen",
+    "report": "{name} melden",
+    "block": "{name} blockieren",
+    "reasonForReporting": "Grund für die Meldung...",
+    "continueBtnTxt": "Weiter",
     "copy": "Kopieren",
     "copiedToClipboard": "In die Zwischenablage kopiert",
     "getReady": "Mach dich bereit",
@@ -70,6 +75,8 @@
     "maybeLater": "Vielleicht später",
     "unavailableTitle": "Unser Server ist gerade etwas überlastet",
     "unavailableSubtitle": "Bitte versuchen Sie es in ein paar Minuten erneut. Wir sind bald wieder da",
+    "suspendedTitle": "Konto gesperrt",
+    "suspendedSubtitle": "Ihr Konto wurde aufgrund mehrerer Meldungen gesperrt. Um Ihr Konto wiederherzustellen, wenden Sie sich bitte an den Support unter",
     "signinErr": "Beim Anmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "authFailedErr": "Authentifizierung fehlgeschlagen",
     "createAccountErr": "Beim Erstellen des Kontos ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
@@ -83,5 +90,9 @@
     "findGameErr": "Beim Suchen des Spiels ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "joinGameErr": "Beim Beitreten des Spiels ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "fetchWordsMaxAttemptsErr": "Wörter konnten nach {attempts} Versuchen nicht abgerufen werden",
-    "unexpectedFetchWordsErr": "Beim Abrufen der Wörter ist ein Fehler aufgetreten"
+    "unexpectedFetchWordsErr": "Beim Abrufen der Wörter ist ein Fehler aufgetreten",
+    "reportUserErr": "Ein Fehler ist aufgetreten, während der Benutzer gemeldet wurde",
+    "blockUserErr": "Ein Fehler ist aufgetreten, während der Benutzer blockiert wurde",
+    "reportUserSuccess": "Benutzer erfolgreich gemeldet",
+    "blockUserSuccess": "Benutzer erfolgreich blockiert"
 }

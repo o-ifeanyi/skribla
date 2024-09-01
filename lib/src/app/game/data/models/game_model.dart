@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/app/auth/data/models/user_model.dart';
 import 'package:skribla/src/app/game/data/models/line_model.dart';
 import 'package:skribla/src/app/game/data/models/player_model.dart';
 import 'package:skribla/src/app/game/data/models/word_model.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/extension.dart';
 
 part 'generated/game_model.freezed.dart';
 part 'generated/game_model.g.dart';
-
-enum Status { open, private, closed, complete }
 
 @freezed
 class GameModel with _$GameModel {
@@ -16,7 +16,7 @@ class GameModel with _$GameModel {
     required DateTime createdAt,
     required PlayerModel currentPlayer,
     required WordModel currentWord,
-    @Default(Status.open) Status status,
+    @Default(GameStatus.open) GameStatus status,
     @Default([]) List<String> uids,
     @Default([]) List<String> correctGuess,
     @Default([]) List<PlayerModel> players,
@@ -31,7 +31,7 @@ class GameModel with _$GameModel {
   factory GameModel.fromJson(Map<String, Object?> json) => _$GameModelFromJson(json);
 
   bool canDraw(String? uid) =>
-      currentPlayer.uid == uid && online.length > 1 && status != Status.complete;
+      currentPlayer.uid == uid && online.length > 1 && status != GameStatus.complete;
 
   List<WordModel> get availableWords => onlinePlayers
       .map((player) => player.words.where((word) => word.available))
@@ -69,4 +69,10 @@ class GameModel with _$GameModel {
   bool isCorrectGuess(String word) =>
       currentWord.text.toLowerCase() == word.toLowerCase() ||
       currentWord.loc.values.map((e) => e.toLowerCase()).contains(word.toLowerCase());
+
+  bool hasBlockedUserConflict(UserModel user) {
+    final isUserBlockingPlayer = players.any((player) => user.blockedUsers.contains(player.uid));
+    final isPlayerBlockingUser = players.any((player) => player.blockedUsers.contains(user.uid));
+    return isUserBlockingPlayer || isPlayerBlockingUser;
+  }
 }

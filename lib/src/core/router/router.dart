@@ -12,6 +12,7 @@ import 'package:skribla/src/app/home/presentation/screens/join_screen.dart';
 import 'package:skribla/src/app/leaderboard/presentation/screens/leaderboard_screen.dart';
 import 'package:skribla/src/app/settings/presentation/screens/settings_screen.dart';
 import 'package:skribla/src/core/router/routes.dart';
+import 'package:skribla/src/core/screens/suspended_screen.dart';
 import 'package:skribla/src/core/screens/unavailable_screen.dart';
 import 'package:skribla/src/core/screens/update_screen.dart';
 import 'package:skribla/src/core/util/extension.dart';
@@ -97,6 +98,10 @@ final class Router {
           final forced = state.extra as bool? ?? false;
           return UpdateScreen(forced: forced);
         },
+      ),
+      _route(
+        path: Routes.suspended,
+        screen: const SuspendedScreen(),
       ),
     ],
   );

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 extension StringExt on String {
   String get routeName {
@@ -52,6 +54,12 @@ extension BuildContextExt on BuildContext {
   EdgeInsets get padding => MediaQuery.viewPaddingOf(this);
   AppLocalizations get loc => AppLocalizations.of(this);
   ThemeMode get themeMode => theme.brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
+  RoundedRectangleBorder get modalShape => RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Config.radius16.topLeft,
+          topRight: Config.radius16.topRight,
+        ),
+      );
 
   ButtonStyle get iconButtonStyle => IconButton.styleFrom(
         backgroundColor: colorScheme.primaryContainer,
@@ -90,6 +98,39 @@ extension BuildContextExt on BuildContext {
                   ),
                 )
                 .toList(),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<T?> showModal<T>(Widget child) {
+    return showModalBottomSheet<T>(
+      context: this,
+      shape: modalShape,
+      isScrollControlled: true,
+      builder: (context) => child,
+    );
+  }
+
+  Future<SafetyOption?> showSafetyOptions({String username = ''}) async {
+    return showCupertinoModalPopup<SafetyOption>(
+      context: this,
+      builder: (context) {
+        return CupertinoActionSheet(
+          actions: [
+            CupertinoActionSheetAction(
+              onPressed: () => context.pop(SafetyOption.report),
+              child: Text(loc.report(username).trim()),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () => context.pop(SafetyOption.block),
+              child: Text(loc.block(username).trim()),
+            ),
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            onPressed: context.pop,
+            child: Text(context.loc.cancel),
           ),
         );
       },

@@ -9,6 +9,7 @@
     "settingsBtnTxt": "設定",
     "leaderboardBtnTxt": "リーダーボード",
     "historyBtnTxt": "履歴",
+    "byUsingSkribla": "Skriblaを使用することで、次のことに同意したことになります",
     "npts": "{number} ポイント",
     "nletterWord": "{number}文字の単語",
     "guessOrChat": "推測するかチャット...",
@@ -20,6 +21,10 @@
     "completed": "完了！",
     "viewLeaderboard": "リーダーボードを見る",
     "viewGallery": "ギャラリーを見る",
+    "report": "{name}を報告する",
+    "block": "{name}をブロックする",
+    "reasonForReporting": "報告の理由...",
+    "continueBtnTxt": "続ける",
     "copy": "コピー",
     "copiedToClipboard": "クリップボードにコピーしました",
     "getReady": "準備して",
@@ -70,6 +75,8 @@
     "maybeLater": "後で",
     "unavailableTitle": "サーバーの調子が少し悪いようです",
     "unavailableSubtitle": "少し待ってから再度お試しください。すぐに復旧します",
+    "suspendedTitle": "アカウントが停止されました",
+    "suspendedSubtitle": "複数の報告により、あなたのアカウントが停止されました。アカウントを復元するには、サポートに連絡してください：",
     "signinErr": "サインイン中にエラーが発生しました。後でもう一度お試しください",
     "authFailedErr": "認証に失敗しました",
     "createAccountErr": "アカウント作成中にエラーが発生しました。後でもう一度お試しください",
@@ -83,5 +90,9 @@
     "findGameErr": "ゲームの検索中にエラーが発生しました。後でもう一度お試しください",
     "joinGameErr": "ゲームの参加中にエラーが発生しました。後でもう一度お試しください",
     "fetchWordsMaxAttemptsErr": "{attempts}回の試行後に単語を取得できませんでした",
-    "unexpectedFetchWordsErr": "単語の取得中にエラーが発生しました"
+    "unexpectedFetchWordsErr": "単語の取得中にエラーが発生しました",
+    "reportUserErr": "ユーザーを報告中にエラーが発生しました",
+    "blockUserErr": "ユーザーをブロック中にエラーが発生しました",
+    "reportUserSuccess": "ユーザーを正常に報告しました",
+    "blockUserSuccess": "ユーザーを正常にブロックしました"
 }

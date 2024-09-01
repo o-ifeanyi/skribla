@@ -9,6 +9,7 @@
     "settingsBtnTxt": "设置",
     "leaderboardBtnTxt": "排行榜",
     "historyBtnTxt": "历史记录",
+    "byUsingSkribla": "使用Skribla即表示您同意我们的",
     "npts": "{number} 分",
     "nletterWord": "{number}个字的单词",
     "guessOrChat": "猜测或聊天...",
@@ -20,6 +21,10 @@
     "completed": "已完成！",
     "viewLeaderboard": "查看排行榜",
     "viewGallery": "查看画廊",
+    "report": "举报{name}",
+    "block": "屏蔽{name}",
+    "reasonForReporting": "举报理由...",
+    "continueBtnTxt": "继续",
     "copy": "复制",
     "copiedToClipboard": "已复制到剪贴板",
     "getReady": "准备好",
@@ -70,6 +75,8 @@
     "maybeLater": "稍后再说",
     "unavailableTitle": "我们的服务器有点不稳定",
     "unavailableSubtitle": "请稍后再试。我们会很快恢复",
+    "suspendedTitle": "账户已暂停",
+    "suspendedSubtitle": "由于多次被举报，您的账户已被暂停。要恢复您的账户，请联系支持：",
     "signinErr": "登录时发生错误。请稍后再试",
     "authFailedErr": "身份验证失败",
     "createAccountErr": "创建账户时发生错误。请稍后再试",
@@ -83,5 +90,9 @@
     "findGameErr": "查找游戏时发生错误。请稍后再试",
     "joinGameErr": "加入游戏时发生错误。请稍后再试",
     "fetchWordsMaxAttemptsErr": "在{attempts}次尝试后无法获取单词",
-    "unexpectedFetchWordsErr": "获取单词时发生错误"
+    "unexpectedFetchWordsErr": "获取单词时发生错误",
+    "reportUserErr": "举报用户时发生错误",
+    "blockUserErr": "屏蔽用户时发生错误",
+    "reportUserSuccess": "用户举报成功",
+    "blockUserSuccess": "用户屏蔽成功"
 }

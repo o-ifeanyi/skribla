@@ -3,11 +3,10 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:skribla/src/app/game/data/models/player_model.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 part 'generated/user_model.freezed.dart';
 part 'generated/user_model.g.dart';
-
-enum UserStatus { anonymous, verified }
 
 @freezed
 class UserModel with _$UserModel {
@@ -16,6 +15,8 @@ class UserModel with _$UserModel {
     required DateTime createdAt,
     @Default('') String name,
     @Default('') String email,
+    @Default(0) int reportCount,
+    @Default([]) List<String> blockedUsers,
     @Default(null) int? lastWordIndex,
     @Default(UserStatus.anonymous) UserStatus status,
   }) = _UserModel;

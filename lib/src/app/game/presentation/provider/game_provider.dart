@@ -7,9 +7,12 @@ import 'package:skribla/src/app/game/data/models/line_model.dart';
 import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/repository/game_repository.dart';
 import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
+import 'package:skribla/src/app/settings/presentation/provider/loc_provider.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
+import 'package:skribla/src/core/service/toast.dart';
+import 'package:skribla/src/core/util/enums.dart' as enums;
 
 part 'game_provider_ext.dart';
 
@@ -33,10 +36,12 @@ part 'game_provider_ext.dart';
 class GameProvider extends StateNotifier<GameState> {
   GameProvider({
     required this.ref,
+    required this.toast,
     required this.gameRepository,
   }) : super(const GameState());
 
   final Ref ref;
+  final Toast toast;
   final GameRepository gameRepository;
 
   StreamSubscription<GameModel?>? _gameStreamSub;
@@ -213,6 +218,43 @@ class GameProvider extends StateNotifier<GameState> {
     return res.when(
       success: (success) => success,
       error: (error) => false,
+    );
+  }
+
+  Future<bool> reportUser({
+    required String uid,
+    required String reason,
+  }) async {
+    final game = state.game;
+    if (game == null) return true;
+
+    final res = await gameRepository.reportUser(uid: uid, gameId: game.id, reason: reason);
+    return res.when(
+      success: (success) {
+        toast.showSucess(ref.read(locProvider).reportUserSuccess);
+        return success;
+      },
+      error: (error) {
+        toast.showError(error.message);
+        return false;
+      },
+    );
+  }
+
+  Future<bool> blockUser(String uid) async {
+    final game = state.game;
+    if (game == null) return true;
+
+    final res = await gameRepository.blockUser(uid);
+    return res.when(
+      success: (success) {
+        toast.showSucess(ref.read(locProvider).blockUserSuccess);
+        return success;
+      },
+      error: (error) {
+        toast.showError(error.message);
+        return false;
+      },
     );
   }
 

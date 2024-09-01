@@ -11,7 +11,7 @@ _$GameModelImpl _$$GameModelImplFromJson(Map<String, dynamic> json) => _$GameMod
       createdAt: DateTime.parse(json['created_at'] as String),
       currentPlayer: PlayerModel.fromJson(json['current_player'] as Map<String, dynamic>),
       currentWord: WordModel.fromJson(json['current_word'] as Map<String, dynamic>),
-      status: $enumDecodeNullable(_$StatusEnumMap, json['status']) ?? Status.open,
+      status: $enumDecodeNullable(_$GameStatusEnumMap, json['status']) ?? GameStatus.open,
       uids: (json['uids'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
       correctGuess:
           (json['correct_guess'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
@@ -33,7 +33,7 @@ Map<String, dynamic> _$$GameModelImplToJson(_$GameModelImpl instance) => <String
       'created_at': instance.createdAt.toIso8601String(),
       'current_player': instance.currentPlayer.toJson(),
       'current_word': instance.currentWord.toJson(),
-      'status': _$StatusEnumMap[instance.status]!,
+      'status': _$GameStatusEnumMap[instance.status]!,
       'uids': instance.uids,
       'correct_guess': instance.correctGuess,
       'players': instance.players.map((e) => e.toJson()).toList(),
@@ -43,9 +43,9 @@ Map<String, dynamic> _$$GameModelImplToJson(_$GameModelImpl instance) => <String
       'num_of_arts': instance.numOfArts,
     };
 
-const _$StatusEnumMap = {
-  Status.open: 'open',
-  Status.private: 'private',
-  Status.closed: 'closed',
-  Status.complete: 'complete',
+const _$GameStatusEnumMap = {
+  GameStatus.open: 'open',
+  GameStatus.private: 'private',
+  GameStatus.closed: 'closed',
+  GameStatus.complete: 'complete',
 };

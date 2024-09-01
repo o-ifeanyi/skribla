@@ -9,6 +9,7 @@
     "settingsBtnTxt": "Paramètres",
     "leaderboardBtnTxt": "Classement",
     "historyBtnTxt": "Historique",
+    "byUsingSkribla": "En utilisant Skribla, vous acceptez nos",
     "npts": "{number} pts",
     "nletterWord": "Mot de {number} lettres",
     "guessOrChat": "devine ou discute...",
@@ -20,6 +21,10 @@
     "completed": "Terminé!",
     "viewLeaderboard": "Voir le classement",
     "viewGallery": "Voir la galerie",
+    "report": "Signaler {name}",
+    "block": "Bloquer {name}",
+    "reasonForReporting": "raison du signalement...",
+    "continueBtnTxt": "Continuer",
     "copy": "Copier",
     "copiedToClipboard": "Copié dans le presse-papiers",
     "getReady": "Préparez-vous",
@@ -70,6 +75,8 @@
     "maybeLater": "Peut-être plus tard",
     "unavailableTitle": "Notre serveur a un petit coup de mou",
     "unavailableSubtitle": "Veuillez réessayer dans un moment. Nous serons bientôt de retour",
+    "suspendedTitle": "Compte suspendu",
+    "suspendedSubtitle": "Votre compte a été suspendu en raison de plusieurs signalements. Pour restaurer votre compte, veuillez contacter le support à",
     "signinErr": "Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard",
     "authFailedErr": "Échec de l'authentification",
     "createAccountErr": "Une erreur est survenue lors de la création du compte. Veuillez réessayer plus tard",
@@ -83,5 +90,9 @@
     "findGameErr": "Une erreur est survenue lors de la recherche du jeu. Veuillez réessayer plus tard",
     "joinGameErr": "Une erreur est survenue lors de la jonction au jeu. Veuillez réessayer plus tard",
     "fetchWordsMaxAttemptsErr": "Échec de la récupération des mots après {attempts} tentatives",
-    "unexpectedFetchWordsErr": "Une erreur s'est produite lors de la récupération des mots"
+    "unexpectedFetchWordsErr": "Une erreur s'est produite lors de la récupération des mots",
+    "reportUserErr": "Une erreur s'est produite lors du signalement de l'utilisateur",
+    "blockUserErr": "Une erreur s'est produite lors du blocage de l'utilisateur",
+    "reportUserSuccess": "Utilisateur signalé avec succès",
+    "blockUserSuccess": "Utilisateur bloqué avec succès"
 }

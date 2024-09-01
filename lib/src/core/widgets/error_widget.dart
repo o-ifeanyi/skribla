@@ -39,7 +39,10 @@ class ErrorWidget extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: Constants.email,
-                    style: const TextStyle(decoration: TextDecoration.underline),
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: context.colorScheme.primary,
+                    ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () => Support.instance.contactSupport(user),
                   ),

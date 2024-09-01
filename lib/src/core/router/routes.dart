@@ -7,4 +7,5 @@ abstract class Routes {
   static const String settings = 'settings';
   static const String update = '/update';
   static const String unavailable = '/unavailable';
+  static const String suspended = '/suspended';
 }

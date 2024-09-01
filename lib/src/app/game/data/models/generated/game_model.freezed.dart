@@ -24,7 +24,7 @@ mixin _$GameModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   PlayerModel get currentPlayer => throw _privateConstructorUsedError;
   WordModel get currentWord => throw _privateConstructorUsedError;
-  Status get status => throw _privateConstructorUsedError;
+  GameStatus get status => throw _privateConstructorUsedError;
   List<String> get uids => throw _privateConstructorUsedError;
   List<String> get correctGuess => throw _privateConstructorUsedError;
   List<PlayerModel> get players => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $GameModelCopyWith<$Res> {
       DateTime createdAt,
       PlayerModel currentPlayer,
       WordModel currentWord,
-      Status status,
+      GameStatus status,
       List<String> uids,
       List<String> correctGuess,
       List<PlayerModel> players,
@@ -112,7 +112,7 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel> implements $GameMode
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Status,
+              as GameStatus,
       uids: null == uids
           ? _value.uids
           : uids // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ abstract class _$$GameModelImplCopyWith<$Res> implements $GameModelCopyWith<$Res
       DateTime createdAt,
       PlayerModel currentPlayer,
       WordModel currentWord,
-      Status status,
+      GameStatus status,
       List<String> uids,
       List<String> correctGuess,
       List<PlayerModel> players,
@@ -235,7 +235,7 @@ class __$$GameModelImplCopyWithImpl<$Res> extends _$GameModelCopyWithImpl<$Res, 
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Status,
+              as GameStatus,
       uids: null == uids
           ? _value._uids
           : uids // ignore: cast_nullable_to_non_nullable
@@ -276,7 +276,7 @@ class _$GameModelImpl extends _GameModel {
       required this.createdAt,
       required this.currentPlayer,
       required this.currentWord,
-      this.status = Status.open,
+      this.status = GameStatus.open,
       final List<String> uids = const [],
       final List<String> correctGuess = const [],
       final List<PlayerModel> players = const [],
@@ -303,7 +303,7 @@ class _$GameModelImpl extends _GameModel {
   final WordModel currentWord;
   @override
   @JsonKey()
-  final Status status;
+  final GameStatus status;
   final List<String> _uids;
   @override
   @JsonKey()
@@ -420,7 +420,7 @@ abstract class _GameModel extends GameModel {
       required final DateTime createdAt,
       required final PlayerModel currentPlayer,
       required final WordModel currentWord,
-      final Status status,
+      final GameStatus status,
       final List<String> uids,
       final List<String> correctGuess,
       final List<PlayerModel> players,
@@ -441,7 +441,7 @@ abstract class _GameModel extends GameModel {
   @override
   WordModel get currentWord;
   @override
-  Status get status;
+  GameStatus get status;
   @override
   List<String> get uids;
   @override

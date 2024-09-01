@@ -12,10 +12,15 @@ class PlayerModel with _$PlayerModel {
     required DateTime createdAt,
     @Default(0) int points,
     @Default([]) List<WordModel> words,
+    @Default([]) List<String> blockedUsers,
   }) = _PlayerModel;
 
   const PlayerModel._();
   factory PlayerModel.fromJson(Map<String, Object?> json) => _$PlayerModelFromJson(json);
 
   WordModel? get nextWord => words.where((word) => word.available).firstOrNull;
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes, hash_and_equals
+  bool operator ==(Object other) => other is PlayerModel && uid == other.uid;
 }

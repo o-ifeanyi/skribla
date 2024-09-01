@@ -24,6 +24,8 @@ mixin _$UserModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  int get reportCount => throw _privateConstructorUsedError;
+  List<String> get blockedUsers => throw _privateConstructorUsedError;
   int? get lastWordIndex => throw _privateConstructorUsedError;
   UserStatus get status => throw _privateConstructorUsedError;
 
@@ -46,6 +48,8 @@ abstract class $UserModelCopyWith<$Res> {
       DateTime createdAt,
       String name,
       String email,
+      int reportCount,
+      List<String> blockedUsers,
       int? lastWordIndex,
       UserStatus status});
 }
@@ -68,6 +72,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserMode
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
+    Object? reportCount = null,
+    Object? blockedUsers = null,
     Object? lastWordIndex = freezed,
     Object? status = null,
   }) {
@@ -88,6 +94,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel> implements $UserMode
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      reportCount: null == reportCount
+          ? _value.reportCount
+          : reportCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      blockedUsers: null == blockedUsers
+          ? _value.blockedUsers
+          : blockedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       lastWordIndex: freezed == lastWordIndex
           ? _value.lastWordIndex
           : lastWordIndex // ignore: cast_nullable_to_non_nullable
@@ -111,6 +125,8 @@ abstract class _$$UserModelImplCopyWith<$Res> implements $UserModelCopyWith<$Res
       DateTime createdAt,
       String name,
       String email,
+      int reportCount,
+      List<String> blockedUsers,
       int? lastWordIndex,
       UserStatus status});
 }
@@ -130,6 +146,8 @@ class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, 
     Object? createdAt = null,
     Object? name = null,
     Object? email = null,
+    Object? reportCount = null,
+    Object? blockedUsers = null,
     Object? lastWordIndex = freezed,
     Object? status = null,
   }) {
@@ -150,6 +168,14 @@ class __$$UserModelImplCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, 
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      reportCount: null == reportCount
+          ? _value.reportCount
+          : reportCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      blockedUsers: null == blockedUsers
+          ? _value._blockedUsers
+          : blockedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       lastWordIndex: freezed == lastWordIndex
           ? _value.lastWordIndex
           : lastWordIndex // ignore: cast_nullable_to_non_nullable
@@ -170,9 +196,12 @@ class _$UserModelImpl extends _UserModel {
       required this.createdAt,
       this.name = '',
       this.email = '',
+      this.reportCount = 0,
+      final List<String> blockedUsers = const [],
       this.lastWordIndex = null,
       this.status = UserStatus.anonymous})
-      : super._();
+      : _blockedUsers = blockedUsers,
+        super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) => _$$UserModelImplFromJson(json);
 
@@ -188,6 +217,18 @@ class _$UserModelImpl extends _UserModel {
   final String email;
   @override
   @JsonKey()
+  final int reportCount;
+  final List<String> _blockedUsers;
+  @override
+  @JsonKey()
+  List<String> get blockedUsers {
+    if (_blockedUsers is EqualUnmodifiableListView) return _blockedUsers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_blockedUsers);
+  }
+
+  @override
+  @JsonKey()
   final int? lastWordIndex;
   @override
   @JsonKey()
@@ -195,7 +236,7 @@ class _$UserModelImpl extends _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, lastWordIndex: $lastWordIndex, status: $status)';
+    return 'UserModel(uid: $uid, createdAt: $createdAt, name: $name, email: $email, reportCount: $reportCount, blockedUsers: $blockedUsers, lastWordIndex: $lastWordIndex, status: $status)';
   }
 
   @override
@@ -207,6 +248,8 @@ class _$UserModelImpl extends _UserModel {
             (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.reportCount, reportCount) || other.reportCount == reportCount) &&
+            const DeepCollectionEquality().equals(other._blockedUsers, _blockedUsers) &&
             (identical(other.lastWordIndex, lastWordIndex) ||
                 other.lastWordIndex == lastWordIndex) &&
             (identical(other.status, status) || other.status == status));
@@ -214,7 +257,8 @@ class _$UserModelImpl extends _UserModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, createdAt, name, email, lastWordIndex, status);
+  int get hashCode => Object.hash(runtimeType, uid, createdAt, name, email, reportCount,
+      const DeepCollectionEquality().hash(_blockedUsers), lastWordIndex, status);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -238,6 +282,8 @@ abstract class _UserModel extends UserModel {
       required final DateTime createdAt,
       final String name,
       final String email,
+      final int reportCount,
+      final List<String> blockedUsers,
       final int? lastWordIndex,
       final UserStatus status}) = _$UserModelImpl;
   const _UserModel._() : super._();
@@ -252,6 +298,10 @@ abstract class _UserModel extends UserModel {
   String get name;
   @override
   String get email;
+  @override
+  int get reportCount;
+  @override
+  List<String> get blockedUsers;
   @override
   int? get lastWordIndex;
   @override

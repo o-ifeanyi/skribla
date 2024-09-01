@@ -9,6 +9,7 @@
     "settingsBtnTxt": "Configuraciones",
     "leaderboardBtnTxt": "Tabla de clasificación",
     "historyBtnTxt": "Historial",
+    "byUsingSkribla": "Al usar Skribla, aceptas nuestros",
     "npts": "{number} pts",
     "nletterWord": "Palabra de {number} letras",
     "guessOrChat": "adivina o chatea...",
@@ -20,6 +21,10 @@
     "completed": "¡Completado!",
     "viewLeaderboard": "Ver la tabla de clasificación",
     "viewGallery": "Ver galería",
+    "report": "Reportar a {name}",
+    "block": "Bloquear a {name}",
+    "reasonForReporting": "razón para reportar...",
+    "continueBtnTxt": "Continuar",
     "copy": "Copiar",
     "copiedToClipboard": "Copiado al portapapeles",
     "getReady": "Prepárate",
@@ -70,6 +75,8 @@
     "maybeLater": "Quizás más tarde",
     "unavailableTitle": "Nuestro servidor está un poco caído",
     "unavailableSubtitle": "Por favor, inténtalo de nuevo en unos momentos. Estaremos de vuelta en breve",
+    "suspendedTitle": "Cuenta suspendida",
+    "suspendedSubtitle": "Tu cuenta ha sido suspendida debido a múltiples reportes. Para restaurar tu cuenta, por favor contacta al soporte en",
     "signinErr": "Ocurrió un error al iniciar sesión. Por favor, inténtalo de nuevo más tarde",
     "authFailedErr": "Autenticación fallida",
     "createAccountErr": "Ocurrió un error al crear la cuenta. Por favor, inténtalo de nuevo más tarde",
@@ -83,5 +90,9 @@
     "findGameErr": "Ocurrió un error al buscar el juego. Por favor, inténtalo de nuevo más tarde",
     "joinGameErr": "Ocurrió un error al unirse al juego. Por favor, inténtalo de nuevo más tarde",
     "fetchWordsMaxAttemptsErr": "No se pudieron obtener las palabras después de {attempts} intentos",
-    "unexpectedFetchWordsErr": "Ocurrió un error al obtener las palabras"
+    "unexpectedFetchWordsErr": "Ocurrió un error al obtener las palabras",
+    "reportUserErr": "Ocurrió un error al reportar al usuario",
+    "blockUserErr": "Ocurrió un error al bloquear al usuario",
+    "reportUserSuccess": "Usuario reportado con éxito",
+    "blockUserSuccess": "Usuario bloqueado con éxito"
 }
