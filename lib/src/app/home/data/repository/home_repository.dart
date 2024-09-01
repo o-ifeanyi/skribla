@@ -10,6 +10,7 @@ import 'package:skribla/src/app/game/data/models/word_model.dart';
 import 'package:skribla/src/core/resource/firebase_paths.dart';
 import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/feature_flags.dart';
 import 'package:skribla/src/core/util/result.dart';
 
@@ -50,10 +51,14 @@ final class HomeRepository {
   ///
   /// Parameters:
   ///   [user] - The UserModel of the player creating the game
+  ///   [status] - The starting GameStatus of the the game i.e (open or private)
   ///
   /// Returns:
   ///   A [Result] containing the game ID if successful, or an error if not.
-  Future<Result<String>> createGame(UserModel user) async {
+  Future<Result<String>> createGame(
+    UserModel user, {
+    GameStatus status = GameStatus.open,
+  }) async {
     try {
       _logger.request('Creating game - ${user.uid}');
 
@@ -67,7 +72,7 @@ final class HomeRepository {
         id: doc.id,
         currentPlayer: player,
         currentWord: words.first,
-        status: Status.private,
+        status: status,
         players: [player],
         uids: [player.uid],
         online: [player.uid],
@@ -93,9 +98,8 @@ final class HomeRepository {
   /// This method performs the following steps:
   /// 1. Fetches words for the player
   /// 2. Searches for an open game
-  /// 3. If no open game is found, creates a new game
-  /// 4. If an open game is found, joins it
-  /// 5. Updates the user's last word index
+  /// 3. If an open game is found, joins it
+  /// 4. If no open game is found, creates a new game
   ///
   /// Parameters:
   ///   [user] - The UserModel of the player finding/creating a game
@@ -106,62 +110,21 @@ final class HomeRepository {
     try {
       _logger.request('Finding game - ${user.uid}');
 
-      // Fetch player words first (outside the transaction as it's a separate collection)
-      final words = await _getWords(user.lastWordIndex);
-
       return await firebaseFirestore.runTransaction<Result<String>>((transaction) async {
         // Query for open games
         final ongoingGames = await firebaseFirestore
             .collection(FirebasePaths.games)
-            .where('status', isEqualTo: Status.open.name)
+            .where('status', isEqualTo: GameStatus.open.name)
             .limit(1)
             .get();
 
-        if (ongoingGames.docs.isEmpty) {
-          // Create a new game if no open games are found
-          _logger.info('Creating game');
-          final player = user.toPlayer().copyWith(words: words);
-          final doc = firebaseFirestore.collection(FirebasePaths.games).doc();
-          final game = GameModel(
-            id: doc.id,
-            currentPlayer: player,
-            currentWord: words.first,
-            players: [player],
-            uids: [player.uid],
-            online: [player.uid],
-            createdAt: DateTime.now(),
-          );
-          transaction.set(doc, game.toJson());
-          await _updateUserLastWordIndex(user.uid, words.last.index);
-          return Result.success(game.id);
-        } else {
+        if (ongoingGames.docs.isNotEmpty) {
           // Join an existing game
-          _logger.info('Joining game');
-
           final doc = ongoingGames.docs.first;
-          final game = GameModel.fromJson(doc.data());
-          final player = game.players.firstWhere(
-            (e) => e.uid == user.uid,
-            orElse: () => user.toPlayer().copyWith(words: words),
-          );
-
-          // Update the game data, ensuring uniqueness
-          final updatedPlayers = {...game.players, player}.toList();
-          final updatedUids = {...game.uids, player.uid}.toList();
-          final updatedOnline = {...game.online, player.uid}.toList();
-
-          // Check if the game should be closed
-          final newStatus = updatedOnline.length >= game.numOfPlayers ? Status.closed : game.status;
-
-          // Perform the update
-          transaction.update(doc.reference, {
-            'players': updatedPlayers.map((p) => p.toJson()).toList(),
-            'uids': updatedUids,
-            'online': updatedOnline,
-            'status': newStatus.name,
-          });
-          unawaited(_updateUserLastWordIndex(user.uid, words.last.index));
-          return Result.success(game.id);
+          return joinGame(id: doc.id, user: user);
+        } else {
+          // Create a new game if no open games are found
+          return createGame(user);
         }
       });
     } on CustomError catch (e, s) {
@@ -178,9 +141,11 @@ final class HomeRepository {
   /// This method performs the following steps:
   /// 1. Checks if the specified game exists and is joinable
   /// 2. If the game doesn't exist or isn't joinable, calls findGame instead
-  /// 3. Fetches words for the player
-  /// 4. Updates the game document to include the new player
-  /// 5. Updates the user's last word index
+  /// 3. If a block conflict exists (i.e user has blocked a player in the game or
+  ///    a player in the game has blocked user), create game instead
+  /// 4. Fetches words for the player
+  /// 5. Updates the game document to include the new player
+  /// 6. Updates the user's last word index
   ///
   /// Parameters:
   ///   [id] - The ID of the game to join
@@ -194,13 +159,20 @@ final class HomeRepository {
       final data = await firebaseFirestore.collection(FirebasePaths.games).doc(id).get();
 
       if (!data.exists) {
+        _logger.info('Game does not exist');
         return findGame(user);
       }
 
       final game = GameModel.fromJson(data.data()!);
 
-      if (game.status == Status.closed || game.status == Status.complete) {
+      if (game.status == GameStatus.closed || game.status == GameStatus.complete) {
+        _logger.info('Game is ${game.status}');
         return findGame(user);
+      }
+
+      if (game.hasBlockedUserConflict(user)) {
+        _logger.info('User has block conflict');
+        return createGame(user);
       }
 
       // fetch player words first
@@ -218,7 +190,7 @@ final class HomeRepository {
           'uids': FieldValue.arrayUnion([player.uid]),
           'online': FieldValue.arrayUnion([player.uid]),
           if (game.online.length >= game.numOfPlayers - 1) ...{
-            'status': Status.closed.name,
+            'status': GameStatus.closed.name,
           },
         },
       );
