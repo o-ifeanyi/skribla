@@ -3,14 +3,17 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skribla/src/app/auth/data/models/user_model.dart';
 import 'package:skribla/src/app/game/data/models/game_model.dart';
 import 'package:skribla/src/app/game/data/models/message_model.dart';
 import 'package:skribla/src/app/game/data/models/player_model.dart';
+import 'package:skribla/src/app/game/data/models/report_model.dart';
 import 'package:skribla/src/app/history/data/models/exhibit_model.dart';
 import 'package:skribla/src/app/leaderboard/data/repository/leaderboard_repository.dart';
 import 'package:skribla/src/core/resource/firebase_paths.dart';
 import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/result.dart';
 
 /// Repository class for managing game-related data operations.
@@ -83,7 +86,7 @@ final class GameRepository {
         {
           'online': FieldValue.arrayRemove([uid]),
           if (game.online.length == 1) ...{
-            'status': Status.complete.name,
+            'status': GameStatus.complete.name,
           },
         },
       );
@@ -195,7 +198,7 @@ final class GameRepository {
           if (nextPlayerAndWord.word != null) ...{
             'current_word': nextPlayerAndWord.word!.toJson(),
           } else ...{
-            'status': Status.complete.name,
+            'status': GameStatus.complete.name,
           },
         },
       );
@@ -338,6 +341,73 @@ final class GameRepository {
     } catch (e, s) {
       _logger.error('getMessages - $e', stack: s);
       return const Stream.empty();
+    }
+  }
+
+  /// Reports a user for a specific reason within a game.
+  ///
+  /// This method logs a report against a user within a game, incrementing their report count.
+  /// If the user's report count exceeds a certain threshold, their account status is updated to suspended.
+  ///
+  /// Parameters:
+  /// - [uid]: The ID of the user being reported.
+  /// - [gameId]: The ID of the game in which the report is being made.
+  /// - [reason]: The reason for the report.
+  ///
+  /// Returns a [Future<Result<bool>>] indicating the success or failure of the operation.
+  Future<Result<bool>> reportUser({
+    required String uid,
+    required String gameId,
+    required String reason,
+  }) async {
+    try {
+      _logger.request('Reporting user - $reason');
+      final model = ReportModel(uid, gameId, reason, DateTime.now());
+      await firebaseFirestore.collection(FirebasePaths.reports).doc().set(model.toJson());
+
+      final doc = firebaseFirestore.collection(FirebasePaths.users).doc(uid);
+      final data = await doc.get();
+      final user = UserModel.fromJson(data.data()!);
+      await firebaseFirestore.collection(FirebasePaths.users).doc(uid).update(
+        {
+          'report_count': FieldValue.increment(1),
+          if (user.reportCount + 1 >= 5 && user.status != UserStatus.suspended) ...{
+            'status': UserStatus.suspended.name,
+          },
+        },
+      );
+
+      return const Result.success(true);
+    } catch (e, s) {
+      _logger.error('reportUser - $e', stack: s);
+      return Result.error(CustomError(message: loc.reportUserErr));
+    }
+  }
+
+  /// Blocks a user.
+  ///
+  /// This method adds the user's ID to the current user's list of blocked users.
+  ///
+  /// Parameters:
+  /// - [uid]: The ID of the user to be blocked.
+  ///
+  /// Returns a [Future<Result<bool>>] indicating the success or failure of the operation.
+  Future<Result<bool>> blockUser(String uid) async {
+    try {
+      _logger.request('Blocking user - $uid');
+      await firebaseFirestore
+          .collection(FirebasePaths.users)
+          .doc(firebaseAuth.currentUser!.uid)
+          .update(
+        {
+          'blocked_users': FieldValue.arrayUnion([uid]),
+        },
+      );
+
+      return const Result.success(true);
+    } catch (e, s) {
+      _logger.error('blockUser - $e', stack: s);
+      return Result.error(CustomError(message: loc.blockUserErr));
     }
   }
 }

@@ -9,6 +9,7 @@ import 'package:skribla/src/app/history/presentation/widgets/shared_widget.dart'
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 class ExhibitsScreen extends ConsumerStatefulWidget {
   const ExhibitsScreen({

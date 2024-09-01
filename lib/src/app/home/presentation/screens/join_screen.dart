@@ -7,6 +7,7 @@ import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/router/routes.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/app_button.dart';
 import 'package:skribla/src/core/widgets/input_field.dart';

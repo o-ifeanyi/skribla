@@ -5,11 +5,10 @@ import 'package:skribla/src/app/leaderboard/data/models/leaderboard_model.dart';
 import 'package:skribla/src/core/resource/firebase_paths.dart';
 import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/util/constants.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/util/result.dart';
 import 'package:skribla/src/core/util/types.dart';
-
-enum LeaderboardType { monthly, alltime }
 
 final _positionCache = <LeaderboardType, CachedData<LeaderboardPosition>>{};
 

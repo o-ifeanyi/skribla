@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skribla/env/env.dart';
-import 'package:skribla/src/app/game/data/models/game_model.dart';
-import 'package:skribla/src/app/game/presentation/provider/timer_state.dart';
 import 'package:skribla/src/app/game/presentation/widgets/art_painter.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
@@ -12,6 +10,7 @@ import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/support.dart';
 import 'package:skribla/src/core/service/toast.dart';
 import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/app_button.dart';
 import 'package:skribla/src/core/widgets/input_field.dart';
@@ -74,7 +73,7 @@ class DrawBoard extends ConsumerWidget {
                       ),
                       color: context.colorScheme.surface,
                     ),
-                    child: ((game?.canDraw(user?.uid) ?? false) && timerType != TimerType.cool)
+                    child: ((game?.canDraw(user?.uid) ?? false) && timerType == TimerType.turn)
                         ? Text(
                             game?.currentWord.locText ?? '',
                             style: context.textTheme.bodySmall?.copyWith(

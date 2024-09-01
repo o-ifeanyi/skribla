@@ -3,6 +3,7 @@ import 'package:skribla/src/app/auth/data/repository/auth_repository.dart';
 import 'package:skribla/src/app/auth/presentation/provider/auth_state.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/toast.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 /// A provider class for managing authentication-related operations.
 ///

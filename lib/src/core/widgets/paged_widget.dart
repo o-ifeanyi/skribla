@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart' hide ErrorWidget;
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/widgets/error_widget.dart';
-
-enum PageType { grid, list }
 
 class PagedWidget<T> extends StatelessWidget {
   const PagedWidget({

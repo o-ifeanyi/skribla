@@ -3,12 +3,7 @@ import 'package:flutter/foundation.dart' show PlatformDispatcher;
 import 'package:flutter/material.dart';
 import 'package:skribla/src/core/theme/colors.dart';
 import 'package:skribla/src/core/util/config.dart';
-
-enum ThemeOptions {
-  light,
-  dark,
-  system,
-}
+import 'package:skribla/src/core/util/enums.dart';
 
 abstract class AppTheme {
   static Color get green => const Color(0xFF5AC71C);

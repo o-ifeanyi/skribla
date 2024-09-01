@@ -13,7 +13,7 @@ class _BoardOverlay extends ConsumerWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (game?.status == Status.complete) ...[
+        if (game?.status == GameStatus.complete) ...[
           Text.rich(
             TextSpan(
               text: '${context.loc.game} ',
@@ -55,7 +55,7 @@ class _BoardOverlay extends ConsumerWidget {
           ),
         ] else if ((game?.online ?? []).length < 2) ...[
           Text(
-            game?.status == Status.private
+            game?.status == GameStatus.private
                 ? context.loc.privateWaitingTxt
                 : context.loc.publicWaitingTxt,
             style: context.textTheme.titleMedium,

@@ -5,8 +5,6 @@ import 'package:skribla/src/app/game/data/models/word_model.dart';
 
 part 'generated/exhibit_model.g.dart';
 
-enum WordCategory { all }
-
 @JsonSerializable()
 class ExhibitModel {
   const ExhibitModel({

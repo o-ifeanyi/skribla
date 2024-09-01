@@ -4,6 +4,7 @@ import 'package:skribla/src/app/home/data/repository/home_repository.dart';
 import 'package:skribla/src/app/home/presentation/provider/home_state.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/service/toast.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 /// A provider class that manages the home screen state and operations.
 ///
@@ -46,7 +47,7 @@ class HomeProvider extends StateNotifier<HomeState> {
   Future<String?> createGame(UserModel user) async {
     state = state.copyWith(status: HomeStatus.creatingGame);
     await _updateUserNameIfNeeded(user);
-    final res = await homeRepository.createGame(user);
+    final res = await homeRepository.createGame(user, status: GameStatus.private);
     state = state.copyWith(status: HomeStatus.idle);
     return res.when(
       success: (id) => id,

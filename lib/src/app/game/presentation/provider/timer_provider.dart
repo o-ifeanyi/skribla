@@ -6,6 +6,7 @@ import 'package:skribla/src/app/game/presentation/provider/timer_state.dart';
 import 'package:skribla/src/core/service/haptics.dart';
 import 'package:skribla/src/core/service/logger.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 class TimerProvider extends StateNotifier<TimerState> {
   TimerProvider() : super(const TimerState());
@@ -18,10 +19,14 @@ class TimerProvider extends StateNotifier<TimerState> {
   Timer? _completeTimer;
 
   void reset() {
-    stopSkipTimer();
-    _stopCoolTimer();
-    stopTurnTimer();
-    stopCompleteTimer();
+    _skipTimer?.cancel();
+    _skipTimer = null;
+    _coolTimer?.cancel();
+    _coolTimer = null;
+    _turnTimer?.cancel();
+    _turnTimer = null;
+    _completeTimer?.cancel();
+    _completeTimer = null;
     state = const TimerState();
   }
 

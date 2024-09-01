@@ -1,8 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 part 'generated/timer_state.freezed.dart';
-
-enum TimerType { cool, skip, turn, complete, idle }
 
 @freezed
 class TimerState with _$TimerState {

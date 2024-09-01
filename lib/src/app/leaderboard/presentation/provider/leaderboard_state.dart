@@ -1,10 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:skribla/src/app/leaderboard/data/models/leaderboard_model.dart';
-import 'package:skribla/src/app/leaderboard/data/repository/leaderboard_repository.dart';
+import 'package:skribla/src/core/util/enums.dart';
 
 part 'generated/leaderboard_state.freezed.dart';
-
-enum LeaderboardStatus { idle, gettingUserPosition }
 
 @freezed
 class LeaderboardState with _$LeaderboardState {

@@ -8,8 +8,8 @@ import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/resource/app_icons.dart';
 import 'package:skribla/src/core/service/analytics.dart';
 import 'package:skribla/src/core/service/support.dart';
-import 'package:skribla/src/core/theme/app_theme.dart';
 import 'package:skribla/src/core/util/config.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/extension.dart';
 import 'package:skribla/src/core/widgets/default_app_bar.dart';
 

@@ -8,13 +8,8 @@ import 'package:skribla/env/env.dart';
 import 'package:skribla/src/app/auth/data/models/user_model.dart';
 import 'package:skribla/src/core/resource/firebase_paths.dart';
 import 'package:skribla/src/core/service/logger.dart';
+import 'package:skribla/src/core/util/enums.dart';
 import 'package:skribla/src/core/util/result.dart';
-
-/// Enum for specifying the authentication option.
-///
-/// This enum is used to determine the authentication provider to use for signing in.
-/// It currently supports two options: Apple and Google.
-enum AuthOptions { apple, google }
 
 /// Repository class for managing auth-related data operations.
 ///

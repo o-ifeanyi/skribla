@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skribla/src/core/util/config.dart';
-
-enum ButtonType { filled, outlined, elevated, text }
+import 'package:skribla/src/core/util/enums.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({

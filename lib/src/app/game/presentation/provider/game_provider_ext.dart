@@ -26,12 +26,12 @@ extension GameProviderExt on GameProvider {
     if (prev == null) {
       update();
       return;
-    } else if (current.status == Status.complete) {
+    } else if (current.status == enums.GameStatus.complete) {
       // game ended
       // stop all timers & cancel sunscription
       if (current.online.first == user?.uid) {
         Analytics.instance.capture(
-          Event.gameEnd,
+          enums.Event.gameEnd,
           properties: {
             'num_of_arts': current.numOfArts,
             'num_of_players': current.players.length,
@@ -69,6 +69,7 @@ extension GameProviderExt on GameProvider {
       timer
         ..stopSkipTimer()
         ..stopCompleteTimer()
+        ..stopTurnTimer()
         ..startCoolTimer(
           callback: () {
             timer.startSkipTimer(

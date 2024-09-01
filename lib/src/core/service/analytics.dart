@@ -2,34 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:lukehog/lukehog.dart';
 import 'package:skribla/env/env.dart';
 import 'package:skribla/src/core/service/logger.dart';
-
-/// Enum for defining analytics events.
-///
-/// This enum is used to specify the type of event to be tracked in the analytics service.
-/// Each event has a corresponding value that is used to identify the event in the analytics service.
-///
-/// Usage:
-/// This enum is used in conjunction with the Analytics service to track specific events in the application.
-/// For example, when the app is opened, the `appOpen` event is captured using the Analytics service.
-/// Similarly, when a game is played, the `playGame` event is captured.
-///
-
-enum Event {
-  appOpen('app_open'),
-  playGame('play_game'),
-  createGame('create_game'),
-  joinGame('join_game'),
-  copyLink('copy_link'),
-  viewLeaderboard('view_leaderboard'),
-  viewHistory('view_history'),
-  viewSettings('view_settings'),
-  shareArt('share_art'),
-  gameEnd('game_end'),
-  signUp('sign_up');
-
-  const Event(this.value);
-  final String value;
-}
+import 'package:skribla/src/core/util/enums.dart';
 
 /// A singleton class for managing analytics in the application.
 ///
