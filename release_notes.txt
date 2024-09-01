@@ -1,7 +1,6 @@
 ## What's Changed
-* fix ios and macos flavor issues by o-ifeanyi
-* consider height when changing game screen layout by o-ifeanyi
-* fix macos build by o-ifeanyi
-* new prod build by o-ifeanyi
+* refactor enums by o-ifeanyi
+* refactor findGame to use creat or join game methods by o-ifeanyi
+* implement safety options (report/block user) and account suspension based on number of reports by o-ifeanyi
 
-**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.1.6+7...0.1.9+10
+**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.2.0+11...0.2.1+12

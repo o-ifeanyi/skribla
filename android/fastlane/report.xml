@@ -5,37 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.00039">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000479">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: Switch to android set_full_version lane" time="0.000136">
+      <testcase classname="fastlane.lanes" name="1: Switch to android set_full_version lane" time="0.00011">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.002084">
+      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.001249">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: android_set_version_name" time="0.002033">
+      <testcase classname="fastlane.lanes" name="3: android_set_version_name" time="0.001961">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: android_set_version_code" time="0.000807">
+      <testcase classname="fastlane.lanes" name="4: android_set_version_code" time="0.000736">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: shorebird_release" time="312.158688">
+      <testcase classname="fastlane.lanes" name="5: shorebird_release" time="215.856127">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: upload_to_play_store" time="106.563272">
+      <testcase classname="fastlane.lanes" name="6: upload_to_play_store" time="55.9836">
         
       </testcase>
     
