@@ -130,7 +130,7 @@ final class AuthRepository {
       return await getUser();
     } catch (e, s) {
       _logger.error('signInWithProvider - $e', stack: s);
-      return Result.error(CustomError(message: loc.createAccountErr));
+      return Result.error(CustomError(message: loc.signinErr));
     }
   }
 

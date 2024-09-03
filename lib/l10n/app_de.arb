@@ -79,7 +79,6 @@
     "suspendedSubtitle": "Ihr Konto wurde aufgrund mehrerer Meldungen gesperrt. Um Ihr Konto wiederherzustellen, wenden Sie sich bitte an den Support unter",
     "signinErr": "Beim Anmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "authFailedErr": "Authentifizierung fehlgeschlagen",
-    "createAccountErr": "Beim Erstellen des Kontos ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "saveUserErr": "Beim Speichern des Benutzers ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "userNotErr": "Benutzer nicht gefunden",
     "getUserErr": "Beim Abrufen des Benutzers ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut",

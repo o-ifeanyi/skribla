@@ -135,7 +135,6 @@
     "suspendedSubtitle": "Your account has been suspended due to multiple reports. To restore your account please contact support at",
     "signinErr": "An error occurred while signing in. Please try again later",
     "authFailedErr": "Authenticataion failed",
-    "createAccountErr": "An error occurred while creating account. Please try again later",
     "saveUserErr": "An error occurred while saving user. Please try again later",
     "userNotErr": "User not found",
     "getUserErr": "An error occurred while getting user. Please try again later",

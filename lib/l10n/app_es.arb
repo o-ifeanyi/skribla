@@ -79,7 +79,6 @@
     "suspendedSubtitle": "Tu cuenta ha sido suspendida debido a múltiples reportes. Para restaurar tu cuenta, por favor contacta al soporte en",
     "signinErr": "Ocurrió un error al iniciar sesión. Por favor, inténtalo de nuevo más tarde",
     "authFailedErr": "Autenticación fallida",
-    "createAccountErr": "Ocurrió un error al crear la cuenta. Por favor, inténtalo de nuevo más tarde",
     "saveUserErr": "Ocurrió un error al guardar el usuario. Por favor, inténtalo de nuevo más tarde",
     "userNotErr": "Usuario no encontrado",
     "getUserErr": "Ocurrió un error al obtener el usuario. Por favor, inténtalo de nuevo más tarde",

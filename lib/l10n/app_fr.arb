@@ -79,7 +79,6 @@
     "suspendedSubtitle": "Votre compte a été suspendu en raison de plusieurs signalements. Pour restaurer votre compte, veuillez contacter le support à",
     "signinErr": "Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard",
     "authFailedErr": "Échec de l'authentification",
-    "createAccountErr": "Une erreur est survenue lors de la création du compte. Veuillez réessayer plus tard",
     "saveUserErr": "Une erreur est survenue lors de l'enregistrement de l'utilisateur. Veuillez réessayer plus tard",
     "userNotErr": "Utilisateur non trouvé",
     "getUserErr": "Une erreur est survenue lors de la récupération de l'utilisateur. Veuillez réessayer plus tard",

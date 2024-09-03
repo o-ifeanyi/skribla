@@ -79,7 +79,6 @@
     "suspendedSubtitle": "由于多次被举报，您的账户已被暂停。要恢复您的账户，请联系支持：",
     "signinErr": "登录时发生错误。请稍后再试",
     "authFailedErr": "身份验证失败",
-    "createAccountErr": "创建账户时发生错误。请稍后再试",
     "saveUserErr": "保存用户时发生错误。请稍后再试",
     "userNotErr": "未找到用户",
     "getUserErr": "获取用户时发生错误。请稍后再试",
