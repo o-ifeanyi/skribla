@@ -6,6 +6,7 @@ import 'package:skribla/src/app/game/presentation/widgets/draw_board.dart';
 import 'package:skribla/src/app/game/presentation/widgets/message_view.dart';
 import 'package:skribla/src/app/game/presentation/widgets/players_view.dart';
 import 'package:skribla/src/app/game/presentation/widgets/send_message_field.dart';
+import 'package:skribla/src/app/game/presentation/widgets/star_confetti.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/util/config.dart';
 import 'package:skribla/src/core/util/extension.dart';
@@ -41,103 +42,116 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       },
       child: GestureDetector(
         onTap: FocusScope.of(context).unfocus,
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: DefaultAppBar(
-            title: Consumer(
-              builder: (context, timer, child) {
-                final state = timer.watch(timerProvider);
-                if (state.showTimer) {
-                  return ProgressBar(
-                    key: ValueKey(state.timerType),
-                    duration: state.timerDuration,
-                  );
-                }
-                return const SizedBox.shrink();
-              },
-            ),
-          ),
-          body: Column(
-            children: [
-              if (Config.width > 800 && Config.width > Config.height) ...[
-                Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Column(
+        child: Stack(
+          children: [
+            Scaffold(
+              resizeToAvoidBottomInset: false,
+              appBar: DefaultAppBar(
+                title: Consumer(
+                  builder: (context, timer, child) {
+                    final state = timer.watch(timerProvider);
+                    if (state.showTimer) {
+                      return ProgressBar(
+                        key: ValueKey(state.timerType),
+                        duration: state.timerDuration,
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  },
+                ),
+              ),
+              body: Column(
+                children: [
+                  if (Config.width > 800 && Config.width > Config.height) ...[
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              children: [
+                                const Expanded(child: RepaintBoundary(child: DrawBoard())),
+                                const BoardConfig(),
+                                Config.vBox8,
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: Config.fromLTRB(0, 0, 15, 0),
+                              child: Column(
+                                children: [
+                                  const Expanded(child: PlayersView()),
+                                  Config.vBox8,
+                                  Expanded(child: MessagesView(id: widget.id)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ] else ...[
+                    const Expanded(
+                      flex: 3,
+                      child: RepaintBoundary(child: DrawBoard()),
+                    ),
+                    const BoardConfig(),
+                    Config.vBox8,
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: Config.symmetric(h: 15),
+                        child: Row(
                           children: [
-                            const Expanded(child: RepaintBoundary(child: DrawBoard())),
-                            const BoardConfig(),
-                            Config.vBox8,
+                            const Expanded(child: PlayersView()),
+                            Config.hBox8,
+                            Expanded(
+                              flex: 3,
+                              child: MessagesView(id: widget.id),
+                            ),
                           ],
                         ),
                       ),
-                      Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: Config.fromLTRB(0, 0, 15, 0),
-                          child: Column(
-                            children: [
-                              const Expanded(child: PlayersView()),
-                              Config.vBox8,
-                              Expanded(child: MessagesView(id: widget.id)),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ] else ...[
-                const Expanded(
-                  flex: 3,
-                  child: RepaintBoundary(child: DrawBoard()),
-                ),
-                const BoardConfig(),
-                Config.vBox8,
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: Config.symmetric(h: 15),
-                    child: Row(
-                      children: [
-                        const Expanded(child: PlayersView()),
-                        Config.hBox8,
-                        Expanded(
-                          flex: 3,
-                          child: MessagesView(id: widget.id),
-                        ),
-                      ],
                     ),
+                  ],
+                  ValueListenableBuilder(
+                    valueListenable: _bottomSheetHeight,
+                    builder: (context, height, child) {
+                      return SizedBox(height: height);
+                    },
                   ),
-                ),
-              ],
-              ValueListenableBuilder(
-                valueListenable: _bottomSheetHeight,
-                builder: (context, height, child) {
-                  return SizedBox(height: height);
-                },
+                  Config.vBox8,
+                ],
               ),
-              Config.vBox8,
-            ],
-          ),
-          bottomSheet: Column(
-            key: _bottomSheetKey,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AnimatedPadding(
-                duration: const Duration(milliseconds: 50),
-                padding: context.padding.copyWith(
-                  top: Config.h(8),
-                  left: Config.w(15),
-                  right: Config.w(15),
-                  bottom: context.viewInsets.bottom + (kIsWeb ? 8 : 30),
-                ),
-                child: const SendMessageField(),
+              bottomSheet: Column(
+                key: _bottomSheetKey,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AnimatedPadding(
+                    duration: const Duration(milliseconds: 50),
+                    padding: context.padding.copyWith(
+                      top: Config.h(8),
+                      left: Config.w(15),
+                      right: Config.w(15),
+                      bottom: context.viewInsets.bottom + (kIsWeb ? 8 : 30),
+                    ),
+                    child: const SendMessageField(),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            SafeArea(
+              bottom: false,
+              child: Align(
+                alignment: AlignmentDirectional.topCenter,
+                child: StarConfetti(
+                  confettiController: ref.read(gameProvider.notifier).confettiController,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

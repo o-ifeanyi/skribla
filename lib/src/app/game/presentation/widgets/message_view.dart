@@ -45,17 +45,7 @@ class _MessagesViewState extends State<MessagesView> {
                 separatorBuilder: (_, __) => Config.vBox8,
                 itemBuilder: (context, index) {
                   final message = data.reversed.toList()[index];
-                  return _MessageBubble(
-                    title: switch (message.messageType) {
-                      MessageType.correctGuess || MessageType.wordReveal => context.loc.gamebot,
-                      _ => message.name,
-                    },
-                    subtitle: switch (message.messageType) {
-                      MessageType.correctGuess => context.loc.correctGuessMsg(message.text),
-                      MessageType.wordReveal => context.loc.revealWordMsg(message.locText),
-                      _ => message.text,
-                    },
-                  );
+                  return _MessageBubble(message: message);
                 },
               );
             },
@@ -68,10 +58,9 @@ class _MessagesViewState extends State<MessagesView> {
 }
 
 class _MessageBubble extends StatelessWidget {
-  const _MessageBubble({required this.title, required this.subtitle});
+  const _MessageBubble({required this.message});
 
-  final String title;
-  final String subtitle;
+  final MessageModel message;
 
   @override
   Widget build(BuildContext context) {
@@ -85,12 +74,29 @@ class _MessageBubble extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '@ $title',
-            style: context.textTheme.labelMedium,
+            switch (message.messageType) {
+              MessageType.correctGuess || MessageType.wordReveal => '@ ${context.loc.gamebot}',
+              _ => '@ ${message.name}',
+            },
+            style: context.textTheme.labelMedium?.copyWith(
+              fontWeight: switch (message.messageType) {
+                MessageType.correctGuess || MessageType.wordReveal => FontWeight.w800,
+                _ => null,
+              },
+            ),
           ),
           Text(
-            subtitle,
-            style: context.textTheme.bodySmall,
+            switch (message.messageType) {
+              MessageType.correctGuess => context.loc.correctGuessMsg(message.text),
+              MessageType.wordReveal => context.loc.revealWordMsg(message.locText),
+              _ => message.text,
+            },
+            style: context.textTheme.bodySmall?.copyWith(
+              fontWeight: switch (message.messageType) {
+                MessageType.correctGuess || MessageType.wordReveal => FontWeight.w800,
+                _ => null,
+              },
+            ),
           ),
         ],
       ),

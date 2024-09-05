@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skribla/src/app/game/data/models/game_model.dart';
@@ -10,6 +11,7 @@ import 'package:skribla/src/app/game/presentation/provider/game_state.dart';
 import 'package:skribla/src/app/settings/presentation/provider/loc_provider.dart';
 import 'package:skribla/src/core/di/di.dart';
 import 'package:skribla/src/core/service/analytics.dart';
+import 'package:skribla/src/core/service/haptics.dart';
 import 'package:skribla/src/core/service/remote_config.dart';
 import 'package:skribla/src/core/service/toast.dart';
 import 'package:skribla/src/core/util/enums.dart' as enums;
@@ -47,6 +49,9 @@ class GameProvider extends StateNotifier<GameState> {
   StreamSubscription<GameModel?>? _gameStreamSub;
   Timer? _updateArtTimer;
   final delay = RemoteConfig.instance.featureFlags.drawDelayMilliseconds;
+
+  final _confettiController = ConfettiController(duration: const Duration(seconds: 2));
+  ConfettiController get confettiController => _confettiController;
 
   void onPanStart(
     BuildContext context,
@@ -216,7 +221,13 @@ class GameProvider extends StateNotifier<GameState> {
         : await gameRepository.sendMessage(game: game, text: text, name: name);
     state = state.copyWith(status: GameStatus.idle);
     return res.when(
-      success: (success) => success,
+      success: (success) {
+        if (correctGuess) {
+          Haptics.instance.heavyImpact();
+          _confettiController.play();
+        }
+        return success;
+      },
       error: (error) => false,
     );
   }
