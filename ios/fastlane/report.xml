@@ -5,37 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000416">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000261">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: Switch to ios set_full_version lane" time="0.000102">
+      <testcase classname="fastlane.lanes" name="1: Switch to ios set_full_version lane" time="7.1e-05">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.001024">
+      <testcase classname="fastlane.lanes" name="2: flutter_version" time="0.001183">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.18042">
+      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.12376">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.18206">
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.115561">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: shorebird_release" time="523.514574">
+      <testcase classname="fastlane.lanes" name="5: shorebird_release" time="414.420445">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="143.043158">
+      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="99.874698">
         
       </testcase>
     

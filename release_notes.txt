@@ -1,6 +1,10 @@
 ## What's Changed
+* add confetti for correct guess by o-ifeanyi
+* update build and deploy macos by o-ifeanyi
+* fix google sign in for macos, update deps + minor changes by o-ifeanyi
+* new release by o-ifeanyi
 * refactor enums by o-ifeanyi
 * refactor findGame to use creat or join game methods by o-ifeanyi
 * implement safety options (report/block user) and account suspension based on number of reports by o-ifeanyi
 
-**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.2.0+11...0.2.1+12
+**Full Changelog**: https://github.com/o-ifeanyi/skribla/compare/0.2.0+11...0.2.3+14
