@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SettingsState {
   SettingsStatus get status => throw _privateConstructorUsedError;
+  ThemeMode get theme => throw _privateConstructorUsedError;
   bool get hapticsOn => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
 
@@ -31,7 +32,7 @@ abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
-  $Res call({SettingsStatus status, bool hapticsOn, String version});
+  $Res call({SettingsStatus status, ThemeMode theme, bool hapticsOn, String version});
 }
 
 /// @nodoc
@@ -50,6 +51,7 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
   @override
   $Res call({
     Object? status = null,
+    Object? theme = null,
     Object? hapticsOn = null,
     Object? version = null,
   }) {
@@ -58,6 +60,10 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as SettingsStatus,
+      theme: null == theme
+          ? _value.theme
+          : theme // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
       hapticsOn: null == hapticsOn
           ? _value.hapticsOn
           : hapticsOn // ignore: cast_nullable_to_non_nullable
@@ -77,7 +83,7 @@ abstract class _$$SettingsStateImplCopyWith<$Res> implements $SettingsStateCopyW
       __$$SettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SettingsStatus status, bool hapticsOn, String version});
+  $Res call({SettingsStatus status, ThemeMode theme, bool hapticsOn, String version});
 }
 
 /// @nodoc
@@ -94,6 +100,7 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? theme = null,
     Object? hapticsOn = null,
     Object? version = null,
   }) {
@@ -102,6 +109,10 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as SettingsStatus,
+      theme: null == theme
+          ? _value.theme
+          : theme // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
       hapticsOn: null == hapticsOn
           ? _value.hapticsOn
           : hapticsOn // ignore: cast_nullable_to_non_nullable
@@ -118,11 +129,17 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 
 class _$SettingsStateImpl implements _SettingsState {
   const _$SettingsStateImpl(
-      {this.status = SettingsStatus.idle, this.hapticsOn = true, this.version = ''});
+      {this.status = SettingsStatus.idle,
+      this.theme = ThemeMode.system,
+      this.hapticsOn = true,
+      this.version = ''});
 
   @override
   @JsonKey()
   final SettingsStatus status;
+  @override
+  @JsonKey()
+  final ThemeMode theme;
   @override
   @JsonKey()
   final bool hapticsOn;
@@ -132,7 +149,7 @@ class _$SettingsStateImpl implements _SettingsState {
 
   @override
   String toString() {
-    return 'SettingsState(status: $status, hapticsOn: $hapticsOn, version: $version)';
+    return 'SettingsState(status: $status, theme: $theme, hapticsOn: $hapticsOn, version: $version)';
   }
 
   @override
@@ -141,12 +158,13 @@ class _$SettingsStateImpl implements _SettingsState {
         (other.runtimeType == runtimeType &&
             other is _$SettingsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.theme, theme) || other.theme == theme) &&
             (identical(other.hapticsOn, hapticsOn) || other.hapticsOn == hapticsOn) &&
             (identical(other.version, version) || other.version == version));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, hapticsOn, version);
+  int get hashCode => Object.hash(runtimeType, status, theme, hapticsOn, version);
 
   /// Create a copy of SettingsState
   /// with the given fields replaced by the non-null parameter values.
@@ -160,11 +178,14 @@ class _$SettingsStateImpl implements _SettingsState {
 abstract class _SettingsState implements SettingsState {
   const factory _SettingsState(
       {final SettingsStatus status,
+      final ThemeMode theme,
       final bool hapticsOn,
       final String version}) = _$SettingsStateImpl;
 
   @override
   SettingsStatus get status;
+  @override
+  ThemeMode get theme;
   @override
   bool get hapticsOn;
   @override

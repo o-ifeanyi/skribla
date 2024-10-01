@@ -123,7 +123,7 @@ final class HomeRepository {
           final doc = ongoingGames.docs.first;
           return joinGame(id: doc.id, user: user);
         } else {
-          // Create a new game if no open games are found
+          // Create a new public game if no open games are found
           return createGame(user);
         }
       });

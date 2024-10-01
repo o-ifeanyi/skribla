@@ -45,7 +45,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           if (!kIsWeb) ...[
             Text(
               context.loc.general,
-              style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+              style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800),
             ),
             Config.vBox12,
             CustomListTile(
@@ -60,29 +60,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ],
           Text(
             context.loc.theme,
-            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800),
           ),
           Config.vBox12,
-          CupertinoSlidingSegmentedControl<ThemeOptions>(
-            groupValue: ref.watch(themeProvider),
+          CupertinoSlidingSegmentedControl<ThemeMode>(
+            groupValue: state.theme,
             padding: Config.symmetric(h: 8, v: 12),
             backgroundColor: context.theme.inputDecorationTheme.fillColor!,
             thumbColor: context.colorScheme.surface,
             children: {
-              ThemeOptions.light: Text(context.loc.light),
-              ThemeOptions.dark: Text(context.loc.dark),
-              ThemeOptions.system: Text(context.loc.system),
+              ThemeMode.light: Text(context.loc.light),
+              ThemeMode.dark: Text(context.loc.dark),
+              ThemeMode.system: Text(context.loc.system),
             },
-            onValueChanged: (option) {
-              if (option != null) {
-                ref.read(themeProvider.notifier).setTheme(option);
-              }
-            },
+            onValueChanged: ref.read(settingsProvider.notifier).setTheme,
           ),
           Config.vBox12,
           Text(
             context.loc.support,
-            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800),
           ),
           if (!kIsWeb) ...[
             Config.vBox12,
@@ -101,7 +97,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           Config.vBox12,
           Text(
             context.loc.about,
-            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+            style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800),
           ),
           Config.vBox12,
           CustomListTile(

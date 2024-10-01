@@ -53,7 +53,6 @@ extension BuildContextExt on BuildContext {
   EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
   EdgeInsets get padding => MediaQuery.viewPaddingOf(this);
   AppLocalizations get loc => AppLocalizations.of(this);
-  ThemeMode get themeMode => theme.brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
   RoundedRectangleBorder get modalShape => RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Config.radius16.topLeft,

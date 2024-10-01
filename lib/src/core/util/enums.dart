@@ -12,8 +12,6 @@ enum LeaderboardStatus { idle, gettingUserPosition }
 
 enum ButtonType { filled, outlined, elevated, text }
 
-enum ThemeOptions { light, dark, system }
-
 enum PageType { grid, list }
 
 enum SafetyOption { report, block, unknown }

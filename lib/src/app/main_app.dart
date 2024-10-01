@@ -1,4 +1,4 @@
-import 'dart:ui' show PlatformDispatcher, PointerDeviceKind;
+import 'dart:ui' show PointerDeviceKind;
 
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,26 +19,12 @@ class MainApp extends StatefulWidget {
   State<MainApp> createState() => _MainAppState();
 }
 
-class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
+class _MainAppState extends State<MainApp> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     Analytics.instance.init();
     Haptics.instance.init();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangePlatformBrightness() {
-    AppTheme.brightness = PlatformDispatcher.instance.platformBrightness;
-    setState(() {});
-    super.didChangePlatformBrightness();
   }
 
   @override
@@ -50,10 +36,10 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
       child: Consumer(
         builder: (context, ref, child) {
           final routerConfig = Router.instance.goRouter;
-          final themeOption = ref.watch(themeProvider);
+          final themeMode = ref.watch(settingsProvider.select((it) => it.theme));
+
           return MaterialApp.router(
             title: 'Skribla',
-            theme: AppTheme.themeOptions(themeOption),
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
                 PointerDeviceKind.mouse,
@@ -64,8 +50,10 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
               },
             ),
             darkTheme: AppTheme.darkTheme,
-            themeMode: context.themeMode,
+            themeMode: themeMode,
+            theme: AppTheme.lightTheme,
             routerConfig: routerConfig,
+            locale: const Locale('en'),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             builder: (BuildContext context, Widget? child) {

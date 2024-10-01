@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skribla/src/app/settings/data/repository/settings_repository.dart';
@@ -15,8 +16,8 @@ import 'package:skribla/src/core/service/haptics.dart';
 /// of settings-related operations.
 ///
 /// Key features:
-/// - Manages haptic feedback settings
 /// - Stores and retrieves settings using SharedPreferences
+/// - Provides the current app theme
 /// - Provides the current app version
 ///
 /// Usage:
@@ -29,6 +30,10 @@ class SettingsProvider extends StateNotifier<SettingsState> {
     required this.settingsRepository,
   }) : super(
           SettingsState(
+            theme: ThemeMode.values.firstWhere(
+              (e) => e.name == sharedPreferences?.getString('currentTheme'),
+              orElse: () => ThemeMode.system,
+            ),
             hapticsOn: sharedPreferences?.getBool(AppKeys.haptics) ?? true,
             version: sharedPreferences?.getString(AppKeys.version) ?? '',
           ),
@@ -44,5 +49,11 @@ class SettingsProvider extends StateNotifier<SettingsState> {
     if (val) {
       Haptics.instance.mediumImpact();
     }
+  }
+
+  void setTheme(ThemeMode? mode) {
+    if (mode == null) return;
+    state = state.copyWith(theme: mode);
+    sharedPreferences?.setString(AppKeys.theme, mode.name);
   }
 }

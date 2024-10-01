@@ -78,7 +78,7 @@ class DrawBoard extends ConsumerWidget {
                             game?.currentWord.locText ?? '',
                             style: context.textTheme.bodySmall?.copyWith(
                               color: context.colorScheme.secondary,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w800,
                             ),
                           )
                         : game != null
@@ -86,7 +86,7 @@ class DrawBoard extends ConsumerWidget {
                                 context.loc.nletterWord(game.currentWord.locText.split('').length),
                                 style: context.textTheme.bodySmall?.copyWith(
                                   color: context.colorScheme.secondary,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w800,
                                 ),
                               )
                             : null,

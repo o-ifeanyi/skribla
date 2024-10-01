@@ -26,7 +26,7 @@ class _LeaderboardAppBarState extends ConsumerState<LeaderboardAppBar> {
       elevation: 0,
       scrolledUnderElevation: 0,
       leading: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+        padding: Config.fromLTRB(20, 0, 0, 0),
         child: GestureDetector(
           onTap: context.pop,
           child: CircleAvatar(
@@ -112,7 +112,7 @@ class _SliverBottomWidget extends StatefulWidget implements PreferredSizeWidget 
   State<_SliverBottomWidget> createState() => _SliverBottomWidgetState();
 
   @override
-  Size get preferredSize => const Size(0, kToolbarHeight + 22);
+  Size get preferredSize => Size(0, Config.h(65)); // 45 (tab) + 20 (v padding 10 + 10)
 }
 
 class _SliverBottomWidgetState extends State<_SliverBottomWidget>
@@ -131,7 +131,7 @@ class _SliverBottomWidgetState extends State<_SliverBottomWidget>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      margin: Config.symmetric(h: 30, v: 10),
       decoration: BoxDecoration(
         color: context.theme.inputDecorationTheme.fillColor,
         borderRadius: Config.radius24,
@@ -140,13 +140,14 @@ class _SliverBottomWidgetState extends State<_SliverBottomWidget>
         builder: (context, ref, child) {
           return TabBar(
             controller: _controller,
+            indicatorWeight: 0,
             splashBorderRadius: Config.radius24,
             tabs: [
-              Tab(text: context.loc.monthly, height: 35),
-              Tab(text: context.loc.allTime, height: 35),
+              Tab(text: context.loc.monthly, height: Config.h(45)),
+              Tab(text: context.loc.allTime, height: Config.h(45)),
             ],
             dividerColor: Colors.transparent,
-            labelStyle: context.textTheme.bodyMedium,
+            labelStyle: context.textTheme.bodyLarge,
             unselectedLabelStyle: context.textTheme.bodyMedium,
             indicatorColor: context.colorScheme.primary,
             labelColor: context.colorScheme.onPrimary,

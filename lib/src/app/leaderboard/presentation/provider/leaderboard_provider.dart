@@ -77,7 +77,7 @@ class LeaderboardProvider extends StateNotifier<LeaderboardState> {
 
   Future<LeaderboardPosition?> getLeaderboardPosition() async {
     final user = ref.read(authProvider).user;
-    if (user?.status == UserStatus.anonymous) return null;
+    if (user?.status != UserStatus.verified) return null;
     return leaderboardRepository.getLeaderboardPosition(state.type);
   }
 }

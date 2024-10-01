@@ -24,8 +24,6 @@ import 'package:skribla/src/app/settings/presentation/provider/loc_provider.dart
 import 'package:skribla/src/app/settings/presentation/provider/settings_provider.dart';
 import 'package:skribla/src/app/settings/presentation/provider/settings_state.dart';
 import 'package:skribla/src/core/service/toast.dart';
-import 'package:skribla/src/core/theme/theme_provider.dart';
-import 'package:skribla/src/core/util/enums.dart';
 
 // Providers
 final authProvider = StateNotifierProvider<AuthProvider, AuthState>(
@@ -52,12 +50,6 @@ final gameProvider = StateNotifierProvider<GameProvider, GameState>(
     ref: ref,
     toast: Toast.instance,
     gameRepository: ref.read(gameRepoProvider),
-  ),
-);
-
-final themeProvider = StateNotifierProvider<ThemeProvider, ThemeOptions>(
-  (ref) => ThemeProvider(
-    sharedPreferences: ref.read(sharedPreferencedProvider).value,
   ),
 );
 
